@@ -14,7 +14,7 @@ export const GENERATOR_MODEL = process.env.GENERATOR_MODEL || CLAUDE_MODEL;
 export const GENERATOR_TOOLS = (process.env.GENERATOR_TOOLS ?? 'WebSearch,WebFetch').split(',').map((s) => s.trim()).filter(Boolean);
 export const GENERATOR_TIMEOUT_MS = Number(process.env.GENERATOR_TIMEOUT_MS || 6 * 60_000);
 export const DIFFICULTIES = ['mixed', 'easy', 'medium', 'hard'];
-const MAX_COUNT = 10;
+const MAX_COUNT = 6;
 
 // ---------------------------------------------------------------------------
 // Candidates: generated puzzles awaiting review, persisted so a reload keeps them

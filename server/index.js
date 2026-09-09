@@ -151,7 +151,7 @@ app.post('/api/puzzles/:id/chat', async (req, res) => {
 // Puzzle generation and review
 // ---------------------------------------------------------------------------
 app.get('/api/generate/config', (req, res) => {
-  res.json({ model: GENERATOR_MODEL, gameMasterModel: CLAUDE_MODEL, tools: GENERATOR_TOOLS, difficulties: GEN_DIFFICULTIES, maxCount: 10, running: runningJob(), jobs: listJobs() });
+  res.json({ model: GENERATOR_MODEL, gameMasterModel: CLAUDE_MODEL, tools: GENERATOR_TOOLS, difficulties: GEN_DIFFICULTIES, maxCount: 6, running: runningJob(), jobs: listJobs() });
 });
 
 app.post('/api/generate', (req, res) => {

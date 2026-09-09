@@ -93,7 +93,7 @@ Each entry in `data/puzzles.json`:
 ### Generating new puzzles
 
 The question bank has a **Generate new questions** button that opens `/generate`. Choose how many
-puzzles (1 to 10) and a difficulty (or mixed), and the puzzle writer model writes them. The prompt is
+puzzles (1 to 6, default 3) and a difficulty (or mixed), and the puzzle writer model writes them. The prompt is
 `server/templates/generate.md`: it receives every existing puzzle and pending candidate through the
 `{{EXISTING_PUZZLES}}` placeholder so it does not repeat a story, and it tells the model it may use
 web search for inspiration. The server checks each result again (same id or title, or too much
