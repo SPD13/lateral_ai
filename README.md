@@ -105,7 +105,7 @@ The game master replies **Yes**, **No**, **Irrelevant** (the detail does not mat
 story does not decide it, or answering would give too much away). Open questions such as "what happened?"
 are not answered; the game master asks you to rephrase, and such messages do not count as questions.
 
-A **Game master help** switch under the chat (on by default) lets the game master add a short clarification
+A **Game master help** switch next to the difficulty dropdown (on by default) lets the game master add a short clarification
 to an answer, suggest what to ask when a message is not a yes/no question, and point at what is missing in a
 close guess. Switch it off for strict play: bare yes / no / irrelevant / can't-say answers and verdicts
 without pointers. Hints still work when you ask for them. The setting is stored per player on the server
