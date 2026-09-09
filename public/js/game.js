@@ -46,7 +46,7 @@ function renderPuzzle() {
     ? `Solved in ${plural(n, 'question')} and ${plural(t, 'try', 'tries')}${pr.hintsGiven ? `, with ${plural(pr.hintsGiven, 'hint')}` : ''}. Nicely done.`
     : 'Solution revealed. Better luck on the next one.';
   els.resetPuzzle.disabled = !(pr.history || []).length;
-  document.title = `Lateral · ${p.title}`;
+  document.title = `LateralAI · ${p.title}`;
   history.replaceState(null, '', `/?id=${encodeURIComponent(p.id)}`);
 }
 

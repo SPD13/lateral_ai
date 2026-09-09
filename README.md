@@ -1,4 +1,4 @@
-# Lateral
+# LateralAI
 
 <img src="img/lateral_thinking_logo.png" alt="Lateral logo" width="96" align="right">
 
