@@ -65,7 +65,7 @@ a.btn { text-decoration: none; display: inline-block; }
 .btn.small { padding: 5px 10px; font-size: 13px; }
 select.btn { padding-right: 28px; }
 .btn.with-icon { display: inline-flex; align-items: center; gap: 6px; }
-.icon-btn { width: 36px; height: 36px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 9px; vertical-align: middle; line-height: 0; }
+.icon-btn, a.icon-btn { width: 36px; height: 36px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 9px; vertical-align: middle; line-height: 0; box-sizing: border-box; }
 .icon-btn .icon { display: block; width: 20px; height: 20px; }
 .icon-btn:not(.primary) .icon { stroke-width: 1.9; }
 .icon-btn.danger:not(:disabled):hover { background: var(--bad-soft); }
