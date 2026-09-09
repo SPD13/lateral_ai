@@ -43,7 +43,7 @@ function userRecord(userId) {
 }
 
 function emptyEntry() {
-  return { status: STATUS.NEW, history: [], hintsGiven: 0, questionsAsked: 0, updatedAt: null, solvedAt: null };
+  return { status: STATUS.NEW, history: [], hintsGiven: 0, questionsAsked: 0, guesses: 0, updatedAt: null, solvedAt: null };
 }
 
 /**
@@ -59,6 +59,12 @@ export function questionsAsked(entry) {
     if (prev.role === 'user' && prev.intent === 'question' && m.role === 'agent' && m.kind === 'answer') n++;
   }
   return n;
+}
+
+/** Submitted solutions the game master judged (correct, close or incorrect). Derived from history for older entries. */
+export function guessesMade(entry) {
+  if (typeof entry.guesses === 'number') return entry.guesses;
+  return entry.history.filter((m) => m.role === 'agent' && m.kind === 'verdict').length;
 }
 
 /** Progress entry for one user/puzzle pair (never null). */

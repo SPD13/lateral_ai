@@ -66,8 +66,9 @@ function playButton(p) {
 
 /** Score shown once a puzzle is solved: the number of yes/no questions it took. */
 function score(p) {
-  if (p.status === 'solved') return `<span class="score">${p.questionsAsked} <small>question${p.questionsAsked === 1 ? '' : 's'}</small></span>`;
-  if (p.status === 'tried' && p.questionsAsked) return `<span class="excerpt">${p.questionsAsked} so far</span>`;
+  const tries = `<span class="tries">${p.guesses} ${p.guesses === 1 ? 'try' : 'tries'}</span>`;
+  if (p.status === 'solved') return `<span class="score">${p.questionsAsked} <small>question${p.questionsAsked === 1 ? '' : 's'}</small>${tries}</span>`;
+  if (p.status === 'tried' && (p.questionsAsked || p.guesses)) return `<span class="score"><span class="excerpt">${p.questionsAsked} so far</span>${tries}</span>`;
   return '<span class="excerpt">—</span>';
 }
 

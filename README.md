@@ -116,8 +116,9 @@ The buttons above the input, and the slash shortcuts, change what a message mean
 
 When you submit a solution, the answer is **correct** (the puzzle is marked solved and the full story is
 told), **close** (the right idea, but one important element is missing or wrong; you can try again or ask
-for the solution) or **incorrect**. Once a puzzle is solved, the banner shows your score: the number of
-questions it took, and the number of hints if you used any.
+for the solution) or **incorrect**. Every judged solution counts as a try. Once a puzzle is solved, the
+banner shows your score: the number of questions and tries it took, and the number of hints if you used
+any. In the chat, replies that count carry a "+1 question" or "+1 try" marker.
 
 Your progress is tied to the browser you play in (an anonymous cookie), so another person on another
 device has their own progress on the same server. The chat history of every puzzle is kept, so reloading
@@ -134,7 +135,7 @@ used, when you last played it and when it was added.
 |----------|------------------------------------------------------------------|
 | New      | You have not talked to the game master about it                  |
 | Tried    | You started, but have not found the solution yet                 |
-| Solved   | You found the solution; the score column shows how many questions it took |
+| Solved   | You found the solution; the score column shows how many questions and tries it took |
 | Revealed | You asked for the solution                                       |
 
 Use the search box and the status, difficulty and date-added filters to narrow the list. Click a column
