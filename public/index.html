@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lateral · Yes/No puzzle game</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand"><h1>Lateral</h1><span class="tagline">Lateral thinking puzzles, one yes/no question at a time</span></div>
+      <nav class="site-nav"><a href="/" class="active">Play</a><a href="/bank">Question bank</a></nav>
+      <div class="game-details" id="header-stats">Loading…</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card puzzle-card" id="puzzle-card">
+      <div class="puzzle-head">
+        <h2 id="puzzle-title">Picking a puzzle…</h2>
+        <span id="puzzle-difficulty"></span>
+        <span id="puzzle-status"></span>
+        <span class="spacer"></span>
+        <select class="btn small" id="difficulty-filter" title="Difficulty for the next puzzle">
+          <option value="">Any difficulty</option>
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <button class="btn small" id="new-puzzle">New puzzle</button>
+      </div>
+      <p class="situation loading" id="situation">Loading…</p>
+      <div class="solved-banner" id="solved-banner" hidden>
+        <span id="solved-text">Solved!</span>
+        <button class="btn small primary" id="next-puzzle">Next puzzle</button>
+      </div>
+    </section>
+
+    <div class="play-grid">
+      <section class="card chat" aria-label="Chat with the game master">
+        <div class="chat-log" id="chat-log"><div class="chat-empty">Ask your first yes/no question to get started.</div></div>
+        <form class="composer" id="composer">
+          <div class="modes" role="group" aria-label="Message type">
+            <button type="button" class="mode" data-mode="question" aria-pressed="true">Ask a question</button>
+            <button type="button" class="mode" data-mode="guess" aria-pressed="false">Submit a solution</button>
+            <button type="button" class="mode" data-mode="hint" aria-pressed="false">Get a hint</button>
+            <button type="button" class="mode reveal" data-mode="reveal" aria-pressed="false">Give up: show solution</button>
+          </div>
+          <div class="input-row">
+            <label class="sr-only" for="input">Your message</label>
+            <textarea id="input" rows="1" placeholder="Is the man alone?" autocomplete="off"></textarea>
+            <button class="btn primary" id="send" type="submit">Send</button>
+          </div>
+          <div class="hint-line" id="hint-line">Enter to send, Shift+Enter for a new line. Shortcuts: <code>/hint</code>, <code>/guess …</code>, <code>/solution</code></div>
+        </form>
+      </section>
+
+      <aside class="card help">
+        <h3>How to play</h3>
+        <p>The game master knows the full story. Work it out by asking questions that can be answered with <b>yes</b>, <b>no</b>, or <b>irrelevant</b>.</p>
+
+        <h4>Ask questions</h4>
+        <ul>
+          <li>Keep to one yes/no question per message.
+            <span class="example">"Did the man die of natural causes?"</span>
+            <span class="example">"Is the location important?"</span></li>
+          <li>"Irrelevant" means the detail does not matter. "Can't say" means the answer would give too much away or the story does not decide it.</li>
+        </ul>
+
+        <h4>Get a hint</h4>
+        <ul>
+          <li>Pick <b>Get a hint</b> and send, or type <code>/hint</code>.</li>
+          <li>Hints are progressive: each one gives away a little more.</li>
+        </ul>
+
+        <h4>Submit a solution</h4>
+        <ul>
+          <li>Pick <b>Submit a solution</b> and describe what happened, or type <code>/guess</code> followed by your answer.
+            <span class="example">"/guess They are goldfish and the cat knocked over the bowl"</span></li>
+          <li>If you are close, the game master says so and you can try again or ask for the solution.</li>
+        </ul>
+
+        <h4>Give up</h4>
+        <ul>
+          <li>Pick <b>Give up: show solution</b> or type <code>/solution</code>. You will be asked to confirm.</li>
+          <li>The puzzle is then marked as <em>revealed</em>. You can reset it from the question bank.</li>
+        </ul>
+
+        <h4>Status legend</h4>
+        <div class="legend">
+          <div class="row"><span class="badge new">New</span> not tried yet</div>
+          <div class="row"><span class="badge tried">Tried</span> started, not solved</div>
+          <div class="row"><span class="badge solved">Solved</span> you found the answer</div>
+          <div class="row"><span class="badge revealed">Revealed</span> you asked for the solution</div>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="/js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "lateral-game-launcher",
+  "version": "0.1.0",
+  "description": "Launcher app to start/stop the Lateral game server and show its URLs",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^33.0.0"
+  }
+}

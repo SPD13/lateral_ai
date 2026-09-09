@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lateral Launcher</title>
+<style>
+  :root {
+    --bg: #12131a; --surface: #1a1c26; --line: #2c3040;
+    --ink: #d5d8e3; --muted: #8b92a8; --accent: #b39cff; --green: #6fce7e; --red: #e07a6a; --amber: #e0b36a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; user-select: none;
+  }
+  header { padding: 14px 18px 0; }
+  h1 { font-size: 13px; margin: 0 0 12px; color: var(--accent); letter-spacing: 0.08em; }
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); padding: 0 18px; }
+  .tab { font: inherit; color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent; padding: 8px 14px; cursor: pointer; }
+  .tab.active { color: var(--ink); border-bottom-color: var(--accent); }
+  section { padding: 18px; }
+  section[hidden] { display: none; }
+
+  .row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  #toggle {
+    font: inherit; font-size: 14px; padding: 10px 26px; cursor: pointer; color: var(--green);
+    background: var(--surface); border: 1px solid var(--green); border-radius: 6px; letter-spacing: 0.06em; min-width: 110px;
+  }
+  #toggle.running { color: var(--red); border-color: var(--red); }
+  #toggle:disabled { opacity: .5; cursor: default; }
+  #status-pill {
+    padding: 4px 12px; border-radius: 999px; font-size: 11px; letter-spacing: 0.1em;
+    background: var(--surface); color: var(--muted); border: 1px solid var(--line);
+  }
+  #status-pill.running { color: var(--green); border-color: var(--green); }
+  #status-pill.starting { color: var(--amber); border-color: var(--amber); }
+  #status-pill.external { color: var(--amber); border-color: var(--amber); }
+  .urls { border-top: 1px solid var(--line); padding-top: 14px; line-height: 2; }
+  .url-label { color: var(--muted); display: inline-block; width: 120px; }
+  .url { color: var(--ink); cursor: pointer; text-decoration: underline; text-decoration-color: var(--line); }
+  .url:hover { color: var(--accent); }
+  .url.disabled { color: var(--muted); cursor: default; text-decoration: none; }
+  .details { border-top: 1px solid var(--line); margin-top: 12px; padding-top: 10px; line-height: 1.9; color: var(--muted); }
+  .details b { color: var(--ink); font-weight: normal; }
+  .details .bad { color: var(--red); }
+  #error { color: var(--red); min-height: 18px; margin-top: 12px; line-height: 1.5; user-select: text; }
+  #error.notice { color: var(--muted); }
+
+  label { color: var(--muted); display: block; margin-bottom: 6px; }
+  label.check { display: flex; align-items: center; gap: 8px; color: var(--ink); cursor: pointer; margin-top: 18px; }
+  label.check input { accent-color: #b39cff; }
+  input[type="number"], select {
+    font: inherit; font-size: 14px; color: var(--ink); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 6px; padding: 8px 12px; width: 140px; outline: none;
+  }
+  input:focus, select:focus { border-color: var(--accent); }
+  .field { margin-bottom: 16px; }
+  button.plain {
+    font: inherit; padding: 8px 18px; cursor: pointer; color: var(--ink); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 6px;
+  }
+  button.plain:hover { border-color: var(--accent); color: var(--accent); }
+  .hint { color: var(--muted); margin-top: 12px; line-height: 1.6; }
+  #setup-msg { min-height: 18px; margin-top: 10px; }
+  #setup-msg.ok { color: var(--green); }
+  #setup-msg.err { color: var(--red); }
+
+  #log {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 10px;
+    height: 380px; overflow: auto; white-space: pre-wrap; word-break: break-all; font-size: 11.5px;
+    line-height: 1.5; color: var(--muted); user-select: text; margin: 0;
+  }
+</style>
+</head>
+<body>
+<header><h1>LATERAL LAUNCHER</h1></header>
+<nav class="tabs">
+  <button class="tab active" data-tab="server">Server</button>
+  <button class="tab" data-tab="setup">Setup</button>
+  <button class="tab" data-tab="log">Log</button>
+</nav>
+
+<section id="tab-server">
+  <div class="row">
+    <button id="toggle">START</button>
+    <span id="status-pill">STOPPED</span>
+  </div>
+  <div class="urls">
+    <div><span class="url-label">Internal URL</span> <span id="internal-url" class="url disabled">—</span></div>
+    <div><span class="url-label">External URL</span> <span id="external-url" class="url disabled">—</span></div>
+  </div>
+  <div class="details">
+    <div><span class="url-label">Process</span> <b id="d-process">—</b></div>
+    <div><span class="url-label">Game master</span> <b id="d-model">—</b></div>
+    <div><span class="url-label">Puzzles</span> <b id="d-puzzles">—</b></div>
+    <div><span class="url-label">Claude CLI</span> <b id="d-claude">—</b></div>
+  </div>
+  <div id="error"></div>
+</section>
+
+<section id="tab-setup" hidden>
+  <div class="field">
+    <label for="port">Server port</label>
+    <input id="port" type="number" min="1024" max="65535" step="1">
+    <button class="plain" id="save-port">Save</button>
+  </div>
+  <div class="field">
+    <label for="model">Game master model</label>
+    <select id="model">
+      <option value="sonnet">sonnet</option>
+      <option value="opus">opus</option>
+      <option value="haiku">haiku</option>
+    </select>
+  </div>
+  <label class="check"><input type="checkbox" id="autostart"> Start the server when the launcher opens</label>
+  <div id="setup-msg"></div>
+  <div class="hint">
+    Ports 1024–65535, default 3000. Changes apply immediately — a running server restarts.
+    The model is passed to the <code>claude</code> CLI for every chat reply.
+  </div>
+</section>
+
+<section id="tab-log" hidden>
+  <pre id="log"></pre>
+</section>
+
+<script src="renderer.js"></script>
+</body>
+</html>
