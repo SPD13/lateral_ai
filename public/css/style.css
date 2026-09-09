@@ -132,3 +132,29 @@ select.btn { padding-right: 28px; }
 .modal p { margin: 0 0 18px; color: var(--muted); }
 .modal .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* Generate page */
+.gen-card { margin: 24px 0 20px; }
+.gen-form { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+.gen-form label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+.gen-form input, .gen-form select { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 8px 12px; width: 120px; }
+.gen-form .gen-model { color: var(--muted); font-size: 13px; margin-left: auto; }
+.gen-note { color: var(--muted); font-size: 13px; margin: 14px 0 0; }
+.gen-status { margin-top: 14px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); }
+.gen-status.running { border-color: var(--info); color: var(--info); }
+.gen-status.done { border-color: var(--ok); }
+.gen-status.error { border-color: var(--bad); color: var(--bad); }
+.gen-status .dropped { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
+.spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -1px; margin-right: 4px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.section-title { font-size: 16px; margin: 8px 0 12px; }
+.section-title .count { color: var(--muted); font-weight: 400; }
+.candidates { display: flex; flex-direction: column; gap: 14px; }
+.candidate h3 { margin: 0; font-size: 17px; }
+.candidate .situation { font-size: 16px; }
+.candidate .inspiration { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+.candidate .reveal-btn { margin-top: 12px; }
+.candidate .solution { margin-top: 10px; padding: 12px 14px; border-radius: 10px; background: var(--info-soft); }
+.candidate .solution p { margin: 0 0 6px; } .candidate .solution ul, .candidate .solution ol { margin: 0 0 8px; padding-left: 20px; }
+.candidate-actions { display: flex; gap: 8px; align-items: center; margin-top: 14px; flex-wrap: wrap; }
+.candidate.leaving { opacity: .4; transition: opacity .4s; }

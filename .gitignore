@@ -1,5 +1,6 @@
 node_modules/
 data/progress.json
+data/candidates.json
 server/agent-cwd/*
 !server/agent-cwd/.gitkeep
 .DS_Store

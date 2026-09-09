@@ -40,7 +40,8 @@ function renderStatus(s) {
     ? "pid " + s.pid + (s.external ? " (not started by this launcher)" : "") + (s.uptime != null ? " · up " + fmtUptime(s.uptime) : "")
     : "none";
   $("d-model").textContent = s.serverModel ? "claude " + s.serverModel : "claude " + s.model + " (when started)";
-  $("d-puzzles").textContent = s.puzzles != null ? s.puzzles + " in the bank" : "—";
+  $("d-generator").textContent = s.serverGeneratorModel ? "claude " + s.serverGeneratorModel : "claude " + s.generatorModel + " (when started)";
+  $("d-puzzles").textContent = s.puzzles != null ? s.puzzles + " in the bank" + (s.candidates ? ", " + s.candidates + " awaiting review" : "") : "—";
   $("d-claude").textContent = s.claudeBin || "not found on PATH";
   $("d-claude").classList.toggle("bad", !s.claudeBin);
 
@@ -49,6 +50,7 @@ function renderStatus(s) {
 
   if (!$("port").matches(":focus")) $("port").value = s.port;
   $("model").value = s.model;
+  $("generator-model").value = s.generatorModel;
   $("autostart").checked = !!s.autostart;
 }
 
@@ -91,6 +93,12 @@ $("model").addEventListener("change", async () => {
   const s = await window.launcher.setConfig({ model: $("model").value });
   renderStatus(s);
   setupMessage(s, "model " + s.model + (s.ours ? " (server restarted)" : ""));
+});
+
+$("generator-model").addEventListener("change", async () => {
+  const s = await window.launcher.setConfig({ generatorModel: $("generator-model").value });
+  renderStatus(s);
+  setupMessage(s, "puzzle writer " + s.generatorModel + (s.ours ? " (server restarted)" : ""));
 });
 
 $("autostart").addEventListener("change", async () => {

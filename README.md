@@ -25,7 +25,10 @@ Environment variables (all optional):
 | Variable            | Default    | Purpose                                                            |
 |---------------------|------------|--------------------------------------------------------------------|
 | `PORT`              | `3000`     | HTTP port                                                          |
-| `CLAUDE_MODEL`      | `sonnet`   | Model passed to `claude --model`                                   |
+| `CLAUDE_MODEL`      | `sonnet`   | Game master model passed to `claude --model` (sonnet, opus, haiku, fable) |
+| `GENERATOR_MODEL`   | `CLAUDE_MODEL` | Puzzle writer model used when generating new questions          |
+| `GENERATOR_TOOLS`   | `WebSearch,WebFetch` | CLI tools the puzzle writer may use; set to `""` to disable web search |
+| `GENERATOR_TIMEOUT_MS` | `360000` | Timeout for one generation run                                    |
 | `CLAUDE_BIN`        | `claude`   | Path to the CLI                                                    |
 | `CLAUDE_TIMEOUT_MS` | `90000`    | Per-message timeout                                                |
 | `LG_DEBUG`          | unset      | `1` exposes `GET /api/puzzles/:id/prompt?intent=…&text=…` to inspect the rendered prompt |
@@ -36,12 +39,14 @@ Environment variables (all optional):
 ```
 data/puzzles.json          puzzle bank (generated offline, see below)
 data/progress.json         per-player progress, created at runtime (gitignored)
+data/candidates.json       generated puzzles awaiting review, created at runtime (gitignored)
 server/index.js            Express app and API
 server/claude.js           runs `claude -p` and parses its JSON reply
 server/prompt.js           renders the context template
-server/templates/          system.md, context.md and intents/*.md  <- tune the game master here
+server/templates/          system.md, context.md, intents/*.md (game master), generate.md + generate-system.md (puzzle writer)
+server/generator.js        puzzle writer: prompt, duplicate check, generation jobs, review queue
 server/agent-cwd/          empty working directory used when invoking the CLI
-public/                    static front end: index.html (play), bank.html (question bank)
+public/                    static front end: index.html (play), bank.html (question bank), generate.html (write new puzzles)
 launcher/                  Electron launcher: starts/stops the server, shows status and URLs
 scripts/generate-puzzles.js  offline puzzle generator
 ```
@@ -84,11 +89,27 @@ Each entry in `data/puzzles.json`:
 }
 ```
 
-Generate more offline with the CLI (appends to the bank, skipping duplicate ids/titles):
+### Generating new puzzles
+
+The question bank has a **Generate new questions** button that opens `/generate`. Choose how many
+puzzles (1 to 10) and a difficulty (or mixed), and the puzzle writer model writes them. The prompt is
+`server/templates/generate.md`: it receives every existing puzzle and pending candidate through the
+`{{EXISTING_PUZZLES}}` placeholder so it does not repeat a story, and it tells the model it may use
+web search for inspiration. The server checks each result again (same id or title, or too much
+overlap in the situation or solution with a bank entry or another candidate) and drops duplicates.
+
+Results appear as candidates with their solution hidden until you click *Show solution*. **Approve**
+appends the puzzle to `data/puzzles.json` (with a unique id); **Reject** drops it. Candidates survive
+a reload; they live in `data/candidates.json`.
+
+The puzzle writer model can differ from the game master's: set it in the launcher's Setup tab or
+with `GENERATOR_MODEL`.
+
+The same writer is available from the terminal without the review step (appends straight to the bank, skipping duplicates):
 
 ```bash
-node scripts/generate-puzzles.js --count 5 --difficulty hard            # or: npm run generate
-node scripts/generate-puzzles.js --count 3 --difficulty easy --dry-run  # print without saving
+node scripts/generate-puzzles.js --count 5 --difficulty hard --model opus   # or: npm run generate
+node scripts/generate-puzzles.js --count 3 --difficulty mixed --dry-run     # print without saving
 ```
 
 The bank file is re-read when it changes, so new puzzles appear without restarting the server.
@@ -104,3 +125,9 @@ The bank file is re-read when it changes, so new puzzles appear without restarti
 | GET    | `/api/puzzles/:id`            | Puzzle plus progress and chat history                      |
 | POST   | `/api/puzzles/:id/chat`       | `{ intent, text }` → `{ reply, progress }`                 |
 | POST   | `/api/progress/reset`         | `{ puzzleId }` to reset one, `{}` to reset everything      |
+| GET    | `/api/generate/config`        | Writer model, tools, running job and recent jobs           |
+| POST   | `/api/generate`               | `{ count, difficulty }` → `202 { job }`; poll the job      |
+| GET    | `/api/generate/jobs/:id`      | Job status: `running`, `done` (added, dropped, cost) or `error` |
+| GET    | `/api/candidates`             | Generated puzzles awaiting review (with solutions)         |
+| POST   | `/api/candidates/:id/approve` | Add the candidate to the bank                              |
+| POST   | `/api/candidates/:id/reject`  | Drop the candidate                                         |
