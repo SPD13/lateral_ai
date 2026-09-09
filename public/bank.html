@@ -28,6 +28,12 @@
         <option value="solved">Solved</option>
         <option value="revealed">Revealed</option>
       </select>
+      <select class="btn" id="filter-added" aria-label="Filter by date added">
+        <option value="">Added any time</option>
+        <option value="1">Added today</option>
+        <option value="7">Added this week</option>
+        <option value="30">Added this month</option>
+      </select>
       <select class="btn" id="filter-difficulty" aria-label="Filter by difficulty">
         <option value="">All difficulties</option>
         <option value="easy">Easy</option>
@@ -42,9 +48,18 @@
     <section class="card table-wrap">
       <table class="bank-table">
         <thead>
-          <tr><th>Puzzle</th><th>Difficulty</th><th>Status</th><th>Score</th><th>Hints</th><th>Last played</th><th class="right">Actions</th></tr>
+          <tr>
+            <th><button type="button" class="sort" data-sort="title">Puzzle</button></th>
+            <th><button type="button" class="sort" data-sort="difficulty">Difficulty</button></th>
+            <th><button type="button" class="sort" data-sort="status">Status</button></th>
+            <th><button type="button" class="sort" data-sort="score">Score</button></th>
+            <th><button type="button" class="sort" data-sort="hints">Hints</button></th>
+            <th><button type="button" class="sort" data-sort="played">Last played</button></th>
+            <th><button type="button" class="sort" data-sort="added">Date added</button></th>
+            <th class="right">Actions</th>
+          </tr>
         </thead>
-        <tbody id="rows"><tr><td colspan="7" class="empty">Loading…</td></tr></tbody>
+        <tbody id="rows"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody>
       </table>
     </section>
   </main>

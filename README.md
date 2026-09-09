@@ -64,7 +64,8 @@ scripts/generate-puzzles.js  offline puzzle generator
    `verdict: correct` marks the puzzle **solved**, `kind: solution` marks it **revealed**, `kind: hint` bumps the hint counter.
    A `close` verdict is shown with "Try again" / "Show me the solution" buttons.
 6. Every message is stored in the player's history so the chat survives a reload, and the bank page shows
-   status, hint usage and last-played time. Status can be reset per puzzle or globally, and a puzzle can be
+   status, hint usage, last-played time and the date each puzzle was added (newest first by default; click a
+   column header to sort, again to reverse; filter by status, difficulty, date added or text). Status can be reset per puzzle or globally, and a puzzle can be
    deleted from the bank, each with a confirmation modal.
 
 ### Template placeholders
@@ -86,9 +87,13 @@ Each entry in `data/puzzles.json`:
   "situation": "What the player sees.",
   "solution": "The secret story (never sent to the browser).",
   "keyFacts": ["What a correct guess must contain", "..."],
-  "hints": ["gentle", "stronger", "almost gives it away"]
+  "hints": ["gentle", "stronger", "almost gives it away"],
+  "addedAt": "2026-09-09T18:41:00.000Z"
 }
 ```
+
+`addedAt` is set automatically when a puzzle is approved; leave it out for hand-written entries and the
+bank page shows no date for them.
 
 ### Generating new puzzles
 
