@@ -1,6 +1,6 @@
 "use strict";
 /**
- * Launcher main process: runs the Lateral game server (../server/index.js) as
+ * Launcher main process: runs the LateralAI game server (../server/index.js) as
  * a child process using Electron's bundled Node, persists the port and model,
  * probes the server's /api/health for status, and reports the internal and
  * external (LAN) URLs to the renderer. Closing the app stops the server.
@@ -265,7 +265,7 @@ function createWindow() {
     width: 520,
     height: 560,
     resizable: false,
-    title: "Lateral Launcher",
+    title: "LateralAI Launcher",
     backgroundColor: "#12131a",
     icon: ICON,   // window icon (Windows, Linux); the Dock icon on macOS is set below
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, nodeIntegration: false },

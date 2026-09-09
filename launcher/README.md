@@ -1,6 +1,6 @@
-# Lateral Launcher
+# LateralAI Launcher
 
-Small Electron app that starts and stops the Lateral game server and shows how to reach it.
+Small Electron app that starts and stops the LateralAI game server and shows how to reach it.
 
 ```sh
 cd launcher
