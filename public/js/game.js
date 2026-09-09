@@ -6,7 +6,7 @@ const els = {
   banner: $('solved-banner'), bannerText: $('solved-text'), next: $('next-puzzle'), newPuzzle: $('new-puzzle'), diffFilter: $('difficulty-filter'),
   log: $('chat-log'), composer: $('composer'), input: $('input'), send: $('send'), hintLine: $('hint-line'),
   grid: document.querySelector('.play-grid'), help: $('help-panel'), helpToggle: $('help-toggle'), helpClose: $('help-close'),
-  gmHelp: $('gm-help'),
+  gmHelp: $('gm-help'), resetPuzzle: $('reset-puzzle'),
 };
 const modeButtons = [...document.querySelectorAll('.mode')];
 
@@ -45,6 +45,7 @@ function renderPuzzle() {
   els.bannerText.textContent = pr.status === 'solved'
     ? `Solved in ${plural(n, 'question')} and ${plural(t, 'try', 'tries')}${pr.hintsGiven ? `, with ${plural(pr.hintsGiven, 'hint')}` : ''}. Nicely done.`
     : 'Solution revealed. Better luck on the next one.';
+  els.resetPuzzle.disabled = !(pr.history || []).length;
   document.title = `Lateral · ${p.title}`;
   history.replaceState(null, '', `/?id=${encodeURIComponent(p.id)}`);
 }
@@ -187,6 +188,20 @@ els.log.addEventListener('click', (e) => {
   if (act === 'retry') { setMode('guess'); }
   if (act === 'reveal') { send('reveal', ''); }
 });
+els.resetPuzzle.innerHTML = icon('reset');
+els.resetPuzzle.addEventListener('click', async () => {
+  if (!state.puzzle || state.busy) return;
+  const ok = await confirmModal({
+    title: `Restart "${state.puzzle.title}"?`,
+    body: 'This discards the conversation, the score and the status for this puzzle so you can start it from scratch. The puzzle itself stays in the bank.',
+    confirmLabel: 'Restart puzzle', danger: true,
+  });
+  if (!ok) return;
+  els.resetPuzzle.disabled = true;
+  try { await api('/api/progress/reset', { method: 'POST', body: { puzzleId: state.puzzle.id } }); await openPuzzle(state.puzzle.id); }
+  catch (err) { showError(err); }
+});
+
 els.newPuzzle.addEventListener('click', () => openRandom().catch(showError));
 els.next.addEventListener('click', () => openRandom().catch(showError));
 
