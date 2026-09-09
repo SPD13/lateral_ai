@@ -56,3 +56,24 @@ export async function loadHeaderStats() {
     return me;
   } catch { return null; }
 }
+
+/** Inline SVG icons (16px, stroke = currentColor). Keys: play, resume, review, reset, trash, plus. */
+const ICON_PATHS = {
+  play: '<path d="M5.5 4l9.5 6-9.5 6z" fill="currentColor" stroke="none"/>',
+  resume: '<path d="M4 10h9"/><path d="M9 6l4 4-4 4"/><path d="M16 4v12"/>',
+  review: '<path d="M2 10s3-5 8-5 8 5 8 5-3 5-8 5-8-5-8-5z"/><circle cx="10" cy="10" r="2.5"/>',
+  reset: '<path d="M4 10a6 6 0 1 0 1.8-4.3"/><path d="M4 3v3.5h3.5"/>',
+  trash: '<path d="M4 6h12"/><path d="M8 6V4h4v2"/><path d="M6 6l.8 10h6.4L14 6"/><path d="M8.5 9v4.5M11.5 9v4.5"/>',
+  plus: '<path d="M10 4v12M4 10h12"/>',
+};
+
+export function icon(name) {
+  return `<svg class="icon" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON_PATHS[name] || ''}</svg>`;
+}
+
+/** An icon-only button (or link when `href` is given) with an accessible label and tooltip. */
+export function iconButton({ name, label, href, cls = '', attrs = '', disabled = false }) {
+  const a = `class="btn icon-btn ${cls}" title="${escapeHtml(label)}" aria-label="${escapeHtml(label)}" ${attrs}`;
+  if (href) return `<a ${a} href="${escapeHtml(href)}">${icon(name)}</a>`;
+  return `<button type="button" ${a} ${disabled ? 'disabled' : ''}>${icon(name)}</button>`;
+}

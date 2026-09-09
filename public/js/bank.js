@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, confirmModal, STATUS_LABEL, loadHeaderStats } from './common.js';
+import { api, escapeHtml, badge, confirmModal, STATUS_LABEL, loadHeaderStats, iconButton } from './common.js';
 
 const rowsEl = document.getElementById('rows');
 const searchEl = document.getElementById('search');
@@ -12,6 +12,14 @@ function fmtDate(iso) {
   if (!iso) return '<span class="excerpt">never</span>';
   const d = new Date(iso);
   return escapeHtml(d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) + ' ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }));
+}
+
+/** Play / Continue / Review, depending on the puzzle's status. */
+function playButton(p) {
+  const href = `/?id=${encodeURIComponent(p.id)}`;
+  if (p.status === 'tried') return iconButton({ name: 'resume', label: 'Continue', href, cls: 'primary' });
+  if (p.status === 'solved' || p.status === 'revealed') return iconButton({ name: 'review', label: 'Review', href });
+  return iconButton({ name: 'play', label: 'Play', href, cls: 'primary' });
 }
 
 /** Score shown once a puzzle is solved: the number of yes/no questions it took. */
@@ -39,10 +47,10 @@ function render() {
       <td>${score(p)}</td>
       <td>${p.hintsGiven}/${p.hintCount}</td>
       <td>${fmtDate(p.updatedAt)}</td>
-      <td class="right">
-        <a class="btn small" href="/?id=${encodeURIComponent(p.id)}">${p.status === 'new' ? 'Play' : p.status === 'solved' || p.status === 'revealed' ? 'Review' : 'Continue'}</a>
-        <button class="btn small danger" data-reset="${escapeHtml(p.id)}" ${p.status === 'new' ? 'disabled' : ''}>Reset</button>
-        <button class="btn small danger" data-delete="${escapeHtml(p.id)}" title="Remove this puzzle from the bank">Delete</button>
+      <td class="right actions">
+        ${playButton(p)}
+        ${iconButton({ name: 'reset', label: 'Reset progress', cls: 'danger', attrs: `data-reset="${escapeHtml(p.id)}"`, disabled: p.status === 'new' })}
+        ${iconButton({ name: 'trash', label: 'Delete puzzle', cls: 'danger', attrs: `data-delete="${escapeHtml(p.id)}"` })}
       </td>
     </tr>`).join('');
 }
