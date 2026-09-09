@@ -59,7 +59,7 @@ export async function loadHeaderStats() {
 
 /** Inline SVG icons (16px, stroke = currentColor). Keys: play, resume, review, reset, trash, plus. */
 const ICON_PATHS = {
-  play: '<path d="M5.5 4l9.5 6-9.5 6z" fill="currentColor" stroke="none"/>',
+  play: '<path d="M6 4.5v11a.6.6 0 0 0 .9.5l8.6-5.5a.6.6 0 0 0 0-1L6.9 4a.6.6 0 0 0-.9.5z" fill="currentColor" stroke="none"/>',
   resume: '<path d="M4 10h9"/><path d="M9 6l4 4-4 4"/><path d="M16 4v12"/>',
   review: '<path d="M2 10s3-5 8-5 8 5 8 5-3 5-8 5-8-5-8-5z"/><circle cx="10" cy="10" r="2.5"/>',
   reset: '<path d="M4 10a6 6 0 1 0 1.8-4.3"/><path d="M4 3v3.5h3.5"/>',
@@ -68,7 +68,7 @@ const ICON_PATHS = {
 };
 
 export function icon(name) {
-  return `<svg class="icon" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON_PATHS[name] || ''}</svg>`;
+  return `<svg class="icon" viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON_PATHS[name] || ''}</svg>`;
 }
 
 /** An icon-only button (or link when `href` is given) with an accessible label and tooltip. */
