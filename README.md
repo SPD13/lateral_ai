@@ -129,7 +129,7 @@ The bank file is re-read when it changes, so new puzzles appear without restarti
 | POST   | `/api/progress/reset`         | `{ puzzleId }` to reset one, `{}` to reset everything      |
 | GET    | `/api/generate/config`        | Writer model, tools, running job and recent jobs           |
 | POST   | `/api/generate`               | `{ count, difficulty }` → `202 { job }`; poll the job      |
-| GET    | `/api/generate/jobs/:id`      | Job status: `running`, `done` (added, dropped, cost) or `error` |
+| GET    | `/api/generate/jobs/:id`      | Job status: `running`, `done` (added, dropped, tokens, cost) or `error` |
 | GET    | `/api/candidates`             | Generated puzzles awaiting review (with solutions)         |
 | POST   | `/api/candidates/:id/approve` | Add the candidate to the bank                              |
 | POST   | `/api/candidates/:id/reject`  | Drop the candidate                                         |

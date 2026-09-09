@@ -145,7 +145,7 @@ export function startGeneration({ count, difficulty, model = GENERATOR_MODEL }) 
   if (running) throw Object.assign(new Error('A generation is already running'), { status: 409 });
   const job = {
     id: crypto.randomUUID(), status: 'running', count, difficulty, model, tools: GENERATOR_TOOLS,
-    startedAt: new Date().toISOString(), finishedAt: null, added: [], dropped: [], error: null, cost: null, webSearches: 0,
+    startedAt: new Date().toISOString(), finishedAt: null, added: [], dropped: [], error: null, cost: null, tokens: null, webSearches: 0,
   };
   jobs.set(job.id, job);
   running = job;
@@ -154,6 +154,7 @@ export function startGeneration({ count, difficulty, model = GENERATOR_MODEL }) 
       const { system, user } = buildGeneratePrompt({ count, difficulty });
       const raw = await runClaude({ system, user, model, tools: GENERATOR_TOOLS, timeoutMs: GENERATOR_TIMEOUT_MS });
       job.cost = raw.cost ?? null;
+      job.tokens = raw.tokens ?? null;
       job.webSearches = raw.webSearches ?? 0;
       const arr = parsePuzzleArray(raw.text);
       const list = loadCandidates();
@@ -179,7 +180,7 @@ export function startGeneration({ count, difficulty, model = GENERATOR_MODEL }) 
     } finally {
       job.finishedAt = new Date().toISOString();
       running = null;
-      console.log(`[generate] ${job.status}: ${job.added.length} added, ${job.dropped.length} dropped, model ${model}${job.cost != null ? `, $${job.cost.toFixed(4)}` : ''}${job.error ? `, error: ${job.error}` : ''}`);
+      console.log(`[generate] ${job.status}: ${job.added.length} added, ${job.dropped.length} dropped, model ${model}${job.tokens ? `, ${job.tokens.total} tokens (${job.tokens.input} in / ${job.tokens.output} out)` : ''}${job.cost != null ? `, $${job.cost.toFixed(4)}` : ''}${job.error ? `, error: ${job.error}` : ''}`);
     }
   })();
   return job;
