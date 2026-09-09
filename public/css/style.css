@@ -89,6 +89,24 @@ select.btn { padding-right: 28px; }
 
 .chat { display: flex; flex-direction: column; min-height: 520px; padding: 0; overflow: hidden; }
 .chat-log { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; max-height: 60vh; }
+
+/* Game page shell (wide screens): the puzzle stays at the top, the composer at the bottom, and the
+   chat log takes the space left. The page itself never scrolls; the chat log is what scrolls.
+   Narrow screens keep the normal document flow, where a phone can scroll the page as usual. */
+@media (min-width: 861px) {
+  body.app-shell { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+  body.app-shell .site-header { flex: none; position: static; }
+  body.app-shell > main.container { flex: 1; min-height: 0; display: flex; flex-direction: column; padding-bottom: 20px; }
+  body.app-shell .puzzle-card { flex: none; margin: 20px 0 16px; }
+  body.app-shell .solved-banner { margin-top: 12px; }
+  body.app-shell .play-grid { flex: 1; min-height: 0; align-items: stretch; grid-template-rows: minmax(0, 1fr); }
+  body.app-shell .chat { height: 100%; min-height: 0; }
+  body.app-shell .chat-log { min-height: 0; max-height: none; }
+  body.app-shell .composer { flex: none; }
+  /* the help text is long: it keeps its own scrollbar rather than stretching the page */
+  body.app-shell .help { max-height: 100%; overflow-y: auto; }
+}
+
 .chat-empty { color: var(--muted); text-align: center; margin: auto; padding: 30px; }
 .msg { max-width: 85%; padding: 10px 14px; border-radius: 14px; white-space: pre-wrap; word-wrap: break-word; }
 .msg.user { align-self: flex-end; background: var(--user-bubble); border-bottom-right-radius: 4px; }
