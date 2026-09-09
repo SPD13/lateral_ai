@@ -64,6 +64,13 @@ a.btn { text-decoration: none; display: inline-block; }
 .btn.danger:hover { border-color: var(--bad); }
 .btn.small { padding: 5px 10px; font-size: 13px; }
 select.btn { padding-right: 28px; }
+.btn.with-icon { display: inline-flex; align-items: center; gap: 6px; }
+.icon-btn { width: 32px; height: 32px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px; vertical-align: middle; }
+.icon-btn .icon { display: block; }
+.icon-btn.danger:not(:disabled):hover { background: var(--bad-soft); }
+.icon-btn.primary:hover { filter: brightness(1.1); }
+.bank-table td.actions { white-space: nowrap; }
+.bank-table td.actions .icon-btn + .icon-btn { margin-left: 4px; }
 
 /* Layout: chat + help */
 .play-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(280px, 1fr); gap: 20px; align-items: start; }
