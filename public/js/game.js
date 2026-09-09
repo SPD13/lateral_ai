@@ -53,14 +53,21 @@ function tagFor(m) {
   return { hint: 'Hint', solution: 'Solution', note: 'Game master' }[m.kind] || 'Game master';
 }
 
-function messageEl(m, { withActions = false } = {}) {
+/** Same rule as the server's score: a message sent as a question that the game master actually answered. */
+function countsAsQuestion(userMsg, agentMsg) {
+  return !!userMsg && userMsg.role === 'user' && userMsg.intent === 'question' && agentMsg.role === 'agent' && agentMsg.kind === 'answer';
+}
+
+function messageEl(m, { withActions = false, counted = false } = {}) {
   const div = document.createElement('div');
   const cls = ['msg', m.role];
   if (m.kind) cls.push(`kind-${m.kind}`);
   if (m.answer) cls.push(`answer-${m.answer}`);
   if (m.verdict) cls.push(`verdict-${m.verdict}`);
+  if (counted) cls.push('counted');
   div.className = cls.join(' ');
-  div.innerHTML = `<span class="tag">${escapeHtml(tagFor(m))}</span>${escapeHtml(m.text)}`;
+  const marker = counted ? '<span class="plus-one" title="Counted as a question">+1</span>' : '';
+  div.innerHTML = `<span class="tag">${escapeHtml(tagFor(m))}${marker}</span>${escapeHtml(m.text)}`;
   if (withActions && m.verdict === 'close') {
     const actions = document.createElement('div');
     actions.className = 'actions';
@@ -74,7 +81,7 @@ function renderHistory() {
   els.log.innerHTML = '';
   const h = state.progress.history || [];
   if (!h.length) { els.log.innerHTML = '<div class="chat-empty">Ask your first yes/no question to get started.</div>'; return; }
-  h.forEach((m, i) => els.log.appendChild(messageEl(m, { withActions: i === h.length - 1 })));
+  h.forEach((m, i) => els.log.appendChild(messageEl(m, { withActions: i === h.length - 1, counted: countsAsQuestion(h[i - 1], m) })));
   scrollLog();
 }
 
@@ -142,7 +149,7 @@ async function send(intent, text) {
     const res = await api(`/api/puzzles/${encodeURIComponent(state.puzzle.id)}/chat`, { method: 'POST', body: { intent, text } });
     typing.remove();
     const m = { role: 'agent', ...res.reply, text: res.reply.message };
-    els.log.appendChild(messageEl(m, { withActions: true }));
+    els.log.appendChild(messageEl(m, { withActions: true, counted: countsAsQuestion({ role: 'user', intent }, m) }));
     state.progress = { ...state.progress, ...res.progress, history: [...(state.progress.history || []), { role: 'user', intent, text: shown }, m] };
     renderPuzzle();
     loadHeaderStats();

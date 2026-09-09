@@ -84,6 +84,7 @@ select.btn { padding-right: 28px; }
 .msg.user { align-self: flex-end; background: var(--user-bubble); border-bottom-right-radius: 4px; }
 .msg.agent { align-self: flex-start; background: var(--agent-bubble); border-bottom-left-radius: 4px; }
 .msg .tag { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 3px; font-weight: 600; }
+.msg .plus-one { display: inline-block; margin-left: 8px; padding: 0 6px; border-radius: 999px; font-size: 10px; letter-spacing: 0; background: var(--accent-soft); color: var(--accent); vertical-align: 1px; }
 .msg.answer-yes .tag { color: var(--ok); } .msg.answer-no .tag { color: var(--bad); }
 .msg.verdict-correct { background: var(--ok-soft); } .msg.verdict-correct .tag { color: var(--ok); }
 .msg.verdict-close { background: var(--warn-soft); } .msg.verdict-close .tag { color: var(--warn); }
