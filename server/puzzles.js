@@ -50,6 +50,19 @@ export function validatePuzzle(p) {
   };
 }
 
+/** Remove a puzzle from the bank file. Returns the removed puzzle, or null when the id is unknown. */
+export function deletePuzzle(id) {
+  const raw = JSON.parse(fs.readFileSync(PUZZLES_FILE, 'utf8'));
+  const i = raw.findIndex((p) => p.id === id);
+  if (i < 0) return null;
+  const [removed] = raw.splice(i, 1);
+  const tmp = PUZZLES_FILE + '.tmp';
+  fs.writeFileSync(tmp, JSON.stringify(raw, null, 2) + '\n');
+  fs.renameSync(tmp, PUZZLES_FILE);
+  loadPuzzles(); // refresh the cache from the new mtime
+  return removed;
+}
+
 export function slugify(s) {
   return String(s).toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
 }

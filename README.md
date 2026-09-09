@@ -64,7 +64,8 @@ scripts/generate-puzzles.js  offline puzzle generator
    `verdict: correct` marks the puzzle **solved**, `kind: solution` marks it **revealed**, `kind: hint` bumps the hint counter.
    A `close` verdict is shown with "Try again" / "Show me the solution" buttons.
 6. Every message is stored in the player's history so the chat survives a reload, and the bank page shows
-   status, hint usage and last-played time. Status can be reset per puzzle or globally (with confirmation).
+   status, hint usage and last-played time. Status can be reset per puzzle or globally, and a puzzle can be
+   deleted from the bank, each with a confirmation modal.
 
 ### Template placeholders
 
@@ -124,6 +125,7 @@ The bank file is re-read when it changes, so new puzzles appear without restarti
 | GET    | `/api/puzzles/random`         | Random puzzle, preferring unsolved; `?exclude=id&difficulty=easy` |
 | GET    | `/api/puzzles/:id`            | Puzzle plus progress and chat history                      |
 | POST   | `/api/puzzles/:id/chat`       | `{ intent, text }` → `{ reply, progress }`                 |
+| DELETE | `/api/puzzles/:id`            | Remove a puzzle from the bank (for every player)           |
 | POST   | `/api/progress/reset`         | `{ puzzleId }` to reset one, `{}` to reset everything      |
 | GET    | `/api/generate/config`        | Writer model, tools, running job and recent jobs           |
 | POST   | `/api/generate`               | `{ count, difficulty }` → `202 { job }`; poll the job      |

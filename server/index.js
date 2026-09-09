@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { loadPuzzles, getPuzzle, publicPuzzle } from './puzzles.js';
+import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle } from './puzzles.js';
 import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked } from './store.js';
 import { buildPrompt, INTENTS } from './prompt.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
@@ -185,6 +185,15 @@ app.post('/api/candidates/:id/approve', (req, res) => {
 app.post('/api/candidates/:id/reject', (req, res) => {
   if (!rejectCandidate(req.params.id)) return res.status(404).json({ error: 'Unknown candidate' });
   res.json({ ok: true });
+});
+
+/** Remove a puzzle from the bank for everyone; this player's progress on it is dropped too. */
+app.delete('/api/puzzles/:id', (req, res) => {
+  const removed = deletePuzzle(req.params.id);
+  if (!removed) return res.status(404).json({ error: 'Unknown puzzle' });
+  resetProgress(req.userId, removed.id);
+  console.log(`[bank] deleted "${removed.title}" (${removed.id})`);
+  res.json({ ok: true, remaining: loadPuzzles().length });
 });
 
 app.post('/api/progress/reset', (req, res) => {
