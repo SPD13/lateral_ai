@@ -84,6 +84,8 @@ select.btn { padding-right: 28px; }
 .icon-btn.small { width: 28px; height: 28px; }
 .icon-btn.small .icon { width: 16px; height: 16px; }
 #help-toggle.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.puzzle-head .icon-btn { width: 32px; height: 32px; }
+.puzzle-head .icon-btn .icon { width: 18px; height: 18px; }
 
 .chat { display: flex; flex-direction: column; min-height: 520px; padding: 0; overflow: hidden; }
 .chat-log { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; max-height: 60vh; }
