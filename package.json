@@ -1,0 +1,18 @@
+{
+  "name": "lateral-game",
+  "version": "0.1.0",
+  "description": "Chat-based lateral thinking puzzle game powered by the Claude CLI",
+  "private": true,
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "generate": "node scripts/generate-puzzles.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2"
+  }
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lateral · Question bank</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand"><h1>Lateral</h1><span class="tagline">Question bank</span></div>
+      <nav class="site-nav"><a href="/">Play</a><a href="/bank" class="active">Question bank</a></nav>
+      <div class="game-details" id="header-stats">Loading…</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="toolbar">
+      <input type="search" id="search" placeholder="Search title or situation…" aria-label="Search">
+      <select class="btn" id="filter-status" aria-label="Filter by status">
+        <option value="">All statuses</option>
+        <option value="new">New</option>
+        <option value="tried">Tried</option>
+        <option value="solved">Solved</option>
+        <option value="revealed">Revealed</option>
+      </select>
+      <select class="btn" id="filter-difficulty" aria-label="Filter by difficulty">
+        <option value="">All difficulties</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+      <span class="count" id="count"></span>
+      <button class="btn danger" id="reset-all">Reset all progress</button>
+    </div>
+
+    <section class="card table-wrap">
+      <table class="bank-table">
+        <thead>
+          <tr><th>Puzzle</th><th>Difficulty</th><th>Status</th><th>Hints</th><th>Last played</th><th class="right">Actions</th></tr>
+        </thead>
+        <tbody id="rows"><tr><td colspan="6" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </section>
+  </main>
+  <script type="module" src="/js/bank.js"></script>
+</body>
+</html>

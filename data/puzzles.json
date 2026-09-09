@@ -1,0 +1,312 @@
+[
+  {
+    "id": "elevator",
+    "title": "The Elevator",
+    "difficulty": "easy",
+    "situation": "A man lives on the 20th floor of an apartment building. Every morning he takes the elevator down to the ground floor and goes to work. In the evening, he takes the elevator to the 10th floor and walks up the stairs the rest of the way, unless it is raining or someone else is in the elevator. Why?",
+    "solution": "The man is very short. He can only reach the button for the 10th floor. On rainy days he has an umbrella and uses it to press the 20th-floor button, and when someone else is in the elevator he asks them to press it.",
+    "keyFacts": [
+      "The man is short (a person of small stature)",
+      "He cannot reach the higher buttons",
+      "The umbrella lets him press the button on rainy days"
+    ],
+    "hints": [
+      "Think about what is physically different between the morning trip and the evening trip.",
+      "The rain itself is not the reason. What does a person carry when it rains?",
+      "Something about the man himself prevents him from going straight to the 20th floor."
+    ]
+  },
+  {
+    "id": "glass-of-water",
+    "title": "A Glass of Water",
+    "difficulty": "easy",
+    "situation": "A man walks into a bar and asks the bartender for a glass of water. The bartender pulls out a gun and points it at the man. The man says 'thank you' and leaves. Why?",
+    "solution": "The man had hiccups. The bartender realised this and scared him with the gun. The fright cured the hiccups, so the man no longer needed the water and thanked the bartender.",
+    "keyFacts": [
+      "The man had hiccups",
+      "The gun was meant to scare him",
+      "The fright cured the hiccups"
+    ],
+    "hints": [
+      "The man was not in any danger and the bartender was being helpful.",
+      "Why would someone want a glass of water other than thirst?",
+      "A sudden shock can cure a common, harmless condition."
+    ]
+  },
+  {
+    "id": "romeo-juliet",
+    "title": "Romeo and Juliet",
+    "difficulty": "easy",
+    "situation": "Romeo and Juliet are found dead on the floor of a room. Around them are broken glass and a puddle of water. There are no marks on their bodies. What happened?",
+    "solution": "Romeo and Juliet are goldfish. Their bowl was knocked off a table (by a cat, a gust of wind, or similar) and shattered, and they died on the floor.",
+    "keyFacts": [
+      "Romeo and Juliet are fish (goldfish)",
+      "Their bowl fell and broke"
+    ],
+    "hints": [
+      "Romeo and Juliet are not human.",
+      "Think about what the water and glass were before they ended up on the floor.",
+      "They lived in the water."
+    ]
+  },
+  {
+    "id": "field-package",
+    "title": "The Unopened Package",
+    "difficulty": "easy",
+    "situation": "A man is lying dead in a field. Next to him is an unopened package. There is no one else around. How did he die?",
+    "solution": "The man jumped from a plane and his parachute failed to open. The unopened package is the parachute.",
+    "keyFacts": [
+      "He fell from a great height (jumped from a plane)",
+      "The package is a parachute that did not open"
+    ],
+    "hints": [
+      "The package is directly connected to his death.",
+      "If the package had been opened, he would have lived.",
+      "He arrived in the field from above."
+    ]
+  },
+  {
+    "id": "cabin-in-the-woods",
+    "title": "The Cabin",
+    "difficulty": "medium",
+    "situation": "Two people are found dead inside a cabin on the side of a mountain. The cabin is intact and locked from the inside. There is no sign of violence and no one else is around. How did they die?",
+    "solution": "The cabin is the cabin of an aeroplane that crashed into the mountain. The two people were the pilots (or passengers) who died in the crash.",
+    "keyFacts": [
+      "The cabin is an aircraft cabin",
+      "The plane crashed into the mountain"
+    ],
+    "hints": [
+      "It is not a log cabin.",
+      "The cabin did not start out on the mountain.",
+      "Think about other things that have a 'cabin'."
+    ]
+  },
+  {
+    "id": "music-stopped",
+    "title": "When the Music Stopped",
+    "difficulty": "medium",
+    "situation": "The music stopped. She died. Explain.",
+    "solution": "She was a blindfolded tightrope walker in a circus. The band's music was her cue: as long as it played, she knew she had not yet reached the end of the rope. When the music stopped early, she thought she had reached the platform, stepped off, and fell to her death.",
+    "keyFacts": [
+      "She was a tightrope walker / performing at height",
+      "She was blindfolded (or otherwise relied on the music for timing)",
+      "The music stopping made her step off and fall"
+    ],
+    "hints": [
+      "She was a performer.",
+      "She could not see where she was going.",
+      "The music told her something about her position."
+    ]
+  },
+  {
+    "id": "desert-straw",
+    "title": "The Man with the Straw",
+    "difficulty": "medium",
+    "situation": "A man is found dead in the desert, naked, holding half a straw. How did he die?",
+    "solution": "He was in a hot-air balloon with companions. The balloon was losing altitude, so they threw out everything they could, including their clothes. It was still sinking, so they drew straws to decide who would jump. He drew the short straw and jumped to his death.",
+    "keyFacts": [
+      "He was in a hot-air balloon that was losing height",
+      "They threw everything overboard, including clothes",
+      "They drew straws and he lost, so he jumped"
+    ],
+    "hints": [
+      "He was not alone when he died.",
+      "He and his companions were in the air.",
+      "The straw was part of a decision-making process."
+    ]
+  },
+  {
+    "id": "restaurant-albatross",
+    "title": "Albatross Soup",
+    "difficulty": "hard",
+    "situation": "A man walks into a restaurant by the sea and orders albatross soup. He takes one spoonful, puts the spoon down, walks out, and shoots himself. Why?",
+    "solution": "Years earlier, he had been shipwrecked with his wife and other survivors. They were starving. The other survivors told him his wife had died and gave him what they said was albatross meat to eat. Tasting real albatross soup, he realised that what he had eaten back then was not albatross: it was his wife. Overcome with horror, he killed himself.",
+    "keyFacts": [
+      "He had been shipwrecked / starving earlier in life",
+      "He had been fed something he was told was albatross",
+      "The taste revealed it was not albatross; he had eaten his wife (a human)"
+    ],
+    "hints": [
+      "The taste of the soup triggered a memory.",
+      "He had eaten 'albatross' once before, under extreme circumstances.",
+      "Whatever he ate back then was not really albatross."
+    ]
+  },
+  {
+    "id": "photograph",
+    "title": "Dinner After the Shooting",
+    "difficulty": "medium",
+    "situation": "A woman shoots her husband. Then she holds him under water for several minutes. Finally she hangs him. Shortly afterwards they go out together and enjoy a lovely dinner. How is this possible?",
+    "solution": "The woman is a photographer. She shot a photo of her husband, developed it in a water bath, and hung it up to dry.",
+    "keyFacts": [
+      "She 'shot' him with a camera (took a photograph)",
+      "The water and the hanging refer to developing and drying the photo"
+    ],
+    "hints": [
+      "No one was hurt.",
+      "'Shoot' has more than one meaning.",
+      "The water and the hanging were part of a process, not an attack."
+    ]
+  },
+  {
+    "id": "monopoly",
+    "title": "The Hotel",
+    "difficulty": "easy",
+    "situation": "A man pushes his car up to a hotel and immediately knows he is bankrupt. Why?",
+    "solution": "He is playing Monopoly. His playing piece is the car, and he has landed on a property with a hotel on it that he cannot afford.",
+    "keyFacts": [
+      "He is playing a board game (Monopoly)",
+      "The car is his playing piece",
+      "Landing on the hotel means paying rent he cannot afford"
+    ],
+    "hints": [
+      "The car is very small.",
+      "There are other people playing with him.",
+      "The hotel belongs to one of them."
+    ]
+  },
+  {
+    "id": "ice-block",
+    "title": "The Locked Room",
+    "difficulty": "medium",
+    "situation": "A man is found hanged in a locked room. The room is completely empty except for a puddle of water beneath his feet. There is nothing he could have stood on. How did he do it?",
+    "solution": "He stood on a large block of ice to reach the noose. The ice melted, leaving only the puddle.",
+    "keyFacts": [
+      "He stood on a block of ice",
+      "The ice melted, leaving the puddle"
+    ],
+    "hints": [
+      "The puddle is the key clue.",
+      "Something that was there is no longer there.",
+      "What solid object turns into water?"
+    ]
+  },
+  {
+    "id": "deadly-drink",
+    "title": "The Poisoned Punch",
+    "difficulty": "medium",
+    "situation": "Two friends order the same drink at a bar. One drinks hers quickly and leaves. The other drinks his slowly, and dies. Both drinks were poisoned. Why did only one die?",
+    "solution": "The poison was in the ice cubes. The woman drank quickly, before the ice melted. The man drank slowly, so the ice melted into his drink and he swallowed the poison.",
+    "keyFacts": [
+      "The poison was in the ice",
+      "Drinking slowly let the ice melt and release the poison"
+    ],
+    "hints": [
+      "The drinks were identical at the start.",
+      "Time made the difference.",
+      "Not every part of the drink is liquid when it is served."
+    ]
+  },
+  {
+    "id": "lighthouse",
+    "title": "Lights Out",
+    "difficulty": "hard",
+    "situation": "A man turns off a light, goes to bed, and in the morning learns that many people have died because of what he did. Who is he?",
+    "solution": "He is a lighthouse keeper. He switched off the lighthouse lamp, and during the night a ship struck the rocks and many people drowned.",
+    "keyFacts": [
+      "He is a lighthouse keeper",
+      "Turning off the light caused a ship to wreck"
+    ],
+    "hints": [
+      "The light was not in his home.",
+      "The people who died were on the water.",
+      "His job was to keep that light on."
+    ]
+  },
+  {
+    "id": "carrot-coal",
+    "title": "Carrot and Coal",
+    "difficulty": "easy",
+    "situation": "A carrot, two pieces of coal, and a scarf are lying on a lawn. Nobody put them there, yet there is a perfectly good reason for them to be there. What is it?",
+    "solution": "They are the remains of a snowman that has melted.",
+    "keyFacts": [
+      "They were parts of a snowman",
+      "The snowman melted"
+    ],
+    "hints": [
+      "Think about the season and the weather.",
+      "They were once arranged in a shape.",
+      "Something large was holding them and is now gone."
+    ]
+  },
+  {
+    "id": "twins",
+    "title": "Not Twins",
+    "difficulty": "easy",
+    "situation": "Two children were born to the same mother, on the same day, at the same hour, in the same year, yet they are not twins. How?",
+    "solution": "They are two of a set of triplets (or quadruplets).",
+    "keyFacts": [
+      "They are part of a set of three or more (triplets)"
+    ],
+    "hints": [
+      "They are siblings.",
+      "They did share a birth.",
+      "How many children were born that day?"
+    ]
+  },
+  {
+    "id": "adam-eve",
+    "title": "The Explorer's Discovery",
+    "difficulty": "medium",
+    "situation": "An explorer finds two perfectly preserved bodies in a cave. He looks at them for a moment and declares with certainty: 'These are Adam and Eve.' How does he know?",
+    "solution": "The bodies have no navels (belly buttons). Adam and Eve were never born from a mother, so they would have no umbilical cord scar.",
+    "keyFacts": [
+      "The bodies have no navels / belly buttons",
+      "Adam and Eve were never born, so they had no umbilical cords"
+    ],
+    "hints": [
+      "The explorer noticed something missing on the bodies.",
+      "Think about how Adam and Eve came into being, compared with everyone else.",
+      "Every person born from a mother carries one small scar for life."
+    ]
+  },
+  {
+    "id": "phone-booth",
+    "title": "The Phone Booth",
+    "difficulty": "medium",
+    "situation": "A man is found dead inside a phone booth. The glass panels on both sides are shattered and his hands are cut and bloody. Outside the booth lies a fishing rod. What happened?",
+    "solution": "He had just caught a huge fish and was phoning a friend to tell him about it. Spreading his arms wide to show how big the fish was, he smashed both hands through the glass panels, cut his wrists, and bled to death.",
+    "keyFacts": [
+      "He was describing the size of a fish with his arms",
+      "His arms went through the glass and he bled to death"
+    ],
+    "hints": [
+      "He was excited about something when he died.",
+      "The fishing rod matters: what do people do after fishing?",
+      "How do people show the size of something with their hands?"
+    ]
+  },
+  {
+    "id": "sugar-coffee",
+    "title": "The Fly in the Coffee",
+    "difficulty": "easy",
+    "situation": "A woman in a café finds a fly in her coffee and sends it back. The waiter returns with a fresh cup. After one sip she says angrily: 'This is the same cup, you just removed the fly!' She is right. How did she know?",
+    "solution": "She had already put sugar in her coffee before noticing the fly. The 'new' coffee was sweet, so it had to be the same cup.",
+    "keyFacts": [
+      "She had already added sugar (or something) to the first cup",
+      "The 'fresh' cup tasted of it, so it was the same coffee"
+    ],
+    "hints": [
+      "She did something to the coffee before she saw the fly.",
+      "The proof was in the taste.",
+      "A truly fresh cup would have tasted different."
+    ]
+  },
+  {
+    "id": "arm-package",
+    "title": "The Package",
+    "difficulty": "hard",
+    "situation": "A man receives a parcel in the post. He opens it and finds a human arm inside. He examines it, nods, says 'That's fine', and buries it in the garden. Why?",
+    "solution": "Years ago he and two friends were stranded (after a shipwreck or in the mountains) and starving. They agreed that each of them would cut off an arm to eat, in turn. The others gave up their arms, but the man was rescued before his turn came. He later kept the promise by having his own arm amputated and sent it to his friends as proof. The arm in the parcel is from one of the friends doing the same, proving the pact is now fully honoured.",
+    "keyFacts": [
+      "The men had been stranded and starving together",
+      "They made a pact to each sacrifice an arm to eat",
+      "The arm is proof that the pact was honoured"
+    ],
+    "hints": [
+      "The man is not surprised by the arm; he was expecting something like it.",
+      "He shares a history with the person who sent it, involving extreme hunger.",
+      "A promise made long ago is being kept."
+    ]
+  }
+]
