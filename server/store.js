@@ -88,6 +88,18 @@ export function updateProgress(userId, puzzleId, mutate) {
   return entry;
 }
 
+/** Per-player settings (not touched by a progress reset). */
+export function getSettings(userId) {
+  return { ...(userRecord(userId).settings || {}) };
+}
+
+export function updateSettings(userId, patch) {
+  const rec = userRecord(userId);
+  rec.settings = { ...(rec.settings || {}), ...patch };
+  save();
+  return { ...rec.settings };
+}
+
 /** Reset one puzzle (when puzzleId is given) or every puzzle for the user. */
 export function resetProgress(userId, puzzleId) {
   const rec = userRecord(userId);

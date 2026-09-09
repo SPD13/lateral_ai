@@ -8,6 +8,8 @@ export const TEMPLATE_DIR = process.env.TEMPLATE_DIR || path.join(__dirname, 'te
 export const INTENTS = ['question', 'hint', 'guess', 'reveal'];
 /** Language the game master and the puzzle writer must use, whatever the player types. */
 export const LANGUAGE = process.env.GAME_LANGUAGE || 'English';
+/** Default for the per-player "Game master help" setting (GM_HELP_DEFAULT=0 turns it off). */
+export const GM_HELP_DEFAULT = process.env.GM_HELP_DEFAULT !== '0';
 
 function readTemplate(rel) {
   return fs.readFileSync(path.join(TEMPLATE_DIR, rel), 'utf8');
@@ -39,12 +41,16 @@ function formatKeyFacts(facts) {
 }
 
 /** Build the system prompt and the user prompt for one turn. */
-export function buildPrompt({ puzzle, progress, intent, text }) {
+export function buildPrompt({ puzzle, progress, intent, text, settings = {} }) {
   if (!INTENTS.includes(intent)) throw new Error(`unknown intent "${intent}"`);
+  const gmHelp = settings.gmHelp ?? GM_HELP_DEFAULT;
   const system = render(readTemplate('system.md'), { LANGUAGE }).trim();
   const intentInstructions = readTemplate(path.join('intents', `${intent}.md`)).trim();
+  const helpInstructions = readTemplate(path.join('help', gmHelp ? 'on.md' : 'off.md')).trim();
   const user = render(readTemplate('context.md'), {
     LANGUAGE,
+    HELP_MODE: gmHelp ? 'on' : 'off',
+    HELP_INSTRUCTIONS: helpInstructions,
     PUZZLE_TITLE: puzzle.title,
     PUZZLE_ID: puzzle.id,
     DIFFICULTY: puzzle.difficulty,

@@ -105,6 +105,12 @@ The game master replies **Yes**, **No**, **Irrelevant** (the detail does not mat
 story does not decide it, or answering would give too much away). Open questions such as "what happened?"
 are not answered; the game master asks you to rephrase, and such messages do not count as questions.
 
+A **Game master help** switch under the chat (on by default) lets the game master add a short clarification
+to an answer, suggest what to ask when a message is not a yes/no question, and point at what is missing in a
+close guess. Switch it off for strict play: bare yes / no / irrelevant / can't-say answers and verdicts
+without pointers. Hints still work when you ask for them. The setting is stored per player on the server
+and is not affected by a progress reset.
+
 A **How to play** panel next to the chat summarises all of this. It is open by default on wide screens and
 collapsed on small ones; the "?" button in the puzzle card shows or hides it, and your choice is remembered
 in the browser.
@@ -230,7 +236,8 @@ edits apply without a restart:
   `intents/` (`question.md`, `hint.md`, `guess.md`, `reveal.md`). Placeholders: `{{PUZZLE_TITLE}}`,
   `{{PUZZLE_ID}}`, `{{DIFFICULTY}}`, `{{SITUATION}}`, `{{SOLUTION}}`, `{{KEY_FACTS}}`, `{{HINTS}}`,
   `{{HINTS_GIVEN_COUNT}}`, `{{HISTORY}}`, `{{INTENT}}`, `{{USER_MESSAGE}}`, `{{INTENT_INSTRUCTIONS}}`,
-  `{{LANGUAGE}}`.
+  `{{LANGUAGE}}`, `{{HELP_MODE}}`, `{{HELP_INSTRUCTIONS}}` (from `help/on.md` or `help/off.md`, following the
+  player's Game master help switch).
 - `generate-system.md` and `generate.md`: the puzzle writer's briefing. Placeholders: `{{COUNT}}`,
   `{{DIFFICULTY}}`, `{{EXISTING_COUNT}}`, `{{EXISTING_PUZZLES}}`, `{{LANGUAGE}}`.
 
@@ -251,6 +258,7 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 | `PORT`                 | `3000`               | HTTP port                                                            |
 | `CLAUDE_MODEL`         | `sonnet`             | Game master model passed to `claude --model` (sonnet, opus, haiku, fable) |
 | `GAME_LANGUAGE`        | `English`            | Language the game master and puzzle writer must use, whatever the player types |
+| `GM_HELP_DEFAULT`      | `1`                  | Default of the per-player "Game master help" switch; `0` starts strict          |
 | `GENERATOR_MODEL`      | same as `CLAUDE_MODEL` | Puzzle writer model used when generating new questions             |
 | `GENERATOR_TOOLS`      | `WebSearch,WebFetch` | CLI tools the puzzle writer may use; `""` disables web search        |
 | `GENERATOR_TIMEOUT_MS` | `360000`             | Timeout for one generation run                                       |
@@ -284,7 +292,8 @@ img/                         logo sources
 | Method | Path                          | Purpose                                                            |
 |--------|-------------------------------|--------------------------------------------------------------------|
 | GET    | `/api/health`                 | Liveness: app name, pid, port, models, puzzle and candidate counts, uptime |
-| GET    | `/api/me`                     | Player id, models, solved/tried/revealed counts                    |
+| GET    | `/api/me`                     | Player id, models, solved/tried/revealed counts, settings          |
+| GET/PUT| `/api/settings`               | Player settings: `{ gmHelp }`                                      |
 | GET    | `/api/puzzles`                | All puzzles with this player's status (no solutions)               |
 | GET    | `/api/puzzles/random`         | Random puzzle, preferring unsolved; `?exclude=id&difficulty=easy`  |
 | GET    | `/api/puzzles/:id`            | Puzzle plus progress and chat history                              |

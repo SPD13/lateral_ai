@@ -5,8 +5,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle } from './puzzles.js';
-import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade } from './store.js';
-import { buildPrompt, INTENTS } from './prompt.js';
+import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings } from './store.js';
+import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
 import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, startGeneration, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
 
@@ -60,7 +60,23 @@ app.get('/api/me', (req, res) => {
     else if (s === STATUS.TRIED) counts.tried++;
     else if (s === STATUS.REVEALED) counts.revealed++;
   }
-  res.json({ userId: req.userId.slice(0, 8), model: CLAUDE_MODEL, counts });
+  res.json({ userId: req.userId.slice(0, 8), model: CLAUDE_MODEL, counts, settings: effectiveSettings(req.userId) });
+});
+
+function effectiveSettings(userId) {
+  const s = getSettings(userId);
+  return { gmHelp: typeof s.gmHelp === 'boolean' ? s.gmHelp : GM_HELP_DEFAULT };
+}
+
+app.get('/api/settings', (req, res) => res.json(effectiveSettings(req.userId)));
+
+/** Player settings: `gmHelp` (Game master help) lets the game master add short clarifications and pointers. */
+app.put('/api/settings', (req, res) => {
+  const patch = {};
+  if (req.body?.gmHelp !== undefined) patch.gmHelp = !!req.body.gmHelp;
+  if (!Object.keys(patch).length) return res.status(400).json({ error: 'Nothing to update' });
+  updateSettings(req.userId, patch);
+  res.json(effectiveSettings(req.userId));
 });
 
 app.get('/api/puzzles', (req, res) => {
@@ -94,7 +110,7 @@ if (DEBUG) {
     const p = getPuzzle(req.params.id);
     if (!p) return res.status(404).json({ error: 'Unknown puzzle' });
     const e = getProgress(req.userId, p.id);
-    const { system, user } = buildPrompt({ puzzle: p, progress: e, intent: String(req.query.intent || 'question'), text: String(req.query.text || '') });
+    const { system, user } = buildPrompt({ puzzle: p, progress: e, intent: String(req.query.intent || 'question'), text: String(req.query.text || ''), settings: effectiveSettings(req.userId) });
     res.type('text/plain').send(`### SYSTEM\n${system}\n\n### USER\n${user}`);
   });
 }
@@ -116,7 +132,7 @@ app.post('/api/puzzles/:id/chat', async (req, res) => {
     // Opening a puzzle and talking to the game master marks it as "tried" until it is solved.
     let progress = updateProgress(req.userId, p.id, (e) => { if (e.status === STATUS.NEW) e.status = STATUS.TRIED; });
 
-    const { system, user } = buildPrompt({ puzzle: p, progress, intent, text });
+    const { system, user } = buildPrompt({ puzzle: p, progress, intent, text, settings: effectiveSettings(req.userId) });
     let reply;
     try {
       const t0 = Date.now();
