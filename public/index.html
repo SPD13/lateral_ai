@@ -27,6 +27,9 @@
         <span class="counter" id="question-count" title="Yes/no questions answered so far">0 questions</span>
         <span class="counter" id="try-count" title="Solutions submitted so far">0 tries</span>
         <span class="spacer"></span>
+        <label class="switch" title="On: the game master may add a short clarification or pointer. Off: strict yes / no / irrelevant answers only.">
+          <input type="checkbox" id="gm-help" checked> Game master help
+        </label>
         <select class="btn small" id="difficulty-filter" title="Difficulty for the next puzzle">
           <option value="">Any difficulty</option>
           <option value="easy">Easy</option>
@@ -58,12 +61,7 @@
             <textarea id="input" rows="1" placeholder="Is the man alone?" autocomplete="off"></textarea>
             <button class="btn primary" id="send" type="submit">Send</button>
           </div>
-          <div class="hint-line" id="hint-line">
-            <span>Enter to send, Shift+Enter for a new line. Shortcuts: <code>/hint</code>, <code>/guess …</code>, <code>/solution</code></span>
-            <label class="switch" title="On: the game master may add a short clarification or pointer. Off: strict yes / no / irrelevant answers only.">
-              <input type="checkbox" id="gm-help" checked> Game master help
-            </label>
-          </div>
+          <div class="hint-line" id="hint-line">Enter to send, Shift+Enter for a new line. Shortcuts: <code>/hint</code>, <code>/guess …</code>, <code>/solution</code></div>
         </form>
       </section>
 
@@ -103,7 +101,7 @@
 
         <h4>Game master help</h4>
         <ul>
-          <li>With the switch under the chat <b>on</b> (default), the game master may add a short clarification to an answer, suggest what to ask when your message is not a yes/no question, and point at what is missing in a close guess.</li>
+          <li>With the switch next to the difficulty dropdown <b>on</b> (default), the game master may add a short clarification to an answer, suggest what to ask when your message is not a yes/no question, and point at what is missing in a close guess.</li>
           <li>Switch it <b>off</b> for strict play: bare yes / no / irrelevant / can't say answers and verdicts with no pointers. Hints still work when you ask for them.</li>
         </ul>
 
