@@ -39,7 +39,7 @@ function summary(entry) {
 
 function withStatus(p, all) {
   const e = all[p.id];
-  return { ...publicPuzzle(p), status: e ? e.status : STATUS.NEW, hintsGiven: e ? e.hintsGiven : 0, questionsAsked: e ? questionsAsked(e) : 0, updatedAt: e ? e.updatedAt : null };
+  return { ...publicPuzzle(p), status: e ? e.status : STATUS.NEW, hintsGiven: e ? e.hintsGiven : 0, questionsAsked: e ? questionsAsked(e) : 0, messageCount: e ? e.history.length : 0, updatedAt: e ? e.updatedAt : null };
 }
 
 // ---------------------------------------------------------------------------

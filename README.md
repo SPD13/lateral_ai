@@ -142,8 +142,10 @@ header to sort by it, and click again to reverse; the default is newest addition
 
 Each row has three icon buttons:
 
-- **Play**, **Continue** or **Review** (depending on the status) opens the puzzle in the game page.
-- **Reset** clears your status and chat history for that puzzle so you can play it again from scratch.
+- **Play**, **Continue** or **Review** (depending on the status) opens the puzzle in the game page. Continue
+  and Review reopen the stored conversation: every question, answer, hint and verdict, including the
+  exchange that led to a solution. The Last played column shows how many messages it holds.
+- **Reset** clears your status and the stored conversation for that puzzle so you can play it again from scratch.
 - **Delete** removes the puzzle from the bank for every player.
 
 Both Reset and Delete ask for confirmation. **Reset all progress** in the toolbar clears every puzzle at

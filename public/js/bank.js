@@ -55,11 +55,12 @@ function fmtDate(iso) {
   return escapeHtml(d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) + ' ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }));
 }
 
-/** Play / Continue / Review, depending on the puzzle's status. */
+/** Play / Continue / Review, depending on the puzzle's status. Continue and Review reopen the stored conversation. */
 function playButton(p) {
   const href = `/?id=${encodeURIComponent(p.id)}`;
-  if (p.status === 'tried') return iconButton({ name: 'resume', label: 'Continue', href, cls: 'primary' });
-  if (p.status === 'solved' || p.status === 'revealed') return iconButton({ name: 'review', label: 'Review', href });
+  const msgs = p.messageCount ? ` (${p.messageCount} message${p.messageCount === 1 ? '' : 's'})` : '';
+  if (p.status === 'tried') return iconButton({ name: 'resume', label: `Continue the conversation${msgs}`, href, cls: 'primary' });
+  if (p.status === 'solved' || p.status === 'revealed') return iconButton({ name: 'review', label: `Review the conversation${msgs}`, href });
   return iconButton({ name: 'play', label: 'Play', href, cls: 'primary' });
 }
 
@@ -91,7 +92,7 @@ function render() {
       <td>${badge(p.status, STATUS_LABEL[p.status])}</td>
       <td>${score(p)}</td>
       <td>${p.hintsGiven}/${p.hintCount}</td>
-      <td>${fmtDate(p.updatedAt)}</td>
+      <td>${fmtDate(p.updatedAt)}${p.messageCount ? `<div class="excerpt">${p.messageCount} message${p.messageCount === 1 ? '' : 's'}</div>` : ''}</td>
       <td>${fmtDate(p.addedAt)}</td>
       <td class="right actions">
         ${playButton(p)}
