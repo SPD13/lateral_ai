@@ -13,14 +13,16 @@ const AGENT_CWD = process.env.CLAUDE_CWD || path.join(__dirname, 'agent-cwd');
 /**
  * Run the Claude CLI once in print mode and return the raw result text.
  * The prompt is sent on stdin; the system prompt replaces the CLI default.
+ * `tools` lists the built-in tools the model may use (none by default); they are pre-approved.
  */
-export function runClaude({ system, user }) {
+export function runClaude({ system, user, model = CLAUDE_MODEL, tools = [], timeoutMs = CLAUDE_TIMEOUT_MS }) {
   const args = [
     '-p',
     '--output-format', 'json',
-    '--tools', '',
+    '--tools', tools.join(','),
+    ...(tools.length ? ['--allowedTools', ...tools] : []),
     '--no-session-persistence',
-    '--model', CLAUDE_MODEL,
+    '--model', model,
     '--system-prompt', system,
   ];
   // Strip variables that mark a nested Claude Code session, otherwise the CLI may refuse to start.
@@ -33,8 +35,8 @@ export function runClaude({ system, user }) {
     let err = '';
     const timer = setTimeout(() => {
       child.kill('SIGKILL');
-      reject(new Error(`claude timed out after ${CLAUDE_TIMEOUT_MS} ms`));
-    }, CLAUDE_TIMEOUT_MS);
+      reject(new Error(`claude timed out after ${timeoutMs} ms`));
+    }, timeoutMs);
 
     child.stdout.on('data', (d) => (out += d));
     child.stderr.on('data', (d) => (err += d));
@@ -45,7 +47,7 @@ export function runClaude({ system, user }) {
       let parsed;
       try { parsed = JSON.parse(out); } catch { return reject(new Error(`claude returned non-JSON output: ${out.slice(0, 300)}`)); }
       if (parsed.is_error) return reject(new Error(`claude error: ${parsed.result || parsed.subtype}`));
-      resolve({ text: parsed.result ?? '', cost: parsed.total_cost_usd, sessionId: parsed.session_id });
+      resolve({ text: parsed.result ?? '', cost: parsed.total_cost_usd, sessionId: parsed.session_id, turns: parsed.num_turns, webSearches: parsed.usage?.server_tool_use?.web_search_requests ?? 0 });
     });
     child.stdin.end(user);
   });

@@ -8,6 +8,7 @@ import { loadPuzzles, getPuzzle, publicPuzzle } from './puzzles.js';
 import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked } from './store.js';
 import { buildPrompt, INTENTS } from './prompt.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
+import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, startGeneration, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
@@ -46,7 +47,7 @@ function withStatus(p, all) {
 // ---------------------------------------------------------------------------
 /** Liveness check used by the launcher (and anything else) to recognise this server. */
 app.get('/api/health', (req, res) => {
-  res.json({ ok: true, app: 'lateral-game', pid: process.pid, port: PORT, model: CLAUDE_MODEL, puzzles: loadPuzzles().length, uptime: Math.round(process.uptime()) });
+  res.json({ ok: true, app: 'lateral-game', pid: process.pid, port: PORT, model: CLAUDE_MODEL, generatorModel: GENERATOR_MODEL, puzzles: loadPuzzles().length, candidates: listCandidates().length, uptime: Math.round(process.uptime()) });
 });
 
 app.get('/api/me', (req, res) => {
@@ -146,6 +147,46 @@ app.post('/api/puzzles/:id/chat', async (req, res) => {
   }
 });
 
+// ---------------------------------------------------------------------------
+// Puzzle generation and review
+// ---------------------------------------------------------------------------
+app.get('/api/generate/config', (req, res) => {
+  res.json({ model: GENERATOR_MODEL, gameMasterModel: CLAUDE_MODEL, tools: GENERATOR_TOOLS, difficulties: GEN_DIFFICULTIES, maxCount: 10, running: runningJob(), jobs: listJobs() });
+});
+
+app.post('/api/generate', (req, res) => {
+  try {
+    const job = startGeneration({ count: req.body?.count, difficulty: String(req.body?.difficulty || 'mixed') });
+    res.status(202).json({ job });
+  } catch (e) {
+    res.status(e.status || 500).json({ error: e.message });
+  }
+});
+
+app.get('/api/generate/jobs/:id', (req, res) => {
+  const job = getJob(req.params.id);
+  if (!job) return res.status(404).json({ error: 'Unknown job' });
+  res.json({ job });
+});
+
+app.get('/api/candidates', (req, res) => res.json(listCandidates()));
+
+app.post('/api/candidates/:id/approve', (req, res) => {
+  try {
+    const puzzle = approveCandidate(req.params.id);
+    if (!puzzle) return res.status(404).json({ error: 'Unknown candidate' });
+    console.log(`[generate] approved "${puzzle.title}" as ${puzzle.id}`);
+    res.json({ puzzle: publicPuzzle(puzzle) });
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+app.post('/api/candidates/:id/reject', (req, res) => {
+  if (!rejectCandidate(req.params.id)) return res.status(404).json({ error: 'Unknown candidate' });
+  res.json({ ok: true });
+});
+
 app.post('/api/progress/reset', (req, res) => {
   const puzzleId = req.body?.puzzleId ? String(req.body.puzzleId) : null;
   if (puzzleId && !getPuzzle(puzzleId)) return res.status(404).json({ error: 'Unknown puzzle' });
@@ -157,6 +198,7 @@ app.post('/api/progress/reset', (req, res) => {
 // Static front end
 // ---------------------------------------------------------------------------
 app.get('/bank', (req, res) => res.sendFile(path.join(PUBLIC_DIR, 'bank.html')));
+app.get('/generate', (req, res) => res.sendFile(path.join(PUBLIC_DIR, 'generate.html')));
 app.use(express.static(PUBLIC_DIR));
 
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
@@ -166,5 +208,5 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 
 loadPuzzles(); // fail fast on a broken bank
 app.listen(PORT, () => {
-  console.log(`Lateral game on http://localhost:${PORT}  (model: ${CLAUDE_MODEL}, ${loadPuzzles().length} puzzles${DEBUG ? ', debug on' : ''})`);
+  console.log(`Lateral game on http://localhost:${PORT}  (game master: ${CLAUDE_MODEL}, puzzle writer: ${GENERATOR_MODEL}, ${loadPuzzles().length} puzzles${DEBUG ? ', debug on' : ''})`);
 });

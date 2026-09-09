@@ -13,7 +13,9 @@ npm start
   the external URL (this machine's LAN IPv4), the address another device on the same network uses.
   Click a URL to open it in the browser. The tab also shows the server pid and uptime, the game
   master model, the number of puzzles in the bank, and whether the `claude` CLI was found.
-- **Setup tab** — port (1024–65535, default 3000), game master model (sonnet / opus / haiku) and
+- **Setup tab** — port (1024–65535, default 3000), the game master model and the puzzle writer
+  model (each one of sonnet / opus / haiku / fable; the writer generates new questions from the
+  question bank) and
   whether to start the server when the launcher opens. Persisted in the app's user-data folder.
   Changes apply immediately; a running server restarts.
 - **Log tab** — the server's stdout/stderr (one line per chat reply with kind, timing and cost).
@@ -21,8 +23,8 @@ npm start
 ## How it runs the server
 
 The launcher spawns `../server/index.js` as a child process using Electron's bundled Node
-(`ELECTRON_RUN_AS_NODE`), so no separate Node install is needed. It passes `PORT` and
-`CLAUDE_MODEL`, and extends `PATH` with the usual CLI locations (`~/.local/bin`, Homebrew, nvm…)
+(`ELECTRON_RUN_AS_NODE`), so no separate Node install is needed. It passes `PORT`,
+`CLAUDE_MODEL` and `GENERATOR_MODEL`, and extends `PATH` with the usual CLI locations (`~/.local/bin`, Homebrew, nvm…)
 because an app opened from the Dock gets a minimal environment and would otherwise not find `claude`.
 
 Closing the window, Cmd+Q, or a system shutdown stops the server before the app exits.
