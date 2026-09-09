@@ -6,6 +6,7 @@ const els = {
   banner: $('solved-banner'), bannerText: $('solved-text'), next: $('next-puzzle'), newPuzzle: $('new-puzzle'), diffFilter: $('difficulty-filter'),
   log: $('chat-log'), composer: $('composer'), input: $('input'), send: $('send'), hintLine: $('hint-line'),
   grid: document.querySelector('.play-grid'), help: $('help-panel'), helpToggle: $('help-toggle'), helpClose: $('help-close'),
+  gmHelp: $('gm-help'),
 };
 const modeButtons = [...document.querySelectorAll('.mode')];
 
@@ -214,6 +215,17 @@ function setHelp(open, { persist = true, scroll = false } = {}) {
 })();
 els.helpToggle.addEventListener('click', () => setHelp(els.grid.classList.contains('help-hidden'), { scroll: !window.matchMedia('(min-width: 861px)').matches }));
 els.helpClose.addEventListener('click', () => setHelp(false));
+
+// ---------------------------------------------------------------------------
+// Game master help setting (per player, stored on the server)
+// ---------------------------------------------------------------------------
+api('/api/settings').then((s) => { els.gmHelp.checked = !!s.gmHelp; }).catch(() => {});
+els.gmHelp.addEventListener('change', async () => {
+  els.gmHelp.disabled = true;
+  try { const s = await api('/api/settings', { method: 'PUT', body: { gmHelp: els.gmHelp.checked } }); els.gmHelp.checked = !!s.gmHelp; }
+  catch (err) { els.gmHelp.checked = !els.gmHelp.checked; alert(err.message); }
+  finally { els.gmHelp.disabled = false; }
+});
 
 const initialId = new URLSearchParams(location.search).get('id');
 (initialId ? openPuzzle(initialId).catch(() => openRandom()) : openRandom()).catch(showError);

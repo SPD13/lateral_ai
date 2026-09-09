@@ -113,7 +113,9 @@ select.btn { padding-right: 28px; }
 .input-row { display: flex; gap: 8px; align-items: flex-end; }
 .input-row textarea { flex: 1; resize: none; min-height: 44px; max-height: 140px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); font: inherit; }
 .input-row textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
-.hint-line { color: var(--muted); font-size: 12px; }
+.hint-line { color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: center; }
+.switch { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; white-space: nowrap; color: var(--ink); }
+.switch input { accent-color: var(--accent); margin: 0; }
 
 .help h3 { margin: 0; font-size: 15px; }
 .help h4 { margin: 16px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }

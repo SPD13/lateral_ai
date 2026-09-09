@@ -44,6 +44,10 @@ Hints given so far: {{HINTS_GIVEN_COUNT}}
 - Intent: `{{INTENT}}`
 - Message: {{USER_MESSAGE}}
 
+## Game master help: {{HELP_MODE}}
+
+{{HELP_INSTRUCTIONS}}
+
 ## Instructions for this intent
 
 {{INTENT_INSTRUCTIONS}}
