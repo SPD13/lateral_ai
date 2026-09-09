@@ -19,6 +19,7 @@ const DEFAULT_PORT = 3000;
 const PORT_MIN = 1024;
 const PORT_MAX = 65535;
 const MODELS = ["sonnet", "opus", "haiku"];
+const ICON = path.join(__dirname, "icon.png");
 const START_TIMEOUT_MS = 15000;
 const HEALTH_POLL_MS = 3000;
 const LOG_LINES = 400;
@@ -262,6 +263,7 @@ function createWindow() {
     resizable: false,
     title: "Lateral Launcher",
     backgroundColor: "#12131a",
+    icon: ICON,   // window icon (Windows, Linux); the Dock icon on macOS is set below
     webPreferences: { preload: path.join(__dirname, "preload.js"), contextIsolation: true, nodeIntegration: false },
   });
   win.setMenuBarVisibility(false);
@@ -305,6 +307,7 @@ app.whenReady().then(async () => {
     return status();
   });
 
+  if (process.platform === "darwin" && app.dock) app.dock.setIcon(ICON);
   createWindow();
   health = await probeHealth();
   startPolling();
