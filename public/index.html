@@ -34,6 +34,7 @@
           <option value="hard">Hard</option>
         </select>
         <button class="btn small" id="new-puzzle">New puzzle</button>
+        <button class="btn icon-btn" id="help-toggle" type="button" aria-controls="help-panel" aria-expanded="true" title="How to play" aria-label="How to play"></button>
       </div>
       <p class="situation loading" id="situation">Loading…</p>
       <div class="solved-banner" id="solved-banner" hidden>
@@ -61,8 +62,11 @@
         </form>
       </section>
 
-      <aside class="card help">
-        <h3>How to play</h3>
+      <aside class="card help" id="help-panel">
+        <div class="help-head">
+          <h3>How to play</h3>
+          <button class="btn icon-btn small" id="help-close" type="button" title="Hide the help" aria-label="Hide the help"></button>
+        </div>
         <p>The game master knows the full story. Work it out by asking questions that can be answered with <b>yes</b>, <b>no</b>, or <b>irrelevant</b>.</p>
 
         <h4>Ask questions</h4>
