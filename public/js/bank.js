@@ -42,6 +42,7 @@ function render() {
       <td class="right">
         <a class="btn small" href="/?id=${encodeURIComponent(p.id)}">${p.status === 'new' ? 'Play' : p.status === 'solved' || p.status === 'revealed' ? 'Review' : 'Continue'}</a>
         <button class="btn small danger" data-reset="${escapeHtml(p.id)}" ${p.status === 'new' ? 'disabled' : ''}>Reset</button>
+        <button class="btn small danger" data-delete="${escapeHtml(p.id)}" title="Remove this puzzle from the bank">Delete</button>
       </td>
     </tr>`).join('');
 }
@@ -55,17 +56,29 @@ async function load() {
 for (const el of [searchEl, statusEl, diffEl]) el.addEventListener('input', render);
 
 rowsEl.addEventListener('click', async (e) => {
-  const id = e.target.closest('[data-reset]')?.dataset.reset;
-  if (!id) return;
-  const p = puzzles.find((x) => x.id === id);
-  const ok = await confirmModal({
-    title: `Reset "${p.title}"?`,
-    body: 'This clears the solved status and the chat history for this puzzle. You can play it again from scratch.',
-    confirmLabel: 'Reset puzzle', danger: true,
-  });
-  if (!ok) return;
-  await api('/api/progress/reset', { method: 'POST', body: { puzzleId: id } });
-  await load();
+  const resetId = e.target.closest('[data-reset]')?.dataset.reset;
+  const deleteId = e.target.closest('[data-delete]')?.dataset.delete;
+  if (resetId) {
+    const p = puzzles.find((x) => x.id === resetId);
+    const ok = await confirmModal({
+      title: `Reset "${p.title}"?`,
+      body: 'This clears the solved status and the chat history for this puzzle. You can play it again from scratch.',
+      confirmLabel: 'Reset puzzle', danger: true,
+    });
+    if (!ok) return;
+    await api('/api/progress/reset', { method: 'POST', body: { puzzleId: resetId } });
+    await load();
+  } else if (deleteId) {
+    const p = puzzles.find((x) => x.id === deleteId);
+    const ok = await confirmModal({
+      title: `Delete "${p.title}"?`,
+      body: 'This removes the puzzle from the question bank for every player. It cannot be undone from the app.',
+      confirmLabel: 'Delete puzzle', danger: true,
+    });
+    if (!ok) return;
+    await api(`/api/puzzles/${encodeURIComponent(deleteId)}`, { method: 'DELETE' });
+    await load();
+  }
 });
 
 document.getElementById('reset-all').addEventListener('click', async () => {
