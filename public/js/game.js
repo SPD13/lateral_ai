@@ -2,7 +2,7 @@ import { api, escapeHtml, badge, confirmModal, STATUS_LABEL, loadHeaderStats } f
 
 const $ = (id) => document.getElementById(id);
 const els = {
-  title: $('puzzle-title'), difficulty: $('puzzle-difficulty'), status: $('puzzle-status'), situation: $('situation'),
+  title: $('puzzle-title'), difficulty: $('puzzle-difficulty'), status: $('puzzle-status'), situation: $('situation'), count: $('question-count'),
   banner: $('solved-banner'), bannerText: $('solved-text'), next: $('next-puzzle'), newPuzzle: $('new-puzzle'), diffFilter: $('difficulty-filter'),
   log: $('chat-log'), composer: $('composer'), input: $('input'), send: $('send'), hintLine: $('hint-line'),
 };
@@ -35,9 +35,13 @@ function renderPuzzle() {
   els.status.innerHTML = badge(pr.status, STATUS_LABEL[pr.status]);
   els.situation.textContent = p.situation;
   els.situation.classList.remove('loading');
+  const n = pr.questionsAsked || 0;
+  els.count.textContent = `${n} question${n === 1 ? '' : 's'}`;
   const done = pr.status === 'solved' || pr.status === 'revealed';
   els.banner.hidden = !done;
-  els.bannerText.textContent = pr.status === 'solved' ? 'Solved! Nicely done.' : 'Solution revealed. Better luck on the next one.';
+  els.bannerText.textContent = pr.status === 'solved'
+    ? `Solved in ${n} question${n === 1 ? '' : 's'}${pr.hintsGiven ? ` and ${pr.hintsGiven} hint${pr.hintsGiven === 1 ? '' : 's'}` : ''}. Nicely done.`
+    : 'Solution revealed. Better luck on the next one.';
   document.title = `Lateral · ${p.title}`;
   history.replaceState(null, '', `/?id=${encodeURIComponent(p.id)}`);
 }

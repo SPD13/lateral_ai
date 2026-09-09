@@ -8,15 +8,23 @@ export const PROGRESS_FILE = process.env.PROGRESS_FILE || path.join(__dirname, '
 export const STATUS = { NEW: 'new', TRIED: 'tried', SOLVED: 'solved', REVEALED: 'revealed' };
 
 let db = null;
+let loadedMtime = 0;
 
+function fileMtime() {
+  try { return fs.statSync(PROGRESS_FILE).mtimeMs; } catch { return 0; }
+}
+
+/** Load the progress file, re-reading it when another process (a second server instance) changed it. */
 function load() {
-  if (db) return db;
+  const mtime = fileMtime();
+  if (db && mtime === loadedMtime) return db;
   try {
     db = JSON.parse(fs.readFileSync(PROGRESS_FILE, 'utf8'));
   } catch {
     db = { users: {} };
   }
   if (!db.users) db.users = {};
+  loadedMtime = mtime;
   return db;
 }
 
@@ -25,6 +33,7 @@ function save() {
   const tmp = PROGRESS_FILE + '.tmp';
   fs.writeFileSync(tmp, JSON.stringify(db, null, 2));
   fs.renameSync(tmp, PROGRESS_FILE);
+  loadedMtime = fileMtime();
 }
 
 function userRecord(userId) {
@@ -34,7 +43,22 @@ function userRecord(userId) {
 }
 
 function emptyEntry() {
-  return { status: STATUS.NEW, history: [], hintsGiven: 0, updatedAt: null, solvedAt: null };
+  return { status: STATUS.NEW, history: [], hintsGiven: 0, questionsAsked: 0, updatedAt: null, solvedAt: null };
+}
+
+/**
+ * Questions that were actually answered (yes/no/irrelevant/cannot say). A message the game master
+ * dismissed because it was not a yes/no question is not counted. Older entries without the counter
+ * get it derived from their history.
+ */
+export function questionsAsked(entry) {
+  if (typeof entry.questionsAsked === 'number') return entry.questionsAsked;
+  let n = 0;
+  for (let i = 1; i < entry.history.length; i++) {
+    const prev = entry.history[i - 1], m = entry.history[i];
+    if (prev.role === 'user' && prev.intent === 'question' && m.role === 'agent' && m.kind === 'answer') n++;
+  }
+  return n;
 }
 
 /** Progress entry for one user/puzzle pair (never null). */

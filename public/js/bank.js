@@ -14,6 +14,13 @@ function fmtDate(iso) {
   return escapeHtml(d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) + ' ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }));
 }
 
+/** Score shown once a puzzle is solved: the number of yes/no questions it took. */
+function score(p) {
+  if (p.status === 'solved') return `<span class="score">${p.questionsAsked} <small>question${p.questionsAsked === 1 ? '' : 's'}</small></span>`;
+  if (p.status === 'tried' && p.questionsAsked) return `<span class="excerpt">${p.questionsAsked} so far</span>`;
+  return '<span class="excerpt">—</span>';
+}
+
 function render() {
   const q = searchEl.value.trim().toLowerCase();
   const st = statusEl.value;
@@ -22,13 +29,14 @@ function render() {
     (!st || p.status === st) && (!df || p.difficulty === df) &&
     (!q || p.title.toLowerCase().includes(q) || p.situation.toLowerCase().includes(q)));
   countEl.textContent = `${list.length} of ${puzzles.length} puzzles`;
-  if (!list.length) { rowsEl.innerHTML = '<tr><td colspan="6" class="empty">No puzzles match these filters.</td></tr>'; return; }
+  if (!list.length) { rowsEl.innerHTML = '<tr><td colspan="7" class="empty">No puzzles match these filters.</td></tr>'; return; }
   rowsEl.innerHTML = list.map((p) => `
     <tr data-id="${escapeHtml(p.id)}">
       <td class="title"><a href="/?id=${encodeURIComponent(p.id)}">${escapeHtml(p.title)}</a>
         <div class="excerpt">${escapeHtml(p.situation.length > 140 ? p.situation.slice(0, 140) + '…' : p.situation)}</div></td>
       <td>${badge(p.difficulty)}</td>
       <td>${badge(p.status, STATUS_LABEL[p.status])}</td>
+      <td>${score(p)}</td>
       <td>${p.hintsGiven}/${p.hintCount}</td>
       <td>${fmtDate(p.updatedAt)}</td>
       <td class="right">
@@ -71,4 +79,4 @@ document.getElementById('reset-all').addEventListener('click', async () => {
   await load();
 });
 
-load().catch((err) => { rowsEl.innerHTML = `<tr><td colspan="6" class="empty">${escapeHtml(err.message)}</td></tr>`; });
+load().catch((err) => { rowsEl.innerHTML = `<tr><td colspan="7" class="empty">${escapeHtml(err.message)}</td></tr>`; });

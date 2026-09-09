@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { loadPuzzles, getPuzzle, publicPuzzle } from './puzzles.js';
-import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress } from './store.js';
+import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked } from './store.js';
 import { buildPrompt, INTENTS } from './prompt.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
 
@@ -33,12 +33,12 @@ app.use((req, res, next) => {
 });
 
 function summary(entry) {
-  return { status: entry.status, hintsGiven: entry.hintsGiven, updatedAt: entry.updatedAt, solvedAt: entry.solvedAt, messageCount: entry.history.length };
+  return { status: entry.status, hintsGiven: entry.hintsGiven, questionsAsked: questionsAsked(entry), updatedAt: entry.updatedAt, solvedAt: entry.solvedAt, messageCount: entry.history.length };
 }
 
 function withStatus(p, all) {
   const e = all[p.id];
-  return { ...publicPuzzle(p), status: e ? e.status : STATUS.NEW, hintsGiven: e ? e.hintsGiven : 0, updatedAt: e ? e.updatedAt : null };
+  return { ...publicPuzzle(p), status: e ? e.status : STATUS.NEW, hintsGiven: e ? e.hintsGiven : 0, questionsAsked: e ? questionsAsked(e) : 0, updatedAt: e ? e.updatedAt : null };
 }
 
 // ---------------------------------------------------------------------------
@@ -135,6 +135,8 @@ app.post('/api/puzzles/:id/chat', async (req, res) => {
       e.history.push({ role: 'user', intent, text: text || (intent === 'hint' ? 'Can I have a hint?' : 'I give up. What is the solution?'), at: now });
       e.history.push({ role: 'agent', kind: reply.kind, answer: reply.answer, verdict: reply.verdict, text: reply.message, at: now });
       if (reply.kind === 'hint') e.hintsGiven += 1;
+      // score: only questions the game master actually answered count, not ones dismissed for not being yes/no
+      if (intent === 'question' && reply.kind === 'answer') e.questionsAsked = questionsAsked(e) + 1;
       if (reply.kind === 'verdict' && reply.verdict === 'correct' && e.status !== STATUS.SOLVED) { e.status = STATUS.SOLVED; e.solvedAt = now; }
       if (reply.kind === 'solution' && e.status !== STATUS.SOLVED) e.status = STATUS.REVEALED;
     });
