@@ -2,7 +2,7 @@ import { api, escapeHtml, badge, confirmModal, STATUS_LABEL, loadHeaderStats } f
 
 const $ = (id) => document.getElementById(id);
 const els = {
-  title: $('puzzle-title'), difficulty: $('puzzle-difficulty'), status: $('puzzle-status'), situation: $('situation'), count: $('question-count'),
+  title: $('puzzle-title'), difficulty: $('puzzle-difficulty'), status: $('puzzle-status'), situation: $('situation'), count: $('question-count'), tries: $('try-count'),
   banner: $('solved-banner'), bannerText: $('solved-text'), next: $('next-puzzle'), newPuzzle: $('new-puzzle'), diffFilter: $('difficulty-filter'),
   log: $('chat-log'), composer: $('composer'), input: $('input'), send: $('send'), hintLine: $('hint-line'),
 };
@@ -35,16 +35,19 @@ function renderPuzzle() {
   els.status.innerHTML = badge(pr.status, STATUS_LABEL[pr.status]);
   els.situation.textContent = p.situation;
   els.situation.classList.remove('loading');
-  const n = pr.questionsAsked || 0;
-  els.count.textContent = `${n} question${n === 1 ? '' : 's'}`;
+  const n = pr.questionsAsked || 0, t = pr.guesses || 0;
+  els.count.textContent = plural(n, 'question');
+  els.tries.textContent = plural(t, 'try', 'tries');
   const done = pr.status === 'solved' || pr.status === 'revealed';
   els.banner.hidden = !done;
   els.bannerText.textContent = pr.status === 'solved'
-    ? `Solved in ${n} question${n === 1 ? '' : 's'}${pr.hintsGiven ? ` and ${pr.hintsGiven} hint${pr.hintsGiven === 1 ? '' : 's'}` : ''}. Nicely done.`
+    ? `Solved in ${plural(n, 'question')} and ${plural(t, 'try', 'tries')}${pr.hintsGiven ? `, with ${plural(pr.hintsGiven, 'hint')}` : ''}. Nicely done.`
     : 'Solution revealed. Better luck on the next one.';
   document.title = `Lateral · ${p.title}`;
   history.replaceState(null, '', `/?id=${encodeURIComponent(p.id)}`);
 }
+
+function plural(n, one, many = one + 's') { return `${n} ${n === 1 ? one : many}`; }
 
 function tagFor(m) {
   if (m.role === 'user') return { question: 'Question', guess: 'Your solution', hint: 'Hint request', reveal: 'Giving up' }[m.intent] || 'You';
@@ -53,9 +56,12 @@ function tagFor(m) {
   return { hint: 'Hint', solution: 'Solution', note: 'Game master' }[m.kind] || 'Game master';
 }
 
-/** Same rule as the server's score: a message sent as a question that the game master actually answered. */
+/** Same rules as the server's score: an answered question counts as a question, a judged solution as a try. */
 function countsAsQuestion(userMsg, agentMsg) {
   return !!userMsg && userMsg.role === 'user' && userMsg.intent === 'question' && agentMsg.role === 'agent' && agentMsg.kind === 'answer';
+}
+function countsAsTry(agentMsg) {
+  return agentMsg.role === 'agent' && agentMsg.kind === 'verdict';
 }
 
 function messageEl(m, { withActions = false, counted = false } = {}) {
@@ -64,9 +70,11 @@ function messageEl(m, { withActions = false, counted = false } = {}) {
   if (m.kind) cls.push(`kind-${m.kind}`);
   if (m.answer) cls.push(`answer-${m.answer}`);
   if (m.verdict) cls.push(`verdict-${m.verdict}`);
-  if (counted) cls.push('counted');
+  const isTry = countsAsTry(m);
+  if (counted || isTry) cls.push('counted');
   div.className = cls.join(' ');
-  const marker = counted ? '<span class="plus-one" title="Counted as a question">+1</span>' : '';
+  const marker = counted ? '<span class="plus-one" title="Counted as a question">+1 question</span>'
+    : isTry ? '<span class="plus-one try" title="Counted as a try">+1 try</span>' : '';
   div.innerHTML = `<span class="tag">${escapeHtml(tagFor(m))}${marker}</span>${escapeHtml(m.text)}`;
   if (withActions && m.verdict === 'close') {
     const actions = document.createElement('div');

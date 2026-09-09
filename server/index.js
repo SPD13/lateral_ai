@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle } from './puzzles.js';
-import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked } from './store.js';
+import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade } from './store.js';
 import { buildPrompt, INTENTS } from './prompt.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
 import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, startGeneration, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
@@ -34,12 +34,12 @@ app.use((req, res, next) => {
 });
 
 function summary(entry) {
-  return { status: entry.status, hintsGiven: entry.hintsGiven, questionsAsked: questionsAsked(entry), updatedAt: entry.updatedAt, solvedAt: entry.solvedAt, messageCount: entry.history.length };
+  return { status: entry.status, hintsGiven: entry.hintsGiven, questionsAsked: questionsAsked(entry), guesses: guessesMade(entry), updatedAt: entry.updatedAt, solvedAt: entry.solvedAt, messageCount: entry.history.length };
 }
 
 function withStatus(p, all) {
   const e = all[p.id];
-  return { ...publicPuzzle(p), status: e ? e.status : STATUS.NEW, hintsGiven: e ? e.hintsGiven : 0, questionsAsked: e ? questionsAsked(e) : 0, messageCount: e ? e.history.length : 0, updatedAt: e ? e.updatedAt : null };
+  return { ...publicPuzzle(p), status: e ? e.status : STATUS.NEW, hintsGiven: e ? e.hintsGiven : 0, questionsAsked: e ? questionsAsked(e) : 0, guesses: e ? guessesMade(e) : 0, messageCount: e ? e.history.length : 0, updatedAt: e ? e.updatedAt : null };
 }
 
 // ---------------------------------------------------------------------------
@@ -138,6 +138,8 @@ app.post('/api/puzzles/:id/chat', async (req, res) => {
       if (reply.kind === 'hint') e.hintsGiven += 1;
       // score: only questions the game master actually answered count, not ones dismissed for not being yes/no
       if (intent === 'question' && reply.kind === 'answer') e.questionsAsked = questionsAsked(e) + 1;
+      // score: every judged solution is a try, whatever the verdict
+      if (reply.kind === 'verdict') e.guesses = guessesMade(e) + 1;
       if (reply.kind === 'verdict' && reply.verdict === 'correct' && e.status !== STATUS.SOLVED) { e.status = STATUS.SOLVED; e.solvedAt = now; }
       if (reply.kind === 'solution' && e.status !== STATUS.SOLVED) e.status = STATUS.REVEALED;
     });

@@ -54,6 +54,7 @@ button { font: inherit; cursor: pointer; }
 .counter { color: var(--muted); font-size: 13px; }
 .score { font-weight: 600; white-space: nowrap; }
 .score small { color: var(--muted); font-weight: 400; }
+.score .tries { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
 
 .btn { border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 8px 14px; border-radius: 9px; font-weight: 500; }
 .btn:hover { border-color: var(--accent); }
@@ -84,7 +85,9 @@ select.btn { padding-right: 28px; }
 .msg.user { align-self: flex-end; background: var(--user-bubble); border-bottom-right-radius: 4px; }
 .msg.agent { align-self: flex-start; background: var(--agent-bubble); border-bottom-left-radius: 4px; }
 .msg .tag { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 3px; font-weight: 600; }
-.msg .plus-one { display: inline-block; margin-left: 8px; padding: 0 6px; border-radius: 999px; font-size: 10px; letter-spacing: 0; background: var(--accent-soft); color: var(--accent); vertical-align: 1px; }
+.msg .plus-one { display: inline-block; margin-left: 8px; padding: 0 6px; border-radius: 999px; font-size: 10px; letter-spacing: 0; text-transform: none; background: var(--accent-soft); color: var(--accent); vertical-align: 1px; }
+.msg .plus-one.try { background: var(--warn-soft); color: var(--warn); }
+.counter + .counter::before { content: '·'; margin-right: 8px; color: var(--line); }
 .msg.answer-yes .tag { color: var(--ok); } .msg.answer-no .tag { color: var(--bad); }
 .msg.verdict-correct { background: var(--ok-soft); } .msg.verdict-correct .tag { color: var(--ok); }
 .msg.verdict-close { background: var(--warn-soft); } .msg.verdict-close .tag { color: var(--warn); }
