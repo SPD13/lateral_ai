@@ -30,7 +30,8 @@ function showJob(job) {
   els.generate.disabled = false;
   if (job.status === 'error') { setStatus(`Generation failed: ${escapeHtml(job.error)}`, 'error'); return; }
   const dropped = job.dropped.length ? `<ul class="dropped">${job.dropped.map((d) => `<li><b>${escapeHtml(d.title)}</b>: ${escapeHtml(d.reason)}</li>`).join('')}</ul>` : '';
-  setStatus(`Done in ${elapsed(job.startedAt).replace(/^/, '')}: <b>${job.added.length}</b> new puzzle${job.added.length === 1 ? '' : 's'} to review${job.dropped.length ? `, ${job.dropped.length} dropped` : ''}${job.cost != null ? ` · $${job.cost.toFixed(3)}` : ''}.${dropped}`, 'done');
+  const tokens = job.tokens ? ` · ${job.tokens.total.toLocaleString()} tokens <span class="excerpt">(${job.tokens.input.toLocaleString()} in, ${job.tokens.output.toLocaleString()} out)</span>` : '';
+  setStatus(`Done in ${elapsed(job.startedAt)}: <b>${job.added.length}</b> new puzzle${job.added.length === 1 ? '' : 's'} to review${job.dropped.length ? `, ${job.dropped.length} dropped` : ''}${tokens}.${dropped}`, 'done');
 }
 
 async function poll(jobId) {

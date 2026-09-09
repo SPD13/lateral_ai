@@ -47,7 +47,13 @@ export function runClaude({ system, user, model = CLAUDE_MODEL, tools = [], time
       let parsed;
       try { parsed = JSON.parse(out); } catch { return reject(new Error(`claude returned non-JSON output: ${out.slice(0, 300)}`)); }
       if (parsed.is_error) return reject(new Error(`claude error: ${parsed.result || parsed.subtype}`));
-      resolve({ text: parsed.result ?? '', cost: parsed.total_cost_usd, sessionId: parsed.session_id, turns: parsed.num_turns, webSearches: parsed.usage?.server_tool_use?.web_search_requests ?? 0 });
+      const u = parsed.usage || {};
+      const tokens = {
+        input: (u.input_tokens ?? 0) + (u.cache_creation_input_tokens ?? 0) + (u.cache_read_input_tokens ?? 0),
+        output: u.output_tokens ?? 0,
+      };
+      tokens.total = tokens.input + tokens.output;
+      resolve({ text: parsed.result ?? '', cost: parsed.total_cost_usd, tokens, sessionId: parsed.session_id, turns: parsed.num_turns, webSearches: u.server_tool_use?.web_search_requests ?? 0 });
     });
     child.stdin.end(user);
   });

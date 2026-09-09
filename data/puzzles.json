@@ -308,5 +308,90 @@
       "He shares a history with the person who sent it, involving extreme hunger.",
       "A promise made long ago is being kept."
     ]
+  },
+  {
+    "id": "one-ring-at-nine",
+    "title": "One Ring at Nine",
+    "difficulty": "easy",
+    "situation": "Every evening at exactly nine o'clock, a woman's phone rings once and then falls silent. She never picks up and never calls back, yet each time she smiles with relief. It is not a fault and not a scam. What is going on?",
+    "solution": "Her son is working far away, where calls are expensive and the connection is poor. They agreed that every night at nine he would let her phone ring once and hang up before she answered. The single ring is a free, pre-arranged signal that means 'I'm safe and well', so there is no need for her to answer or call back.",
+    "keyFacts": [
+      "The call is from a loved one who is far away",
+      "The single ring is a pre-arranged signal meaning 'I am fine'",
+      "Not answering is deliberate: hanging up before pickup keeps it free and no conversation is needed"
+    ],
+    "hints": [
+      "The ring itself is the whole message.",
+      "The caller is someone she loves, a long way from home, and calls cost money.",
+      "They agreed in advance: one ring at nine means 'I'm safe' and nothing more needs to be said."
+    ]
+  },
+  {
+    "id": "younger-twin-born-first",
+    "title": "The Younger Twin Was Born First",
+    "difficulty": "medium",
+    "situation": "Emma was born a few minutes before her twin brother Liam, and the whole family agrees she is the older one. Yet Liam's birth certificate shows an earlier time of birth than Emma's, and both certificates are completely accurate. How is this possible?",
+    "solution": "The twins were born on the night daylight saving time ended. Emma was born at about 1:50 in the morning; a few minutes later the clocks went back from 2:00 to 1:00. Liam arrived after the change, so his official time of birth was recorded as about 1:10, earlier on paper than his older sister's.",
+    "keyFacts": [
+      "The clocks were changed (daylight saving time ended) between the two births",
+      "The clocks went back by an hour, so the later birth got an earlier recorded time",
+      "Both certificates record the correct official time for that moment"
+    ],
+    "hints": [
+      "Nobody made a mistake, and no one is lying. Think about the clock rather than the babies.",
+      "Something happened to the official time between the first birth and the second.",
+      "They were born on the night the clocks went back an hour."
+    ]
+  },
+  {
+    "id": "frozen-orchard",
+    "title": "The Frozen Orchard",
+    "difficulty": "easy",
+    "situation": "On the coldest night of spring, a fruit farmer switches on the sprinklers over her orchard and leaves them running all night, until every blossom is sealed inside a coat of ice. In the morning her neighbour, who kept his trees dry, has lost his entire crop, while her trees are fine. Why?",
+    "solution": "She was protecting the blossoms from a hard frost. As water freezes it gives off heat, and as long as the sprinklers keep adding water, the ice coating stays at exactly zero degrees, which fruit blossom can survive. The air that night fell far below zero, so the neighbour's unprotected blossoms froze solid and died, while hers sat safely inside their ice at zero.",
+    "keyFacts": [
+      "The spraying was deliberate frost protection, not an accident",
+      "Freezing water releases heat, so the ice coating holds the blossom at about zero degrees",
+      "The open air was much colder than zero, which killed the unprotected blossoms"
+    ],
+    "hints": [
+      "She did it on purpose, and it worked exactly as she intended.",
+      "Ask what temperature the air was that night, and what temperature the ice was.",
+      "Water gives off heat as it freezes: a blossom inside constantly refreshed ice stays at zero degrees, while the air around it dropped far lower."
+    ]
+  },
+  {
+    "id": "letter-to-herself",
+    "title": "A Letter to Herself",
+    "difficulty": "medium",
+    "situation": "A woman spends months filling a notebook. She then photocopies every page, seals the copies in an envelope, addresses it to her own home and posts it. When it arrives a few days later, she does not open it but locks it in a safe, where it stays unopened for years. Why?",
+    "solution": "She is a songwriter (or novelist) and wants proof of when she created her work in case anyone ever claims it as their own. The post office stamps the sealed envelope with a dated postmark, so an unopened envelope is evidence that the contents existed by that date. If she opened it, the proof would be worthless, so it stays sealed unless she ever needs to produce it in a dispute.",
+    "keyFacts": [
+      "The notebook contains her own creative work (songs, a novel, an invention)",
+      "The postmark on the sealed envelope proves the work existed by that date",
+      "It must stay sealed so it can serve as evidence if someone steals her work"
+    ],
+    "hints": [
+      "What is in the envelope matters less than what is printed on the outside of it.",
+      "She is protecting something she made against people who might claim it as theirs.",
+      "The dated postmark on a still-sealed envelope proves when the pages were written."
+    ]
+  },
+  {
+    "id": "silent-valley",
+    "title": "The Silent Valley",
+    "difficulty": "hard",
+    "situation": "One morning, in the villages beside a deep lake, every person and every animal is found dead. The houses are untouched, there is no sign of violence or disease, and food is still on the tables. Families living higher up the hillsides woke up perfectly healthy and heard nothing in the night. What happened?",
+    "solution": "The lake sits over volcanic ground, and enormous amounts of carbon dioxide had been dissolving into its deep water for years. One night the gas suddenly burst out of the lake in a huge invisible cloud. Carbon dioxide is heavier than air, so it flowed down into the low-lying villages and pushed the breathable air away, suffocating everyone and everything as they slept. By morning the gas had dispersed, leaving the higher homes untouched.",
+    "keyFacts": [
+      "The victims suffocated because of a gas, not violence, poison or disease",
+      "The gas came from the lake (carbon dioxide that had built up in its deep water)",
+      "The gas is heavier than air, so it settled in the low areas and spared the hillsides"
+    ],
+    "hints": [
+      "Nobody and nothing did this on purpose. The lake is the key.",
+      "The victims stopped breathing, and the height of your house decided whether you lived.",
+      "Something heavier than air came out of the lake in the night and pooled in the valley like water."
+    ]
   }
 ]
