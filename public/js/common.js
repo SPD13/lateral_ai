@@ -65,6 +65,8 @@ const ICON_PATHS = {
   reset: '<path d="M4 10a6 6 0 1 0 1.8-4.3"/><path d="M4 3v3.5h3.5"/>',
   trash: '<path d="M4 6h12"/><path d="M8 6V4h4v2"/><path d="M6 6l.8 10h6.4L14 6"/><path d="M8.5 9v4.5M11.5 9v4.5"/>',
   plus: '<path d="M10 4v12M4 10h12"/>',
+  help: '<circle cx="10" cy="10" r="7.5"/><path d="M7.7 8.2a2.3 2.3 0 1 1 3.3 2.1c-.7.4-1 .8-1 1.6"/><circle cx="10" cy="14.4" r=".7" fill="currentColor" stroke="none"/>',
+  close: '<path d="M5.5 5.5l9 9M14.5 5.5l-9 9" stroke-width="2.4"/>',
 };
 
 export function icon(name) {

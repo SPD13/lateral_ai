@@ -1,10 +1,11 @@
-import { api, escapeHtml, badge, confirmModal, STATUS_LABEL, loadHeaderStats } from './common.js';
+import { api, escapeHtml, badge, confirmModal, STATUS_LABEL, loadHeaderStats, icon } from './common.js';
 
 const $ = (id) => document.getElementById(id);
 const els = {
   title: $('puzzle-title'), difficulty: $('puzzle-difficulty'), status: $('puzzle-status'), situation: $('situation'), count: $('question-count'), tries: $('try-count'),
   banner: $('solved-banner'), bannerText: $('solved-text'), next: $('next-puzzle'), newPuzzle: $('new-puzzle'), diffFilter: $('difficulty-filter'),
   log: $('chat-log'), composer: $('composer'), input: $('input'), send: $('send'), hintLine: $('hint-line'),
+  grid: document.querySelector('.play-grid'), help: $('help-panel'), helpToggle: $('help-toggle'), helpClose: $('help-close'),
 };
 const modeButtons = [...document.querySelectorAll('.mode')];
 
@@ -189,6 +190,30 @@ els.newPuzzle.addEventListener('click', () => openRandom().catch(showError));
 els.next.addEventListener('click', () => openRandom().catch(showError));
 
 function showError(err) { els.situation.textContent = err.message; els.situation.classList.add('loading'); }
+
+// ---------------------------------------------------------------------------
+// Help panel: open by default on wide screens, collapsed on small ones; the player's choice is remembered.
+// ---------------------------------------------------------------------------
+const HELP_KEY = 'lg_help';
+els.helpToggle.innerHTML = icon('help');
+els.helpClose.innerHTML = icon('close');
+
+function setHelp(open, { persist = true, scroll = false } = {}) {
+  els.grid.classList.toggle('help-hidden', !open);
+  els.helpToggle.setAttribute('aria-expanded', String(open));
+  els.helpToggle.classList.toggle('active', open);
+  if (persist) { try { localStorage.setItem(HELP_KEY, open ? 'open' : 'closed'); } catch { /* storage unavailable */ } }
+  if (open && scroll) els.help.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+(function initHelp() {
+  let stored = null;
+  try { stored = localStorage.getItem(HELP_KEY); } catch { /* storage unavailable */ }
+  const wide = window.matchMedia('(min-width: 861px)').matches;
+  setHelp(stored ? stored === 'open' : wide, { persist: false });
+})();
+els.helpToggle.addEventListener('click', () => setHelp(els.grid.classList.contains('help-hidden'), { scroll: !window.matchMedia('(min-width: 861px)').matches }));
+els.helpClose.addEventListener('click', () => setHelp(false));
 
 const initialId = new URLSearchParams(location.search).get('id');
 (initialId ? openPuzzle(initialId).catch(() => openRandom()) : openRandom()).catch(showError);

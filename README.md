@@ -105,6 +105,10 @@ The game master replies **Yes**, **No**, **Irrelevant** (the detail does not mat
 story does not decide it, or answering would give too much away). Open questions such as "what happened?"
 are not answered; the game master asks you to rephrase, and such messages do not count as questions.
 
+A **How to play** panel next to the chat summarises all of this. It is open by default on wide screens and
+collapsed on small ones; the "?" button in the puzzle card shows or hides it, and your choice is remembered
+in the browser.
+
 The buttons above the input, and the slash shortcuts, change what a message means:
 
 | Button                   | Shortcut        | What happens                                                            |
