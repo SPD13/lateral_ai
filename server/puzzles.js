@@ -27,7 +27,7 @@ export function getPuzzle(id) {
 
 /** Public view of a puzzle: never includes the solution, key facts or hints. */
 export function publicPuzzle(p) {
-  return { id: p.id, title: p.title, difficulty: p.difficulty, situation: p.situation, hintCount: p.hints.length };
+  return { id: p.id, title: p.title, difficulty: p.difficulty, situation: p.situation, hintCount: p.hints.length, addedAt: p.addedAt };
 }
 
 function validate(p, i) {
@@ -44,9 +44,10 @@ export function validatePuzzle(p) {
   if (!id) throw new Error('cannot derive an id');
   if (!DIFFICULTIES.includes(p.difficulty)) throw new Error(`unknown difficulty "${p.difficulty}"`);
   const strings = (arr) => (Array.isArray(arr) ? arr.filter((x) => typeof x === 'string' && x.trim()).map((x) => x.trim()) : []);
+  const addedAt = typeof p.addedAt === 'string' && !Number.isNaN(Date.parse(p.addedAt)) ? p.addedAt : null;
   return {
     id, title: p.title.trim(), difficulty: p.difficulty, situation: p.situation.trim(), solution: p.solution.trim(),
-    keyFacts: strings(p.keyFacts), hints: strings(p.hints),
+    keyFacts: strings(p.keyFacts), hints: strings(p.hints), addedAt,
   };
 }
 
@@ -70,6 +71,7 @@ export function slugify(s) {
 /** Append a puzzle to the bank file, making its id unique. Returns the stored puzzle. */
 export function addPuzzle(puzzle) {
   const p = validatePuzzle(puzzle);
+  p.addedAt = p.addedAt || new Date().toISOString();
   const list = loadPuzzles();
   const ids = new Set(list.map((x) => x.id));
   let id = p.id, n = 2;

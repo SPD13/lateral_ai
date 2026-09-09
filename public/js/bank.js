@@ -5,11 +5,52 @@ const searchEl = document.getElementById('search');
 const statusEl = document.getElementById('filter-status');
 const diffEl = document.getElementById('filter-difficulty');
 const countEl = document.getElementById('count');
+const addedEl = document.getElementById('filter-added');
 
 let puzzles = [];
+// Newest additions first by default; clicking a header sorts ascending, clicking again descending.
+const sort = { key: 'added', dir: 'desc' };
+const DIFFICULTY_RANK = { easy: 0, medium: 1, hard: 2 };
+const STATUS_RANK = { new: 0, tried: 1, revealed: 2, solved: 3 };
+
+/** Sort value for a puzzle under a column; null means "no value", which always sorts last. */
+function sortValue(p, key) {
+  switch (key) {
+    case 'title': return p.title.toLowerCase();
+    case 'difficulty': return DIFFICULTY_RANK[p.difficulty] ?? 9;
+    case 'status': return STATUS_RANK[p.status] ?? 9;
+    case 'score': return p.status === 'solved' ? p.questionsAsked : null;
+    case 'hints': return p.hintsGiven;
+    case 'played': return p.updatedAt ? Date.parse(p.updatedAt) : null;
+    case 'added': return p.addedAt ? Date.parse(p.addedAt) : null;
+    default: return null;
+  }
+}
+
+function sortPuzzles(list) {
+  const dir = sort.dir === 'asc' ? 1 : -1;
+  return [...list].sort((a, b) => {
+    const va = sortValue(a, sort.key), vb = sortValue(b, sort.key);
+    if (va === null && vb === null) return 0;
+    if (va === null) return 1;
+    if (vb === null) return -1;
+    const c = typeof va === 'string' ? va.localeCompare(vb) : va - vb;
+    return c * dir || a.title.localeCompare(b.title);
+  });
+}
+
+function renderSortIndicators() {
+  for (const b of document.querySelectorAll('th .sort')) {
+    const active = b.dataset.sort === sort.key;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-sort', active ? (sort.dir === 'asc' ? 'ascending' : 'descending') : 'none');
+    b.querySelector('.arrow')?.remove();
+    if (active) b.insertAdjacentHTML('beforeend', `<span class="arrow">${sort.dir === 'asc' ? '▲' : '▼'}</span>`);
+  }
+}
 
 function fmtDate(iso) {
-  if (!iso) return '<span class="excerpt">never</span>';
+  if (!iso) return '<span class="excerpt">—</span>';
   const d = new Date(iso);
   return escapeHtml(d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' }) + ' ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' }));
 }
@@ -33,11 +74,15 @@ function render() {
   const q = searchEl.value.trim().toLowerCase();
   const st = statusEl.value;
   const df = diffEl.value;
-  const list = puzzles.filter((p) =>
+  const days = Number(addedEl.value) || 0;
+  const since = days ? Date.now() - days * 86400000 : 0;
+  const list = sortPuzzles(puzzles.filter((p) =>
     (!st || p.status === st) && (!df || p.difficulty === df) &&
-    (!q || p.title.toLowerCase().includes(q) || p.situation.toLowerCase().includes(q)));
+    (!since || (p.addedAt && Date.parse(p.addedAt) >= since)) &&
+    (!q || p.title.toLowerCase().includes(q) || p.situation.toLowerCase().includes(q))));
+  renderSortIndicators();
   countEl.textContent = `${list.length} of ${puzzles.length} puzzles`;
-  if (!list.length) { rowsEl.innerHTML = '<tr><td colspan="7" class="empty">No puzzles match these filters.</td></tr>'; return; }
+  if (!list.length) { rowsEl.innerHTML = '<tr><td colspan="8" class="empty">No puzzles match these filters.</td></tr>'; return; }
   rowsEl.innerHTML = list.map((p) => `
     <tr data-id="${escapeHtml(p.id)}">
       <td class="title"><a href="/?id=${encodeURIComponent(p.id)}">${escapeHtml(p.title)}</a>
@@ -47,6 +92,7 @@ function render() {
       <td>${score(p)}</td>
       <td>${p.hintsGiven}/${p.hintCount}</td>
       <td>${fmtDate(p.updatedAt)}</td>
+      <td>${fmtDate(p.addedAt)}</td>
       <td class="right actions">
         ${playButton(p)}
         ${iconButton({ name: 'reset', label: 'Reset progress', cls: 'danger', attrs: `data-reset="${escapeHtml(p.id)}"`, disabled: p.status === 'new' })}
@@ -61,7 +107,15 @@ async function load() {
   loadHeaderStats();
 }
 
-for (const el of [searchEl, statusEl, diffEl]) el.addEventListener('input', render);
+for (const el of [searchEl, statusEl, diffEl, addedEl]) el.addEventListener('input', render);
+
+document.querySelector('.bank-table thead').addEventListener('click', (e) => {
+  const key = e.target.closest('[data-sort]')?.dataset.sort;
+  if (!key) return;
+  if (sort.key === key) sort.dir = sort.dir === 'asc' ? 'desc' : 'asc';
+  else { sort.key = key; sort.dir = 'asc'; }
+  render();
+});
 
 rowsEl.addEventListener('click', async (e) => {
   const resetId = e.target.closest('[data-reset]')?.dataset.reset;
@@ -100,4 +154,4 @@ document.getElementById('reset-all').addEventListener('click', async () => {
   await load();
 });
 
-load().catch((err) => { rowsEl.innerHTML = `<tr><td colspan="7" class="empty">${escapeHtml(err.message)}</td></tr>`; });
+load().catch((err) => { rowsEl.innerHTML = `<tr><td colspan="8" class="empty">${escapeHtml(err.message)}</td></tr>`; });

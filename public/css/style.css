@@ -118,11 +118,14 @@ select.btn { padding-right: 28px; }
 
 /* Bank */
 .toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 24px 0 14px; }
-.toolbar input[type="search"] { flex: 1; min-width: 180px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); color: var(--ink); font: inherit; }
+.toolbar input[type="search"] { flex: 1 1 140px; min-width: 120px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); color: var(--ink); font: inherit; }
 .toolbar .count { color: var(--muted); font-size: 13px; }
 .bank-table { width: 100%; border-collapse: collapse; }
 .bank-table th, .bank-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
-.bank-table th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; }
+.bank-table th { font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); font-weight: 600; white-space: nowrap; }
+.bank-table th .sort { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-transform: inherit; letter-spacing: inherit; }
+.bank-table th .sort:hover, .bank-table th .sort.active { color: var(--ink); }
+.bank-table th .sort .arrow { font-size: 9px; margin-left: 4px; color: var(--accent); }
 .bank-table tr:last-child td { border-bottom: 0; }
 .bank-table .title a { font-weight: 600; color: var(--ink); text-decoration: none; }
 .bank-table .title a:hover { color: var(--accent); }
