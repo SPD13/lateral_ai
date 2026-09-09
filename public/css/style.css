@@ -51,6 +51,9 @@ button { font: inherit; cursor: pointer; }
 .badge.tried { background: var(--info-soft); color: var(--info); }
 .badge.solved { background: var(--ok-soft); color: var(--ok); }
 .badge.revealed { background: var(--warn-soft); color: var(--warn); }
+.counter { color: var(--muted); font-size: 13px; }
+.score { font-weight: 600; white-space: nowrap; }
+.score small { color: var(--muted); font-weight: 400; }
 
 .btn { border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 8px 14px; border-radius: 9px; font-weight: 500; }
 .btn:hover { border-color: var(--accent); }
