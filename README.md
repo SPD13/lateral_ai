@@ -291,3 +291,7 @@ game master template with the puzzle, its secret solution, the prepared hints an
 sends it to `claude -p` with tools disabled, and parses one JSON object (`kind`, `answer`, `verdict`,
 `message`). A `correct` verdict marks the puzzle solved, a revealed solution marks it revealed, a hint
 increments the hint counter, and an answered question increments the score.
+
+## Credits
+
+- Created by [SPD13](https://github.com/SPD13) with the help of Claude Code
