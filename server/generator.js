@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { runClaude, CLAUDE_MODEL } from './claude.js';
 import { loadPuzzles, addPuzzle, validatePuzzle } from './puzzles.js';
-import { render, TEMPLATE_DIR } from './prompt.js';
+import { render, TEMPLATE_DIR, LANGUAGE } from './prompt.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const CANDIDATES_FILE = process.env.CANDIDATES_FILE || path.join(__dirname, '..', 'data', 'candidates.json');
@@ -106,8 +106,9 @@ function formatExisting(list) {
 
 export function buildGeneratePrompt({ count, difficulty }) {
   const existing = [...loadPuzzles(), ...loadCandidates()];
-  const system = fs.readFileSync(path.join(TEMPLATE_DIR, 'generate-system.md'), 'utf8').trim();
+  const system = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'generate-system.md'), 'utf8'), { LANGUAGE }).trim();
   const user = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'generate.md'), 'utf8'), {
+    LANGUAGE,
     COUNT: count,
     DIFFICULTY: difficulty,
     EXISTING_COUNT: existing.length,

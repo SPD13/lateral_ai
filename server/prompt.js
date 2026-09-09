@@ -6,6 +6,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const TEMPLATE_DIR = process.env.TEMPLATE_DIR || path.join(__dirname, 'templates');
 
 export const INTENTS = ['question', 'hint', 'guess', 'reveal'];
+/** Language the game master and the puzzle writer must use, whatever the player types. */
+export const LANGUAGE = process.env.GAME_LANGUAGE || 'English';
 
 function readTemplate(rel) {
   return fs.readFileSync(path.join(TEMPLATE_DIR, rel), 'utf8');
@@ -39,9 +41,10 @@ function formatKeyFacts(facts) {
 /** Build the system prompt and the user prompt for one turn. */
 export function buildPrompt({ puzzle, progress, intent, text }) {
   if (!INTENTS.includes(intent)) throw new Error(`unknown intent "${intent}"`);
-  const system = readTemplate('system.md').trim();
+  const system = render(readTemplate('system.md'), { LANGUAGE }).trim();
   const intentInstructions = readTemplate(path.join('intents', `${intent}.md`)).trim();
   const user = render(readTemplate('context.md'), {
+    LANGUAGE,
     PUZZLE_TITLE: puzzle.title,
     PUZZLE_ID: puzzle.id,
     DIFFICULTY: puzzle.difficulty,

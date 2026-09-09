@@ -229,9 +229,13 @@ edits apply without a restart:
 - `system.md` and `context.md`: the game master's briefing for a chat turn, with one file per intent under
   `intents/` (`question.md`, `hint.md`, `guess.md`, `reveal.md`). Placeholders: `{{PUZZLE_TITLE}}`,
   `{{PUZZLE_ID}}`, `{{DIFFICULTY}}`, `{{SITUATION}}`, `{{SOLUTION}}`, `{{KEY_FACTS}}`, `{{HINTS}}`,
-  `{{HINTS_GIVEN_COUNT}}`, `{{HISTORY}}`, `{{INTENT}}`, `{{USER_MESSAGE}}`, `{{INTENT_INSTRUCTIONS}}`.
+  `{{HINTS_GIVEN_COUNT}}`, `{{HISTORY}}`, `{{INTENT}}`, `{{USER_MESSAGE}}`, `{{INTENT_INSTRUCTIONS}}`,
+  `{{LANGUAGE}}`.
 - `generate-system.md` and `generate.md`: the puzzle writer's briefing. Placeholders: `{{COUNT}}`,
-  `{{DIFFICULTY}}`, `{{EXISTING_COUNT}}`, `{{EXISTING_PUZZLES}}`.
+  `{{DIFFICULTY}}`, `{{EXISTING_COUNT}}`, `{{EXISTING_PUZZLES}}`, `{{LANGUAGE}}`.
+
+`{{LANGUAGE}}` comes from `GAME_LANGUAGE` (default English) and every template tells the model to use
+it regardless of the language the player types in.
 
 Keep each template's output-format section: the server parses the JSON it describes. With `LG_DEBUG=1`
 the server exposes `GET /api/puzzles/<id>/prompt?intent=question&text=...` to see a rendered game master
@@ -246,6 +250,7 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 |------------------------|----------------------|----------------------------------------------------------------------|
 | `PORT`                 | `3000`               | HTTP port                                                            |
 | `CLAUDE_MODEL`         | `sonnet`             | Game master model passed to `claude --model` (sonnet, opus, haiku, fable) |
+| `GAME_LANGUAGE`        | `English`            | Language the game master and puzzle writer must use, whatever the player types |
 | `GENERATOR_MODEL`      | same as `CLAUDE_MODEL` | Puzzle writer model used when generating new questions             |
 | `GENERATOR_TOOLS`      | `WebSearch,WebFetch` | CLI tools the puzzle writer may use; `""` disables web search        |
 | `GENERATOR_TIMEOUT_MS` | `360000`             | Timeout for one generation run                                       |

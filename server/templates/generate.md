@@ -1,6 +1,6 @@
 # Puzzle writer briefing
 
-Write **{{COUNT}}** new lateral thinking puzzles. Difficulty: **{{DIFFICULTY}}**.
+Write **{{COUNT}}** new lateral thinking puzzles in **{{LANGUAGE}}**. Difficulty: **{{DIFFICULTY}}**.
 
 ## What makes a good puzzle
 
