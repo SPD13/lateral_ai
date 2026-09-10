@@ -9,7 +9,7 @@ import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, que
 import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
 import { getScoring, saveScoring, DEFAULT_SCORING } from './scoring.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
-import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, COLLECT_COUNT, COLLECT_MAX, takenFrom, startGeneration, startCollection, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
+import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, COLLECT_COUNT, COLLECT_MAX, takenFrom, startGeneration, startCollection, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate, approveAllCandidates, rejectAllCandidates } from './generator.js';
 import { listSources } from './sources.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -322,6 +322,18 @@ app.get('/api/generate/jobs/:id', (req, res) => {
 });
 
 app.get('/api/candidates', (req, res) => res.json(listCandidates()));
+
+app.post('/api/candidates/approve-all', (req, res) => {
+  const { added, failed } = approveAllCandidates();
+  console.log(`[generate] approved all: ${added.length} added${failed.length ? `, ${failed.length} failed` : ''}`);
+  res.json({ approved: added.length, failed });
+});
+
+app.post('/api/candidates/reject-all', (req, res) => {
+  const rejected = rejectAllCandidates();
+  console.log(`[generate] rejected all: ${rejected} dropped`);
+  res.json({ rejected });
+});
 
 app.post('/api/candidates/:id/approve', (req, res) => {
   try {
