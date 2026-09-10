@@ -111,8 +111,9 @@ The circular-arrow button in the puzzle card restarts the current puzzle: it dis
 score and status after a confirmation, so you can play it from scratch. A **Game master help** switch next
 to the difficulty dropdown (on by default) lets the game master add a short clarification
 to an answer, suggest what to ask when a message is not a yes/no question, and point at what is missing in a
-close guess. Switch it off for strict play: bare yes / no / irrelevant / can't-say answers and verdicts
-without pointers. Hints still work when you ask for them. The setting is stored per player on the server
+close guess. It also makes the judging kinder: a guess that gets the core plot twist right counts as correct
+even when a peripheral detail is missing. Switch it off for strict play: bare yes / no / irrelevant /
+can't-say answers, verdicts without pointers, and every key fact required before a guess counts as correct. Hints still work when you ask for them. The setting is stored per player on the server
 and is not affected by a progress reset.
 
 A **How to play** panel next to the chat summarises all of this. It is open by default on wide screens and
@@ -130,7 +131,9 @@ The buttons above the input, and the slash shortcuts, change what a message mean
 
 When you submit a solution, the answer is **correct** (the puzzle is marked solved and the full story is
 told), **close** (the right idea, but one important element is missing or wrong; you can try again or ask
-for the solution) or **incorrect**. Every judged solution counts as a try. Once a puzzle is solved, the
+for the solution) or **incorrect**. Guesses build on each other: anything you already said in an earlier
+guess still counts, so after a "close" you only need to add the missing piece rather than restate the whole
+story. Every judged solution counts as a try. Once a puzzle is solved, the
 banner shows your score: the number of questions and tries it took, and the number of hints if you used
 any. In the chat, replies that count carry a "+1 question" or "+1 try" marker.
 
