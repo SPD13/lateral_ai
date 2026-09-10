@@ -32,10 +32,12 @@ async function loadSources() {
   els.sourcesCount.textContent = sources.length ? `(${sources.length})` : '';
   els.collectSources.textContent = sources.length ? `${sources.length} source${sources.length === 1 ? '' : 's'} used so far` : 'No sources used yet';
   els.sourceList.innerHTML = sources.map((s) => `
-    <li>
+    <li${s.exhausted ? ' class="spent"' : ''}>
       <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title || s.url)}</a>
       <span class="excerpt">${s.taken} puzzle${s.taken === 1 ? '' : 's'} taken · ${s.visits} visit${s.visits === 1 ? '' : 's'}</span>
-      <button type="button" class="btn small" data-more="${escapeHtml(s.url)}">Take more</button>
+      ${s.exhausted
+        ? `<span class="spent-label" title="The last visit brought back nothing new${s.exhaustedAt ? `, on ${escapeHtml(new Date(s.exhaustedAt).toLocaleString())}` : ''}">exhausted</span>`
+        : `<button type="button" class="btn small" data-more="${escapeHtml(s.url)}">Take more</button>`}
     </li>`).join('');
 }
 
