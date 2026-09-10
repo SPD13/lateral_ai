@@ -202,6 +202,8 @@ els.resetPuzzle.addEventListener('click', async () => {
   catch (err) { showError(err); }
 });
 
+for (const btn of [els.newPuzzle, els.next]) btn.insertAdjacentHTML('afterbegin', icon('next'));
+
 els.difficulty.addEventListener('dblclick', () => {
   if (!state.puzzle) return;
   editDifficulty(els.difficulty, {
