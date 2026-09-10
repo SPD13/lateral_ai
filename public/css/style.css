@@ -67,6 +67,9 @@ button { font: inherit; cursor: pointer; }
 .score { font-weight: 600; white-space: nowrap; }
 .score small { color: var(--muted); font-weight: 400; }
 .score .tries { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+.score { cursor: help; }
+.score .points { display: block; font-weight: 600; font-size: 16px; }
+.score .points small { color: var(--muted); font-weight: 400; font-size: 12px; }
 
 .btn { border: 1px solid var(--line); background: var(--panel); color: var(--ink); padding: 8px 14px; border-radius: 9px; font-weight: 500; }
 .btn:hover { border-color: var(--accent); }

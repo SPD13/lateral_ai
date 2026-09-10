@@ -151,7 +151,9 @@ leaderboard page.
 ## The question bank
 
 The **Question bank** page lists every puzzle with its difficulty, your status, your score, the hints you
-used, when you last played it and when it was added.
+used, when you last played it and when it was added. For a solved puzzle the score column leads with the
+[leaderboard points](#how-points-are-calculated) it earned, then the questions and tries it took; hovering
+the score shows the full calculation.
 
 **Status** is one of:
 
