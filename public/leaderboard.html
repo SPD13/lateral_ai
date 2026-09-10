@@ -43,16 +43,37 @@
       <p>Only puzzles you have <b>solved</b> count, and each one counts once. A solved puzzle is worth points
          for its difficulty, minus what it took you to get there:</p>
       <ul>
-        <li><b>Easy</b> 2 points · <b>Medium</b> 3 points · <b>Hard</b> 4 points</li>
-        <li>Each hint used: <b>−0.5</b></li>
-        <li>Each question answered: <b>−0.1</b></li>
-        <li>Each solution submitted: <b>−0.2</b></li>
+        <li><b>Easy</b> <span data-w="easy">2</span> points · <b>Medium</b> <span data-w="medium">3</span> points · <b>Hard</b> <span data-w="hard">4</span> points</li>
+        <li>Each hint used: <b>−<span data-w="hint">0.5</span></b></li>
+        <li>Each question answered: <b>−<span data-w="question">0.1</span></b></li>
+        <li>Each solution submitted: <b>−<span data-w="try">0.2</span></b></li>
       </ul>
       <p>A puzzle can never score below zero, so a long hunt costs you the puzzle's points but never
          subtracts from the rest. Puzzles you revealed or are still working on score nothing, and a puzzle
          deleted from the bank stops counting.</p>
-      <p class="example">Example: a hard puzzle solved with 6 questions, 1 hint and 2 tries scores
-         4 − 0.6 − 0.5 − 0.4 = <b>2.5</b> points.</p>
+      <p class="example" id="score-example">Example: a hard puzzle solved with 6 questions, 1 hint and 2 tries
+         scores 4 − 0.6 − 0.5 − 0.4 = <b>2.5</b> points.</p>
+
+      <details class="weights" id="weights">
+        <summary>Adjust the scoring weights</summary>
+        <form id="weights-form">
+          <p class="hint">These weights apply to every player. Saving reloads the page so all the scores are
+             recalculated from the games already played.</p>
+          <div class="weight-grid">
+            <label>Easy solved<input type="number" name="easy" min="0" max="100" step="0.1" required></label>
+            <label>Medium solved<input type="number" name="medium" min="0" max="100" step="0.1" required></label>
+            <label>Hard solved<input type="number" name="hard" min="0" max="100" step="0.1" required></label>
+            <label>Per question<input type="number" name="question" min="0" max="10" step="0.1" required></label>
+            <label>Per solution submitted<input type="number" name="try" min="0" max="10" step="0.1" required></label>
+            <label>Per hint<input type="number" name="hint" min="0" max="10" step="0.1" required></label>
+          </div>
+          <div class="weight-actions">
+            <button type="submit" class="btn primary">Save and recalculate</button>
+            <button type="button" class="btn" id="weights-reset">Restore defaults</button>
+            <span class="edit-msg" id="weights-msg"></span>
+          </div>
+        </form>
+      </details>
     </section>
   </main>
   <script type="module" src="/js/leaderboard.js"></script>

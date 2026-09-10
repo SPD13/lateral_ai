@@ -249,3 +249,14 @@ select.btn { padding-right: 28px; }
 .scoring b { color: var(--ink); }
 .scoring ul { margin: 0 0 12px; padding-left: 20px; color: var(--muted); line-height: 1.9; }
 .scoring .example { color: var(--ink); }
+
+/* Scoring weights */
+.weights { border-top: 1px solid var(--line); margin-top: 6px; padding-top: 12px; }
+.weights summary { cursor: pointer; font-weight: 600; color: var(--accent); list-style-position: outside; }
+.weights summary:hover { text-decoration: underline; }
+.weights .hint { margin: 12px 0; }
+.weight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.weight-grid label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: var(--muted); }
+.weight-grid input { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--ink); }
+.weight-grid input:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+.weight-actions { display: flex; gap: 8px; align-items: center; margin-top: 16px; flex-wrap: wrap; }
