@@ -161,6 +161,21 @@ export async function renderProfileBar() {
   return { profiles, active };
 }
 
+/** Put an icon in front of each header link, and let small screens show only the icon. */
+const NAV_ICONS = { '/': 'play', '/bank': 'bank', '/generate': 'sparkle', '/leaderboard': 'trophy' };
+
+export function renderNavIcons() {
+  for (const link of document.querySelectorAll('.site-nav a')) {
+    if (link.querySelector('svg')) continue;
+    const name = NAV_ICONS[new URL(link.href, location.origin).pathname];
+    if (!name) continue;
+    const text = link.textContent.trim();
+    link.title = text;
+    link.setAttribute('aria-label', text);
+    link.innerHTML = `${icon(name)}<span class="label">${escapeHtml(text)}</span>`;
+  }
+}
+
 /** Modal with a single text field. Resolves with the trimmed text, or null when cancelled. */
 export function promptModal({ title, label = '', value = '', placeholder = '', confirmLabel = 'Save' }) {
   return new Promise((resolve) => {
@@ -284,6 +299,9 @@ const ICON_PATHS = {
   close: '<path d="M5.5 5.5l9 9M14.5 5.5l-9 9" stroke-width="2.4"/>',
   download: '<path d="M10 3v9"/><path d="M6.5 8.5L10 12l3.5-3.5"/><path d="M4 14.5v1.5h12v-1.5"/>',
   upload: '<path d="M10 12V3"/><path d="M6.5 6.5L10 3l3.5 3.5"/><path d="M4 14.5v1.5h12v-1.5"/>',
+  bank: '<circle cx="4.8" cy="5.5" r="1" fill="currentColor" stroke="none"/><circle cx="4.8" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="4.8" cy="14.5" r="1" fill="currentColor" stroke="none"/><path d="M8.3 5.5H16M8.3 10H16M8.3 14.5H16"/>',
+  sparkle: '<path d="M8.4 2.8l1.3 3.5 3.5 1.3-3.5 1.3-1.3 3.5-1.3-3.5L3.6 7.6l3.5-1.3z"/><path d="M14.4 11.6l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/>',
+  trophy: '<path d="M6.5 3.5h7v4.2a3.5 3.5 0 0 1-7 0z"/><path d="M6.5 4.8H4.1a2.2 2.2 0 0 0 2.4 3.1"/><path d="M13.5 4.8h2.4a2.2 2.2 0 0 1-2.4 3.1"/><path d="M10 11.2v2.4"/><path d="M6.8 16.5h6.4"/><path d="M8.2 13.6h3.6v2.9H8.2z"/>',
 };
 
 export function icon(name) {
