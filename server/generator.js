@@ -3,8 +3,9 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { runClaude, CLAUDE_MODEL } from './claude.js';
-import { loadPuzzles, addPuzzle, validatePuzzle, modelFamily } from './puzzles.js';
+import { loadPuzzles, addPuzzle, validatePuzzle, modelFamily, httpUrl } from './puzzles.js';
 import { render, TEMPLATE_DIR, LANGUAGE } from './prompt.js';
+import { listSources, addSource, knowsSource } from './sources.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const CANDIDATES_FILE = process.env.CANDIDATES_FILE || path.join(__dirname, '..', 'data', 'candidates.json');
@@ -13,6 +14,10 @@ export const GENERATOR_MODEL = process.env.GENERATOR_MODEL || CLAUDE_MODEL;
 /** Built-in CLI tools the writer may use (web search for inspiration). Set GENERATOR_TOOLS="" to disable. */
 export const GENERATOR_TOOLS = (process.env.GENERATOR_TOOLS ?? 'WebSearch,WebFetch').split(',').map((s) => s.trim()).filter(Boolean);
 export const GENERATOR_TIMEOUT_MS = Number(process.env.GENERATOR_TIMEOUT_MS || 6 * 60_000);
+/** Collecting means searching, fetching and reading a page, so it gets longer. */
+export const COLLECT_TIMEOUT_MS = Number(process.env.COLLECT_TIMEOUT_MS || 10 * 60_000);
+export const COLLECT_COUNT = Number(process.env.COLLECT_COUNT || 5);
+export const WEB_SOURCE_MODEL = 'web-search';
 export const DIFFICULTIES = ['mixed', 'easy', 'medium', 'hard'];
 const MAX_COUNT = 6;
 
@@ -104,6 +109,42 @@ function formatExisting(list) {
   return list.map((p) => `- ${p.title} (${p.difficulty}): ${p.situation.replace(/\s+/g, ' ')}\n  Solution: ${p.solution.replace(/\s+/g, ' ')}`).join('\n');
 }
 
+function formatSources(list) {
+  if (!list.length) return '(none yet — any page is new)';
+  return list.map((s) => `- ${s.url}${s.title ? ` — ${s.title}` : ''} (${s.kept} puzzle${s.kept === 1 ? '' : 's'} taken)`).join('\n');
+}
+
+/** Titles and situations only: the collector needs to recognise a duplicate, not to copy solutions. */
+function formatExistingBrief(list) {
+  if (!list.length) return '(none yet)';
+  return list.map((p) => `- ${p.title}: ${p.situation.replace(/\s+/g, ' ').slice(0, 160)}`).join('\n');
+}
+
+export function buildCollectPrompt({ count }) {
+  const existing = [...loadPuzzles(), ...loadCandidates()];
+  const system = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'collect-system.md'), 'utf8'), { LANGUAGE }).trim();
+  const user = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'collect.md'), 'utf8'), {
+    LANGUAGE,
+    COUNT: count,
+    EXISTING_SOURCES: formatSources(listSources()),
+    EXISTING_PUZZLES: formatExistingBrief(existing),
+  });
+  return { system, user };
+}
+
+/** Pull the JSON object out of a collector reply. */
+export function parseCollection(text) {
+  let s = String(text).trim();
+  const fence = s.match(/```(?:json)?\s*([\s\S]*?)```/i);
+  if (fence) s = fence[1].trim();
+  const start = s.indexOf('{');
+  const end = s.lastIndexOf('}');
+  if (start < 0 || end <= start) throw new Error('no JSON object in the reply');
+  const obj = JSON.parse(s.slice(start, end + 1));
+  if (!obj || typeof obj !== 'object') throw new Error('reply is not a JSON object');
+  return { source: obj.source || {}, puzzles: Array.isArray(obj.puzzles) ? obj.puzzles : [] };
+}
+
 export function buildGeneratePrompt({ count, difficulty }) {
   const existing = [...loadPuzzles(), ...loadCandidates()];
   const system = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'generate-system.md'), 'utf8'), { LANGUAGE }).trim();
@@ -140,12 +181,68 @@ export function getJob(id) { return jobs.get(id) || null; }
 export function listJobs() { return [...jobs.values()].slice(-10).reverse(); }
 export function runningJob() { return running; }
 
+/** One collection run: search for a page nobody has used yet, read it, and take its puzzles. */
+export function startCollection({ count = COLLECT_COUNT, model = GENERATOR_MODEL } = {}) {
+  count = Math.max(1, Math.min(MAX_COUNT, Number(count) || COLLECT_COUNT));
+  if (running) throw Object.assign(new Error('A generation is already running'), { status: 409 });
+  const job = {
+    id: crypto.randomUUID(), kind: 'collect', status: 'running', count, model, tools: GENERATOR_TOOLS,
+    startedAt: new Date().toISOString(), finishedAt: null, added: [], dropped: [], error: null,
+    cost: null, tokens: null, webSearches: 0, source: null,
+  };
+  jobs.set(job.id, job);
+  running = job;
+  (async () => {
+    try {
+      if (!GENERATOR_TOOLS.length) throw new Error('Web search is disabled (GENERATOR_TOOLS is empty)');
+      const { system, user } = buildCollectPrompt({ count });
+      const raw = await runClaude({ system, user, model, tools: GENERATOR_TOOLS, timeoutMs: COLLECT_TIMEOUT_MS });
+      job.cost = raw.cost ?? null;
+      job.tokens = raw.tokens ?? null;
+      job.webSearches = raw.webSearches ?? 0;
+      const { source, puzzles } = parseCollection(raw.text);
+      const url = httpUrl(source.url);
+      if (!url) throw new Error('the reply did not name a usable source page');
+      job.source = { url, title: String(source.title || '').slice(0, 120) };
+      if (knowsSource(url)) job.dropped.push({ title: job.source.title || url, reason: 'this source has been used before' });
+
+      const list = loadCandidates();
+      let kept = 0;
+      for (const item of puzzles) {
+        let puzzle;
+        try {
+          puzzle = validatePuzzle({ ...item, model: WEB_SOURCE_MODEL, sourceUrl: url });
+        } catch (e) {
+          job.dropped.push({ title: item?.title || '(untitled)', reason: e.message });
+          continue;
+        }
+        const reason = duplicateReason(puzzle, [...loadPuzzles(), ...list]);
+        if (reason) { job.dropped.push({ title: puzzle.title, reason }); continue; }
+        list.push({ ...puzzle, inspiration: '', candidateId: crypto.randomUUID(), createdAt: new Date().toISOString(), jobId: job.id });
+        job.added.push(list[list.length - 1].candidateId);
+        kept++;
+      }
+      saveCandidates();
+      addSource({ url, title: job.source.title, puzzles: puzzles.length, kept });
+      job.status = 'done';
+    } catch (e) {
+      job.status = 'error';
+      job.error = e.message;
+    } finally {
+      job.finishedAt = new Date().toISOString();
+      running = null;
+      console.log(`[collect] ${job.status}: ${job.added.length} kept, ${job.dropped.length} dropped, source ${job.source?.url || '(none)'}${job.error ? `, error: ${job.error}` : ''}`);
+    }
+  })();
+  return job;
+}
+
 export function startGeneration({ count, difficulty, model = GENERATOR_MODEL }) {
   count = Math.max(1, Math.min(MAX_COUNT, Number(count) || 5));
   if (!DIFFICULTIES.includes(difficulty)) difficulty = 'mixed';
   if (running) throw Object.assign(new Error('A generation is already running'), { status: 409 });
   const job = {
-    id: crypto.randomUUID(), status: 'running', count, difficulty, model, tools: GENERATOR_TOOLS,
+    id: crypto.randomUUID(), kind: 'generate', status: 'running', count, difficulty, model, tools: GENERATOR_TOOLS,
     startedAt: new Date().toISOString(), finishedAt: null, added: [], dropped: [], error: null, cost: null, tokens: null, webSearches: 0,
   };
   jobs.set(job.id, job);

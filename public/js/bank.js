@@ -117,7 +117,7 @@ function render() {
       <td class="title">${p.rating ? `<span class="row-rating ${p.rating}" title="${p.rating === 'up' ? 'You liked this puzzle' : 'You did not like this puzzle'}">${icon(p.rating === 'up' ? 'thumbUp' : 'thumbDown')}</span>` : ''}<a href="/?id=${encodeURIComponent(p.id)}">${escapeHtml(p.title)}</a>
         <div class="excerpt">${escapeHtml(p.situation.length > 140 ? p.situation.slice(0, 140) + '…' : p.situation)}</div></td>
       <td class="difficulty-cell" data-difficulty="${escapeHtml(p.difficulty)}">${difficultyBadge(p.difficulty)}</td>
-      <td class="model-cell">${p.model ? `<span class="model" title="Written by Claude ${escapeHtml(p.model)}">${escapeHtml(p.model)}</span>` : '<span class="excerpt">—</span>'}</td>
+      <td class="model-cell">${p.model ? `<span class="model" title="${p.model === 'web-search' ? `Collected from the web${p.sourceUrl ? `: ${escapeHtml(p.sourceUrl)}` : ''}` : `Written by Claude ${escapeHtml(p.model)}`}">${escapeHtml(p.model.replace(/-/g, ' '))}</span>` : '<span class="excerpt">—</span>'}</td>
       <td>${badge(p.status, STATUS_LABEL[p.status])}</td>
       <td>${score(p)}</td>
       <td>${p.hintsGiven}/${p.hintCount}</td>

@@ -9,7 +9,8 @@ import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, que
 import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
 import { getScoring, saveScoring, DEFAULT_SCORING } from './scoring.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
-import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, startGeneration, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
+import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, COLLECT_COUNT, startGeneration, startCollection, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
+import { listSources } from './sources.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
@@ -287,7 +288,7 @@ app.post('/api/puzzles/:id/chat', async (req, res) => {
 // Puzzle generation and review
 // ---------------------------------------------------------------------------
 app.get('/api/generate/config', (req, res) => {
-  res.json({ model: GENERATOR_MODEL, gameMasterModel: CLAUDE_MODEL, tools: GENERATOR_TOOLS, difficulties: GEN_DIFFICULTIES, maxCount: 6, running: runningJob(), jobs: listJobs() });
+  res.json({ model: GENERATOR_MODEL, gameMasterModel: CLAUDE_MODEL, tools: GENERATOR_TOOLS, difficulties: GEN_DIFFICULTIES, maxCount: 6, collectCount: COLLECT_COUNT, sources: listSources().length, running: runningJob(), jobs: listJobs() });
 });
 
 app.post('/api/generate', (req, res) => {
@@ -298,6 +299,18 @@ app.post('/api/generate', (req, res) => {
     res.status(e.status || 500).json({ error: e.message });
   }
 });
+
+/** Collect puzzles from a web page nobody has used yet. */
+app.post('/api/collect', (req, res) => {
+  try {
+    const job = startCollection({ count: req.body?.count });
+    res.status(202).json({ job });
+  } catch (e) {
+    res.status(e.status || 500).json({ error: e.message });
+  }
+});
+
+app.get('/api/sources', (req, res) => res.json(listSources()));
 
 app.get('/api/generate/jobs/:id', (req, res) => {
   const job = getJob(req.params.id);

@@ -2,7 +2,7 @@ import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, 
 
 const $ = (id) => document.getElementById(id);
 const els = {
-  title: $('puzzle-title'), difficulty: $('puzzle-difficulty'), status: $('puzzle-status'), situation: $('situation'), questionCount: $('question-count'), tries: $('try-count'),
+  title: $('puzzle-title'), difficulty: $('puzzle-difficulty'), status: $('puzzle-status'), situation: $('situation'), source: $('puzzle-source'), questionCount: $('question-count'), tries: $('try-count'),
   banner: $('solved-banner'), bannerText: $('solved-text'), next: $('next-puzzle'), newPuzzle: $('new-puzzle'),
   log: $('chat-log'), composer: $('composer'), input: $('input'), send: $('send'), hintLine: $('hint-line'),
   grid: document.querySelector('.play-grid'), help: $('help-panel'), helpToggle: $('help-toggle'), helpClose: $('help-close'),
@@ -102,6 +102,8 @@ function renderPuzzle() {
   els.status.innerHTML = badge(pr.status, STATUS_LABEL[pr.status]);
   els.situation.textContent = p.situation;
   els.situation.classList.remove('loading');
+  els.source.hidden = !p.sourceUrl;
+  if (p.sourceUrl) els.source.innerHTML = `Source: <a href="${escapeHtml(p.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(p.sourceUrl)}</a>`;
   const n = pr.questionsAsked || 0, t = pr.guesses || 0;
   els.questionCount.textContent = plural(n, 'question');
   els.tries.textContent = plural(t, 'try', 'tries');

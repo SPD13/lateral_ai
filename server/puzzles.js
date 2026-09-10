@@ -27,7 +27,7 @@ export function getPuzzle(id) {
 
 /** Public view of a puzzle: never includes the solution, key facts or hints. */
 export function publicPuzzle(p) {
-  return { id: p.id, title: p.title, difficulty: p.difficulty, situation: p.situation, hintCount: p.hints.length, addedAt: p.addedAt, model: p.model || '' };
+  return { id: p.id, title: p.title, difficulty: p.difficulty, situation: p.situation, hintCount: p.hints.length, addedAt: p.addedAt, model: p.model || '', sourceUrl: p.sourceUrl || null };
 }
 
 function validate(p, i) {
@@ -45,9 +45,10 @@ export function validatePuzzle(p) {
   if (!DIFFICULTIES.includes(p.difficulty)) throw new Error(`unknown difficulty "${p.difficulty}"`);
   const strings = (arr) => (Array.isArray(arr) ? arr.filter((x) => typeof x === 'string' && x.trim()).map((x) => x.trim()) : []);
   const addedAt = typeof p.addedAt === 'string' && !Number.isNaN(Date.parse(p.addedAt)) ? p.addedAt : null;
+  const sourceUrl = httpUrl(p.sourceUrl);
   return {
     id, title: p.title.trim(), difficulty: p.difficulty, situation: p.situation.trim(), solution: p.solution.trim(),
-    keyFacts: strings(p.keyFacts), hints: strings(p.hints), addedAt, model: modelFamily(p.model),
+    keyFacts: strings(p.keyFacts), hints: strings(p.hints), addedAt, model: modelFamily(p.model), sourceUrl,
   };
 }
 
@@ -80,6 +81,16 @@ export function deletePuzzle(id) {
   fs.renameSync(tmp, PUZZLES_FILE);
   loadPuzzles(); // refresh the cache from the new mtime
   return removed;
+}
+
+/** An http(s) link, or null. Anything else (javascript:, data:, nonsense) is dropped. */
+export function httpUrl(value) {
+  try {
+    const u = new URL(String(value));
+    return u.protocol === 'http:' || u.protocol === 'https:' ? u.href : null;
+  } catch {
+    return null;
+  }
 }
 
 /** The model family that wrote a puzzle: fable, opus, sonnet, haiku, or the raw name when unknown. */
