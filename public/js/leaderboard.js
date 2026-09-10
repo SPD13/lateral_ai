@@ -1,4 +1,4 @@
-import { api, escapeHtml, loadHeaderStats, renderProfileBar, wireProgressIO, editTextInline, activeProfileId, setActiveProfileId, iconButton, confirmModal } from './common.js';
+import { api, escapeHtml, loadHeaderStats, renderProfileBar, wireProgressIO, editTextInline, activeProfileId, setActiveProfileId, iconButton, confirmModal, renderNavIcons } from './common.js';
 
 const rowsEl = document.getElementById('rows');
 const nameEl = document.getElementById('current-name');
@@ -35,6 +35,8 @@ async function load() {
   loadHeaderStats();
   renderProfileBar();
 }
+
+renderNavIcons();
 
 // rename the active profile in place
 nameEl.addEventListener('dblclick', () => {

@@ -29,7 +29,8 @@ button { font: inherit; cursor: pointer; }
 .brand h1 { font-size: 22px; margin: 0; letter-spacing: -.01em; }
 .brand .tagline { color: var(--muted); font-size: 13px; }
 .site-nav { display: flex; gap: 4px; margin-left: auto; }
-.site-nav a { text-decoration: none; color: var(--ink); padding: 6px 12px; border-radius: 8px; font-weight: 500; }
+.site-nav a { text-decoration: none; color: var(--ink); padding: 6px 12px; border-radius: 8px; font-weight: 500; display: inline-flex; align-items: center; gap: 7px; }
+.site-nav a .icon { width: 18px; height: 18px; flex: none; }
 .site-nav a.active, .site-nav a:hover { background: var(--accent-soft); color: var(--ink); }
 .game-details { display: flex; gap: 14px; color: var(--muted); font-size: 13px; flex-wrap: wrap; width: 100%; }
 .game-details b { color: var(--ink); font-weight: 600; }
@@ -94,6 +95,12 @@ select.btn { padding-right: 28px; }
 .play-grid.help-hidden { grid-template-columns: 1fr; }
 .play-grid.help-hidden .help { display: none; }
 @media (max-width: 860px) { .play-grid { grid-template-columns: 1fr; } .play-grid .help { order: -1; } }
+/* small screens: the header links keep their icon and drop the words */
+@media (max-width: 720px) {
+  .site-nav a { padding: 8px; gap: 0; }
+  .site-nav a .label { display: none; }
+  .site-nav a .icon { width: 20px; height: 20px; }
+}
 .help-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
 .help-head h3 { margin: 0; }
 .icon-btn.small { width: 28px; height: 28px; }

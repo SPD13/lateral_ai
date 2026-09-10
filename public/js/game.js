@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, renderProfileBar, icon } from './common.js';
+import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, renderProfileBar, icon, renderNavIcons } from './common.js';
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -250,6 +250,8 @@ els.gmHelp.addEventListener('change', async () => {
   catch (err) { els.gmHelp.checked = !els.gmHelp.checked; alert(err.message); }
   finally { els.gmHelp.disabled = false; }
 });
+
+renderNavIcons();
 
 renderProfileBar();
 

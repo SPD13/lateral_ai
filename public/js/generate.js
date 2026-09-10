@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, loadHeaderStats, renderProfileBar } from './common.js';
+import { api, escapeHtml, badge, loadHeaderStats, renderProfileBar, renderNavIcons } from './common.js';
 
 const $ = (id) => document.getElementById(id);
 const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count') };
@@ -109,6 +109,8 @@ els.list.addEventListener('click', async (e) => {
     for (const b of card.querySelectorAll('button')) b.disabled = false;
   }
 });
+
+renderNavIcons();
 
 els.form.addEventListener('submit', async (e) => {
   e.preventDefault();

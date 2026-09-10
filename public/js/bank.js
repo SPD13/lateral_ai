@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, iconButton, renderProfileBar, wireProgressIO } from './common.js';
+import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, iconButton, renderProfileBar, wireProgressIO, renderNavIcons } from './common.js';
 
 const rowsEl = document.getElementById('rows');
 const searchEl = document.getElementById('search');
@@ -130,6 +130,8 @@ async function load() {
   loadHeaderStats();
   renderProfileBar();
 }
+
+renderNavIcons();
 
 for (const el of [searchEl, statusEl, diffEl, addedEl]) el.addEventListener('input', render);
 
