@@ -86,6 +86,17 @@ export function createProfile(name) {
   return { id, name: d.users[id].name, createdAt: d.users[id].createdAt };
 }
 
+/** Remove a profile and everything it holds. Refuses to remove the last one. */
+export function deleteProfile(id) {
+  const d = load();
+  if (!d.users[id]) return null;
+  if (Object.keys(d.users).length <= 1) throw new Error('This is the only profile, so it cannot be deleted');
+  const removed = { id, name: displayName(id, d.users[id]), puzzles: Object.keys(d.users[id].puzzles || {}).length };
+  delete d.users[id];
+  save();
+  return removed;
+}
+
 export function renameProfile(id, name) {
   const d = load();
   if (!d.users[id]) return null;
