@@ -2,15 +2,80 @@ import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, 
 
 const $ = (id) => document.getElementById(id);
 const els = {
-  title: $('puzzle-title'), difficulty: $('puzzle-difficulty'), status: $('puzzle-status'), situation: $('situation'), count: $('question-count'), tries: $('try-count'),
-  banner: $('solved-banner'), bannerText: $('solved-text'), next: $('next-puzzle'), newPuzzle: $('new-puzzle'), diffFilter: $('difficulty-filter'),
+  title: $('puzzle-title'), difficulty: $('puzzle-difficulty'), status: $('puzzle-status'), situation: $('situation'), questionCount: $('question-count'), tries: $('try-count'),
+  banner: $('solved-banner'), bannerText: $('solved-text'), next: $('next-puzzle'), newPuzzle: $('new-puzzle'),
   log: $('chat-log'), composer: $('composer'), input: $('input'), send: $('send'), hintLine: $('hint-line'),
   grid: document.querySelector('.play-grid'), help: $('help-panel'), helpToggle: $('help-toggle'), helpClose: $('help-close'),
   gmHelp: $('gm-help'), resetPuzzle: $('reset-puzzle'), rating: $('rating'), rateUp: $('rate-up'), rateDown: $('rate-down'),
+  count: $('filter-count'),
+  filters: { status: $('filter-status'), added: $('filter-added'), rating: $('filter-rating'), model: $('filter-model'), difficulty: $('difficulty-filter') },
 };
 const modeButtons = [...document.querySelectorAll('.mode')];
 
-const state = { puzzle: null, progress: null, mode: 'question', busy: false, rating: null };
+const state = { puzzle: null, progress: null, mode: 'question', busy: false, rating: null, list: [] };
+
+// ---------------------------------------------------------------------------
+// Which puzzles "Next puzzle" may pick from. The choice is kept on this device.
+// ---------------------------------------------------------------------------
+const FILTER_KEY = 'lg_play_filters';
+
+function readFilters() {
+  const values = {};
+  for (const [key, el] of Object.entries(els.filters)) values[key] = el.value;
+  return values;
+}
+
+function saveFilters() {
+  try { localStorage.setItem(FILTER_KEY, JSON.stringify(readFilters())); } catch { /* storage unavailable */ }
+}
+
+/** What was stored on this device; the model list only exists after the puzzles load, so it is kept here. */
+let storedFilters = null;
+
+function restoreFilters() {
+  try { storedFilters = JSON.parse(localStorage.getItem(FILTER_KEY) || 'null'); } catch { storedFilters = null; }
+  if (!storedFilters) return;
+  for (const [key, el] of Object.entries(els.filters)) applyStored(key, el);
+}
+
+function applyStored(key, el) {
+  const value = storedFilters?.[key];
+  if (typeof value === 'string' && [...el.options].some((o) => o.value === value)) el.value = value;
+}
+
+function matchesFilters(p) {
+  const f = readFilters();
+  const days = Number(f.added) || 0;
+  if (f.status && p.status !== f.status) return false;
+  if (f.difficulty && p.difficulty !== f.difficulty) return false;
+  if (f.model && p.model !== f.model) return false;
+  if (f.rating && (f.rating === 'none' ? !!p.rating : p.rating !== f.rating)) return false;
+  if (days && !(p.addedAt && Date.parse(p.addedAt) >= Date.now() - days * 86400000)) return false;
+  return true;
+}
+
+function matching() { return state.list.filter(matchesFilters); }
+
+/** The count at the end of the filter line, and the state of the buttons that need a puzzle to go to. */
+function renderCount() {
+  const n = matching().length;
+  els.count.textContent = n ? plural(n, 'puzzle') : 'No puzzles';
+  els.count.classList.toggle('empty', n === 0);
+  els.newPuzzle.disabled = n === 0;
+  els.next.disabled = n === 0;
+}
+
+/** Refresh the list of puzzles with this player's status and ratings. */
+async function loadList() {
+  try {
+    state.list = await api('/api/puzzles');
+    const models = [...new Set(state.list.map((p) => p.model).filter(Boolean))].sort();
+    const chosen = els.filters.model.value;
+    els.filters.model.innerHTML = `<option value="">Any model</option>${models.map((m) => `<option value="${escapeHtml(m)}"${m === chosen ? ' selected' : ''}>${escapeHtml(m)}</option>`).join('')}`;
+    if (!chosen) applyStored('model', els.filters.model); // the stored model becomes selectable only now
+    renderCount();
+  } catch { /* keep whatever we had */ }
+}
 
 const PLACEHOLDERS = {
   question: 'Is the man alone?',
@@ -38,7 +103,7 @@ function renderPuzzle() {
   els.situation.textContent = p.situation;
   els.situation.classList.remove('loading');
   const n = pr.questionsAsked || 0, t = pr.guesses || 0;
-  els.count.textContent = plural(n, 'question');
+  els.questionCount.textContent = plural(n, 'question');
   els.tries.textContent = plural(t, 'try', 'tries');
   const done = pr.status === 'solved' || pr.status === 'revealed';
   els.banner.hidden = !done;
@@ -116,16 +181,14 @@ async function openPuzzle(id) {
   loadHeaderStats();
 }
 
+/** A random puzzle among those the filters allow, avoiding the one on screen when there is a choice. */
 async function openRandom() {
-  const params = new URLSearchParams();
-  if (state.puzzle) params.set('exclude', state.puzzle.id);
-  if (els.diffFilter.value) params.set('difficulty', els.diffFilter.value);
-  const p = await api(`/api/puzzles/random?${params}`);
-  if (p.allDone) {
-    const goBank = await confirmModal({ title: 'All puzzles done', body: 'You have solved or revealed every puzzle in this difficulty. Reset some from the question bank to play them again, or keep replaying.', confirmLabel: 'Open question bank' });
-    if (goBank) { location.href = '/bank'; return; }
-  }
-  await openPuzzle(p.id);
+  if (!state.list.length) await loadList();
+  const pool = matching();
+  const others = pool.filter((p) => !state.puzzle || p.id !== state.puzzle.id);
+  const from = others.length ? others : pool;
+  if (!from.length) { renderCount(); return; }
+  await openPuzzle(from[Math.floor(Math.random() * from.length)].id);
 }
 
 /** Interpret slash shortcuts typed in the box. Returns { intent, text }. */
@@ -165,6 +228,7 @@ async function send(intent, text) {
     state.progress = { ...state.progress, ...res.progress, history: [...(state.progress.history || []), { role: 'user', intent, text: shown }, m] };
     renderPuzzle();
     loadHeaderStats();
+    loadList();
     setMode(res.reply.verdict === 'close' ? 'guess' : 'question');
   } catch (err) {
     typing.remove();
@@ -213,6 +277,7 @@ els.rating.addEventListener('click', async (e) => {
   try {
     const res = await api(`/api/puzzles/${encodeURIComponent(state.puzzle.id)}/rating`, { method: 'PUT', body: { rating: next } });
     state.rating = res.rating;
+    loadList();
   } catch (err) {
     state.rating = previous;
     alert(err.message);
@@ -230,7 +295,7 @@ els.resetPuzzle.addEventListener('click', async () => {
   });
   if (!ok) return;
   els.resetPuzzle.disabled = true;
-  try { await api('/api/progress/reset', { method: 'POST', body: { puzzleId: state.puzzle.id } }); await openPuzzle(state.puzzle.id); }
+  try { await api('/api/progress/reset', { method: 'POST', body: { puzzleId: state.puzzle.id } }); await openPuzzle(state.puzzle.id); await loadList(); }
   catch (err) { showError(err); }
 });
 
@@ -244,6 +309,8 @@ els.difficulty.addEventListener('dblclick', () => {
     onSaved: (difficulty) => { state.puzzle.difficulty = difficulty; renderPuzzle(); loadHeaderStats(); },
   });
 });
+
+for (const el of Object.values(els.filters)) el.addEventListener('change', () => { saveFilters(); renderCount(); });
 
 els.newPuzzle.addEventListener('click', () => openRandom().catch(showError));
 els.next.addEventListener('click', () => openRandom().catch(showError));
@@ -289,5 +356,8 @@ renderNavIcons();
 
 renderProfileBar();
 
+restoreFilters();
 const initialId = new URLSearchParams(location.search).get('id');
-(initialId ? openPuzzle(initialId).catch(() => openRandom()) : openRandom()).catch(showError);
+loadList()
+  .then(() => (initialId ? openPuzzle(initialId).catch(() => openRandom()) : openRandom()))
+  .catch(showError);

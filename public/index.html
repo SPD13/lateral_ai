@@ -20,6 +20,49 @@
 
   <main class="container">
     <section class="card puzzle-card" id="puzzle-card">
+      <div class="puzzle-controls">
+        <label class="switch" title="On: the game master may add a short clarification or pointer. Off: strict yes / no / irrelevant answers only.">
+          <input type="checkbox" id="gm-help" checked> Game master help
+        </label>
+        <span class="filters" role="group" aria-label="Which puzzles to play next">
+          <select class="btn small" id="filter-status" title="Only play puzzles with this status">
+            <option value="">Any status</option>
+            <option value="new" selected>New</option>
+            <option value="tried">Tried</option>
+            <option value="solved">Solved</option>
+            <option value="revealed">Revealed</option>
+          </select>
+          <select class="btn small" id="filter-added" title="Only play puzzles added recently">
+            <option value="">Added any time</option>
+            <option value="1">Added today</option>
+            <option value="7">Added this week</option>
+            <option value="30">Added this month</option>
+          </select>
+          <select class="btn small" id="filter-rating" title="Only play puzzles with this rating">
+            <option value="">Any rating</option>
+            <option value="up">Liked</option>
+            <option value="down">Disliked</option>
+            <option value="none">Not rated</option>
+          </select>
+          <select class="btn small" id="filter-model" title="Only play puzzles written by this model">
+            <option value="">Any model</option>
+          </select>
+          <select class="btn small" id="difficulty-filter" title="Only play puzzles of this difficulty">
+            <option value="">Any difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+          <span class="filter-count" id="filter-count"></span>
+        </span>
+        <span class="spacer"></span>
+        <span class="rating" id="rating" role="group" aria-label="Rate this puzzle">
+          <button class="btn icon-btn" id="rate-up" type="button" data-rating="up" title="I liked this puzzle" aria-label="I liked this puzzle" aria-pressed="false"></button>
+          <button class="btn icon-btn" id="rate-down" type="button" data-rating="down" title="I did not like this puzzle" aria-label="I did not like this puzzle" aria-pressed="false"></button>
+        </span>
+        <button class="btn icon-btn danger" id="reset-puzzle" type="button" title="Restart this puzzle" aria-label="Restart this puzzle"></button>
+        <button class="btn icon-btn" id="help-toggle" type="button" aria-controls="help-panel" aria-expanded="true" title="How to play" aria-label="How to play"></button>
+      </div>
       <div class="puzzle-head">
         <h2 id="puzzle-title">Picking a puzzle…</h2>
         <span id="puzzle-difficulty"></span>
@@ -27,22 +70,7 @@
         <span class="counter" id="question-count" title="Yes/no questions answered so far">0 questions</span>
         <span class="counter" id="try-count" title="Solutions submitted so far">0 tries</span>
         <span class="spacer"></span>
-        <label class="switch" title="On: the game master may add a short clarification or pointer. Off: strict yes / no / irrelevant answers only.">
-          <input type="checkbox" id="gm-help" checked> Game master help
-        </label>
-        <select class="btn small" id="difficulty-filter" title="Difficulty for the next puzzle">
-          <option value="">Any difficulty</option>
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
         <button class="btn small with-icon" id="new-puzzle">Next puzzle</button>
-        <span class="rating" id="rating" role="group" aria-label="Rate this puzzle">
-          <button class="btn icon-btn" id="rate-up" type="button" data-rating="up" title="I liked this puzzle" aria-label="I liked this puzzle" aria-pressed="false"></button>
-          <button class="btn icon-btn" id="rate-down" type="button" data-rating="down" title="I did not like this puzzle" aria-label="I did not like this puzzle" aria-pressed="false"></button>
-        </span>
-        <button class="btn icon-btn danger" id="reset-puzzle" type="button" title="Restart this puzzle" aria-label="Restart this puzzle"></button>
-        <button class="btn icon-btn" id="help-toggle" type="button" aria-controls="help-panel" aria-expanded="true" title="How to play" aria-label="How to play"></button>
       </div>
       <p class="situation loading" id="situation">Loading…</p>
       <div class="solved-banner" id="solved-banner" hidden>

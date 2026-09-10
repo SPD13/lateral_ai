@@ -95,8 +95,7 @@ else on the port is named in an error and left alone. More details in [`launcher
 
 Open the game page. The header shows how many puzzles you have solved, and the card below it shows the
 current puzzle: a title, a difficulty badge (double-click it to change the level),  your status on it, how many questions you have asked, and
-the situation itself. **New puzzle** picks another one at random, preferring puzzles you have not solved;
-the dropdown next to it restricts the pick to one difficulty.
+the situation itself. **Next puzzle** picks another one at random from the puzzles the filters allow.
 
 Below the puzzle is the chat with the game master. Type one yes/no question per message and press Enter:
 
@@ -108,7 +107,12 @@ story does not decide it, or answering would give too much away). Open questions
 are not answered; the game master asks you to rephrase, and such messages do not count as questions.
 
 The circular-arrow button in the puzzle card restarts the current puzzle: it discards its conversation,
-score and status after a confirmation, so you can play it from scratch. The two **thumbs** in the puzzle card record what you thought of the puzzle. Click one to rate it, click the
+score and status after a confirmation, so you can play it from scratch. A row of controls above the title decides what you play next: filters for status (New by default), when the
+puzzle was added, your rating, the model that wrote it and the difficulty. The end of that row counts the
+puzzles that match, or shows **No puzzles** in red when nothing does, and **Next puzzle** then has nowhere
+to go. The choice of filters is remembered on this device.
+
+The two **thumbs** on the same row record what you thought of the puzzle. Click one to rate it, click the
 same one again to take the rating back. Ratings are per player, survive restarting the puzzle, travel with
 an export, and can be filtered in the question bank. A **Game master help** switch next
 to the difficulty dropdown (on by default) lets the game master add a short clarification

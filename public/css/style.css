@@ -45,6 +45,12 @@ button { font: inherit; cursor: pointer; }
 /* Cards */
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
 .puzzle-card { margin: 24px 0 20px; }
+.puzzle-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--line); }
+.puzzle-controls .spacer { flex: 1; }
+.puzzle-controls .filters { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.puzzle-controls select { padding: 4px 8px; font-size: 13px; }
+.filter-count { color: var(--muted); font-size: 13px; white-space: nowrap; margin-left: 2px; }
+.filter-count.empty { color: var(--bad); font-weight: 600; }
 .puzzle-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
 .puzzle-head h2 { margin: 0; font-size: 20px; }
 .puzzle-head .spacer { flex: 1; }
