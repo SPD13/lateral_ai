@@ -19,7 +19,7 @@ function sortValue(p, key) {
     case 'title': return p.title.toLowerCase();
     case 'difficulty': return DIFFICULTY_RANK[p.difficulty] ?? 9;
     case 'status': return STATUS_RANK[p.status] ?? 9;
-    case 'score': return p.status === 'solved' ? p.questionsAsked : null;
+    case 'score': return p.status === 'solved' ? p.points : null;
     case 'hints': return p.hintsGiven;
     case 'played': return p.updatedAt ? Date.parse(p.updatedAt) : null;
     case 'added': return p.addedAt ? Date.parse(p.addedAt) : null;
@@ -64,11 +64,32 @@ function playButton(p) {
   return iconButton({ name: 'play', label: 'Play', href, cls: 'primary' });
 }
 
-/** Score shown once a puzzle is solved: the number of yes/no questions it took. */
+function fmtPoints(n) {
+  return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100);
+}
+
+function plural(n, one, many = one + 's') { return `${n} ${n === 1 ? one : many}`; }
+
+/** Long form of how a solved puzzle earned its points, shown as the score's tooltip. */
+function scoreTooltip(p) {
+  const { base, costs } = p.scoreParts;
+  const parts = [`${p.difficulty[0].toUpperCase()}${p.difficulty.slice(1)} puzzle solved: ${base} points`];
+  if (p.questionsAsked) parts.push(`${plural(p.questionsAsked, 'question')} × ${costs.question} = −${fmtPoints(p.questionsAsked * costs.question)}`);
+  if (p.hintsGiven) parts.push(`${plural(p.hintsGiven, 'hint')} × ${costs.hint} = −${fmtPoints(p.hintsGiven * costs.hint)}`);
+  if (p.guesses) parts.push(`${plural(p.guesses, 'try', 'tries')} × ${costs.try} = −${fmtPoints(p.guesses * costs.try)}`);
+  parts.push(`total ${fmtPoints(p.points)} point${p.points === 1 ? '' : 's'}${p.points === 0 ? ' (never below zero)' : ''}`);
+  return parts.join('\n');
+}
+
+/** Score column: the leaderboard points for a solved puzzle, then what it took to get there. */
 function score(p) {
-  const tries = `<span class="tries">${p.guesses} ${p.guesses === 1 ? 'try' : 'tries'}</span>`;
-  if (p.status === 'solved') return `<span class="score">${p.questionsAsked} <small>question${p.questionsAsked === 1 ? '' : 's'}</small>${tries}</span>`;
-  if (p.status === 'tried' && (p.questionsAsked || p.guesses)) return `<span class="score"><span class="excerpt">${p.questionsAsked} so far</span>${tries}</span>`;
+  const tries = `<span class="tries">${plural(p.guesses, 'try', 'tries')}</span>`;
+  if (p.status === 'solved') {
+    return `<span class="score" title="${escapeHtml(scoreTooltip(p))}">
+      <span class="points">${fmtPoints(p.points)} <small>pts</small></span>
+      <span class="tries">${plural(p.questionsAsked, 'question')}</span>${tries}</span>`;
+  }
+  if (p.status === 'tried' && (p.questionsAsked || p.guesses)) return `<span class="score"><span class="excerpt">${plural(p.questionsAsked, 'question')} so far</span>${tries}</span>`;
   return '<span class="excerpt">—</span>';
 }
 

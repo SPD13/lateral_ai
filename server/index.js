@@ -36,13 +36,39 @@ app.use((req, res, next) => {
   next();
 });
 
+/** Points for solving a puzzle, before the penalties below. */
+export const DIFFICULTY_POINTS = { easy: 2, medium: 3, hard: 4 };
+/** Each hint, answered question and submitted solution costs this much. */
+export const SCORE_COSTS = { hint: 0.5, question: 0.1, try: 0.2 };
+
+/** A solved puzzle's contribution: its difficulty value minus the penalties, never below zero. */
+function puzzleScore(entry, puzzle) {
+  const base = DIFFICULTY_POINTS[puzzle.difficulty] ?? 0;
+  const penalty = SCORE_COSTS.hint * (entry.hintsGiven || 0)
+    + SCORE_COSTS.question * questionsAsked(entry)
+    + SCORE_COSTS.try * guessesMade(entry);
+  return Math.max(0, base - penalty);
+}
+
 function summary(entry) {
   return { status: entry.status, hintsGiven: entry.hintsGiven, questionsAsked: questionsAsked(entry), guesses: guessesMade(entry), updatedAt: entry.updatedAt, solvedAt: entry.solvedAt, messageCount: entry.history.length };
 }
 
 function withStatus(p, all) {
   const e = all[p.id];
-  return { ...publicPuzzle(p), status: e ? e.status : STATUS.NEW, hintsGiven: e ? e.hintsGiven : 0, questionsAsked: e ? questionsAsked(e) : 0, guesses: e ? guessesMade(e) : 0, messageCount: e ? e.history.length : 0, updatedAt: e ? e.updatedAt : null };
+  const solved = e && e.status === STATUS.SOLVED;
+  return {
+    ...publicPuzzle(p),
+    status: e ? e.status : STATUS.NEW,
+    hintsGiven: e ? e.hintsGiven : 0,
+    questionsAsked: e ? questionsAsked(e) : 0,
+    guesses: e ? guessesMade(e) : 0,
+    messageCount: e ? e.history.length : 0,
+    updatedAt: e ? e.updatedAt : null,
+    // leaderboard points this puzzle contributes, with the parts so the page can explain them
+    points: solved ? Math.round(puzzleScore(e, p) * 100) / 100 : null,
+    scoreParts: solved ? { base: DIFFICULTY_POINTS[p.difficulty] ?? 0, costs: SCORE_COSTS } : null,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -102,20 +128,6 @@ app.delete('/api/profiles/:id', (req, res) => {
 // ---------------------------------------------------------------------------
 // Leaderboard
 // ---------------------------------------------------------------------------
-/** Points for solving a puzzle, before the penalties below. */
-export const DIFFICULTY_POINTS = { easy: 2, medium: 3, hard: 4 };
-/** Each hint, answered question and submitted solution costs this much. */
-export const SCORE_COSTS = { hint: 0.5, question: 0.1, try: 0.2 };
-
-/** A solved puzzle's contribution: its difficulty value minus the penalties, never below zero. */
-function puzzleScore(entry, puzzle) {
-  const base = DIFFICULTY_POINTS[puzzle.difficulty] ?? 0;
-  const penalty = SCORE_COSTS.hint * (entry.hintsGiven || 0)
-    + SCORE_COSTS.question * questionsAsked(entry)
-    + SCORE_COSTS.try * guessesMade(entry);
-  return Math.max(0, base - penalty);
-}
-
 app.get('/api/leaderboard', (req, res) => {
   const puzzles = new Map(loadPuzzles().map((p) => [p.id, p]));
   const rows = listProfiles().map((profile) => {
