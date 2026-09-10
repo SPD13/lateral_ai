@@ -561,5 +561,103 @@
     ],
     "addedAt": "2026-09-10T03:53:46.004Z",
     "model": "opus"
+  },
+  {
+    "id": "the-torn-suit",
+    "title": "The Torn Suit",
+    "difficulty": "easy",
+    "situation": "A man is doing his job when his suit tears. Fifteen minutes later, he is dead. What happened?",
+    "solution": "The man is an astronaut out on a spacewalk. His spacesuit tears, and he dies from being exposed to the vacuum of space.",
+    "keyFacts": [
+      "He is an astronaut on a spacewalk",
+      "The torn suit is his spacesuit, which exposes him to space"
+    ],
+    "hints": [
+      "He was not at an ordinary workplace.",
+      "His suit was the only thing keeping him alive where he worked.",
+      "He was working outside, far above the Earth."
+    ],
+    "addedAt": "2026-09-10T16:35:33.956Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "bricks-and-beetle",
+    "title": "The Bricks and the Beetle",
+    "difficulty": "medium",
+    "situation": "A dead man lies near a pile of bricks. Nearby, a beetle sits on top of a book. How did he die?",
+    "solution": "The man was an amateur mechanic working under his car, a Volkswagen Beetle, which he had propped up on a pile of bricks. The car fell off the bricks and crushed him. The book is the Volkswagen service manual, and the 'beetle' on top of it is the car itself.",
+    "keyFacts": [
+      "The beetle is a Volkswagen Beetle car, not an insect",
+      "He was a mechanic working under the car",
+      "The car was propped on the bricks and fell on him",
+      "The book is the car's service manual"
+    ],
+    "hints": [
+      "The beetle is much bigger than you think.",
+      "The man was doing some repairs himself, following instructions from the book.",
+      "The beetle has four wheels and was resting on the bricks."
+    ],
+    "addedAt": "2026-09-10T16:36:48.688Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-ship-that-stays",
+    "title": "The Ship That Stays",
+    "difficulty": "medium",
+    "situation": "At the bottom of a sea lies a ship worth millions of dollars. It will never be recovered. Where is it, and why will nobody bring it back?",
+    "solution": "The 'ship' is the Eagle, the Apollo 11 lunar module. It landed in the Sea of Tranquility on the Moon, which has no water, and it will probably stay there for the foreseeable future.",
+    "keyFacts": [
+      "The ship is a spacecraft, the Apollo 11 lunar module Eagle",
+      "The 'sea' is the Sea of Tranquility on the Moon"
+    ],
+    "hints": [
+      "This sea contains no water at all.",
+      "The ship never sailed. It flew.",
+      "Think about 1969 and 'The Eagle has landed.'"
+    ],
+    "addedAt": "2026-09-10T16:36:54.087Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-card-game",
+    "title": "The Card Game",
+    "difficulty": "medium",
+    "situation": "Two people are playing cards. One of them looks around and suddenly realizes he is going to die. What did he see?",
+    "solution": "It is dark outside, so the window works like a mirror. The player sees his own reflection in the window but not his companion's. He realizes the other player is a vampire and that he is in mortal danger.",
+    "keyFacts": [
+      "He sees reflections in a dark window",
+      "His companion has no reflection",
+      "The companion is a vampire"
+    ],
+    "hints": [
+      "What he saw was not in the cards or on the table.",
+      "It was dark outside, and that made the window important.",
+      "Something that should have been there in the glass was missing."
+    ],
+    "addedAt": "2026-09-10T16:36:57.538Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-black-town",
+    "title": "The Black Town",
+    "difficulty": "easy",
+    "situation": "A black man dressed all in black and wearing a black mask stands at a crossroads in a town painted entirely black. All the streetlights are broken and there is no moon. A black-painted car with no headlights drives straight at him but turns in time and doesn't hit him. How did the driver see him?",
+    "solution": "It's daytime and the sun is out. The driver could see the man perfectly well, so the missing moon, the broken streetlights and the unlit headlights make no difference.",
+    "keyFacts": [
+      "It is daytime",
+      "The sun provides the light, so the driver can see him"
+    ],
+    "hints": [
+      "Nobody said anything about what time it was.",
+      "The streetlights, moon and headlights don't matter at all.",
+      "Which light source hasn't been mentioned?"
+    ],
+    "addedAt": "2026-09-10T16:36:59.737Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
   }
 ]
