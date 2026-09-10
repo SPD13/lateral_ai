@@ -229,9 +229,9 @@ minus what it took to get there:
 
 | Item                        | Points |
 |-----------------------------|--------|
-| Easy puzzle solved          | +2     |
-| Medium puzzle solved        | +3     |
-| Hard puzzle solved          | +4     |
+| Easy puzzle solved          | +3     |
+| Medium puzzle solved        | +4     |
+| Hard puzzle solved          | +5     |
 | Each hint used              | −0.5   |
 | Each question answered      | −0.1   |
 | Each solution submitted     | −0.2   |
@@ -239,7 +239,7 @@ minus what it took to get there:
 A puzzle never scores below zero, so a long hunt costs you that puzzle's points but never eats into the
 rest. Puzzles you revealed or are still working on score nothing, and a puzzle deleted from the bank stops
 counting. For example, a hard puzzle solved with 6 questions, 1 hint and 2 tries scores
-4 − 0.6 − 0.5 − 0.4 = **2.5** points.
+5 − 0.6 − 0.5 − 0.4 = **3.5** points.
 
 Those six numbers are only the defaults. **Adjust the scoring weights** at the bottom of the leaderboard
 opens a form with one field per weight; saving stores them and reloads the page, and every score is

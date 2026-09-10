@@ -7,7 +7,7 @@ export const SCORING_FILE = process.env.SCORING_FILE || path.join(__dirname, '..
 
 /** What a solved puzzle is worth, and what each step toward it costs. */
 export const DEFAULT_SCORING = {
-  difficulty: { easy: 2, medium: 3, hard: 4 },
+  difficulty: { easy: 3, medium: 4, hard: 5 },
   costs: { question: 0.1, hint: 0.5, try: 0.2 },
 };
 
