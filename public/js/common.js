@@ -16,9 +16,64 @@ export function escapeHtml(s) {
 }
 
 export const STATUS_LABEL = { new: 'New', tried: 'Tried', solved: 'Solved', revealed: 'Revealed' };
+export const DIFFICULTIES = ['easy', 'medium', 'hard'];
+export const EDIT_DIFFICULTY_HINT = 'Double-click to change the difficulty';
 
-export function badge(kind, text) {
-  return `<span class="badge ${escapeHtml(kind)}">${escapeHtml(text || kind)}</span>`;
+export function badge(kind, text, title) {
+  return `<span class="badge ${escapeHtml(kind)}"${title ? ` title="${escapeHtml(title)}"` : ''}>${escapeHtml(text || kind)}</span>`;
+}
+
+/** The difficulty badge, marked as editable by a double click. */
+export function difficultyBadge(difficulty) {
+  return badge(difficulty, difficulty, EDIT_DIFFICULTY_HINT);
+}
+
+/**
+ * Turn a difficulty badge into a dropdown with Save and Cancel. `container` holds only the badge;
+ * its markup is restored on cancel, and `onSaved(difficulty)` runs once the bank has been updated.
+ */
+export function editDifficulty(container, { id, current, onSaved }) {
+  if (container.dataset.editing === '1') return;
+  container.dataset.editing = '1';
+  const original = container.innerHTML;
+  const editor = document.createElement('span');
+  editor.className = 'difficulty-editor';
+  editor.innerHTML = `
+    <select class="btn small" aria-label="Difficulty">${DIFFICULTIES.map((d) => `<option value="${d}"${d === current ? ' selected' : ''}>${d[0].toUpperCase() + d.slice(1)}</option>`).join('')}</select>
+    <button type="button" class="btn small primary" data-act="save">Save</button>
+    <button type="button" class="btn small" data-act="cancel">Cancel</button>
+    <span class="edit-msg" data-msg></span>`;
+  container.innerHTML = '';
+  container.appendChild(editor);
+  const select = editor.querySelector('select');
+  select.focus();
+
+  const close = () => { container.innerHTML = original; delete container.dataset.editing; };
+  const save = async () => {
+    const value = select.value;
+    if (value === current) return close();
+    for (const el of editor.querySelectorAll('select, button')) el.disabled = true;
+    try {
+      await api(`/api/puzzles/${encodeURIComponent(id)}`, { method: 'PATCH', body: { difficulty: value } });
+      delete container.dataset.editing;
+      await onSaved?.(value);
+    } catch (err) {
+      editor.querySelector('[data-msg]').textContent = err.message;
+      for (const el of editor.querySelectorAll('select, button')) el.disabled = false;
+    }
+  };
+
+  editor.addEventListener('click', (e) => {
+    const act = e.target.closest('[data-act]')?.dataset.act;
+    if (!act) return;
+    e.stopPropagation();
+    if (act === 'cancel') close(); else save();
+  });
+  editor.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { e.stopPropagation(); close(); }
+    if (e.key === 'Enter') { e.preventDefault(); save(); }
+  });
+  editor.addEventListener('dblclick', (e) => e.stopPropagation());
 }
 
 /** Simple confirmation modal. Resolves true when confirmed. */

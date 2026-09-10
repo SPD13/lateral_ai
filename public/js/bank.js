@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, confirmModal, STATUS_LABEL, loadHeaderStats, iconButton, icon } from './common.js';
+import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, iconButton, icon } from './common.js';
 
 const rowsEl = document.getElementById('rows');
 const searchEl = document.getElementById('search');
@@ -89,7 +89,7 @@ function render() {
     <tr data-id="${escapeHtml(p.id)}">
       <td class="title"><a href="/?id=${encodeURIComponent(p.id)}">${escapeHtml(p.title)}</a>
         <div class="excerpt">${escapeHtml(p.situation.length > 140 ? p.situation.slice(0, 140) + '…' : p.situation)}</div></td>
-      <td>${badge(p.difficulty)}</td>
+      <td class="difficulty-cell" data-difficulty="${escapeHtml(p.difficulty)}">${difficultyBadge(p.difficulty)}</td>
       <td>${badge(p.status, STATUS_LABEL[p.status])}</td>
       <td>${score(p)}</td>
       <td>${p.hintsGiven}/${p.hintCount}</td>
@@ -117,6 +117,13 @@ document.querySelector('.bank-table thead').addEventListener('click', (e) => {
   if (sort.key === key) sort.dir = sort.dir === 'asc' ? 'desc' : 'asc';
   else { sort.key = key; sort.dir = 'asc'; }
   render();
+});
+
+rowsEl.addEventListener('dblclick', (e) => {
+  const cell = e.target.closest('.difficulty-cell');
+  if (!cell) return;
+  const id = cell.closest('tr').dataset.id;
+  editDifficulty(cell, { id, current: cell.dataset.difficulty, onSaved: load });
 });
 
 rowsEl.addEventListener('click', async (e) => {
