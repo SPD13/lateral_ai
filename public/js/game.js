@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, confirmModal, STATUS_LABEL, loadHeaderStats, icon } from './common.js';
+import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, icon } from './common.js';
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -33,7 +33,7 @@ function setMode(mode) {
 function renderPuzzle() {
   const p = state.puzzle, pr = state.progress;
   els.title.textContent = p.title;
-  els.difficulty.innerHTML = badge(p.difficulty);
+  if (els.difficulty.dataset.editing !== '1') els.difficulty.innerHTML = difficultyBadge(p.difficulty);
   els.status.innerHTML = badge(pr.status, STATUS_LABEL[pr.status]);
   els.situation.textContent = p.situation;
   els.situation.classList.remove('loading');
@@ -200,6 +200,15 @@ els.resetPuzzle.addEventListener('click', async () => {
   els.resetPuzzle.disabled = true;
   try { await api('/api/progress/reset', { method: 'POST', body: { puzzleId: state.puzzle.id } }); await openPuzzle(state.puzzle.id); }
   catch (err) { showError(err); }
+});
+
+els.difficulty.addEventListener('dblclick', () => {
+  if (!state.puzzle) return;
+  editDifficulty(els.difficulty, {
+    id: state.puzzle.id,
+    current: state.puzzle.difficulty,
+    onSaved: (difficulty) => { state.puzzle.difficulty = difficulty; renderPuzzle(); loadHeaderStats(); },
+  });
 });
 
 els.newPuzzle.addEventListener('click', () => openRandom().catch(showError));

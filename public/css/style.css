@@ -52,6 +52,11 @@ button { font: inherit; cursor: pointer; }
 .badge.solved { background: var(--ok-soft); color: var(--ok); }
 .badge.revealed { background: var(--warn-soft); color: var(--warn); }
 .counter { color: var(--muted); font-size: 13px; }
+.badge[title] { cursor: pointer; }
+.difficulty-editor { display: inline-flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.difficulty-editor select { padding: 4px 8px; font-size: 13px; }
+.difficulty-editor .edit-msg { color: var(--bad); font-size: 12px; }
+.bank-table td.difficulty-cell { min-width: 90px; }
 .score { font-weight: 600; white-space: nowrap; }
 .score small { color: var(--muted); font-weight: 400; }
 .score .tries { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }

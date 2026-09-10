@@ -92,7 +92,7 @@ else on the port is named in an error and left alone. More details in [`launcher
 ## How to play
 
 Open the game page. The header shows how many puzzles you have solved, and the card below it shows the
-current puzzle: a title, a difficulty badge, your status on it, how many questions you have asked, and
+current puzzle: a title, a difficulty badge (double-click it to change the level),  your status on it, how many questions you have asked, and
 the situation itself. **New puzzle** picks another one at random, preferring puzzles you have not solved;
 the dropdown next to it restricts the pick to one difficulty.
 
@@ -149,6 +149,10 @@ used, when you last played it and when it was added.
 | Tried    | You started, but have not found the solution yet                 |
 | Solved   | You found the solution; the score column shows how many questions and tries it took |
 | Revealed | You asked for the solution                                       |
+
+**Double-click a difficulty badge** to change it, in the bank or on the game page. The badge turns into a
+dropdown with **Save** and **Cancel**: pick a level and press Save to write it to the bank for every player,
+or Cancel (or the Escape key) to leave it alone. Hovering the badge shows the same hint.
 
 Use the search box and the status, difficulty and date-added filters to narrow the list. Click a column
 header to sort by it, and click again to reverse; the default is newest additions first.
@@ -305,6 +309,7 @@ img/                         logo sources
 | GET    | `/api/puzzles/random`         | Random puzzle, preferring unsolved; `?exclude=id&difficulty=easy`  |
 | GET    | `/api/puzzles/:id`            | Puzzle plus progress and chat history                              |
 | POST   | `/api/puzzles/:id/chat`       | `{ intent, text }` → `{ reply, progress }`                         |
+| PATCH  | `/api/puzzles/:id`            | Change a puzzle in the bank: `{ difficulty }`                       |
 | DELETE | `/api/puzzles/:id`            | Remove a puzzle from the bank (for every player)                   |
 | GET    | `/api/progress/export`        | Download this player's progress as a JSON file                     |
 | POST   | `/api/progress/import`        | Replace this player's progress with an exported file               |

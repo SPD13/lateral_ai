@@ -4,7 +4,7 @@ import crypto from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle } from './puzzles.js';
+import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle, updatePuzzle } from './puzzles.js';
 import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings, exportProgress, importProgress } from './store.js';
 import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
@@ -203,6 +203,21 @@ app.post('/api/candidates/:id/approve', (req, res) => {
 app.post('/api/candidates/:id/reject', (req, res) => {
   if (!rejectCandidate(req.params.id)) return res.status(404).json({ error: 'Unknown candidate' });
   res.json({ ok: true });
+});
+
+/** Change a puzzle in the bank (currently its difficulty); the change is visible to every player. */
+app.patch('/api/puzzles/:id', (req, res) => {
+  const patch = {};
+  if (req.body?.difficulty !== undefined) patch.difficulty = String(req.body.difficulty);
+  if (!Object.keys(patch).length) return res.status(400).json({ error: 'Nothing to update' });
+  try {
+    const puzzle = updatePuzzle(req.params.id, patch);
+    if (!puzzle) return res.status(404).json({ error: 'Unknown puzzle' });
+    console.log(`[bank] "${puzzle.title}" difficulty -> ${puzzle.difficulty}`);
+    res.json({ puzzle: publicPuzzle(puzzle) });
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
 });
 
 /** Remove a puzzle from the bank for everyone; this player's progress on it is dropped too. */
