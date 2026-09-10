@@ -78,7 +78,7 @@ async function loadList() {
 }
 
 const PLACEHOLDERS = {
-  question: 'Is the man alone?',
+  question: 'Ask a yes/no question',
   guess: 'Describe what you think happened…',
   hint: 'Press Send to get the next hint',
   reveal: 'Press Send to give up and see the solution',
