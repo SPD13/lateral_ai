@@ -108,7 +108,9 @@ story does not decide it, or answering would give too much away). Open questions
 are not answered; the game master asks you to rephrase, and such messages do not count as questions.
 
 The circular-arrow button in the puzzle card restarts the current puzzle: it discards its conversation,
-score and status after a confirmation, so you can play it from scratch. A **Game master help** switch next
+score and status after a confirmation, so you can play it from scratch. The two **thumbs** in the puzzle card record what you thought of the puzzle. Click one to rate it, click the
+same one again to take the rating back. Ratings are per player, survive restarting the puzzle, travel with
+an export, and can be filtered in the question bank. A **Game master help** switch next
 to the difficulty dropdown (on by default) lets the game master add a short clarification
 to an answer, suggest what to ask when a message is not a yes/no question, and point at what is missing in a
 close guess. It also makes the judging kinder: a guess that gets the core plot twist right counts as correct
@@ -171,7 +173,8 @@ the score shows the full calculation.
 dropdown with **Save** and **Cancel**: pick a level and press Save to write it to the bank for every player,
 or Cancel (or the Escape key) to leave it alone. Hovering the badge shows the same hint.
 
-Use the search box and the status, model, difficulty and date-added filters to narrow the list. Click a column
+Use the search box and the status, rating, model, difficulty and date-added filters to narrow the list. A
+puzzle you rated shows its thumb next to the title. Click a column
 header to sort by it, and click again to reverse; the default is newest additions first.
 
 Each row has three icon buttons:
@@ -374,6 +377,7 @@ img/                         logo sources
 | GET    | `/api/puzzles/:id`            | Puzzle plus progress and chat history                              |
 | POST   | `/api/puzzles/:id/chat`       | `{ intent, text }` → `{ reply, progress }`                         |
 | PATCH  | `/api/puzzles/:id`            | Change a puzzle in the bank: `{ difficulty }`                       |
+| PUT    | `/api/puzzles/:id/rating`     | Rate a puzzle: `{ rating: "up" | "down" | null }`                   |
 | DELETE | `/api/puzzles/:id`            | Remove a puzzle from the bank (for every player)                   |
 | GET    | `/api/progress/export`        | Download this player's progress as a JSON file                     |
 | POST   | `/api/progress/import`        | Replace this player's progress with an exported file               |

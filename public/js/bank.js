@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, iconButton, renderProfileBar, wireProgressIO, renderNavIcons } from './common.js';
+import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, iconButton, renderProfileBar, wireProgressIO, renderNavIcons, icon } from './common.js';
 
 const rowsEl = document.getElementById('rows');
 const searchEl = document.getElementById('search');
@@ -7,6 +7,7 @@ const diffEl = document.getElementById('filter-difficulty');
 const countEl = document.getElementById('count');
 const addedEl = document.getElementById('filter-added');
 const modelEl = document.getElementById('filter-model');
+const ratingEl = document.getElementById('filter-rating');
 
 let puzzles = [];
 // Newest additions first by default; clicking a header sorts ascending, clicking again descending.
@@ -102,8 +103,10 @@ function render() {
   const days = Number(addedEl.value) || 0;
   const since = days ? Date.now() - days * 86400000 : 0;
   const md = modelEl.value;
+  const rt = ratingEl.value;
   const list = sortPuzzles(puzzles.filter((p) =>
     (!st || p.status === st) && (!df || p.difficulty === df) && (!md || p.model === md) &&
+    (!rt || (rt === 'none' ? !p.rating : p.rating === rt)) &&
     (!since || (p.addedAt && Date.parse(p.addedAt) >= since)) &&
     (!q || p.title.toLowerCase().includes(q) || p.situation.toLowerCase().includes(q))));
   renderSortIndicators();
@@ -111,7 +114,7 @@ function render() {
   if (!list.length) { rowsEl.innerHTML = '<tr><td colspan="9" class="empty">No puzzles match these filters.</td></tr>'; return; }
   rowsEl.innerHTML = list.map((p) => `
     <tr data-id="${escapeHtml(p.id)}">
-      <td class="title"><a href="/?id=${encodeURIComponent(p.id)}">${escapeHtml(p.title)}</a>
+      <td class="title">${p.rating ? `<span class="row-rating ${p.rating}" title="${p.rating === 'up' ? 'You liked this puzzle' : 'You did not like this puzzle'}">${icon(p.rating === 'up' ? 'thumbUp' : 'thumbDown')}</span>` : ''}<a href="/?id=${encodeURIComponent(p.id)}">${escapeHtml(p.title)}</a>
         <div class="excerpt">${escapeHtml(p.situation.length > 140 ? p.situation.slice(0, 140) + '…' : p.situation)}</div></td>
       <td class="difficulty-cell" data-difficulty="${escapeHtml(p.difficulty)}">${difficultyBadge(p.difficulty)}</td>
       <td class="model-cell">${p.model ? `<span class="model" title="Written by Claude ${escapeHtml(p.model)}">${escapeHtml(p.model)}</span>` : '<span class="excerpt">—</span>'}</td>
@@ -138,7 +141,7 @@ async function load() {
 
 renderNavIcons();
 
-for (const el of [searchEl, statusEl, diffEl, addedEl, modelEl]) el.addEventListener('input', render);
+for (const el of [searchEl, statusEl, diffEl, addedEl, modelEl, ratingEl]) el.addEventListener('input', render);
 
 /** The filter lists the models actually present in the bank. */
 function fillModelFilter() {

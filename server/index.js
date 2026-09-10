@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle, updatePuzzle } from './puzzles.js';
-import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings, exportProgress, importProgress, listProfiles, profileExists, getProfile, createProfile, renameProfile, deleteProfile } from './store.js';
+import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings, getRatings, setRating, RATINGS, exportProgress, importProgress, listProfiles, profileExists, getProfile, createProfile, renameProfile, deleteProfile } from './store.js';
 import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
 import { getScoring, saveScoring, DEFAULT_SCORING } from './scoring.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
@@ -50,7 +50,7 @@ function summary(entry) {
   return { status: entry.status, hintsGiven: entry.hintsGiven, questionsAsked: questionsAsked(entry), guesses: guessesMade(entry), updatedAt: entry.updatedAt, solvedAt: entry.solvedAt, messageCount: entry.history.length };
 }
 
-function withStatus(p, all) {
+function withStatus(p, all, ratings = {}) {
   const e = all[p.id];
   const solved = e && e.status === STATUS.SOLVED;
   return {
@@ -61,6 +61,7 @@ function withStatus(p, all) {
     guesses: e ? guessesMade(e) : 0,
     messageCount: e ? e.history.length : 0,
     updatedAt: e ? e.updatedAt : null,
+    rating: ratings[p.id] || null,
     // leaderboard points this puzzle contributes, with the parts so the page can explain them
     points: solved ? Math.round(puzzleScore(e, p) * 100) / 100 : null,
     scoreParts: solved ? { base: getScoring().difficulty[p.difficulty] ?? 0, costs: getScoring().costs } : null,
@@ -188,7 +189,17 @@ app.put('/api/settings', (req, res) => {
 
 app.get('/api/puzzles', (req, res) => {
   const all = getAllProgress(req.userId);
-  res.json(loadPuzzles().map((p) => withStatus(p, all)));
+  const ratings = getRatings(req.userId);
+  res.json(loadPuzzles().map((p) => withStatus(p, all, ratings)));
+});
+
+/** The active profile's opinion of a puzzle: "up", "down", or null to clear it. */
+app.put('/api/puzzles/:id/rating', (req, res) => {
+  const p = getPuzzle(req.params.id);
+  if (!p) return res.status(404).json({ error: 'Unknown puzzle' });
+  const asked = req.body?.rating ?? null;
+  if (asked !== null && !RATINGS.includes(asked)) return res.status(400).json({ error: `rating must be ${RATINGS.join(', ')} or null` });
+  res.json({ rating: setRating(req.userId, p.id, asked) });
 });
 
 /** Random puzzle, preferring ones not yet solved or revealed; `exclude` avoids repeating the current one. */
@@ -201,14 +212,14 @@ app.get('/api/puzzles/random', (req, res) => {
   const fresh = pool.filter((p) => ![STATUS.SOLVED, STATUS.REVEALED].includes(all[p.id]?.status));
   const pick = (fresh.length ? fresh : pool)[Math.floor(Math.random() * (fresh.length ? fresh : pool).length)];
   if (!pick) return res.status(404).json({ error: 'No puzzles available' });
-  res.json({ ...withStatus(pick, all), allDone: fresh.length === 0 });
+  res.json({ ...withStatus(pick, all, getRatings(req.userId)), allDone: fresh.length === 0 });
 });
 
 app.get('/api/puzzles/:id', (req, res) => {
   const p = getPuzzle(req.params.id);
   if (!p) return res.status(404).json({ error: 'Unknown puzzle' });
   const e = getProgress(req.userId, p.id);
-  res.json({ puzzle: publicPuzzle(p), progress: { ...summary(e), history: e.history } });
+  res.json({ puzzle: publicPuzzle(p), progress: { ...summary(e), history: e.history, rating: getRatings(req.userId)[p.id] || null } });
 });
 
 if (DEBUG) {

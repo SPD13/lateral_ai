@@ -65,6 +65,13 @@ button { font: inherit; cursor: pointer; }
 .difficulty-editor select { padding: 4px 8px; font-size: 13px; }
 .difficulty-editor .edit-msg { color: var(--bad); font-size: 12px; }
 .bank-table td.difficulty-cell { min-width: 90px; }
+.rating { display: inline-flex; gap: 4px; }
+.rating .icon-btn.active[data-rating="up"] { color: var(--ok); border-color: var(--ok); background: var(--ok-soft); }
+.rating .icon-btn.active[data-rating="down"] { color: var(--bad); border-color: var(--bad); background: var(--bad-soft); }
+.row-rating { display: inline-block; vertical-align: -3px; margin-right: 6px; }
+.row-rating .icon { width: 15px; height: 15px; }
+.row-rating.up { color: var(--ok); }
+.row-rating.down { color: var(--bad); }
 .model { font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
 .score { font-weight: 600; white-space: nowrap; }
 .score small { color: var(--muted); font-weight: 400; }
