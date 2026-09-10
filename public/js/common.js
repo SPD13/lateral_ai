@@ -301,6 +301,8 @@ const ICON_PATHS = {
   upload: '<path d="M10 12V3"/><path d="M6.5 6.5L10 3l3.5 3.5"/><path d="M4 14.5v1.5h12v-1.5"/>',
   bank: '<circle cx="4.8" cy="5.5" r="1" fill="currentColor" stroke="none"/><circle cx="4.8" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="4.8" cy="14.5" r="1" fill="currentColor" stroke="none"/><path d="M8.3 5.5H16M8.3 10H16M8.3 14.5H16"/>',
   sparkle: '<path d="M8.4 2.8l1.3 3.5 3.5 1.3-3.5 1.3-1.3 3.5-1.3-3.5L3.6 7.6l3.5-1.3z"/><path d="M14.4 11.6l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/>',
+  thumbUp: '<path d="M6 9v7.5H4A1 1 0 0 1 3 15.5V10a1 1 0 0 1 1-1z"/><path d="M6 9l3.4-5.6A1.6 1.6 0 0 1 12 4.7l-.8 3.6h3.9a1.6 1.6 0 0 1 1.6 2l-1.3 5a1.6 1.6 0 0 1-1.6 1.2H6z"/>',
+  thumbDown: '<path d="M6 11V3.5H4A1 1 0 0 0 3 4.5V10a1 1 0 0 0 1 1z"/><path d="M6 11l3.4 5.6a1.6 1.6 0 0 0 2.6-1.3l-.8-3.6h3.9a1.6 1.6 0 0 0 1.6-2l-1.3-5A1.6 1.6 0 0 0 13.8 3.5H6z"/>',
   next: '<path d="M4.5 5.5L9 10l-4.5 4.5"/><path d="M10.5 5.5L15 10l-4.5 4.5"/>',
   trophy: '<path d="M6.5 3.5h7v4.2a3.5 3.5 0 0 1-7 0z"/><path d="M6.5 4.8H4.1a2.2 2.2 0 0 0 2.4 3.1"/><path d="M13.5 4.8h2.4a2.2 2.2 0 0 1-2.4 3.1"/><path d="M10 11.2v2.4"/><path d="M6.8 16.5h6.4"/><path d="M8.2 13.6h3.6v2.9H8.2z"/>',
 };

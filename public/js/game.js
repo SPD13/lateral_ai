@@ -6,11 +6,11 @@ const els = {
   banner: $('solved-banner'), bannerText: $('solved-text'), next: $('next-puzzle'), newPuzzle: $('new-puzzle'), diffFilter: $('difficulty-filter'),
   log: $('chat-log'), composer: $('composer'), input: $('input'), send: $('send'), hintLine: $('hint-line'),
   grid: document.querySelector('.play-grid'), help: $('help-panel'), helpToggle: $('help-toggle'), helpClose: $('help-close'),
-  gmHelp: $('gm-help'), resetPuzzle: $('reset-puzzle'),
+  gmHelp: $('gm-help'), resetPuzzle: $('reset-puzzle'), rating: $('rating'), rateUp: $('rate-up'), rateDown: $('rate-down'),
 };
 const modeButtons = [...document.querySelectorAll('.mode')];
 
-const state = { puzzle: null, progress: null, mode: 'question', busy: false };
+const state = { puzzle: null, progress: null, mode: 'question', busy: false, rating: null };
 
 const PLACEHOLDERS = {
   question: 'Is the man alone?',
@@ -46,6 +46,7 @@ function renderPuzzle() {
     ? `Solved in ${plural(n, 'question')} and ${plural(t, 'try', 'tries')}${pr.hintsGiven ? `, with ${plural(pr.hintsGiven, 'hint')}` : ''}. Nicely done.`
     : 'Solution revealed. Better luck on the next one.';
   els.resetPuzzle.disabled = !(pr.history || []).length;
+  renderRating();
   document.title = `LateralAI · ${p.title}`;
   history.replaceState(null, '', `/?id=${encodeURIComponent(p.id)}`);
 }
@@ -109,7 +110,7 @@ function setBusy(b) {
 // ---------------------------------------------------------------------------
 async function openPuzzle(id) {
   const data = await api(`/api/puzzles/${encodeURIComponent(id)}`);
-  state.puzzle = data.puzzle; state.progress = data.progress;
+  state.puzzle = data.puzzle; state.progress = data.progress; state.rating = data.progress.rating || null;
   renderPuzzle(); renderHistory();
   setMode('question');
   loadHeaderStats();
@@ -188,6 +189,37 @@ els.log.addEventListener('click', (e) => {
   if (act === 'retry') { setMode('guess'); }
   if (act === 'reveal') { send('reveal', ''); }
 });
+// ---------------------------------------------------------------------------
+// Rating: a thumb up or down per puzzle, clicking the active one clears it
+// ---------------------------------------------------------------------------
+els.rateUp.innerHTML = icon('thumbUp');
+els.rateDown.innerHTML = icon('thumbDown');
+
+function renderRating() {
+  for (const btn of [els.rateUp, els.rateDown]) {
+    const on = state.rating === btn.dataset.rating;
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-pressed', String(on));
+  }
+}
+
+els.rating.addEventListener('click', async (e) => {
+  const btn = e.target.closest('[data-rating]');
+  if (!btn || !state.puzzle) return;
+  const next = state.rating === btn.dataset.rating ? null : btn.dataset.rating;
+  const previous = state.rating;
+  state.rating = next;
+  renderRating();
+  try {
+    const res = await api(`/api/puzzles/${encodeURIComponent(state.puzzle.id)}/rating`, { method: 'PUT', body: { rating: next } });
+    state.rating = res.rating;
+  } catch (err) {
+    state.rating = previous;
+    alert(err.message);
+  }
+  renderRating();
+});
+
 els.resetPuzzle.innerHTML = icon('reset');
 els.resetPuzzle.addEventListener('click', async () => {
   if (!state.puzzle || state.busy) return;

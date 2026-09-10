@@ -37,6 +37,10 @@
           <option value="hard">Hard</option>
         </select>
         <button class="btn small with-icon" id="new-puzzle">Next puzzle</button>
+        <span class="rating" id="rating" role="group" aria-label="Rate this puzzle">
+          <button class="btn icon-btn" id="rate-up" type="button" data-rating="up" title="I liked this puzzle" aria-label="I liked this puzzle" aria-pressed="false"></button>
+          <button class="btn icon-btn" id="rate-down" type="button" data-rating="down" title="I did not like this puzzle" aria-label="I did not like this puzzle" aria-pressed="false"></button>
+        </span>
         <button class="btn icon-btn danger" id="reset-puzzle" type="button" title="Restart this puzzle" aria-label="Restart this puzzle"></button>
         <button class="btn icon-btn" id="help-toggle" type="button" aria-controls="help-panel" aria-expanded="true" title="How to play" aria-label="How to play"></button>
       </div>
@@ -98,6 +102,12 @@
         <ul>
           <li>Pick <b>Give up: show solution</b> or type <code>/solution</code>. You will be asked to confirm.</li>
           <li>The puzzle is then marked as <em>revealed</em>. You can reset it from the question bank.</li>
+        </ul>
+
+        <h4>Rate a puzzle</h4>
+        <ul>
+          <li>The thumbs in the puzzle card record what you thought of it. Click the same thumb again to take your rating back.</li>
+          <li>Ratings are yours alone, survive a restart of the puzzle, and can be filtered in the question bank.</li>
         </ul>
 
         <h4>Restart a puzzle</h4>

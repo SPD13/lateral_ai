@@ -161,6 +161,7 @@ export function exportProgress(userId) {
     exportedAt: new Date().toISOString(),
     profile: displayName(userId, rec),
     settings: rec.settings || {},
+    ratings: rec.ratings || {},
     puzzles: rec.puzzles || {},
   };
 }
@@ -204,8 +205,30 @@ export function importProgress(userId, data) {
   if (data.settings && typeof data.settings === 'object' && 'gmHelp' in data.settings) {
     rec.settings = { ...(rec.settings || {}), gmHelp: !!data.settings.gmHelp };
   }
+  if (data.ratings && typeof data.ratings === 'object' && !Array.isArray(data.ratings)) {
+    rec.ratings = Object.fromEntries(Object.entries(data.ratings).filter(([, v]) => RATINGS.includes(v)));
+  }
   save();
   return { puzzles: Object.keys(clean).length, messages: Object.values(clean).reduce((n, e) => n + e.history.length, 0) };
+}
+
+// ---------------------------------------------------------------------------
+// Puzzle ratings: a thumb up or down per player and puzzle. Kept outside the
+// progress entries so resetting a puzzle does not throw the opinion away.
+// ---------------------------------------------------------------------------
+export const RATINGS = ['up', 'down'];
+
+export function getRatings(userId) {
+  return { ...(userRecord(userId).ratings || {}) };
+}
+
+export function setRating(userId, puzzleId, rating) {
+  const rec = userRecord(userId);
+  rec.ratings = rec.ratings || {};
+  if (RATINGS.includes(rating)) rec.ratings[puzzleId] = rating;
+  else delete rec.ratings[puzzleId];
+  save();
+  return rec.ratings[puzzleId] || null;
 }
 
 /** Per-player settings (not touched by a progress reset). */
