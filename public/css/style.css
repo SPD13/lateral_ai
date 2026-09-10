@@ -243,6 +243,8 @@ select.btn { padding-right: 28px; }
 .candidate h3 { margin: 0; font-size: 17px; }
 .candidate .situation { font-size: 16px; }
 .candidate .inspiration { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+.source-line { color: var(--muted); font-size: 13px; margin: 8px 0 0; word-break: break-all; }
+.source-line a { color: var(--info); }
 .candidate .reveal-btn { margin-top: 12px; }
 .candidate .solution { margin-top: 10px; padding: 12px 14px; border-radius: 10px; background: var(--info-soft); }
 .candidate .solution p { margin: 0 0 6px; } .candidate .solution ul, .candidate .solution ol { margin: 0 0 8px; padding-left: 20px; }

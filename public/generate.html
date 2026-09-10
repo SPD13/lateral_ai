@@ -39,6 +39,18 @@
       <div class="gen-status" id="gen-status" hidden></div>
     </section>
 
+    <section class="card gen-card" id="collect-card">
+      <div class="gen-form">
+        <button class="btn primary with-icon" id="collect" type="submit">Search the web</button>
+        <span class="gen-model" id="collect-sources"></span>
+      </div>
+      <p class="gen-note">This looks for a page of lateral thinking puzzles nobody has used yet, reads it, and
+        takes its puzzles as they are written there, adding hints and a difficulty so they fit the game. Pages
+        already visited are listed in the briefing so each search finds somewhere new, and every puzzle is
+        checked against the bank before it appears below. Collected puzzles keep a link to their source.</p>
+      <div class="gen-status" id="collect-status" hidden></div>
+    </section>
+
     <h2 class="section-title">Awaiting review <span class="count" id="pending-count"></span></h2>
     <div class="candidates" id="candidates"><div class="empty">Loading…</div></div>
   </main>

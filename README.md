@@ -211,7 +211,8 @@ a correct answer must contain, up to three progressive hints, and the date it wa
   "keyFacts": ["Romeo and Juliet are fish (goldfish)", "Their bowl fell and broke"],
   "hints": ["Romeo and Juliet are not human.", "Think about what the water and glass were before they ended up on the floor.", "They lived in the water."],
   "addedAt": "2026-09-09T18:55:08.000Z",
-  "model": "fable"
+  "model": "fable",
+  "sourceUrl": null
 }
 ```
 
@@ -302,6 +303,23 @@ node scripts/generate-puzzles.js --count 3 --difficulty hard --model opus
 node scripts/generate-puzzles.js --count 3 --difficulty mixed --dry-run   # print without saving
 ```
 
+### Collecting puzzles from the web
+
+The second card on the Generate page, **Search the web**, collects puzzles that already exist online instead
+of writing new ones. One press sends the model out with web search: it looks for a page of lateral thinking
+puzzles, checks it against the pages already used, reads it, and brings back up to five of its puzzles
+rewritten only as far as the game needs. It keeps the source's facts, adds the three hints and the difficulty
+that a source rarely provides, and skips anything close to a puzzle already in the game.
+
+Results land in the same **Awaiting review** list as generated puzzles, each showing its source link, and are
+checked against the bank again before they appear. Approved ones are stored with the model `web-search`
+instead of a model family, and keep their source: the question bank shows it in the model tooltip, and the
+play page shows a **Source** link under the situation that opens in a new tab.
+
+Pages that have been visited are recorded in `data/sources.json`, with or without a usable puzzle, and every
+later search is told about them so it looks somewhere new. The briefing lives in
+`server/templates/collect.md`.
+
 ### Tuning the prompts
 
 Every prompt sent to Claude is a markdown template under `server/templates/`, re-read on each request so
@@ -315,6 +333,8 @@ edits apply without a restart:
   player's Game master help switch).
 - `generate-system.md` and `generate.md`: the puzzle writer's briefing. Placeholders: `{{COUNT}}`,
   `{{DIFFICULTY}}`, `{{EXISTING_COUNT}}`, `{{EXISTING_PUZZLES}}`, `{{LANGUAGE}}`.
+- `collect-system.md` and `collect.md`: the web collector's briefing. Placeholders: `{{COUNT}}`,
+  `{{EXISTING_SOURCES}}`, `{{EXISTING_PUZZLES}}`, `{{LANGUAGE}}`.
 
 `{{LANGUAGE}}` comes from `GAME_LANGUAGE` (default English) and every template tells the model to use
 it regardless of the language the player types in.
@@ -337,10 +357,12 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 | `GENERATOR_MODEL`      | same as `CLAUDE_MODEL` | Puzzle writer model used when generating new questions             |
 | `GENERATOR_TOOLS`      | `WebSearch,WebFetch` | CLI tools the puzzle writer may use; `""` disables web search        |
 | `GENERATOR_TIMEOUT_MS` | `360000`             | Timeout for one generation run                                       |
+| `COLLECT_TIMEOUT_MS`   | `600000`             | Timeout for one web collection run                                   |
+| `COLLECT_COUNT`        | `5`                  | How many puzzles one web collection run may take from a page         |
 | `CLAUDE_BIN`           | `claude`             | Path to the CLI                                                      |
 | `CLAUDE_TIMEOUT_MS`    | `90000`              | Timeout for one chat reply                                           |
 | `LG_DEBUG`             | unset                | `1` enables the rendered-prompt endpoint                             |
-| `PUZZLES_FILE`, `PROGRESS_FILE`, `CANDIDATES_FILE`, `SCORING_FILE`, `TEMPLATE_DIR` | project paths | Override file locations |
+| `PUZZLES_FILE`, `PROGRESS_FILE`, `CANDIDATES_FILE`, `SCORING_FILE`, `SOURCES_FILE`, `TEMPLATE_DIR` | project paths | Override file locations |
 
 ## Project layout
 
@@ -349,10 +371,12 @@ data/puzzles.json            the puzzle bank
 data/progress.json           player profiles and their progress, created at runtime (gitignored)
 data/candidates.json         generated puzzles awaiting review, created at runtime (gitignored)
 data/scoring.json            scoring weights, written when they are changed (gitignored)
+data/sources.json            web pages the collector has used, created at runtime (gitignored)
 server/index.js              Express app and API
 server/claude.js             runs `claude -p` and parses its JSON reply
 server/prompt.js             renders the game master templates
-server/generator.js          puzzle writer: prompt, duplicate check, generation jobs, review queue
+server/generator.js          puzzle writer and web collector: prompts, duplicate check, jobs, review queue
+server/sources.js            the web pages the collector has already visited
 server/puzzles.js            loads, validates, adds and deletes puzzles
 server/store.js              progress persistence
 server/templates/            all prompt templates (see Tuning the prompts)
@@ -388,6 +412,8 @@ img/                         logo sources
 | POST   | `/api/progress/reset`         | `{ puzzleId }` to reset one, `{}` to reset everything              |
 | GET    | `/api/generate/config`        | Writer model, tools, running job and recent jobs                   |
 | POST   | `/api/generate`               | `{ count, difficulty }` → `202 { job }`; poll the job              |
+| POST   | `/api/collect`                | Search the web for a new source and take its puzzles → `202 { job }` |
+| GET    | `/api/sources`                | Web pages the collector has already used                            |
 | GET    | `/api/generate/jobs/:id`      | Job status: `running`, `done` (added, dropped, tokens) or `error`  |
 | GET    | `/api/candidates`             | Generated puzzles awaiting review (with solutions)                 |
 | POST   | `/api/candidates/:id/approve` | Add the candidate to the bank                                      |

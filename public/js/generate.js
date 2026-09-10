@@ -1,16 +1,25 @@
 import { api, escapeHtml, badge, loadHeaderStats, renderProfileBar, renderNavIcons } from './common.js';
 
 const $ = (id) => document.getElementById(id);
-const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count') };
+const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count'),
+  collect: $('collect'), collectStatus: $('collect-status'), collectSources: $('collect-sources') };
 
 let config = null;
 let pollTimer = null;
 let ticker = null;
 
-function setStatus(html, kind = '') {
-  els.status.hidden = !html;
-  els.status.className = `gen-status ${kind}`;
-  els.status.innerHTML = html;
+/** Both cards share this: a running job writes into the card it belongs to. */
+function statusEl(job) { return job?.kind === 'collect' ? els.collectStatus : els.status; }
+
+function setStatus(html, kind = '', el = els.status) {
+  el.hidden = !html;
+  el.className = `gen-status ${kind}`;
+  el.innerHTML = html;
+}
+
+function setBusy(busy) {
+  els.generate.disabled = busy;
+  els.collect.disabled = busy;
 }
 
 function elapsed(iso) {
@@ -19,19 +28,26 @@ function elapsed(iso) {
 }
 
 function showJob(job) {
+  const el = statusEl(job);
+  const collecting = job.kind === 'collect';
   if (job.status === 'running') {
-    els.generate.disabled = true;
-    const line = () => setStatus(`<span class="spinner"></span> Writing ${job.count} ${job.difficulty === 'mixed' ? '' : job.difficulty + ' '}puzzle${job.count === 1 ? '' : 's'} with claude ${escapeHtml(job.model)}… ${elapsed(job.startedAt)}. This can take a few minutes.`, 'running');
+    setBusy(true);
+    const line = () => setStatus(collecting
+      ? `<span class="spinner"></span> Searching the web for a new source, reading it and formatting what it holds… ${elapsed(job.startedAt)}. This can take several minutes.`
+      : `<span class="spinner"></span> Writing ${job.count} ${job.difficulty === 'mixed' ? '' : job.difficulty + ' '}puzzle${job.count === 1 ? '' : 's'} with claude ${escapeHtml(job.model)}… ${elapsed(job.startedAt)}. This can take a few minutes.`, 'running', el);
     line();
     clearInterval(ticker); ticker = setInterval(line, 1000);
     return;
   }
   clearInterval(ticker);
-  els.generate.disabled = false;
-  if (job.status === 'error') { setStatus(`Generation failed: ${escapeHtml(job.error)}`, 'error'); return; }
+  setBusy(false);
+  if (job.status === 'error') { setStatus(`${collecting ? 'Search' : 'Generation'} failed: ${escapeHtml(job.error)}`, 'error', el); return; }
   const dropped = job.dropped.length ? `<ul class="dropped">${job.dropped.map((d) => `<li><b>${escapeHtml(d.title)}</b>: ${escapeHtml(d.reason)}</li>`).join('')}</ul>` : '';
   const tokens = job.tokens ? ` · ${job.tokens.total.toLocaleString()} tokens <span class="excerpt">(${job.tokens.input.toLocaleString()} in, ${job.tokens.output.toLocaleString()} out)</span>` : '';
-  setStatus(`Done in ${elapsed(job.startedAt)}: <b>${job.added.length}</b> new puzzle${job.added.length === 1 ? '' : 's'} to review${job.dropped.length ? `, ${job.dropped.length} dropped` : ''}${tokens}.${dropped}`, 'done');
+  const source = collecting && job.source
+    ? ` from <a href="${escapeHtml(job.source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(job.source.title || job.source.url)}</a>`
+    : '';
+  setStatus(`Done in ${elapsed(job.startedAt)}: <b>${job.added.length}</b> new puzzle${job.added.length === 1 ? '' : 's'} to review${source}${job.dropped.length ? `, ${job.dropped.length} dropped` : ''}${tokens}.${dropped}`, 'done', el);
 }
 
 async function poll(jobId) {
@@ -41,7 +57,7 @@ async function poll(jobId) {
       const { job } = await api(`/api/generate/jobs/${jobId}`);
       showJob(job);
       if (job.status !== 'running') { clearInterval(pollTimer); await loadCandidates(); loadHeaderStats(); }
-    } catch (err) { clearInterval(pollTimer); setStatus(escapeHtml(err.message), 'error'); els.generate.disabled = false; }
+    } catch (err) { clearInterval(pollTimer); setStatus(escapeHtml(err.message), 'error'); setBusy(false); }
   }, 2000);
 }
 
@@ -57,6 +73,7 @@ function candidateEl(c) {
       <span class="excerpt">${escapeHtml(new Date(c.createdAt).toLocaleString())}</span>
     </div>
     <p class="situation">${escapeHtml(c.situation)}</p>
+    ${c.sourceUrl ? `<p class="source-line">Source: <a href="${escapeHtml(c.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(c.sourceUrl)}</a></p>` : ''}
     ${c.inspiration ? `<p class="inspiration">Inspiration: ${escapeHtml(c.inspiration)}</p>` : ''}
     <button class="btn small reveal-btn" type="button" data-act="toggle" aria-expanded="false">Show solution</button>
     <div class="solution" hidden>
@@ -112,14 +129,23 @@ els.list.addEventListener('click', async (e) => {
 
 renderNavIcons();
 
+els.collect.addEventListener('click', async () => {
+  setBusy(true);
+  try {
+    const { job } = await api('/api/collect', { method: 'POST', body: {} });
+    showJob(job);
+    poll(job.id);
+  } catch (err) { setStatus(escapeHtml(err.message), 'error', els.collectStatus); setBusy(false); }
+});
+
 els.form.addEventListener('submit', async (e) => {
   e.preventDefault();
-  els.generate.disabled = true;
+  setBusy(true);
   try {
     const { job } = await api('/api/generate', { method: 'POST', body: { count: Number(els.count.value), difficulty: els.difficulty.value } });
     showJob(job);
     poll(job.id);
-  } catch (err) { setStatus(escapeHtml(err.message), 'error'); els.generate.disabled = false; }
+  } catch (err) { setStatus(escapeHtml(err.message), 'error'); setBusy(false); }
 });
 
 async function init() {
@@ -127,6 +153,9 @@ async function init() {
   els.count.max = config.maxCount;
   els.model.innerHTML = `Puzzle writer: <b>claude ${escapeHtml(config.model)}</b>${config.tools.length ? ' with web search' : ''}`;
   els.model.title = 'Set in the launcher (Setup tab) or with the GENERATOR_MODEL environment variable';
+  els.collectSources.textContent = config.sources ? `${config.sources} source${config.sources === 1 ? '' : 's'} used so far` : 'No sources used yet';
+  els.collect.disabled = !config.tools.length;
+  if (!config.tools.length) setStatus('Web search is disabled on this server (GENERATOR_TOOLS is empty).', 'error', els.collectStatus);
   if (config.running) { showJob(config.running); poll(config.running.id); }
   else if (config.jobs[0]) showJob(config.jobs[0]);
   await loadCandidates();
