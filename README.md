@@ -241,6 +241,13 @@ rest. Puzzles you revealed or are still working on score nothing, and a puzzle d
 counting. For example, a hard puzzle solved with 6 questions, 1 hint and 2 tries scores
 4 − 0.6 − 0.5 − 0.4 = **2.5** points.
 
+Those six numbers are only the defaults. **Adjust the scoring weights** at the bottom of the leaderboard
+opens a form with one field per weight; saving stores them and reloads the page, and every score is
+recalculated from the games already played, so nobody has to replay anything. The weights apply to every
+player and are kept in `data/scoring.json`; **Restore defaults** fills the form with the values above,
+ready to save. The explanation, the example and the per-puzzle tooltips in the question bank all follow
+whatever is configured.
+
 ## Generating new questions
 
 Press **Generate new questions** in the question bank (or open the **Generate** page). Choose how many
@@ -322,7 +329,7 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 | `CLAUDE_BIN`           | `claude`             | Path to the CLI                                                      |
 | `CLAUDE_TIMEOUT_MS`    | `90000`              | Timeout for one chat reply                                           |
 | `LG_DEBUG`             | unset                | `1` enables the rendered-prompt endpoint                             |
-| `PUZZLES_FILE`, `PROGRESS_FILE`, `CANDIDATES_FILE`, `TEMPLATE_DIR` | project paths | Override file locations              |
+| `PUZZLES_FILE`, `PROGRESS_FILE`, `CANDIDATES_FILE`, `SCORING_FILE`, `TEMPLATE_DIR` | project paths | Override file locations |
 
 ## Project layout
 
@@ -330,6 +337,7 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 data/puzzles.json            the puzzle bank
 data/progress.json           player profiles and their progress, created at runtime (gitignored)
 data/candidates.json         generated puzzles awaiting review, created at runtime (gitignored)
+data/scoring.json            scoring weights, written when they are changed (gitignored)
 server/index.js              Express app and API
 server/claude.js             runs `claude -p` and parses its JSON reply
 server/prompt.js             renders the game master templates
@@ -355,6 +363,7 @@ img/                         logo sources
 | PATCH  | `/api/profiles/:id`           | Rename a profile: `{ name }`                                       |
 | DELETE | `/api/profiles/:id`           | Delete a profile and its progress (refused for the last one)       |
 | GET    | `/api/leaderboard`            | Ranked profiles with points and solved counts, plus the scoring table |
+| GET/PUT| `/api/scoring`                | The scoring weights shared by every player                          |
 | GET/PUT| `/api/settings`               | Player settings: `{ gmHelp }`                                      |
 | GET    | `/api/puzzles`                | All puzzles with this player's status (no solutions)               |
 | GET    | `/api/puzzles/random`         | Random puzzle, preferring unsolved; `?exclude=id&difficulty=easy`  |

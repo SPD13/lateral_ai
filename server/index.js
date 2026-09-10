@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle, updatePuzzle } from './puzzles.js';
 import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings, exportProgress, importProgress, listProfiles, profileExists, getProfile, createProfile, renameProfile, deleteProfile } from './store.js';
 import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
+import { getScoring, saveScoring, DEFAULT_SCORING } from './scoring.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
 import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, startGeneration, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
 
@@ -36,17 +37,12 @@ app.use((req, res, next) => {
   next();
 });
 
-/** Points for solving a puzzle, before the penalties below. */
-export const DIFFICULTY_POINTS = { easy: 2, medium: 3, hard: 4 };
-/** Each hint, answered question and submitted solution costs this much. */
-export const SCORE_COSTS = { hint: 0.5, question: 0.1, try: 0.2 };
-
 /** A solved puzzle's contribution: its difficulty value minus the penalties, never below zero. */
-function puzzleScore(entry, puzzle) {
-  const base = DIFFICULTY_POINTS[puzzle.difficulty] ?? 0;
-  const penalty = SCORE_COSTS.hint * (entry.hintsGiven || 0)
-    + SCORE_COSTS.question * questionsAsked(entry)
-    + SCORE_COSTS.try * guessesMade(entry);
+function puzzleScore(entry, puzzle, scoring = getScoring()) {
+  const base = scoring.difficulty[puzzle.difficulty] ?? 0;
+  const penalty = scoring.costs.hint * (entry.hintsGiven || 0)
+    + scoring.costs.question * questionsAsked(entry)
+    + scoring.costs.try * guessesMade(entry);
   return Math.max(0, base - penalty);
 }
 
@@ -67,7 +63,7 @@ function withStatus(p, all) {
     updatedAt: e ? e.updatedAt : null,
     // leaderboard points this puzzle contributes, with the parts so the page can explain them
     points: solved ? Math.round(puzzleScore(e, p) * 100) / 100 : null,
-    scoreParts: solved ? { base: DIFFICULTY_POINTS[p.difficulty] ?? 0, costs: SCORE_COSTS } : null,
+    scoreParts: solved ? { base: getScoring().difficulty[p.difficulty] ?? 0, costs: getScoring().costs } : null,
   };
 }
 
@@ -129,6 +125,7 @@ app.delete('/api/profiles/:id', (req, res) => {
 // Leaderboard
 // ---------------------------------------------------------------------------
 app.get('/api/leaderboard', (req, res) => {
+  const scoring = getScoring();
   const puzzles = new Map(loadPuzzles().map((p) => [p.id, p]));
   const rows = listProfiles().map((profile) => {
     const progress = getAllProgress(profile.id);
@@ -139,12 +136,25 @@ app.get('/api/leaderboard', (req, res) => {
       const puzzle = puzzles.get(puzzleId);
       if (!puzzle) continue; // the puzzle was deleted from the bank
       counts[puzzle.difficulty] = (counts[puzzle.difficulty] || 0) + 1;
-      points += puzzleScore(entry, puzzle);
+      points += puzzleScore(entry, puzzle, scoring);
     }
     const solved = counts.easy + counts.medium + counts.hard;
     return { ...profile, points: Math.round(points * 100) / 100, solved, ...counts };
   }).sort((a, b) => b.points - a.points || b.solved - a.solved || a.name.localeCompare(b.name));
-  res.json({ rows, activeId: req.userId, scoring: { difficulty: DIFFICULTY_POINTS, costs: SCORE_COSTS } });
+  res.json({ rows, activeId: req.userId, scoring });
+});
+
+/** The scoring weights, shared by every profile. */
+app.get('/api/scoring', (req, res) => res.json({ scoring: getScoring(), defaults: DEFAULT_SCORING }));
+
+app.put('/api/scoring', (req, res) => {
+  try {
+    const scoring = saveScoring(req.body?.scoring ?? req.body);
+    console.log(`[scoring] updated: ${JSON.stringify(scoring)}`);
+    res.json({ scoring });
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
 });
 
 app.get('/api/me', (req, res) => {

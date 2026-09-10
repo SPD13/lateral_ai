@@ -4,3 +4,4 @@ data/candidates.json
 server/agent-cwd/*
 !server/agent-cwd/.gitkeep
 .DS_Store
+data/scoring.json

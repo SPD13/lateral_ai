@@ -2,6 +2,9 @@ import { api, escapeHtml, loadHeaderStats, renderProfileBar, wireProgressIO, edi
 
 const rowsEl = document.getElementById('rows');
 const nameEl = document.getElementById('current-name');
+const weightsForm = document.getElementById('weights-form');
+const weightsMsg = document.getElementById('weights-msg');
+let defaults = null;
 
 let activeId = null;
 
@@ -25,8 +28,22 @@ function render(rows) {
     </tr>`).join('');
 }
 
+/** Show the weights in force in the explanation, the example and the form. */
+function showScoring(scoring) {
+  const values = { ...scoring.difficulty, ...scoring.costs };
+  for (const [key, value] of Object.entries(values)) {
+    for (const el of document.querySelectorAll(`[data-w="${key}"]`)) el.textContent = fmtPoints(value);
+    const input = weightsForm.elements[key];
+    if (input && document.activeElement !== input) input.value = value;
+  }
+  const total = Math.max(0, scoring.difficulty.hard - 6 * scoring.costs.question - scoring.costs.hint - 2 * scoring.costs.try);
+  document.getElementById('score-example').innerHTML =
+    `Example: a hard puzzle solved with 6 questions, 1 hint and 2 tries scores ${fmtPoints(scoring.difficulty.hard)} − ${fmtPoints(6 * scoring.costs.question)} − ${fmtPoints(scoring.costs.hint)} − ${fmtPoints(2 * scoring.costs.try)} = <b>${fmtPoints(Math.round(total * 100) / 100)}</b> points.`;
+}
+
 async function load() {
   const data = await api('/api/leaderboard');
+  showScoring(data.scoring);
   activeId = activeProfileId() || data.activeId;
   render(data.rows);
   const me = data.rows.find((r) => r.id === activeId);
@@ -71,6 +88,35 @@ rowsEl.addEventListener('click', async (e) => {
     await load();
   } catch (err) { alert(err.message); }
 });
+
+// ---- scoring weights ----
+function formWeights() {
+  const value = (name) => Number(weightsForm.elements[name].value);
+  return { difficulty: { easy: value('easy'), medium: value('medium'), hard: value('hard') },
+           costs: { question: value('question'), hint: value('hint'), try: value('try') } };
+}
+
+weightsForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  weightsMsg.textContent = '';
+  const btn = weightsForm.querySelector('[type=submit]');
+  btn.disabled = true;
+  try {
+    await api('/api/scoring', { method: 'PUT', body: { scoring: formWeights() } });
+    location.reload(); // recalculate every score from the games already played
+  } catch (err) {
+    weightsMsg.textContent = err.message;
+    btn.disabled = false;
+  }
+});
+
+document.getElementById('weights-reset').addEventListener('click', async () => {
+  if (!defaults) return;
+  showScoring(defaults);
+  weightsMsg.textContent = 'Defaults filled in — press Save to apply them.';
+});
+
+api('/api/scoring').then((d) => { defaults = d.defaults; showScoring(d.scoring); }).catch(() => {});
 
 wireProgressIO({
   exportEl: document.getElementById('export-progress'),
