@@ -33,10 +33,10 @@
             <option value="revealed">Revealed</option>
           </select>
           <select class="btn small" id="filter-added" title="Only play puzzles added recently">
-            <option value="">Added any time</option>
-            <option value="1">Added today</option>
-            <option value="7">Added this week</option>
-            <option value="30">Added this month</option>
+            <option value="">Any date</option>
+            <option value="1">Today</option>
+            <option value="7">This week</option>
+            <option value="30">This month</option>
           </select>
           <select class="btn small" id="filter-rating" title="Only play puzzles with this rating">
             <option value="">Any rating</option>
@@ -55,13 +55,16 @@
           </select>
           <span class="filter-count" id="filter-count"></span>
         </span>
+        <button class="btn small with-icon" id="new-puzzle">Next puzzle</button>
         <span class="spacer"></span>
+        <span class="tools">
         <span class="rating" id="rating" role="group" aria-label="Rate this puzzle">
           <button class="btn icon-btn" id="rate-up" type="button" data-rating="up" title="I liked this puzzle" aria-label="I liked this puzzle" aria-pressed="false"></button>
           <button class="btn icon-btn" id="rate-down" type="button" data-rating="down" title="I did not like this puzzle" aria-label="I did not like this puzzle" aria-pressed="false"></button>
         </span>
         <button class="btn icon-btn danger" id="reset-puzzle" type="button" title="Restart this puzzle" aria-label="Restart this puzzle"></button>
         <button class="btn icon-btn" id="help-toggle" type="button" aria-controls="help-panel" aria-expanded="true" title="How to play" aria-label="How to play"></button>
+        </span>
       </div>
       <div class="puzzle-head">
         <h2 id="puzzle-title">Picking a puzzle…</h2>
@@ -69,8 +72,6 @@
         <span id="puzzle-status"></span>
         <span class="counter" id="question-count" title="Yes/no questions answered so far">0 questions</span>
         <span class="counter" id="try-count" title="Solutions submitted so far">0 tries</span>
-        <span class="spacer"></span>
-        <button class="btn small with-icon" id="new-puzzle">Next puzzle</button>
       </div>
       <p class="situation loading" id="situation">Loading…</p>
       <div class="solved-banner" id="solved-banner" hidden>
