@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle } from './puzzles.js';
-import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings } from './store.js';
+import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings, exportProgress, importProgress } from './store.js';
 import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
 import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, startGeneration, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
@@ -17,7 +17,7 @@ const DEBUG = process.env.LG_DEBUG === '1';
 const USER_COOKIE = 'lg_uid';
 
 const app = express();
-app.use(express.json({ limit: '32kb' }));
+app.use(express.json({ limit: '8mb' })); // large enough for a progress import
 app.use(cookieParser());
 
 // ---------------------------------------------------------------------------
@@ -214,6 +214,25 @@ app.delete('/api/puzzles/:id', (req, res) => {
   res.json({ ok: true, remaining: loadPuzzles().length });
 });
 
+/** Download this player's progress as a JSON file. */
+app.get('/api/progress/export', (req, res) => {
+  const data = exportProgress(req.userId);
+  const stamp = new Date().toISOString().slice(0, 10);
+  res.setHeader('Content-Disposition', `attachment; filename="lateralai-progress-${stamp}.json"`);
+  res.type('application/json').send(JSON.stringify(data, null, 2));
+});
+
+/** Replace this player's progress with an exported file. */
+app.post('/api/progress/import', (req, res) => {
+  try {
+    const result = importProgress(req.userId, req.body);
+    console.log(`[progress] imported ${result.puzzles} puzzles, ${result.messages} messages`);
+    res.json(result);
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
 app.post('/api/progress/reset', (req, res) => {
   const puzzleId = req.body?.puzzleId ? String(req.body.puzzleId) : null;
   if (puzzleId && !getPuzzle(puzzleId)) return res.status(404).json({ error: 'Unknown puzzle' });
@@ -229,6 +248,8 @@ app.get('/generate', (req, res) => res.sendFile(path.join(PUBLIC_DIR, 'generate.
 app.use(express.static(PUBLIC_DIR));
 
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+  if (err?.type === 'entity.parse.failed') return res.status(400).json({ error: 'That file is not valid JSON' });
+  if (err?.type === 'entity.too.large') return res.status(413).json({ error: 'That file is too large' });
   console.error(err);
   res.status(500).json({ error: err.message || 'Server error' });
 });

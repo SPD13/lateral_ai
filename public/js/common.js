@@ -67,6 +67,8 @@ const ICON_PATHS = {
   plus: '<path d="M10 4v12M4 10h12"/>',
   help: '<circle cx="10" cy="10" r="7.5"/><path d="M7.7 8.2a2.3 2.3 0 1 1 3.3 2.1c-.7.4-1 .8-1 1.6"/><circle cx="10" cy="14.4" r=".7" fill="currentColor" stroke="none"/>',
   close: '<path d="M5.5 5.5l9 9M14.5 5.5l-9 9" stroke-width="2.4"/>',
+  download: '<path d="M10 3v9"/><path d="M6.5 8.5L10 12l3.5-3.5"/><path d="M4 14.5v1.5h12v-1.5"/>',
+  upload: '<path d="M10 12V3"/><path d="M6.5 6.5L10 3l3.5 3.5"/><path d="M4 14.5v1.5h12v-1.5"/>',
 };
 
 export function icon(name) {

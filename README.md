@@ -164,6 +164,11 @@ Each row has three icon buttons:
 Both Reset and Delete ask for confirmation. **Reset all progress** in the toolbar clears every puzzle at
 once.
 
+**Export** downloads your progress as a JSON file: every puzzle's status, score, hint count and full
+conversation, plus your Game master help setting. **Import** reads such a file back and replaces your
+current progress with it, after a confirmation. Use them to move your progress to another browser or
+machine, or to keep a backup before resetting.
+
 Under the hood the bank is the file `data/puzzles.json`, a JSON array. Each puzzle has an id, a title, a
 difficulty (`easy`, `medium` or `hard`), the situation the player sees, the secret solution, the key facts
 a correct answer must contain, up to three progressive hints, and the date it was added:
@@ -301,6 +306,8 @@ img/                         logo sources
 | GET    | `/api/puzzles/:id`            | Puzzle plus progress and chat history                              |
 | POST   | `/api/puzzles/:id/chat`       | `{ intent, text }` → `{ reply, progress }`                         |
 | DELETE | `/api/puzzles/:id`            | Remove a puzzle from the bank (for every player)                   |
+| GET    | `/api/progress/export`        | Download this player's progress as a JSON file                     |
+| POST   | `/api/progress/import`        | Replace this player's progress with an exported file               |
 | POST   | `/api/progress/reset`         | `{ puzzleId }` to reset one, `{}` to reset everything              |
 | GET    | `/api/generate/config`        | Writer model, tools, running job and recent jobs                   |
 | POST   | `/api/generate`               | `{ count, difficulty }` → `202 { job }`; poll the job              |
