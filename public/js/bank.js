@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, iconButton, icon } from './common.js';
+import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, iconButton, renderProfileBar, wireProgressIO } from './common.js';
 
 const rowsEl = document.getElementById('rows');
 const searchEl = document.getElementById('search');
@@ -107,6 +107,7 @@ async function load() {
   puzzles = await api('/api/puzzles');
   render();
   loadHeaderStats();
+  renderProfileBar();
 }
 
 for (const el of [searchEl, statusEl, diffEl, addedEl]) el.addEventListener('input', render);
@@ -152,32 +153,11 @@ rowsEl.addEventListener('click', async (e) => {
   }
 });
 
-// ---- export / import progress ----
-const exportEl = document.getElementById('export-progress');
-const importEl = document.getElementById('import-progress');
-const fileEl = document.getElementById('import-file');
-exportEl.insertAdjacentHTML('afterbegin', icon('download'));
-importEl.insertAdjacentHTML('afterbegin', icon('upload'));
-
-importEl.addEventListener('click', () => { fileEl.value = ''; fileEl.click(); });
-fileEl.addEventListener('change', async () => {
-  const file = fileEl.files[0];
-  if (!file) return;
-  let data;
-  try { data = JSON.parse(await file.text()); }
-  catch { alert(`${file.name} is not valid JSON.`); return; }
-  const count = data && data.puzzles ? Object.keys(data.puzzles).length : 0;
-  const ok = await confirmModal({
-    title: `Import progress from "${file.name}"?`,
-    body: `This replaces all of your current progress with the ${count} puzzle${count === 1 ? '' : 's'} in the file, including their conversations. Export first if you want to keep what you have.`,
-    confirmLabel: 'Replace my progress', danger: true,
-  });
-  if (!ok) return;
-  try {
-    const res = await api('/api/progress/import', { method: 'POST', body: data });
-    await load();
-    alert(`Imported ${res.puzzles} puzzle${res.puzzles === 1 ? '' : 's'} and ${res.messages} message${res.messages === 1 ? '' : 's'}.`);
-  } catch (err) { alert(err.message); }
+wireProgressIO({
+  exportEl: document.getElementById('export-progress'),
+  importEl: document.getElementById('import-progress'),
+  fileEl: document.getElementById('import-file'),
+  onImported: load,
 });
 
 document.getElementById('reset-all').addEventListener('click', async () => {

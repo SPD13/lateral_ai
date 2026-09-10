@@ -1,7 +1,19 @@
-/* Shared helpers for the game and the bank pages. */
+/* Shared helpers for the game, bank, generate and leaderboard pages. */
+
+/** The player profile chosen on this device. Kept in local storage so it survives a reload. */
+export const PROFILE_KEY = 'lg_profile';
+export function activeProfileId() { try { return localStorage.getItem(PROFILE_KEY) || ''; } catch { return ''; } }
+export function setActiveProfileId(id) { try { id ? localStorage.setItem(PROFILE_KEY, id) : localStorage.removeItem(PROFILE_KEY); } catch { /* storage unavailable */ } }
+/** Add the active profile to a URL, for plain links that cannot send a header. */
+export function withProfile(url) {
+  const id = activeProfileId();
+  return id ? `${url}${url.includes('?') ? '&' : '?'}profile=${encodeURIComponent(id)}` : url;
+}
+
 export async function api(path, opts = {}) {
+  const profile = activeProfileId();
   const res = await fetch(path, {
-    headers: { 'Content-Type': 'application/json', ...(opts.headers || {}) },
+    headers: { 'Content-Type': 'application/json', ...(profile ? { 'X-Profile-Id': profile } : {}), ...(opts.headers || {}) },
     ...opts,
     body: opts.body !== undefined ? JSON.stringify(opts.body) : undefined,
   });
@@ -107,9 +119,157 @@ export async function loadHeaderStats() {
   try {
     const me = await api('/api/me');
     const el = document.getElementById('header-stats');
-    if (el) el.innerHTML = `<span>Solved <b>${me.counts.solved}</b> / ${me.counts.total}</span><span>In progress <b>${me.counts.tried}</b></span><span>Revealed <b>${me.counts.revealed}</b></span><span>Game master: <b>Claude</b> (${escapeHtml(me.model)})</span><span>Player <b>#${escapeHtml(me.userId)}</b></span>`;
+    if (el) el.innerHTML = `<span>Solved <b>${me.counts.solved}</b> / ${me.counts.total}</span><span>In progress <b>${me.counts.tried}</b></span><span>Revealed <b>${me.counts.revealed}</b></span><span>Game master: <b>Claude</b> (${escapeHtml(me.model)})</span>`;
     return me;
   } catch { return null; }
+}
+
+/**
+ * The profile control in the header: the active profile's name, a dropdown when there is more than
+ * one profile, and a "+" button that creates another one. Switching profile reloads the page, since
+ * everything on it belongs to the profile.
+ */
+export async function renderProfileBar() {
+  const el = document.getElementById('profile-bar');
+  if (!el) return null;
+  let data;
+  try { data = await api('/api/profiles'); } catch { return null; }
+  const { profiles } = data;
+  // a stored id that no longer exists (another device, a wiped file) falls back to the server's choice
+  if (activeProfileId() && !profiles.some((p) => p.id === activeProfileId())) setActiveProfileId('');
+  const activeId = activeProfileId() || data.activeId;
+  const active = profiles.find((p) => p.id === activeId) || profiles[0];
+
+  const label = profiles.length > 1
+    ? `<select id="profile-select" class="btn small" aria-label="Active player profile" title="Switch player profile">${profiles.map((p) => `<option value="${escapeHtml(p.id)}"${p.id === active?.id ? ' selected' : ''}>${escapeHtml(p.name)}</option>`).join('')}</select>`
+    : `<b class="profile-name">${escapeHtml(active ? active.name : 'Player')}</b>`;
+  el.innerHTML = `<span class="profile-label">Player</span> ${label} <button type="button" class="btn icon-btn small" id="profile-add" title="Add a player profile" aria-label="Add a player profile">${icon('plus')}</button>`;
+
+  el.querySelector('#profile-select')?.addEventListener('change', (e) => {
+    setActiveProfileId(e.target.value);
+    location.reload();
+  });
+  el.querySelector('#profile-add').addEventListener('click', async () => {
+    const name = await promptModal({ title: 'Add a player profile', label: 'Profile name', placeholder: 'e.g. Alex', confirmLabel: 'Create profile' });
+    if (name === null) return;
+    try {
+      const { profile } = await api('/api/profiles', { method: 'POST', body: { name } });
+      setActiveProfileId(profile.id);
+      location.reload();
+    } catch (err) { alert(err.message); }
+  });
+  return { profiles, active };
+}
+
+/** Modal with a single text field. Resolves with the trimmed text, or null when cancelled. */
+export function promptModal({ title, label = '', value = '', placeholder = '', confirmLabel = 'Save' }) {
+  return new Promise((resolve) => {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop';
+    backdrop.innerHTML = `
+      <form class="modal" role="dialog" aria-modal="true" aria-labelledby="prompt-title">
+        <h3 id="prompt-title">${escapeHtml(title)}</h3>
+        ${label ? `<label class="prompt-label" for="prompt-input">${escapeHtml(label)}</label>` : ''}
+        <input id="prompt-input" class="prompt-input" type="text" value="${escapeHtml(value)}" placeholder="${escapeHtml(placeholder)}" maxlength="40" autocomplete="off">
+        <div class="modal-actions">
+          <button type="button" class="btn" data-act="cancel">Cancel</button>
+          <button type="submit" class="btn primary">${escapeHtml(confirmLabel)}</button>
+        </div>
+      </form>`;
+    const input = backdrop.querySelector('input');
+    const done = (v) => { backdrop.remove(); document.removeEventListener('keydown', onKey); resolve(v); };
+    const onKey = (e) => { if (e.key === 'Escape') done(null); };
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) done(null);
+      if (e.target.closest('[data-act="cancel"]')) done(null);
+    });
+    backdrop.querySelector('form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const v = input.value.trim();
+      if (v) done(v);
+      else input.focus();
+    });
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(backdrop);
+    input.focus();
+    input.select();
+  });
+}
+
+/** Turn a label into a text box with Save and Cancel. `onSaved(text)` runs after a successful save. */
+export function editTextInline(container, { value, onSave, maxLength = 40 }) {
+  if (container.dataset.editing === '1') return;
+  container.dataset.editing = '1';
+  const original = container.innerHTML;
+  const editor = document.createElement('span');
+  editor.className = 'inline-editor';
+  editor.innerHTML = `
+    <input type="text" class="prompt-input" value="${escapeHtml(value)}" maxlength="${maxLength}" aria-label="New name" autocomplete="off">
+    <button type="button" class="btn small primary" data-act="save">Save</button>
+    <button type="button" class="btn small" data-act="cancel">Cancel</button>
+    <span class="edit-msg" data-msg></span>`;
+  container.innerHTML = '';
+  container.appendChild(editor);
+  const input = editor.querySelector('input');
+  input.focus();
+  input.select();
+
+  const close = () => { container.innerHTML = original; delete container.dataset.editing; };
+  const save = async () => {
+    const next = input.value.trim();
+    if (!next) return input.focus();
+    if (next === value) return close();
+    for (const el of editor.querySelectorAll('input, button')) el.disabled = true;
+    try { delete container.dataset.editing; await onSave(next); }
+    catch (err) {
+      container.dataset.editing = '1';
+      editor.querySelector('[data-msg]').textContent = err.message;
+      for (const el of editor.querySelectorAll('input, button')) el.disabled = false;
+    }
+  };
+  editor.addEventListener('click', (e) => {
+    const act = e.target.closest('[data-act]')?.dataset.act;
+    if (!act) return;
+    e.stopPropagation();
+    if (act === 'cancel') close(); else save();
+  });
+  editor.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { e.stopPropagation(); close(); }
+    if (e.key === 'Enter') { e.preventDefault(); save(); }
+  });
+  editor.addEventListener('dblclick', (e) => e.stopPropagation());
+}
+
+/**
+ * Wire the Export link and the Import button of a page. Export downloads the active profile's
+ * progress; Import replaces it after a confirmation, then calls `onImported`.
+ */
+export function wireProgressIO({ exportEl, importEl, fileEl, onImported }) {
+  if (!exportEl || !importEl || !fileEl) return;
+  exportEl.href = withProfile('/api/progress/export');
+  exportEl.insertAdjacentHTML('afterbegin', icon('download'));
+  importEl.insertAdjacentHTML('afterbegin', icon('upload'));
+
+  importEl.addEventListener('click', () => { fileEl.value = ''; fileEl.click(); });
+  fileEl.addEventListener('change', async () => {
+    const file = fileEl.files[0];
+    if (!file) return;
+    let data;
+    try { data = JSON.parse(await file.text()); }
+    catch { alert(`${file.name} is not valid JSON.`); return; }
+    const count = data && data.puzzles ? Object.keys(data.puzzles).length : 0;
+    const ok = await confirmModal({
+      title: `Import progress from "${file.name}"?`,
+      body: `This replaces all of the active profile's progress with the ${count} puzzle${count === 1 ? '' : 's'} in the file, including their conversations. Export first if you want to keep what you have.`,
+      confirmLabel: 'Replace my progress', danger: true,
+    });
+    if (!ok) return;
+    try {
+      const res = await api('/api/progress/import', { method: 'POST', body: data });
+      await onImported?.(res);
+      alert(`Imported ${res.puzzles} puzzle${res.puzzles === 1 ? '' : 's'} and ${res.messages} message${res.messages === 1 ? '' : 's'}.`);
+    } catch (err) { alert(err.message); }
+  });
 }
 
 /** Inline SVG icons (16px, stroke = currentColor). Keys: play, resume, review, reset, trash, plus. */
