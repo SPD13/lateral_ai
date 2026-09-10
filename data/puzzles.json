@@ -15,7 +15,8 @@
       "The rain itself is not the reason. What does a person carry when it rains?",
       "Something about the man himself prevents him from going straight to the 20th floor."
     ],
-    "addedAt": "2026-09-09T18:55:08.000Z"
+    "addedAt": "2026-09-09T18:55:08.000Z",
+    "model": "fable"
   },
   {
     "id": "glass-of-water",
@@ -33,7 +34,8 @@
       "Why would someone want a glass of water other than thirst?",
       "A sudden shock can cure a common, harmless condition."
     ],
-    "addedAt": "2026-09-09T18:55:09.000Z"
+    "addedAt": "2026-09-09T18:55:09.000Z",
+    "model": "fable"
   },
   {
     "id": "romeo-juliet",
@@ -50,7 +52,8 @@
       "Think about what the water and glass were before they ended up on the floor.",
       "They lived in the water."
     ],
-    "addedAt": "2026-09-09T18:55:10.000Z"
+    "addedAt": "2026-09-09T18:55:10.000Z",
+    "model": "fable"
   },
   {
     "id": "field-package",
@@ -67,7 +70,8 @@
       "If the package had been opened, he would have lived.",
       "He arrived in the field from above."
     ],
-    "addedAt": "2026-09-09T18:55:11.000Z"
+    "addedAt": "2026-09-09T18:55:11.000Z",
+    "model": "fable"
   },
   {
     "id": "cabin-in-the-woods",
@@ -84,7 +88,8 @@
       "The cabin did not start out on the mountain.",
       "Think about other things that have a 'cabin'."
     ],
-    "addedAt": "2026-09-09T18:55:12.000Z"
+    "addedAt": "2026-09-09T18:55:12.000Z",
+    "model": "fable"
   },
   {
     "id": "music-stopped",
@@ -102,7 +107,8 @@
       "She could not see where she was going.",
       "The music told her something about her position."
     ],
-    "addedAt": "2026-09-09T18:55:13.000Z"
+    "addedAt": "2026-09-09T18:55:13.000Z",
+    "model": "fable"
   },
   {
     "id": "desert-straw",
@@ -120,7 +126,8 @@
       "He and his companions were in the air.",
       "The straw was part of a decision-making process."
     ],
-    "addedAt": "2026-09-09T18:55:14.000Z"
+    "addedAt": "2026-09-09T18:55:14.000Z",
+    "model": "fable"
   },
   {
     "id": "restaurant-albatross",
@@ -138,7 +145,8 @@
       "He had eaten 'albatross' once before, under extreme circumstances.",
       "Whatever he ate back then was not really albatross."
     ],
-    "addedAt": "2026-09-09T18:55:15.000Z"
+    "addedAt": "2026-09-09T18:55:15.000Z",
+    "model": "fable"
   },
   {
     "id": "photograph",
@@ -155,7 +163,8 @@
       "'Shoot' has more than one meaning.",
       "The water and the hanging were part of a process, not an attack."
     ],
-    "addedAt": "2026-09-09T18:55:16.000Z"
+    "addedAt": "2026-09-09T18:55:16.000Z",
+    "model": "fable"
   },
   {
     "id": "monopoly",
@@ -173,7 +182,8 @@
       "There are other people playing with him.",
       "The hotel belongs to one of them."
     ],
-    "addedAt": "2026-09-09T18:55:17.000Z"
+    "addedAt": "2026-09-09T18:55:17.000Z",
+    "model": "fable"
   },
   {
     "id": "ice-block",
@@ -190,7 +200,8 @@
       "Something that was there is no longer there.",
       "What solid object turns into water?"
     ],
-    "addedAt": "2026-09-09T18:55:18.000Z"
+    "addedAt": "2026-09-09T18:55:18.000Z",
+    "model": "fable"
   },
   {
     "id": "deadly-drink",
@@ -207,7 +218,8 @@
       "Time made the difference.",
       "Not every part of the drink is liquid when it is served."
     ],
-    "addedAt": "2026-09-09T18:55:19.000Z"
+    "addedAt": "2026-09-09T18:55:19.000Z",
+    "model": "fable"
   },
   {
     "id": "lighthouse",
@@ -224,7 +236,8 @@
       "The people who died were on the water.",
       "His job was to keep that light on."
     ],
-    "addedAt": "2026-09-09T18:55:20.000Z"
+    "addedAt": "2026-09-09T18:55:20.000Z",
+    "model": "fable"
   },
   {
     "id": "carrot-coal",
@@ -241,7 +254,8 @@
       "They were once arranged in a shape.",
       "Something large was holding them and is now gone."
     ],
-    "addedAt": "2026-09-09T18:55:21.000Z"
+    "addedAt": "2026-09-09T18:55:21.000Z",
+    "model": "fable"
   },
   {
     "id": "twins",
@@ -257,7 +271,8 @@
       "They did share a birth.",
       "How many children were born that day?"
     ],
-    "addedAt": "2026-09-09T18:55:22.000Z"
+    "addedAt": "2026-09-09T18:55:22.000Z",
+    "model": "fable"
   },
   {
     "id": "adam-eve",
@@ -274,7 +289,8 @@
       "Think about how Adam and Eve came into being, compared with everyone else.",
       "Every person born from a mother carries one small scar for life."
     ],
-    "addedAt": "2026-09-09T18:55:23.000Z"
+    "addedAt": "2026-09-09T18:55:23.000Z",
+    "model": "fable"
   },
   {
     "id": "phone-booth",
@@ -291,7 +307,8 @@
       "The fishing rod matters: what do people do after fishing?",
       "How do people show the size of something with their hands?"
     ],
-    "addedAt": "2026-09-09T18:55:24.000Z"
+    "addedAt": "2026-09-09T18:55:24.000Z",
+    "model": "fable"
   },
   {
     "id": "sugar-coffee",
@@ -308,7 +325,8 @@
       "The proof was in the taste.",
       "A truly fresh cup would have tasted different."
     ],
-    "addedAt": "2026-09-09T18:55:25.000Z"
+    "addedAt": "2026-09-09T18:55:25.000Z",
+    "model": "fable"
   },
   {
     "id": "arm-package",
@@ -326,7 +344,8 @@
       "He shares a history with the person who sent it, involving extreme hunger.",
       "A promise made long ago is being kept."
     ],
-    "addedAt": "2026-09-09T18:55:26.000Z"
+    "addedAt": "2026-09-09T18:55:26.000Z",
+    "model": "fable"
   },
   {
     "id": "one-ring-at-nine",
@@ -344,7 +363,8 @@
       "The caller is someone she loves, a long way from home, and calls cost money.",
       "They agreed in advance: one ring at nine means 'I'm safe' and nothing more needs to be said."
     ],
-    "addedAt": "2026-09-09T19:43:20.000Z"
+    "addedAt": "2026-09-09T19:43:20.000Z",
+    "model": "fable"
   },
   {
     "id": "younger-twin-born-first",
@@ -362,7 +382,8 @@
       "Something happened to the official time between the first birth and the second.",
       "They were born on the night the clocks went back an hour."
     ],
-    "addedAt": "2026-09-09T19:43:21.000Z"
+    "addedAt": "2026-09-09T19:43:21.000Z",
+    "model": "fable"
   },
   {
     "id": "frozen-orchard",
@@ -380,7 +401,8 @@
       "Ask what temperature the air was that night, and what temperature the ice was.",
       "Water gives off heat as it freezes: a blossom inside constantly refreshed ice stays at zero degrees, while the air around it dropped far lower."
     ],
-    "addedAt": "2026-09-09T19:43:22.000Z"
+    "addedAt": "2026-09-09T19:43:22.000Z",
+    "model": "fable"
   },
   {
     "id": "letter-to-herself",
@@ -398,7 +420,8 @@
       "She is protecting something she made against people who might claim it as theirs.",
       "The dated postmark on a still-sealed envelope proves when the pages were written."
     ],
-    "addedAt": "2026-09-09T19:43:23.000Z"
+    "addedAt": "2026-09-09T19:43:23.000Z",
+    "model": "fable"
   },
   {
     "id": "silent-valley",
@@ -416,7 +439,8 @@
       "The victims stopped breathing, and the height of your house decided whether you lived.",
       "Something heavier than air came out of the lake in the night and pooled in the valley like water."
     ],
-    "addedAt": "2026-09-09T19:43:24.000Z"
+    "addedAt": "2026-09-09T19:43:24.000Z",
+    "model": "fable"
   },
   {
     "id": "the-mirrors-nobody-looks-at",
@@ -435,7 +459,8 @@
       "The town's problem is worst in winter and has nothing to do with snow or wind.",
       "Think about what a deep, narrow valley does to the low winter sun, and what a mirror on a high cliff could do about it."
     ],
-    "addedAt": "2026-09-10T03:46:55.524Z"
+    "addedAt": "2026-09-10T03:46:55.524Z",
+    "model": "opus"
   },
   {
     "id": "the-ward-nobody-entered",
@@ -454,7 +479,8 @@
       "The most powerful weapon in the hospital that day was a name written on a door.",
       "No such illness has ever appeared in any medical textbook, because three doctors made it up that week to keep the soldiers out."
     ],
-    "addedAt": "2026-09-10T03:46:57.739Z"
+    "addedAt": "2026-09-10T03:46:57.739Z",
+    "model": "opus"
   },
   {
     "id": "the-voice-on-the-platform",
@@ -473,7 +499,8 @@
       "What she came for was a sound, and it belonged to someone who had died.",
       "Her husband's job long ago was to speak the words every passenger on that platform hears."
     ],
-    "addedAt": "2026-09-10T03:46:59.358Z"
+    "addedAt": "2026-09-10T03:46:59.358Z",
+    "model": "opus"
   },
   {
     "id": "the-passenger-who-never-eats",
@@ -492,7 +519,8 @@
       "The passenger has never been alive, and the woman's job explains why she takes it everywhere.",
       "Think about what a musician would never let a baggage handler throw into a cargo hold."
     ],
-    "addedAt": "2026-09-10T03:53:18.039Z"
+    "addedAt": "2026-09-10T03:53:18.039Z",
+    "model": "opus"
   },
   {
     "id": "the-runner-who-stopped-winning",
@@ -511,7 +539,8 @@
       "Something about the course itself misled him, and it would not have misled a local.",
       "The man behind decided that the fastest runner should win, even if the rules would have handed him the trophy."
     ],
-    "addedAt": "2026-09-10T03:53:24.920Z"
+    "addedAt": "2026-09-10T03:53:24.920Z",
+    "model": "opus"
   },
   {
     "id": "the-village-that-was-never-there",
@@ -530,6 +559,7 @@
       "The photograph was taken at that very crossroads, and it showed something that had not been there when he drew the map.",
       "By the time of the argument, the village was no longer imaginary, and you cannot own the name of a real place."
     ],
-    "addedAt": "2026-09-10T03:53:46.004Z"
+    "addedAt": "2026-09-10T03:53:46.004Z",
+    "model": "opus"
   }
 ]

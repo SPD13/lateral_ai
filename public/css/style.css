@@ -65,6 +65,7 @@ button { font: inherit; cursor: pointer; }
 .difficulty-editor select { padding: 4px 8px; font-size: 13px; }
 .difficulty-editor .edit-msg { color: var(--bad); font-size: 12px; }
 .bank-table td.difficulty-cell { min-width: 90px; }
+.model { font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
 .score { font-weight: 600; white-space: nowrap; }
 .score small { color: var(--muted); font-weight: 400; }
 .score .tries { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }

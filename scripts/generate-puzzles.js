@@ -7,7 +7,7 @@
  *   node scripts/generate-puzzles.js --count 5 --difficulty hard [--model opus] [--dry-run]
  */
 import { runClaude } from '../server/claude.js';
-import { addPuzzle, loadPuzzles, validatePuzzle } from '../server/puzzles.js';
+import { addPuzzle, loadPuzzles, validatePuzzle, modelFamily } from '../server/puzzles.js';
 import { buildGeneratePrompt, parsePuzzleArray, duplicateReason, GENERATOR_MODEL, GENERATOR_TOOLS, GENERATOR_TIMEOUT_MS } from '../server/generator.js';
 
 const args = Object.fromEntries(process.argv.slice(2).reduce((acc, a, i, arr) => {
@@ -28,7 +28,7 @@ try { arr = parsePuzzleArray(text); } catch (e) { console.error('Could not parse
 let added = 0;
 for (const item of arr) {
   let p;
-  try { p = validatePuzzle({ ...item, difficulty: difficulty === 'mixed' ? item.difficulty : difficulty }); } catch (e) { console.error(`skip "${item?.title}": ${e.message}`); continue; }
+  try { p = validatePuzzle({ ...item, difficulty: difficulty === 'mixed' ? item.difficulty : difficulty, model: modelFamily(model) }); } catch (e) { console.error(`skip "${item?.title}": ${e.message}`); continue; }
   const dup = duplicateReason(p, loadPuzzles());
   if (dup) { console.error(`skip "${p.title}": ${dup}`); continue; }
   if (dryRun) { console.log(JSON.stringify(p, null, 2)); added++; continue; }

@@ -3,7 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { runClaude, CLAUDE_MODEL } from './claude.js';
-import { loadPuzzles, addPuzzle, validatePuzzle } from './puzzles.js';
+import { loadPuzzles, addPuzzle, validatePuzzle, modelFamily } from './puzzles.js';
 import { render, TEMPLATE_DIR, LANGUAGE } from './prompt.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -162,7 +162,7 @@ export function startGeneration({ count, difficulty, model = GENERATOR_MODEL }) 
       for (const item of arr) {
         let puzzle;
         try {
-          puzzle = validatePuzzle({ ...item, difficulty: difficulty === 'mixed' ? item.difficulty : difficulty });
+          puzzle = validatePuzzle({ ...item, difficulty: difficulty === 'mixed' ? item.difficulty : difficulty, model: modelFamily(model) });
         } catch (e) {
           job.dropped.push({ title: item?.title || '(untitled)', reason: e.message });
           continue;
