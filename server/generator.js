@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { runClaude, CLAUDE_MODEL } from './claude.js';
 import { loadPuzzles, addPuzzle, validatePuzzle, modelFamily, httpUrl } from './puzzles.js';
 import { render, TEMPLATE_DIR, LANGUAGE } from './prompt.js';
-import { listSources, addSource, knowsSource } from './sources.js';
+import { listSources, addSource, knowsSource, sourceKey } from './sources.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const CANDIDATES_FILE = process.env.CANDIDATES_FILE || path.join(__dirname, '..', 'data', 'candidates.json');
@@ -16,7 +16,9 @@ export const GENERATOR_TOOLS = (process.env.GENERATOR_TOOLS ?? 'WebSearch,WebFet
 export const GENERATOR_TIMEOUT_MS = Number(process.env.GENERATOR_TIMEOUT_MS || 6 * 60_000);
 /** Collecting means searching, fetching and reading a page, so it gets longer. */
 export const COLLECT_TIMEOUT_MS = Number(process.env.COLLECT_TIMEOUT_MS || 10 * 60_000);
-export const COLLECT_COUNT = Number(process.env.COLLECT_COUNT || 5);
+export const COLLECT_COUNT = Number(process.env.COLLECT_COUNT || 10);
+/** Collecting is cheap per puzzle once the page is fetched, so it may take more in one go than the writer. */
+export const COLLECT_MAX = Number(process.env.COLLECT_MAX || 20);
 export const WEB_SOURCE_MODEL = 'web-search';
 export const DIFFICULTIES = ['mixed', 'easy', 'medium', 'hard'];
 const MAX_COUNT = 6;
@@ -120,6 +122,28 @@ function formatExistingBrief(list) {
   return list.map((p) => `- ${p.title}: ${p.situation.replace(/\s+/g, ' ').slice(0, 160)}`).join('\n');
 }
 
+/** Titles already taken from a page, so a second visit can skip them. */
+export function takenFrom(url) {
+  const key = sourceKey(url);
+  return [...loadPuzzles(), ...loadCandidates()]
+    .filter((p) => p.sourceUrl && sourceKey(p.sourceUrl) === key)
+    .map((p) => p.title);
+}
+
+export function buildCollectMorePrompt({ count, sourceUrl }) {
+  const existing = [...loadPuzzles(), ...loadCandidates()];
+  const taken = takenFrom(sourceUrl);
+  const system = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'collect-system.md'), 'utf8'), { LANGUAGE }).trim();
+  const user = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'collect-more.md'), 'utf8'), {
+    LANGUAGE,
+    COUNT: count,
+    SOURCE_URL: sourceUrl,
+    TAKEN_TITLES: taken.length ? taken.map((t) => `- ${t}`).join('\n') : '(nothing yet)',
+    EXISTING_PUZZLES: formatExistingBrief(existing),
+  });
+  return { system, user };
+}
+
 export function buildCollectPrompt({ count }) {
   const existing = [...loadPuzzles(), ...loadCandidates()];
   const system = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'collect-system.md'), 'utf8'), { LANGUAGE }).trim();
@@ -182,29 +206,35 @@ export function listJobs() { return [...jobs.values()].slice(-10).reverse(); }
 export function runningJob() { return running; }
 
 /** One collection run: search for a page nobody has used yet, read it, and take its puzzles. */
-export function startCollection({ count = COLLECT_COUNT, model = GENERATOR_MODEL } = {}) {
-  count = Math.max(1, Math.min(MAX_COUNT, Number(count) || COLLECT_COUNT));
+export function startCollection({ count = COLLECT_COUNT, model = GENERATOR_MODEL, sourceUrl = null } = {}) {
+  count = Math.max(1, Math.min(COLLECT_MAX, Number(count) || COLLECT_COUNT));
+  const revisit = httpUrl(sourceUrl);
+  if (sourceUrl && !revisit) throw Object.assign(new Error('That is not a usable source URL'), { status: 400 });
+  if (revisit && !knowsSource(revisit)) throw Object.assign(new Error('That source has not been used yet'), { status: 404 });
   if (running) throw Object.assign(new Error('A generation is already running'), { status: 409 });
   const job = {
-    id: crypto.randomUUID(), kind: 'collect', status: 'running', count, model, tools: GENERATOR_TOOLS,
+    id: crypto.randomUUID(), kind: 'collect', mode: revisit ? 'more' : 'search', status: 'running', count, model, tools: GENERATOR_TOOLS,
     startedAt: new Date().toISOString(), finishedAt: null, added: [], dropped: [], error: null,
-    cost: null, tokens: null, webSearches: 0, source: null,
+    cost: null, tokens: null, webSearches: 0, source: revisit ? { url: revisit, title: '' } : null,
   };
   jobs.set(job.id, job);
   running = job;
   (async () => {
     try {
       if (!GENERATOR_TOOLS.length) throw new Error('Web search is disabled (GENERATOR_TOOLS is empty)');
-      const { system, user } = buildCollectPrompt({ count });
+      const { system, user } = revisit ? buildCollectMorePrompt({ count, sourceUrl: revisit }) : buildCollectPrompt({ count });
       const raw = await runClaude({ system, user, model, tools: GENERATOR_TOOLS, timeoutMs: COLLECT_TIMEOUT_MS });
       job.cost = raw.cost ?? null;
       job.tokens = raw.tokens ?? null;
       job.webSearches = raw.webSearches ?? 0;
       const { source, puzzles } = parseCollection(raw.text);
-      const url = httpUrl(source.url);
+      const url = revisit || httpUrl(source.url);
       if (!url) throw new Error('the reply did not name a usable source page');
-      job.source = { url, title: String(source.title || '').slice(0, 120) };
-      if (knowsSource(url)) job.dropped.push({ title: job.source.title || url, reason: 'this source has been used before' });
+      if (revisit && httpUrl(source.url) && sourceKey(source.url) !== sourceKey(revisit)) {
+        throw new Error('the reply came from a different page than the one asked for');
+      }
+      job.source = { url, title: String(source.title || job.source?.title || '').slice(0, 120) };
+      if (!revisit && knowsSource(url)) job.dropped.push({ title: job.source.title || url, reason: 'this source has been used before' });
 
       const list = loadCandidates();
       let kept = 0;

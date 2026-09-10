@@ -306,9 +306,9 @@ node scripts/generate-puzzles.js --count 3 --difficulty mixed --dry-run   # prin
 ### Collecting puzzles from the web
 
 The second card on the Generate page, **Search the web**, collects puzzles that already exist online instead
-of writing new ones. One press sends the model out with web search: it looks for a page of lateral thinking
-puzzles, checks it against the pages already used, reads it, and brings back up to five of its puzzles
-rewritten only as far as the game needs. It keeps the source's facts, adds the three hints and the difficulty
+of writing new ones. Choose how many to take (up to 20, default 10) and press the button: the model looks for
+a page of lateral thinking puzzles, checks it against the pages already used, reads it, and brings back that
+many of its puzzles rewritten only as far as the game needs. It keeps the source's facts, adds the three hints and the difficulty
 that a source rarely provides, and skips anything close to a puzzle already in the game.
 
 Results land in the same **Awaiting review** list as generated puzzles, each showing its source link, and are
@@ -317,8 +317,11 @@ instead of a model family, and keep their source: the question bank shows it in 
 play page shows a **Source** link under the situation that opens in a new tab.
 
 Pages that have been visited are recorded in `data/sources.json`, with or without a usable puzzle, and every
-later search is told about them so it looks somewhere new. The briefing lives in
-`server/templates/collect.md`.
+later search is told about them so it looks somewhere new. **Pages already used** lists them under the card,
+with how many of their puzzles are in the game and a **Take more** button: that goes back to the page for the
+puzzles it has not given yet, listing the titles already taken so it skips them and never searches for
+another page. Revisiting is much cheaper than a first visit, since there is no search and the page is the
+only thing to read. The briefings live in `server/templates/collect.md` and `collect-more.md`.
 
 ### Tuning the prompts
 
@@ -335,6 +338,8 @@ edits apply without a restart:
   `{{DIFFICULTY}}`, `{{EXISTING_COUNT}}`, `{{EXISTING_PUZZLES}}`, `{{LANGUAGE}}`.
 - `collect-system.md` and `collect.md`: the web collector's briefing. Placeholders: `{{COUNT}}`,
   `{{EXISTING_SOURCES}}`, `{{EXISTING_PUZZLES}}`, `{{LANGUAGE}}`.
+- `collect-more.md`: used when going back to a page already visited. Placeholders: `{{COUNT}}`,
+  `{{SOURCE_URL}}`, `{{TAKEN_TITLES}}`, `{{EXISTING_PUZZLES}}`, `{{LANGUAGE}}`.
 
 `{{LANGUAGE}}` comes from `GAME_LANGUAGE` (default English) and every template tells the model to use
 it regardless of the language the player types in.
@@ -358,7 +363,8 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 | `GENERATOR_TOOLS`      | `WebSearch,WebFetch` | CLI tools the puzzle writer may use; `""` disables web search        |
 | `GENERATOR_TIMEOUT_MS` | `360000`             | Timeout for one generation run                                       |
 | `COLLECT_TIMEOUT_MS`   | `600000`             | Timeout for one web collection run                                   |
-| `COLLECT_COUNT`        | `5`                  | How many puzzles one web collection run may take from a page         |
+| `COLLECT_COUNT`        | `10`                 | Default number of puzzles a web collection run takes from a page     |
+| `COLLECT_MAX`          | `20`                 | Ceiling for that number                                              |
 | `CLAUDE_BIN`           | `claude`             | Path to the CLI                                                      |
 | `CLAUDE_TIMEOUT_MS`    | `90000`              | Timeout for one chat reply                                           |
 | `LG_DEBUG`             | unset                | `1` enables the rendered-prompt endpoint                             |
@@ -412,7 +418,7 @@ img/                         logo sources
 | POST   | `/api/progress/reset`         | `{ puzzleId }` to reset one, `{}` to reset everything              |
 | GET    | `/api/generate/config`        | Writer model, tools, running job and recent jobs                   |
 | POST   | `/api/generate`               | `{ count, difficulty }` → `202 { job }`; poll the job              |
-| POST   | `/api/collect`                | Search the web for a new source and take its puzzles → `202 { job }` |
+| POST   | `/api/collect`                | `{ count, sourceUrl? }`: search for a new source, or revisit a used one → `202 { job }` |
 | GET    | `/api/sources`                | Web pages the collector has already used                            |
 | GET    | `/api/generate/jobs/:id`      | Job status: `running`, `done` (added, dropped, tokens) or `error`  |
 | GET    | `/api/candidates`             | Generated puzzles awaiting review (with solutions)                 |

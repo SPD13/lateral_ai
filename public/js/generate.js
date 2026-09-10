@@ -2,7 +2,8 @@ import { api, escapeHtml, badge, loadHeaderStats, renderProfileBar, renderNavIco
 
 const $ = (id) => document.getElementById(id);
 const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count'),
-  collect: $('collect'), collectStatus: $('collect-status'), collectSources: $('collect-sources') };
+  collect: $('collect'), collectCount: $('collect-count'), collectStatus: $('collect-status'), collectSources: $('collect-sources'),
+  sources: $('sources'), sourceList: $('source-list'), sourcesCount: $('sources-count') };
 
 let config = null;
 let pollTimer = null;
@@ -20,7 +21,34 @@ function setStatus(html, kind = '', el = els.status) {
 function setBusy(busy) {
   els.generate.disabled = busy;
   els.collect.disabled = busy;
+  for (const b of els.sourceList.querySelectorAll('button')) b.disabled = busy;
 }
+
+/** The pages already used, each with a way to go back for the puzzles it has not given yet. */
+async function loadSources() {
+  let sources = [];
+  try { sources = await api('/api/sources'); } catch { return; }
+  els.sources.hidden = sources.length === 0;
+  els.sourcesCount.textContent = sources.length ? `(${sources.length})` : '';
+  els.collectSources.textContent = sources.length ? `${sources.length} source${sources.length === 1 ? '' : 's'} used so far` : 'No sources used yet';
+  els.sourceList.innerHTML = sources.map((s) => `
+    <li>
+      <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title || s.url)}</a>
+      <span class="excerpt">${s.taken} puzzle${s.taken === 1 ? '' : 's'} taken · ${s.visits} visit${s.visits === 1 ? '' : 's'}</span>
+      <button type="button" class="btn small" data-more="${escapeHtml(s.url)}">Take more</button>
+    </li>`).join('');
+}
+
+els.sourceList.addEventListener('click', async (e) => {
+  const url = e.target.closest('[data-more]')?.dataset.more;
+  if (!url) return;
+  setBusy(true);
+  try {
+    const { job } = await api('/api/collect', { method: 'POST', body: { sourceUrl: url, count: Number(els.collectCount.value) } });
+    showJob(job);
+    poll(job.id);
+  } catch (err) { setStatus(escapeHtml(err.message), 'error', els.collectStatus); setBusy(false); }
+});
 
 function elapsed(iso) {
   const s = Math.max(0, Math.round((Date.now() - new Date(iso)) / 1000));
@@ -33,7 +61,9 @@ function showJob(job) {
   if (job.status === 'running') {
     setBusy(true);
     const line = () => setStatus(collecting
-      ? `<span class="spinner"></span> Searching the web for a new source, reading it and formatting what it holds… ${elapsed(job.startedAt)}. This can take several minutes.`
+      ? (job.mode === 'more'
+        ? `<span class="spinner"></span> Going back to ${escapeHtml(job.source?.url || 'the page')} for puzzles it has not given yet… ${elapsed(job.startedAt)}.`
+        : `<span class="spinner"></span> Searching the web for a new source, reading it and formatting what it holds… ${elapsed(job.startedAt)}. This can take several minutes.`)
       : `<span class="spinner"></span> Writing ${job.count} ${job.difficulty === 'mixed' ? '' : job.difficulty + ' '}puzzle${job.count === 1 ? '' : 's'} with claude ${escapeHtml(job.model)}… ${elapsed(job.startedAt)}. This can take a few minutes.`, 'running', el);
     line();
     clearInterval(ticker); ticker = setInterval(line, 1000);
@@ -56,7 +86,7 @@ async function poll(jobId) {
     try {
       const { job } = await api(`/api/generate/jobs/${jobId}`);
       showJob(job);
-      if (job.status !== 'running') { clearInterval(pollTimer); await loadCandidates(); loadHeaderStats(); }
+      if (job.status !== 'running') { clearInterval(pollTimer); await loadCandidates(); loadSources(); loadHeaderStats(); }
     } catch (err) { clearInterval(pollTimer); setStatus(escapeHtml(err.message), 'error'); setBusy(false); }
   }, 2000);
 }
@@ -115,6 +145,7 @@ els.list.addEventListener('click', async (e) => {
     if (btn.dataset.act === 'approve') {
       const { puzzle } = await api(`/api/candidates/${id}/approve`, { method: 'POST' });
       msg.textContent = `Added to the bank as "${puzzle.id}".`;
+      loadSources();
     } else {
       await api(`/api/candidates/${id}/reject`, { method: 'POST' });
       msg.textContent = 'Rejected.';
@@ -132,7 +163,7 @@ renderNavIcons();
 els.collect.addEventListener('click', async () => {
   setBusy(true);
   try {
-    const { job } = await api('/api/collect', { method: 'POST', body: {} });
+    const { job } = await api('/api/collect', { method: 'POST', body: { count: Number(els.collectCount.value) } });
     showJob(job);
     poll(job.id);
   } catch (err) { setStatus(escapeHtml(err.message), 'error', els.collectStatus); setBusy(false); }
@@ -153,7 +184,9 @@ async function init() {
   els.count.max = config.maxCount;
   els.model.innerHTML = `Puzzle writer: <b>claude ${escapeHtml(config.model)}</b>${config.tools.length ? ' with web search' : ''}`;
   els.model.title = 'Set in the launcher (Setup tab) or with the GENERATOR_MODEL environment variable';
-  els.collectSources.textContent = config.sources ? `${config.sources} source${config.sources === 1 ? '' : 's'} used so far` : 'No sources used yet';
+  els.collectCount.max = config.collectMax;
+  els.collectCount.value = config.collectCount;
+  await loadSources();
   els.collect.disabled = !config.tools.length;
   if (!config.tools.length) setStatus('Web search is disabled on this server (GENERATOR_TOOLS is empty).', 'error', els.collectStatus);
   if (config.running) { showJob(config.running); poll(config.running.id); }

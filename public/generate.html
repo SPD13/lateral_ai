@@ -41,7 +41,10 @@
 
     <section class="card gen-card" id="collect-card">
       <div class="gen-form">
-        <button class="btn primary with-icon" id="collect" type="submit">Search the web</button>
+        <label>How many
+          <input type="number" id="collect-count" min="1" max="20" value="10" required>
+        </label>
+        <button class="btn primary with-icon" id="collect" type="button">Search the web</button>
         <span class="gen-model" id="collect-sources"></span>
       </div>
       <p class="gen-note">This looks for a page of lateral thinking puzzles nobody has used yet, reads it, and
@@ -49,6 +52,11 @@
         already visited are listed in the briefing so each search finds somewhere new, and every puzzle is
         checked against the bank before it appears below. Collected puzzles keep a link to their source.</p>
       <div class="gen-status" id="collect-status" hidden></div>
+      <details class="sources" id="sources" hidden>
+        <summary>Pages already used <span class="count" id="sources-count"></span></summary>
+        <ul class="source-list" id="source-list"></ul>
+        <p class="hint">Taking more from a page skips the puzzles it already gave, so it only brings back new ones.</p>
+      </details>
     </section>
 
     <h2 class="section-title">Awaiting review <span class="count" id="pending-count"></span></h2>
