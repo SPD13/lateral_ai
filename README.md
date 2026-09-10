@@ -18,7 +18,9 @@ shows the address other devices on your network can use.
   - [The server](#the-server)
   - [The Electron launcher](#the-electron-launcher)
 - [How to play](#how-to-play)
+- [Player profiles](#player-profiles)
 - [The question bank](#the-question-bank)
+- [The leaderboard](#the-leaderboard)
 - [Generating new questions](#generating-new-questions)
 - [Configuration reference](#configuration-reference)
 - [Project layout](#project-layout)
@@ -132,9 +134,19 @@ for the solution) or **incorrect**. Every judged solution counts as a try. Once 
 banner shows your score: the number of questions and tries it took, and the number of hints if you used
 any. In the chat, replies that count carry a "+1 question" or "+1 try" marker.
 
-Your progress is tied to the browser you play in (an anonymous cookie), so another person on another
-device has their own progress on the same server. The chat history of every puzzle is kept, so reloading
-the page or coming back later continues where you left off.
+Your progress belongs to a player profile, so several people can share one server, and the chat history of
+every puzzle is kept: reloading the page or coming back later continues where you left off.
+
+## Player profiles
+
+Every browser starts with one profile, shown as **Player** followed by its name at the right of the header.
+The **+** button next to it creates another profile: give it a name and the game switches to it. From then
+on the label becomes a dropdown listing every profile, and picking one switches the whole app to it.
+
+The active profile is remembered in this device's local storage, so the same browser comes back to the same
+player. Profiles live on the server, so any device can select any of them, and each keeps its own progress,
+scores, conversations and Game master help setting. Rename a profile by double-clicking its name on the
+leaderboard page.
 
 ## The question bank
 
@@ -168,7 +180,7 @@ Each row has three icon buttons:
 Both Reset and Delete ask for confirmation. **Reset all progress** in the toolbar clears every puzzle at
 once.
 
-**Export** downloads your progress as a JSON file: every puzzle's status, score, hint count and full
+**Export** downloads the active profile's progress as a JSON file: every puzzle's status, score, hint count and full
 conversation, plus your Game master help setting. **Import** reads such a file back and replaces your
 current progress with it, after a confirmation. Use them to move your progress to another browser or
 machine, or to keep a backup before resetting.
@@ -194,6 +206,33 @@ You can edit this file by hand; the server re-reads it whenever it changes, with
 solution, key facts and hints never leave the server: the browser only ever receives the situation. The
 game master sees all of it when answering, which is how it can judge your guesses and pick the next hint.
 Progress is stored separately, per player, in `data/progress.json`.
+
+## The leaderboard
+
+The **Leaderboard** page ranks every profile on the server, highest score first. Columns show the points,
+the number of puzzles solved, and how many of those were easy, medium and hard. Your own row is
+highlighted in green. Above the table, "Playing as" shows the active profile: **double-click the name** to
+rename it, with Save and Cancel buttons. The **Export** and **Import** buttons work exactly like the ones
+in the question bank and act on the active profile.
+
+### How points are calculated
+
+Only **solved** puzzles score, and each one counts once. A solved puzzle is worth its difficulty value
+minus what it took to get there:
+
+| Item                        | Points |
+|-----------------------------|--------|
+| Easy puzzle solved          | +2     |
+| Medium puzzle solved        | +3     |
+| Hard puzzle solved          | +4     |
+| Each hint used              | −0.5   |
+| Each question answered      | −0.1   |
+| Each solution submitted     | −0.2   |
+
+A puzzle never scores below zero, so a long hunt costs you that puzzle's points but never eats into the
+rest. Puzzles you revealed or are still working on score nothing, and a puzzle deleted from the bank stops
+counting. For example, a hard puzzle solved with 6 questions, 1 hint and 2 tries scores
+4 − 0.6 − 0.5 − 0.4 = **2.5** points.
 
 ## Generating new questions
 
@@ -282,7 +321,7 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 
 ```
 data/puzzles.json            the puzzle bank
-data/progress.json           per-player progress, created at runtime (gitignored)
+data/progress.json           player profiles and their progress, created at runtime (gitignored)
 data/candidates.json         generated puzzles awaiting review, created at runtime (gitignored)
 server/index.js              Express app and API
 server/claude.js             runs `claude -p` and parses its JSON reply
@@ -292,7 +331,7 @@ server/puzzles.js            loads, validates, adds and deletes puzzles
 server/store.js              progress persistence
 server/templates/            all prompt templates (see Tuning the prompts)
 server/agent-cwd/            empty working directory used when invoking the CLI
-public/                      front end: index.html (play), bank.html (question bank), generate.html
+public/                      front end: index.html (play), bank.html, generate.html, leaderboard.html
 launcher/                    Electron launcher
 scripts/generate-puzzles.js  terminal puzzle generator
 img/                         logo sources
@@ -303,7 +342,11 @@ img/                         logo sources
 | Method | Path                          | Purpose                                                            |
 |--------|-------------------------------|--------------------------------------------------------------------|
 | GET    | `/api/health`                 | Liveness: app name, pid, port, models, puzzle and candidate counts, uptime |
-| GET    | `/api/me`                     | Player id, models, solved/tried/revealed counts, settings          |
+| GET    | `/api/me`                     | Active profile, models, solved/tried/revealed counts, settings     |
+| GET    | `/api/profiles`               | Every player profile and which one is active                       |
+| POST   | `/api/profiles`               | Create a profile: `{ name }`                                       |
+| PATCH  | `/api/profiles/:id`           | Rename a profile: `{ name }`                                       |
+| GET    | `/api/leaderboard`            | Ranked profiles with points and solved counts, plus the scoring table |
 | GET/PUT| `/api/settings`               | Player settings: `{ gmHelp }`                                      |
 | GET    | `/api/puzzles`                | All puzzles with this player's status (no solutions)               |
 | GET    | `/api/puzzles/random`         | Random puzzle, preferring unsolved; `?exclude=id&difficulty=easy`  |
@@ -320,6 +363,9 @@ img/                         logo sources
 | GET    | `/api/candidates`             | Generated puzzles awaiting review (with solutions)                 |
 | POST   | `/api/candidates/:id/approve` | Add the candidate to the bank                                      |
 | POST   | `/api/candidates/:id/reject`  | Drop the candidate                                                 |
+
+Requests carry the active profile in an `X-Profile-Id` header (plain links use `?profile=`); without one
+the server falls back to the profile belonging to the browser's own cookie.
 
 A chat turn: the browser posts the intent and text; the server marks the puzzle *tried*, renders the
 game master template with the puzzle, its secret solution, the prepared hints and the conversation so far,

@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, loadHeaderStats } from './common.js';
+import { api, escapeHtml, badge, loadHeaderStats, renderProfileBar } from './common.js';
 
 const $ = (id) => document.getElementById(id);
 const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count') };
@@ -129,5 +129,6 @@ async function init() {
   else if (config.jobs[0]) showJob(config.jobs[0]);
   await loadCandidates();
   loadHeaderStats();
+  renderProfileBar();
 }
 init().catch((err) => setStatus(escapeHtml(err.message), 'error'));

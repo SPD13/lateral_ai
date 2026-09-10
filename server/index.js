@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle, updatePuzzle } from './puzzles.js';
-import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings, exportProgress, importProgress } from './store.js';
+import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings, exportProgress, importProgress, listProfiles, profileExists, getProfile, createProfile, renameProfile } from './store.js';
 import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
 import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, startGeneration, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
@@ -21,7 +21,8 @@ app.use(express.json({ limit: '8mb' })); // large enough for a progress import
 app.use(cookieParser());
 
 // ---------------------------------------------------------------------------
-// Anonymous per-browser identity. Progress is keyed by this cookie.
+// Identity. The cookie is this device's own profile; the browser can point at
+// another profile with the X-Profile-Id header (or ?profile= for plain links).
 // ---------------------------------------------------------------------------
 app.use((req, res, next) => {
   let uid = req.cookies[USER_COOKIE];
@@ -29,7 +30,9 @@ app.use((req, res, next) => {
     uid = crypto.randomBytes(16).toString('hex');
     res.cookie(USER_COOKIE, uid, { maxAge: 10 * 365 * 24 * 3600 * 1000, sameSite: 'lax', httpOnly: true });
   }
-  req.userId = uid;
+  req.deviceId = uid;
+  const asked = String(req.get('X-Profile-Id') || req.query.profile || '');
+  req.userId = asked && profileExists(asked) ? asked : uid;
   next();
 });
 
@@ -50,6 +53,70 @@ app.get('/api/health', (req, res) => {
   res.json({ ok: true, app: 'lateral-game', pid: process.pid, port: PORT, model: CLAUDE_MODEL, generatorModel: GENERATOR_MODEL, puzzles: loadPuzzles().length, candidates: listCandidates().length, uptime: Math.round(process.uptime()) });
 });
 
+// ---------------------------------------------------------------------------
+// Profiles
+// ---------------------------------------------------------------------------
+app.get('/api/profiles', (req, res) => {
+  getAllProgress(req.deviceId); // make sure this device has a profile to show
+  res.json({ profiles: listProfiles(), activeId: req.userId });
+});
+
+app.post('/api/profiles', (req, res) => {
+  try {
+    const profile = createProfile(req.body?.name);
+    console.log(`[profiles] created "${profile.name}"`);
+    res.status(201).json({ profile });
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+app.patch('/api/profiles/:id', (req, res) => {
+  try {
+    const profile = renameProfile(req.params.id, req.body?.name);
+    if (!profile) return res.status(404).json({ error: 'Unknown profile' });
+    res.json({ profile });
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+// ---------------------------------------------------------------------------
+// Leaderboard
+// ---------------------------------------------------------------------------
+/** Points for solving a puzzle, before the penalties below. */
+export const DIFFICULTY_POINTS = { easy: 2, medium: 3, hard: 4 };
+/** Each hint, answered question and submitted solution costs this much. */
+export const SCORE_COSTS = { hint: 0.5, question: 0.1, try: 0.2 };
+
+/** A solved puzzle's contribution: its difficulty value minus the penalties, never below zero. */
+function puzzleScore(entry, puzzle) {
+  const base = DIFFICULTY_POINTS[puzzle.difficulty] ?? 0;
+  const penalty = SCORE_COSTS.hint * (entry.hintsGiven || 0)
+    + SCORE_COSTS.question * questionsAsked(entry)
+    + SCORE_COSTS.try * guessesMade(entry);
+  return Math.max(0, base - penalty);
+}
+
+app.get('/api/leaderboard', (req, res) => {
+  const puzzles = new Map(loadPuzzles().map((p) => [p.id, p]));
+  const rows = listProfiles().map((profile) => {
+    const progress = getAllProgress(profile.id);
+    const counts = { easy: 0, medium: 0, hard: 0 };
+    let points = 0;
+    for (const [puzzleId, entry] of Object.entries(progress)) {
+      if (entry.status !== STATUS.SOLVED) continue;
+      const puzzle = puzzles.get(puzzleId);
+      if (!puzzle) continue; // the puzzle was deleted from the bank
+      counts[puzzle.difficulty] = (counts[puzzle.difficulty] || 0) + 1;
+      points += puzzleScore(entry, puzzle);
+    }
+    const solved = counts.easy + counts.medium + counts.hard;
+    return { ...profile, points: Math.round(points * 100) / 100, solved, ...counts };
+  }).sort((a, b) => b.points - a.points || b.solved - a.solved || a.name.localeCompare(b.name));
+  res.json({ rows, activeId: req.userId, scoring: { difficulty: DIFFICULTY_POINTS, costs: SCORE_COSTS } });
+});
+
 app.get('/api/me', (req, res) => {
   const all = getAllProgress(req.userId);
   const puzzles = loadPuzzles();
@@ -60,7 +127,7 @@ app.get('/api/me', (req, res) => {
     else if (s === STATUS.TRIED) counts.tried++;
     else if (s === STATUS.REVEALED) counts.revealed++;
   }
-  res.json({ userId: req.userId.slice(0, 8), model: CLAUDE_MODEL, counts, settings: effectiveSettings(req.userId) });
+  res.json({ userId: req.userId.slice(0, 8), profile: getProfile(req.userId), model: CLAUDE_MODEL, counts, settings: effectiveSettings(req.userId) });
 });
 
 function effectiveSettings(userId) {
@@ -233,7 +300,8 @@ app.delete('/api/puzzles/:id', (req, res) => {
 app.get('/api/progress/export', (req, res) => {
   const data = exportProgress(req.userId);
   const stamp = new Date().toISOString().slice(0, 10);
-  res.setHeader('Content-Disposition', `attachment; filename="lateralai-progress-${stamp}.json"`);
+  const who = (data.profile || 'player').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'player';
+  res.setHeader('Content-Disposition', `attachment; filename="lateralai-${who}-${stamp}.json"`);
   res.type('application/json').send(JSON.stringify(data, null, 2));
 });
 
@@ -260,6 +328,7 @@ app.post('/api/progress/reset', (req, res) => {
 // ---------------------------------------------------------------------------
 app.get('/bank', (req, res) => res.sendFile(path.join(PUBLIC_DIR, 'bank.html')));
 app.get('/generate', (req, res) => res.sendFile(path.join(PUBLIC_DIR, 'generate.html')));
+app.get('/leaderboard', (req, res) => res.sendFile(path.join(PUBLIC_DIR, 'leaderboard.html')));
 app.use(express.static(PUBLIC_DIR));
 
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars

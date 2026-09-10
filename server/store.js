@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -38,8 +39,59 @@ function save() {
 
 function userRecord(userId) {
   const d = load();
-  if (!d.users[userId]) d.users[userId] = { puzzles: {}, createdAt: new Date().toISOString() };
+  if (!d.users[userId]) {
+    d.users[userId] = { name: `Player ${Object.keys(d.users).length + 1}`, puzzles: {}, createdAt: new Date().toISOString() };
+    save();
+  }
   return d.users[userId];
+}
+
+// ---------------------------------------------------------------------------
+// Player profiles. Several people can share one server (and one device): each
+// profile has its own progress, settings and name.
+// ---------------------------------------------------------------------------
+function displayName(id, rec) {
+  return typeof rec?.name === 'string' && rec.name.trim() ? rec.name.trim() : `Player ${id.slice(0, 4)}`;
+}
+
+export function listProfiles() {
+  const d = load();
+  return Object.entries(d.users)
+    .map(([id, rec]) => ({ id, name: displayName(id, rec), createdAt: rec.createdAt || null }))
+    .sort((a, b) => String(a.createdAt).localeCompare(String(b.createdAt)));
+}
+
+export function profileExists(id) {
+  return Boolean(id) && Object.prototype.hasOwnProperty.call(load().users, id);
+}
+
+export function getProfile(id) {
+  const d = load();
+  return d.users[id] ? { id, name: displayName(id, d.users[id]), createdAt: d.users[id].createdAt || null } : null;
+}
+
+const MAX_NAME = 40;
+
+function cleanName(name) {
+  const n = String(name ?? '').trim().replace(/\s+/g, ' ').slice(0, MAX_NAME);
+  if (!n) throw new Error('A profile name is required');
+  return n;
+}
+
+export function createProfile(name) {
+  const d = load();
+  const id = crypto.randomBytes(16).toString('hex');
+  d.users[id] = { name: cleanName(name), puzzles: {}, createdAt: new Date().toISOString() };
+  save();
+  return { id, name: d.users[id].name, createdAt: d.users[id].createdAt };
+}
+
+export function renameProfile(id, name) {
+  const d = load();
+  if (!d.users[id]) return null;
+  d.users[id].name = cleanName(name);
+  save();
+  return { id, name: d.users[id].name, createdAt: d.users[id].createdAt || null };
 }
 
 function emptyEntry() {
@@ -96,6 +148,7 @@ export function exportProgress(userId) {
   return {
     app: 'lateral-game', kind: 'progress', version: 1,
     exportedAt: new Date().toISOString(),
+    profile: displayName(userId, rec),
     settings: rec.settings || {},
     puzzles: rec.puzzles || {},
   };

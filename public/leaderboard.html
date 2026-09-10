@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LateralAI · Leaderboard</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/img/logo-180.png">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="brand"><img class="logo" src="/img/logo-128.png" alt="" width="40" height="40"><h1>LateralAI</h1><span class="tagline">Leaderboard</span></div>
+      <nav class="site-nav"><a href="/">Play</a><a href="/bank">Question bank</a><a href="/generate">Generate</a><a href="/leaderboard" class="active">Leaderboard</a></nav>
+      <div class="game-details"><span id="header-stats">Loading…</span><span class="profile-control" id="profile-bar"></span></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="toolbar">
+      <div class="current-player">
+        Playing as <span id="current-name" class="editable-name" title="Double-click to rename this profile">…</span>
+      </div>
+      <span class="spacer"></span>
+      <a class="btn with-icon" id="export-progress" href="/api/progress/export" download title="Download this profile's progress as a JSON file">Export</a>
+      <button class="btn with-icon" id="import-progress" type="button" title="Replace this profile's progress from a JSON file">Import</button>
+      <input type="file" id="import-file" accept="application/json,.json" hidden>
+    </div>
+
+    <section class="card table-wrap">
+      <table class="bank-table leaderboard">
+        <thead>
+          <tr><th>#</th><th>Player</th><th class="num">Points</th><th class="num">Solved</th><th class="num">Easy</th><th class="num">Medium</th><th class="num">Hard</th></tr>
+        </thead>
+        <tbody id="rows"><tr><td colspan="7" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </section>
+
+    <section class="card scoring">
+      <h3>How the score is calculated</h3>
+      <p>Only puzzles you have <b>solved</b> count, and each one counts once. A solved puzzle is worth points
+         for its difficulty, minus what it took you to get there:</p>
+      <ul>
+        <li><b>Easy</b> 2 points · <b>Medium</b> 3 points · <b>Hard</b> 4 points</li>
+        <li>Each hint used: <b>−0.5</b></li>
+        <li>Each question answered: <b>−0.1</b></li>
+        <li>Each solution submitted: <b>−0.2</b></li>
+      </ul>
+      <p>A puzzle can never score below zero, so a long hunt costs you the puzzle's points but never
+         subtracts from the rest. Puzzles you revealed or are still working on score nothing, and a puzzle
+         deleted from the bank stops counting.</p>
+      <p class="example">Example: a hard puzzle solved with 6 questions, 1 hint and 2 tries scores
+         4 − 0.6 − 0.5 − 0.4 = <b>2.5</b> points.</p>
+    </section>
+  </main>
+  <script type="module" src="/js/leaderboard.js"></script>
+</body>
+</html>
