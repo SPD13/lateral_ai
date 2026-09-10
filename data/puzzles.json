@@ -417,5 +417,119 @@
       "Something heavier than air came out of the lake in the night and pooled in the valley like water."
     ],
     "addedAt": "2026-09-09T19:43:24.000Z"
+  },
+  {
+    "id": "the-mirrors-nobody-looks-at",
+    "title": "The Mirrors Nobody Looks At",
+    "difficulty": "medium",
+    "situation": "A small mountain town spent a fortune bolting three enormous mirrors to the cliff high above the rooftops. They are aimed down at the market square, yet nobody ever climbs up to look at them and nobody ever sees their reflection in them. The mayor calls it the best money the town has ever spent, and the café on the square now takes three times as much in January as it used to. Why?",
+    "solution": "The town sits at the bottom of a steep, narrow valley, so for several months each winter the sun never rises above the surrounding peaks and the square lies in permanent shadow. The mirrors are mounted on motors that track the sun and bounce a bright patch of direct sunlight down onto the square. In midwinter the townspeople now come out to stand and sit in that artificial patch of daylight, which is why the café beside it does so well.",
+    "keyFacts": [
+      "The valley is so deep that direct sunlight never reaches the town for months in winter",
+      "The mirrors reflect sunlight from the peaks down into the square",
+      "They are motorised and follow the sun so the bright patch stays put",
+      "People gather in the sunlit spot, which is why the café's winter takings rose"
+    ],
+    "hints": [
+      "The mirrors are not there to show anyone an image; they are there to move something.",
+      "The town's problem is worst in winter and has nothing to do with snow or wind.",
+      "Think about what a deep, narrow valley does to the low winter sun, and what a mirror on a high cliff could do about it."
+    ],
+    "addedAt": "2026-09-10T03:46:55.524Z"
+  },
+  {
+    "id": "the-ward-nobody-entered",
+    "title": "The Ward Nobody Entered",
+    "difficulty": "hard",
+    "situation": "During an occupation, armed soldiers searched a city hospital room by room, hunting for people in hiding. At one corridor the chief physician stopped them, pointed to the letter chalked on the door and quietly explained what the patients inside were suffering from. The soldiers listened to the noises coming from the ward, turned around, and left the building. Every person behind that door survived the war, and not one of them was ill. What was going on?",
+    "solution": "The people in that ward were refugees the doctors were hiding, and the illness on the door was invented by the doctors themselves: a fictitious, hideously disfiguring and supposedly very contagious disease, complete with fake charts and a fake name. The 'patients' had been coached to cough violently and horribly whenever boots were heard in the corridor. The soldiers were far more frightened of catching the disease than of missing a few fugitives, so they never opened the door, and the fiction kept the hidden people alive until the city was liberated.",
+    "keyFacts": [
+      "The 'patients' were fugitives being hidden by the hospital staff",
+      "The disease named on the door did not exist; the doctors invented it",
+      "The hidden people faked terrifying symptoms, especially coughing, on cue",
+      "The soldiers' fear of contagion made them refuse to search the ward"
+    ],
+    "hints": [
+      "The doctors were not lying about the patients being in the ward, only about why they were there.",
+      "The most powerful weapon in the hospital that day was a name written on a door.",
+      "No such illness has ever appeared in any medical textbook, because three doctors made it up that week to keep the soldiers out."
+    ],
+    "addedAt": "2026-09-10T03:46:57.739Z"
+  },
+  {
+    "id": "the-voice-on-the-platform",
+    "title": "The Voice on the Platform",
+    "difficulty": "easy",
+    "situation": "For years, an elderly woman travelled to an underground station she had no reason to use, sat on the platform, let train after train go by, and then went home. One winter she stopped coming, and the staff assumed she had moved away. In fact she was waiting for an answer to a letter she had written to the transport company, and once she got it she came back every week again. Why?",
+    "solution": "Decades earlier her husband, who had since died, had recorded the safety announcement played on that platform, so sitting there was the only place left where she could still hear his voice. During a system upgrade his recording was replaced by a new digital one, and she stopped visiting because there was nothing to come for. Her letter asked the company whether the old recording still existed anywhere; they tracked it down and put his voice back on that one platform for her.",
+    "keyFacts": [
+      "She went there to listen, not to travel",
+      "The recorded station announcement was her late husband's voice",
+      "The recording was replaced during a technical upgrade, so she stopped coming",
+      "The transport company found the old recording and restored it on that platform"
+    ],
+    "hints": [
+      "She never intended to board a train, and she was not meeting anybody.",
+      "What she came for was a sound, and it belonged to someone who had died.",
+      "Her husband's job long ago was to speak the words every passenger on that platform hears."
+    ],
+    "addedAt": "2026-09-10T03:46:59.358Z"
+  },
+  {
+    "id": "the-passenger-who-never-eats",
+    "title": "The Passenger Who Never Eats",
+    "difficulty": "easy",
+    "situation": "A woman buys two seats on every long flight she takes, always side by side. Her fellow passenger never queues at the desk, never eats the meal, never speaks to the crew, and is always strapped in by the window before anyone else boards. The crew know exactly who it is and think nothing of it. Who is travelling with her?",
+    "solution": "She is a professional cellist, and the second seat is for her cello. The instrument is far too valuable and fragile to go into the hold, and too large to fit in an overhead locker, so airlines sell musicians a full seat for it and it is buckled in like any other passenger. It boards early with her, sits by the window out of the aisle, and of course eats nothing.",
+    "keyFacts": [
+      "The second passenger is not a person but an object",
+      "It is a large, fragile, valuable musical instrument (a cello)",
+      "She buys it a seat because it cannot safely travel as hold luggage and is too big for the cabin lockers",
+      "It is strapped into the seat and boards with her"
+    ],
+    "hints": [
+      "Nobody is being deceived: the airline knows perfectly well what is in that seat.",
+      "The passenger has never been alive, and the woman's job explains why she takes it everywhere.",
+      "Think about what a musician would never let a baggage handler throw into a cargo hold."
+    ],
+    "addedAt": "2026-09-10T03:53:18.039Z"
+  },
+  {
+    "id": "the-runner-who-stopped-winning",
+    "title": "The Runner Who Stopped Winning",
+    "difficulty": "medium",
+    "situation": "In the final metres of a race, the runner in second place suddenly finds the leader standing still in front of him with the finish line still ahead. He could stroll past and win. Instead he slows down, stays behind the man, waves his arms at him, and crosses the line second. The crowd, the press and even his own coach call him a hero rather than a fool. Why?",
+    "solution": "The leader was a foreign athlete who could not read the local signs and had mistaken a banner across the course for the finish, so he pulled up a few metres too early believing he had already won. The second runner realised at once that the man had beaten him fairly and had only been defeated by a misunderstanding. Rather than steal the win on a technicality, he gestured and shepherded the confused leader over the real line ahead of him. He said afterwards that a victory taken that way would not have been his.",
+    "keyFacts": [
+      "The leader stopped by mistake, thinking he had already crossed the finish line",
+      "The mistake came from not understanding the local language or signage on the course",
+      "The second runner could easily have won but refused to profit from the error",
+      "He gestured to guide the leader over the true finish line and deliberately came second"
+    ],
+    "hints": [
+      "The leader was not injured, ill or cheating; he genuinely believed the race was over.",
+      "Something about the course itself misled him, and it would not have misled a local.",
+      "The man behind decided that the fastest runner should win, even if the rules would have handed him the trophy."
+    ],
+    "addedAt": "2026-09-10T03:53:24.920Z"
+  },
+  {
+    "id": "the-village-that-was-never-there",
+    "title": "The Village That Was Never There",
+    "difficulty": "hard",
+    "situation": "A mapmaker invents a village out of thin air and prints it at a lonely crossroads on his road map, in a spot where there is nothing but trees. Fourteen years later he finds the same village, with the same invented name, printed on a rival company's map, and he threatens to sue them for copying his work. The rival's lawyers reply with a single photograph, and he quietly drops the case. What was in the photograph?",
+    "solution": "The invented village was a copyright trap: a fake entry that only a plagiarist could ever reproduce, so its appearance elsewhere would prove theft. But in the years between, someone had driven out to that crossroads with a map, seen the name, and built a shop there, painting the invented name over the door as the name of the place. The photograph showed that building and its sign. Since a real, inhabited place now stood at those coordinates, the rival could say it had mapped reality rather than copied a fiction, and the lawsuit collapsed.",
+    "keyFacts": [
+      "The village was a deliberate fake planted to catch map plagiarists (a copyright trap)",
+      "In the meantime a real building, such as a shop, was put up at that crossroads",
+      "Its owners took the name from the map, so the invented name became the genuine name of a real place",
+      "The photograph proved the place now existed, so the rival was mapping fact, not copying an invention"
+    ],
+    "hints": [
+      "The mapmaker did not invent the village by accident; the lie had a purpose.",
+      "The photograph was taken at that very crossroads, and it showed something that had not been there when he drew the map.",
+      "By the time of the argument, the village was no longer imaginary, and you cannot own the name of a real place."
+    ],
+    "addedAt": "2026-09-10T03:53:46.004Z"
   }
 ]
