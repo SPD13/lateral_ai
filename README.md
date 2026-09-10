@@ -215,6 +215,11 @@ highlighted in green. Above the table, "Playing as" shows the active profile: **
 rename it, with Save and Cancel buttons. The **Export** and **Import** buttons work exactly like the ones
 in the question bank and act on the active profile.
 
+Each row has a **delete** button that removes that profile with everything it holds: its progress, its
+conversations and its scores. It asks to confirm first and cannot be undone. Deleting the profile you are
+playing as switches you to another one. The last remaining profile cannot be deleted, so there is always
+someone to play as.
+
 ### How points are calculated
 
 Only **solved** puzzles score, and each one counts once. A solved puzzle is worth its difficulty value
@@ -346,6 +351,7 @@ img/                         logo sources
 | GET    | `/api/profiles`               | Every player profile and which one is active                       |
 | POST   | `/api/profiles`               | Create a profile: `{ name }`                                       |
 | PATCH  | `/api/profiles/:id`           | Rename a profile: `{ name }`                                       |
+| DELETE | `/api/profiles/:id`           | Delete a profile and its progress (refused for the last one)       |
 | GET    | `/api/leaderboard`            | Ranked profiles with points and solved counts, plus the scoring table |
 | GET/PUT| `/api/settings`               | Player settings: `{ gmHelp }`                                      |
 | GET    | `/api/puzzles`                | All puzzles with this player's status (no solutions)               |

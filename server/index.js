@@ -5,7 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { loadPuzzles, getPuzzle, publicPuzzle, deletePuzzle, updatePuzzle } from './puzzles.js';
-import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings, exportProgress, importProgress, listProfiles, profileExists, getProfile, createProfile, renameProfile } from './store.js';
+import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, questionsAsked, guessesMade, getSettings, updateSettings, exportProgress, importProgress, listProfiles, profileExists, getProfile, createProfile, renameProfile, deleteProfile } from './store.js';
 import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
 import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, startGeneration, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate } from './generator.js';
@@ -79,6 +79,24 @@ app.patch('/api/profiles/:id', (req, res) => {
   } catch (e) {
     res.status(400).json({ error: e.message });
   }
+});
+
+app.delete('/api/profiles/:id', (req, res) => {
+  const id = req.params.id;
+  if (!profileExists(id)) return res.status(404).json({ error: 'Unknown profile' });
+  let removed;
+  try {
+    removed = deleteProfile(id);
+  } catch (e) {
+    return res.status(400).json({ error: e.message });
+  }
+  // if this browser's own cookie pointed at it, adopt another profile rather than making a fresh empty one
+  if (req.deviceId === id) {
+    const next = listProfiles()[0];
+    if (next) res.cookie(USER_COOKIE, next.id, { maxAge: 10 * 365 * 24 * 3600 * 1000, sameSite: 'lax', httpOnly: true });
+  }
+  console.log(`[profiles] deleted "${removed.name}" (${removed.puzzles} puzzles)`);
+  res.json({ ok: true, removed, remaining: listProfiles().length });
 });
 
 // ---------------------------------------------------------------------------
