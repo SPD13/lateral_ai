@@ -168,7 +168,8 @@ select.btn { padding-right: 28px; }
 .modes { display: flex; gap: 6px; flex-wrap: wrap; }
 .mode { border: 1px solid var(--line); background: transparent; color: var(--muted); padding: 5px 11px; border-radius: 999px; font-size: 13px; font-weight: 600; }
 .mode[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.mode.reveal { margin-left: auto; }
+/* hints and giving up sit together on the right, away from the two everyday actions */
+.modes .mode[data-mode="hint"] { margin-left: auto; }
 .input-row { display: flex; gap: 8px; align-items: flex-end; }
 .input-row textarea { flex: 1; resize: none; min-height: 44px; max-height: 140px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--ink); font: inherit; }
 .input-row textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
