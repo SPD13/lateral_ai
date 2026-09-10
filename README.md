@@ -154,7 +154,7 @@ leaderboard page.
 ## The question bank
 
 The **Question bank** page lists every puzzle with its difficulty, your status, your score, the hints you
-used, when you last played it and when it was added. For a solved puzzle the score column leads with the
+used, when you last played it, when it was added and which Claude model wrote it. For a solved puzzle the score column leads with the
 [leaderboard points](#how-points-are-calculated) it earned, then the questions and tries it took; hovering
 the score shows the full calculation.
 
@@ -171,7 +171,7 @@ the score shows the full calculation.
 dropdown with **Save** and **Cancel**: pick a level and press Save to write it to the bank for every player,
 or Cancel (or the Escape key) to leave it alone. Hovering the badge shows the same hint.
 
-Use the search box and the status, difficulty and date-added filters to narrow the list. Click a column
+Use the search box and the status, model, difficulty and date-added filters to narrow the list. Click a column
 header to sort by it, and click again to reverse; the default is newest additions first.
 
 Each row has three icon buttons:
@@ -203,7 +203,8 @@ a correct answer must contain, up to three progressive hints, and the date it wa
   "solution": "Romeo and Juliet are goldfish. Their bowl was knocked off a table and shattered, and they died on the floor.",
   "keyFacts": ["Romeo and Juliet are fish (goldfish)", "Their bowl fell and broke"],
   "hints": ["Romeo and Juliet are not human.", "Think about what the water and glass were before they ended up on the floor.", "They lived in the water."],
-  "addedAt": "2026-09-09T18:55:08.000Z"
+  "addedAt": "2026-09-09T18:55:08.000Z",
+  "model": "fable"
 }
 ```
 
@@ -273,8 +274,8 @@ The remaining candidates appear under **Awaiting review**, each with its title, 
 The solution, key facts and hints are hidden until you click **Show solution**, so you can first judge the
 situation the way a player would. Then:
 
-- **Approve and add to the bank** appends the puzzle to `data/puzzles.json` with a unique id and today's
-  date. It is playable straight away.
+- **Approve and add to the bank** appends the puzzle to `data/puzzles.json` with a unique id, today's date
+  and the model family that wrote it. It is playable straight away.
 - **Reject** drops it.
 
 Candidates are kept in `data/candidates.json` until you decide, so reloading the page or restarting the

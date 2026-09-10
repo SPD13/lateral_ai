@@ -6,6 +6,7 @@ const statusEl = document.getElementById('filter-status');
 const diffEl = document.getElementById('filter-difficulty');
 const countEl = document.getElementById('count');
 const addedEl = document.getElementById('filter-added');
+const modelEl = document.getElementById('filter-model');
 
 let puzzles = [];
 // Newest additions first by default; clicking a header sorts ascending, clicking again descending.
@@ -18,6 +19,7 @@ function sortValue(p, key) {
   switch (key) {
     case 'title': return p.title.toLowerCase();
     case 'difficulty': return DIFFICULTY_RANK[p.difficulty] ?? 9;
+    case 'model': return p.model || null;
     case 'status': return STATUS_RANK[p.status] ?? 9;
     case 'score': return p.status === 'solved' ? p.points : null;
     case 'hints': return p.hintsGiven;
@@ -99,18 +101,20 @@ function render() {
   const df = diffEl.value;
   const days = Number(addedEl.value) || 0;
   const since = days ? Date.now() - days * 86400000 : 0;
+  const md = modelEl.value;
   const list = sortPuzzles(puzzles.filter((p) =>
-    (!st || p.status === st) && (!df || p.difficulty === df) &&
+    (!st || p.status === st) && (!df || p.difficulty === df) && (!md || p.model === md) &&
     (!since || (p.addedAt && Date.parse(p.addedAt) >= since)) &&
     (!q || p.title.toLowerCase().includes(q) || p.situation.toLowerCase().includes(q))));
   renderSortIndicators();
   countEl.textContent = `${list.length} of ${puzzles.length} puzzles`;
-  if (!list.length) { rowsEl.innerHTML = '<tr><td colspan="8" class="empty">No puzzles match these filters.</td></tr>'; return; }
+  if (!list.length) { rowsEl.innerHTML = '<tr><td colspan="9" class="empty">No puzzles match these filters.</td></tr>'; return; }
   rowsEl.innerHTML = list.map((p) => `
     <tr data-id="${escapeHtml(p.id)}">
       <td class="title"><a href="/?id=${encodeURIComponent(p.id)}">${escapeHtml(p.title)}</a>
         <div class="excerpt">${escapeHtml(p.situation.length > 140 ? p.situation.slice(0, 140) + '…' : p.situation)}</div></td>
       <td class="difficulty-cell" data-difficulty="${escapeHtml(p.difficulty)}">${difficultyBadge(p.difficulty)}</td>
+      <td class="model-cell">${p.model ? `<span class="model" title="Written by Claude ${escapeHtml(p.model)}">${escapeHtml(p.model)}</span>` : '<span class="excerpt">—</span>'}</td>
       <td>${badge(p.status, STATUS_LABEL[p.status])}</td>
       <td>${score(p)}</td>
       <td>${p.hintsGiven}/${p.hintCount}</td>
@@ -126,6 +130,7 @@ function render() {
 
 async function load() {
   puzzles = await api('/api/puzzles');
+  fillModelFilter();
   render();
   loadHeaderStats();
   renderProfileBar();
@@ -133,7 +138,14 @@ async function load() {
 
 renderNavIcons();
 
-for (const el of [searchEl, statusEl, diffEl, addedEl]) el.addEventListener('input', render);
+for (const el of [searchEl, statusEl, diffEl, addedEl, modelEl]) el.addEventListener('input', render);
+
+/** The filter lists the models actually present in the bank. */
+function fillModelFilter() {
+  const models = [...new Set(puzzles.map((p) => p.model).filter(Boolean))].sort();
+  const chosen = modelEl.value;
+  modelEl.innerHTML = `<option value="">Any model</option>${models.map((m) => `<option value="${escapeHtml(m)}"${m === chosen ? ' selected' : ''}>${escapeHtml(m)}</option>`).join('')}`;
+}
 
 document.querySelector('.bank-table thead').addEventListener('click', (e) => {
   const key = e.target.closest('[data-sort]')?.dataset.sort;
@@ -194,4 +206,4 @@ document.getElementById('reset-all').addEventListener('click', async () => {
   await load();
 });
 
-load().catch((err) => { rowsEl.innerHTML = `<tr><td colspan="8" class="empty">${escapeHtml(err.message)}</td></tr>`; });
+load().catch((err) => { rowsEl.innerHTML = `<tr><td colspan="9" class="empty">${escapeHtml(err.message)}</td></tr>`; });

@@ -34,6 +34,9 @@
         <option value="7">Added this week</option>
         <option value="30">Added this month</option>
       </select>
+      <select class="btn" id="filter-model" aria-label="Filter by the model that wrote the puzzle">
+        <option value="">Any model</option>
+      </select>
       <select class="btn" id="filter-difficulty" aria-label="Filter by difficulty">
         <option value="">All difficulties</option>
         <option value="easy">Easy</option>
@@ -54,6 +57,7 @@
           <tr>
             <th><button type="button" class="sort" data-sort="title">Puzzle</button></th>
             <th><button type="button" class="sort" data-sort="difficulty">Difficulty</button></th>
+            <th><button type="button" class="sort" data-sort="model">Model</button></th>
             <th><button type="button" class="sort" data-sort="status">Status</button></th>
             <th><button type="button" class="sort" data-sort="score">Score</button></th>
             <th><button type="button" class="sort" data-sort="hints">Hints</button></th>
@@ -62,7 +66,7 @@
             <th class="right">Actions</th>
           </tr>
         </thead>
-        <tbody id="rows"><tr><td colspan="8" class="empty">Loading…</td></tr></tbody>
+        <tbody id="rows"><tr><td colspan="9" class="empty">Loading…</td></tr></tbody>
       </table>
     </section>
   </main>

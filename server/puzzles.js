@@ -27,7 +27,7 @@ export function getPuzzle(id) {
 
 /** Public view of a puzzle: never includes the solution, key facts or hints. */
 export function publicPuzzle(p) {
-  return { id: p.id, title: p.title, difficulty: p.difficulty, situation: p.situation, hintCount: p.hints.length, addedAt: p.addedAt };
+  return { id: p.id, title: p.title, difficulty: p.difficulty, situation: p.situation, hintCount: p.hints.length, addedAt: p.addedAt, model: p.model || '' };
 }
 
 function validate(p, i) {
@@ -47,7 +47,7 @@ export function validatePuzzle(p) {
   const addedAt = typeof p.addedAt === 'string' && !Number.isNaN(Date.parse(p.addedAt)) ? p.addedAt : null;
   return {
     id, title: p.title.trim(), difficulty: p.difficulty, situation: p.situation.trim(), solution: p.solution.trim(),
-    keyFacts: strings(p.keyFacts), hints: strings(p.hints), addedAt,
+    keyFacts: strings(p.keyFacts), hints: strings(p.hints), addedAt, model: modelFamily(p.model),
   };
 }
 
@@ -80,6 +80,13 @@ export function deletePuzzle(id) {
   fs.renameSync(tmp, PUZZLES_FILE);
   loadPuzzles(); // refresh the cache from the new mtime
   return removed;
+}
+
+/** The model family that wrote a puzzle: fable, opus, sonnet, haiku, or the raw name when unknown. */
+export function modelFamily(name) {
+  const n = String(name ?? '').toLowerCase();
+  const known = ['fable', 'opus', 'sonnet', 'haiku'].find((f) => n.includes(f));
+  return known || n.replace(/[^a-z0-9.-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 24) || '';
 }
 
 export function slugify(s) {
