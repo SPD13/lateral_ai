@@ -88,6 +88,62 @@ export function updateProgress(userId, puzzleId, mutate) {
   return entry;
 }
 
+const ALL_STATUSES = Object.values(STATUS);
+
+/** The player's whole record, shaped as a portable progress file. */
+export function exportProgress(userId) {
+  const rec = userRecord(userId);
+  return {
+    app: 'lateral-game', kind: 'progress', version: 1,
+    exportedAt: new Date().toISOString(),
+    settings: rec.settings || {},
+    puzzles: rec.puzzles || {},
+  };
+}
+
+function cleanMessage(m) {
+  if (!m || typeof m !== 'object' || typeof m.text !== 'string') return null;
+  return {
+    role: m.role === 'agent' ? 'agent' : 'user',
+    ...(m.intent ? { intent: String(m.intent) } : {}),
+    ...(m.kind ? { kind: String(m.kind) } : {}),
+    ...(m.answer ? { answer: String(m.answer) } : {}),
+    ...(m.verdict ? { verdict: String(m.verdict) } : {}),
+    text: m.text,
+    at: typeof m.at === 'string' ? m.at : new Date().toISOString(),
+  };
+}
+
+/** Replace the player's progress with the contents of a progress file. Throws on anything unusable. */
+export function importProgress(userId, data) {
+  if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('That file does not look like a progress export');
+  if (data.app && data.app !== 'lateral-game') throw new Error('That file was exported by another application');
+  const puzzles = data.puzzles;
+  if (!puzzles || typeof puzzles !== 'object' || Array.isArray(puzzles)) throw new Error('No progress found in the file');
+  const clean = {};
+  for (const [id, e] of Object.entries(puzzles)) {
+    if (!e || typeof e !== 'object') continue;
+    const history = Array.isArray(e.history) ? e.history.map(cleanMessage).filter(Boolean) : [];
+    clean[id] = {
+      status: ALL_STATUSES.includes(e.status) ? e.status : STATUS.TRIED,
+      history,
+      hintsGiven: Math.max(0, Number(e.hintsGiven) || 0),
+      questionsAsked: Math.max(0, Number(e.questionsAsked) || 0),
+      guesses: Math.max(0, Number(e.guesses) || 0),
+      updatedAt: typeof e.updatedAt === 'string' ? e.updatedAt : null,
+      solvedAt: typeof e.solvedAt === 'string' ? e.solvedAt : null,
+    };
+  }
+  if (!Object.keys(clean).length) throw new Error('The file contains no puzzle progress');
+  const rec = userRecord(userId);
+  rec.puzzles = clean;
+  if (data.settings && typeof data.settings === 'object' && 'gmHelp' in data.settings) {
+    rec.settings = { ...(rec.settings || {}), gmHelp: !!data.settings.gmHelp };
+  }
+  save();
+  return { puzzles: Object.keys(clean).length, messages: Object.values(clean).reduce((n, e) => n + e.history.length, 0) };
+}
+
 /** Per-player settings (not touched by a progress reset). */
 export function getSettings(userId) {
   return { ...(userRecord(userId).settings || {}) };
