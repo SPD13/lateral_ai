@@ -237,7 +237,9 @@ select.btn { padding-right: 28px; }
 .gen-status .dropped { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
 .spinner { display: inline-block; width: 12px; height: 12px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin .8s linear infinite; vertical-align: -1px; margin-right: 4px; }
 @keyframes spin { to { transform: rotate(360deg); } }
-.section-title { font-size: 16px; margin: 8px 0 12px; }
+.section-title { font-size: 16px; margin: 0; }
+.review-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 20px 0 12px; }
+.review-head .spacer { flex: 1; }
 .section-title .count { color: var(--muted); font-weight: 400; }
 .candidates { display: flex; flex-direction: column; gap: 14px; }
 .candidate h3 { margin: 0; font-size: 17px; }

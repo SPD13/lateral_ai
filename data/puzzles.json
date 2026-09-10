@@ -659,5 +659,104 @@
     "addedAt": "2026-09-10T16:36:59.737Z",
     "model": "web-search",
     "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "a-view-to-murder-ice-brake",
+    "title": "A View to Murder",
+    "difficulty": "medium",
+    "situation": "A husband and wife stop at a lookout on a steep mountain range in a remote place to admire the view, with their car parked behind and above them. With nobody near it, the car rolls down the hill and kills the wife. Nobody touches the scene before the police arrive, and an officer inspects the car and immediately arrests the husband for murder. What did the officer see?",
+    "solution": "The handbrake had not been put on, and there was a large puddle of water under the brake pedal. The officer worked out that the husband had wedged a block of ice against the brake pedal to hold it down. Once the couple were out of the car and standing below it, the ice melted, the brake let go and the car rolled onto the wife.",
+    "keyFacts": [
+      "A block of ice held the brake pedal down",
+      "The ice melted and released the car",
+      "The officer saw a puddle of water under the brake pedal and the handbrake not set"
+    ],
+    "hints": [
+      "Nobody moved the car, but something inside it changed while the couple were at the view.",
+      "Look closely at the driver's footwell. Something was there that wasn't there before.",
+      "Something held the brake down for a while and then quietly disappeared, leaving only water."
+    ],
+    "addedAt": "2026-09-10T16:53:20.580Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "hidden-communication-microwave-timer",
+    "title": "The Microwave Timer",
+    "difficulty": "medium",
+    "situation": "A man comes home and his wife calls to him from behind the closed bathroom door: 'Welcome home, darling. Dinner's in the microwave. Please look at the timer and tell me how long until it's ready.' He answers her, and then immediately calls the police. Why?",
+    "solution": "The husband is blind. His wife knows he cannot possibly read a microwave timer, and she would not normally shut the bathroom door on him, so the strange request was a coded message that something was badly wrong. He realised she was in danger and called the police.",
+    "keyFacts": [
+      "The husband is blind",
+      "The wife knows he can't read the timer, so the request was a coded distress signal",
+      "He realises she is in danger, so he calls the police"
+    ],
+    "hints": [
+      "The request itself was not really about dinner.",
+      "Think about what makes the request impossible for this particular man.",
+      "The husband cannot see, and his wife knows that perfectly well."
+    ],
+    "addedAt": "2026-09-10T16:53:24.375Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "answered-prayer-lift-power-cut",
+    "title": "The Answered Prayer",
+    "difficulty": "medium",
+    "situation": "On a wild, stormy night, a woman is running late to deliver some important documents. She races into a lift and presses her floor, but as the lift starts to rise the power goes out and she is stuck. Instead of panicking, she feels her prayers have been answered. Why?",
+    "solution": "She was carrying a stay of execution for a prisoner due to die in the electric chair only moments later. The power cut that trapped her in the lift also knocked out the electric chair, so the execution could not go ahead. That gave her time to deliver the reprieve. (The site also accepts another answer: the papers were notes her boss needed for a meeting, and the power cut called off the meeting.)",
+    "keyFacts": [
+      "She was delivering a stay of execution",
+      "The execution was by electric chair",
+      "The power cut stopped the execution and gave her time to deliver the papers"
+    ],
+    "hints": [
+      "The power cut affected more than just her lift.",
+      "Her documents were a matter of life and death for someone else.",
+      "Think about a way of carrying out a death sentence that needs electricity."
+    ],
+    "addedAt": "2026-09-10T16:53:30.127Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "angry-cat-share-house",
+    "title": "The Angry Cat",
+    "difficulty": "easy",
+    "situation": "Rachael and Thomas move into a new share house. As soon as they arrive, an angry, aggressive cat confronts them, and Thomas is very upset about it. Rachael knows there isn't really a problem, and that even if she does nothing at all, Thomas will soon be fine with the new place. Why?",
+    "solution": "Thomas is a cat himself. The 'angry cat' is his own reflection in a mirror in the new house, which he takes for a rival cat challenging him. Rachael knows he will get used to it, so there is nothing she needs to do.",
+    "keyFacts": [
+      "Thomas is a cat",
+      "The angry cat is Thomas's reflection in a mirror"
+    ],
+    "hints": [
+      "Don't assume Thomas and Rachael are both people.",
+      "The angry cat copies Thomas's every move.",
+      "Something in the new house shows Thomas his own face."
+    ],
+    "addedAt": "2026-09-10T16:53:32.747Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "close-call-phone-sniper",
+    "title": "Close Call",
+    "difficulty": "hard",
+    "situation": "A man receives a phone call, and before he can even answer it, the call has saved the life of the man standing next to him. How?",
+    "solution": "The site's first answer is that the two men were in a war zone, and an enemy sniper had the second man in his crosshairs. When the phone rang, its light drew the sniper's eye to the first man, so he switched targets and the man next to him was spared. The site also lists other answers: the man was an executioner who stopped when he saw the Governor calling, or the ringing phone warned the second man of an approaching attacker so he could get away.",
+    "keyFacts": [
+      "A sniper was aiming at the second man",
+      "The phone's light drew the sniper's attention",
+      "The sniper switched targets to the man with the phone, sparing his companion"
+    ],
+    "hints": [
+      "Someone who wanted to kill the second man was watching from far away.",
+      "It isn't what the caller said. The call was never answered. It's what the phone did when it rang.",
+      "In the dark, a lit-up phone screen is easy to spot through a rifle scope."
+    ],
+    "addedAt": "2026-09-10T16:53:34.546Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
   }
 ]

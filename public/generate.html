@@ -59,7 +59,12 @@
       </details>
     </section>
 
-    <h2 class="section-title">Awaiting review <span class="count" id="pending-count"></span></h2>
+    <div class="review-head">
+      <h2 class="section-title">Awaiting review <span class="count" id="pending-count"></span></h2>
+      <span class="spacer"></span>
+      <button type="button" class="btn primary" id="approve-all" disabled>Approve all</button>
+      <button type="button" class="btn danger" id="reject-all" disabled>Reject all</button>
+    </div>
     <div class="candidates" id="candidates"><div class="empty">Loading…</div></div>
   </main>
   <script type="module" src="/js/generate.js"></script>

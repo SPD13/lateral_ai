@@ -58,6 +58,30 @@ export function approveCandidate(candidateId) {
   return stored;
 }
 
+/** Approve every candidate, keeping going if one of them is rejected by the bank. */
+export function approveAllCandidates() {
+  const added = [];
+  const failed = [];
+  for (const candidate of [...loadCandidates()]) {
+    try {
+      const puzzle = approveCandidate(candidate.candidateId);
+      if (puzzle) added.push(puzzle.id);
+    } catch (e) {
+      failed.push({ title: candidate.title, reason: e.message });
+    }
+  }
+  return { added, failed };
+}
+
+/** Drop every candidate. Returns how many were dropped. */
+export function rejectAllCandidates() {
+  const list = loadCandidates();
+  const count = list.length;
+  list.length = 0;
+  saveCandidates();
+  return count;
+}
+
 export function rejectCandidate(candidateId) {
   const list = loadCandidates();
   const i = list.findIndex((c) => c.candidateId === candidateId);

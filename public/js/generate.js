@@ -1,9 +1,10 @@
-import { api, escapeHtml, badge, loadHeaderStats, renderProfileBar, renderNavIcons } from './common.js';
+import { api, escapeHtml, badge, confirmModal, loadHeaderStats, renderProfileBar, renderNavIcons } from './common.js';
 
 const $ = (id) => document.getElementById(id);
 const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count'),
   collect: $('collect'), collectCount: $('collect-count'), collectStatus: $('collect-status'), collectSources: $('collect-sources'),
-  sources: $('sources'), sourceList: $('source-list'), sourcesCount: $('sources-count') };
+  sources: $('sources'), sourceList: $('source-list'), sourcesCount: $('sources-count'),
+  approveAll: $('approve-all'), rejectAll: $('reject-all') };
 
 let config = null;
 let pollTimer = null;
@@ -124,10 +125,42 @@ function candidateEl(c) {
 async function loadCandidates() {
   const list = await api('/api/candidates');
   els.pending.textContent = list.length ? `(${list.length})` : '';
+  els.approveAll.disabled = !list.length;
+  els.rejectAll.disabled = !list.length;
   els.list.innerHTML = '';
   if (!list.length) { els.list.innerHTML = '<div class="card empty">No puzzles waiting for review. Generate some above.</div>'; return; }
   for (const c of list) els.list.appendChild(candidateEl(c));
 }
+
+/** Approve or reject the whole list at once, after saying how many that is. */
+async function reviewAll(action) {
+  const pending = els.list.querySelectorAll('.candidate').length;
+  if (!pending) return;
+  const approving = action === 'approve';
+  const ok = await confirmModal({
+    title: approving ? `Approve all ${pending} puzzles?` : `Reject all ${pending} puzzles?`,
+    body: approving
+      ? `All ${pending} puzzle${pending === 1 ? '' : 's'} waiting for review go into the question bank, without reading them one by one.`
+      : `All ${pending} puzzle${pending === 1 ? '' : 's'} waiting for review are discarded. This cannot be undone, and a later search may not find them again.`,
+    confirmLabel: approving ? 'Approve all' : 'Reject all', danger: !approving,
+  });
+  if (!ok) return;
+  els.approveAll.disabled = true;
+  els.rejectAll.disabled = true;
+  try {
+    const res = await api(`/api/candidates/${approving ? 'approve-all' : 'reject-all'}`, { method: 'POST' });
+    await loadCandidates();
+    loadSources();
+    loadHeaderStats();
+    if (approving && res.failed?.length) alert(`Added ${res.approved}. ${res.failed.length} could not be added:\n${res.failed.map((f) => `${f.title}: ${f.reason}`).join('\n')}`);
+  } catch (err) {
+    alert(err.message);
+    await loadCandidates();
+  }
+}
+
+els.approveAll.addEventListener('click', () => reviewAll('approve'));
+els.rejectAll.addEventListener('click', () => reviewAll('reject'));
 
 els.list.addEventListener('click', async (e) => {
   const btn = e.target.closest('[data-act]');
