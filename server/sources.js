@@ -44,20 +44,27 @@ export function knowsSource(url) {
   return load().some((s) => sourceKey(s.url) === key);
 }
 
-/** Record a visit, whether it yielded puzzles or not. Returns the stored entry. */
+/**
+ * Record a visit, whether it yielded puzzles or not. A visit that brings back nothing new marks the page
+ * as exhausted; one that brings back something clears that mark, in case the page has grown since.
+ */
 export function addSource({ url, title, puzzles = 0, kept = 0 }) {
   const list = load();
   const key = sourceKey(url);
-  const existing = list.find((s) => sourceKey(s.url) === key);
-  if (existing) {
-    existing.visits = (existing.visits || 1) + 1;
-    existing.lastVisitedAt = new Date().toISOString();
-    existing.kept += kept;
-    save();
-    return existing;
+  const now = new Date().toISOString();
+  const exhausted = kept === 0;
+  let entry = list.find((s) => sourceKey(s.url) === key);
+  if (entry) {
+    entry.visits = (entry.visits || 1) + 1;
+    entry.lastVisitedAt = now;
+    entry.kept += kept;
+    if (title && !entry.title) entry.title = String(title).slice(0, 120);
+  } else {
+    entry = { url: String(url), title: String(title || '').slice(0, 120), found: puzzles, kept, visits: 1, firstVisitedAt: now, lastVisitedAt: now };
+    list.push(entry);
   }
-  const entry = { url: String(url), title: String(title || '').slice(0, 120), found: puzzles, kept, visits: 1, firstVisitedAt: new Date().toISOString(), lastVisitedAt: new Date().toISOString() };
-  list.push(entry);
+  if (exhausted) { entry.exhausted = true; entry.exhaustedAt = now; }
+  else { delete entry.exhausted; delete entry.exhaustedAt; }
   save();
   return entry;
 }
