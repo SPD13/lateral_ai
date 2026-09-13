@@ -14,8 +14,8 @@ export const GENERATOR_MODEL = process.env.GENERATOR_MODEL || CLAUDE_MODEL;
 /** Built-in CLI tools the writer may use (web search for inspiration). Set GENERATOR_TOOLS="" to disable. */
 export const GENERATOR_TOOLS = (process.env.GENERATOR_TOOLS ?? 'WebSearch,WebFetch').split(',').map((s) => s.trim()).filter(Boolean);
 export const GENERATOR_TIMEOUT_MS = Number(process.env.GENERATOR_TIMEOUT_MS || 6 * 60_000);
-/** Collecting means searching, fetching and reading a page, so it gets longer. */
-export const COLLECT_TIMEOUT_MS = Number(process.env.COLLECT_TIMEOUT_MS || 10 * 60_000);
+/** Collecting means searching, fetching and reading a whole page of puzzles, so it gets a long leash. */
+export const COLLECT_TIMEOUT_MS = Number(process.env.COLLECT_TIMEOUT_MS || 20 * 60_000);
 export const COLLECT_COUNT = Number(process.env.COLLECT_COUNT || 10);
 /** Collecting is cheap per puzzle once the page is fetched, so it may take more in one go than the writer. */
 export const COLLECT_MAX = Number(process.env.COLLECT_MAX || 20);
