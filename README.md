@@ -362,8 +362,8 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 | `GM_HELP_DEFAULT`      | `1`                  | Default of the per-player "Game master help" switch; `0` starts strict          |
 | `GENERATOR_MODEL`      | same as `CLAUDE_MODEL` | Puzzle writer model used when generating new questions             |
 | `GENERATOR_TOOLS`      | `WebSearch,WebFetch` | CLI tools the puzzle writer may use; `""` disables web search        |
-| `GENERATOR_TIMEOUT_MS` | `360000`             | Timeout for one generation run                                       |
-| `COLLECT_TIMEOUT_MS`   | `600000`             | Timeout for one web collection run                                   |
+| `GENERATOR_TIMEOUT_MS` | `360000`             | Timeout for one generation run (6 minutes)                           |
+| `COLLECT_TIMEOUT_MS`   | `1200000`            | Timeout for one web collection run (20 minutes)                      |
 | `COLLECT_COUNT`        | `10`                 | Default number of puzzles a web collection run takes from a page     |
 | `COLLECT_MAX`          | `20`                 | Ceiling for that number                                              |
 | `CLAUDE_BIN`           | `claude`             | Path to the CLI                                                      |

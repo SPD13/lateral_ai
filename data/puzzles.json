@@ -758,5 +758,1796 @@
     "addedAt": "2026-09-10T16:53:34.546Z",
     "model": "web-search",
     "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-the-bus-stop",
+    "title": "The Bus Stop",
+    "difficulty": "easy",
+    "situation": "On a stormy night, a man driving along a rural road passes a bus stop where three people are waiting. One is an elderly woman who needs medical attention, one is his best friend who once saved his life, and one is an attractive woman he would love to meet. His car has room for only one passenger. What does he do?",
+    "solution": "He stops at the bus stop and gets out of the car himself. He hands his car to his best friend, who is great at helping people, and asks him to drive the old lady to the hospital. The man then stays behind and waits for the bus with the young woman, keeping her safe until it comes.",
+    "keyFacts": [
+      "He gives his car to his best friend",
+      "The friend drives the elderly woman to hospital",
+      "He waits for the bus with the woman he wants to meet"
+    ],
+    "hints": [
+      "You're assuming the man has to be the one driving.",
+      "The car can still carry one passenger even if the driver changes.",
+      "What if he got out and let someone else take the wheel?"
+    ],
+    "addedAt": "2026-09-12T16:38:29.588Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-the-cheating-husband",
+    "title": "The Cheating Husband",
+    "difficulty": "medium",
+    "situation": "A newly married woman comes home from work early and finds her husband in bed with another woman. Almost at once, her anger fades. Why?",
+    "solution": "Her new and devoted husband had been using her hours at work to delete videos and images of his past romantic encounters. The 'other woman' she saw him in bed with was only in one of those old recordings, not really there. Once she understood he was getting rid of his past for her sake, she was no longer angry.",
+    "keyFacts": [
+      "The other woman was not physically there",
+      "She was in old videos or images from his past",
+      "He was deleting them out of devotion to his wife"
+    ],
+    "hints": [
+      "Nobody else was really in the room.",
+      "Think about screens and recordings.",
+      "He was busy erasing his romantic past before his wife got home."
+    ],
+    "addedAt": "2026-09-12T16:38:29.596Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-the-movie-theater",
+    "title": "The Movie Theater",
+    "difficulty": "medium",
+    "situation": "A man takes a woman to see a film. Halfway through, he kills her with a knife, a murder he had planned in advance. Afterwards they leave the theater together, and nobody notices a thing. How?",
+    "solution": "The couple were at a drive-in theater, watching the film from inside their car. The car had tinted windows, so nobody could see in. When the film ended, he simply drove out with her body still in the car, so they 'left together'.",
+    "keyFacts": [
+      "It was a drive-in theater",
+      "They were inside a car with tinted windows",
+      "He drove away with her body in the car"
+    ],
+    "hints": [
+      "Not every theater has rows of seats.",
+      "The whole thing happened out of everyone's sight.",
+      "They never left their car at all."
+    ],
+    "addedAt": "2026-09-12T16:38:29.601Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-the-oyster-diver",
+    "title": "The Oyster Diver",
+    "difficulty": "medium",
+    "situation": "A man who dives for oysters comes face to face with a dangerous shark. Yet he isn't the least bit worried. Why not?",
+    "solution": "The shark was a loan shark, and the diver owed him money. That day he got lucky and found a valuable pearl inside one of his oysters. The pearl easily covered the debt, so he had nothing to fear.",
+    "keyFacts": [
+      "The shark is a loan shark, not a fish",
+      "The diver owed him money",
+      "He found a valuable pearl that paid off the debt"
+    ],
+    "hints": [
+      "The shark wasn't in the water.",
+      "Some sharks deal in money.",
+      "His catch that day made him rich enough to pay back what he owed."
+    ],
+    "addedAt": "2026-09-12T16:38:29.605Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-the-long-search",
+    "title": "The Long Search",
+    "difficulty": "easy",
+    "situation": "Betty went missing more than 50 years ago. One day someone finds her, though they weren't looking for her at all. They know straight away that it is Betty. How?",
+    "solution": "Betty was a boat that had mysteriously disappeared. A diver came across the wreck by chance. The name 'Betty' was still written on the bow.",
+    "keyFacts": [
+      "Betty is a boat",
+      "A diver found the wreck",
+      "Her name was still on the bow"
+    ],
+    "hints": [
+      "Betty isn't a person.",
+      "She was found underwater.",
+      "Her name was painted on her."
+    ],
+    "addedAt": "2026-09-12T16:38:29.609Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-explain-this-death",
+    "title": "Explain This Death",
+    "difficulty": "medium",
+    "situation": "A man reads a newspaper story about Mr and Mrs Smith, who were on a skiing holiday in the Alps. Mrs Smith fell and was killed. The reader immediately knows Mr Smith murdered her. How?",
+    "solution": "The man reading the paper was the travel agent who had sold Mr Smith the tickets for the trip. Mr Smith had bought a return ticket for himself but only a one-way ticket for his wife. He clearly never expected her to come home.",
+    "keyFacts": [
+      "The reader is the travel agent who booked the trip",
+      "Mr Smith bought a return ticket for himself",
+      "He bought only a one-way ticket for his wife"
+    ],
+    "hints": [
+      "The reader knows something about the trip from before it happened.",
+      "Think about who arranged the holiday.",
+      "Compare the tickets the couple were each booked on."
+    ],
+    "addedAt": "2026-09-12T16:38:29.611Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-the-curious-guilt-puzzle",
+    "title": "The Curious Guilt Puzzle",
+    "difficulty": "easy",
+    "situation": "Jenny is found dead in her car after a violent attack, and her purse and phone are missing. The police contact her husband and ask him to come in. As soon as he arrives, they arrest him. Why?",
+    "solution": "The police had never told him where the crime scene was. The husband went straight to the right location anyway. Only the killer could have known where Jenny's body was.",
+    "keyFacts": [
+      "The police did not tell him where she was",
+      "He arrived at the crime scene anyway",
+      "Knowing the location gave him away as the killer"
+    ],
+    "hints": [
+      "What matters is where he turned up.",
+      "Think about what the police did and didn't tell him on the phone.",
+      "How did he know where to go?"
+    ],
+    "addedAt": "2026-09-12T16:38:29.613Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-the-pitchfork",
+    "title": "The Pitchfork",
+    "difficulty": "hard",
+    "situation": "Jason is working in his garden with a pitchfork while witnesses look on. A masked gunman fires a single shot at him, and Jason charges at him in a zigzag and kills him with the pitchfork. The witnesses call him brave and point out a bullet hole through his jacket, but Jason was never in danger and was no hero. Why?",
+    "solution": "The masked man owed Jason money. Jason told him he had to die in a way that would let his family claim insurance and pay off the debt. Jason supplied the gun himself: a homemade pistol that could hold only one round, which he loaded with a blank before permanently sealing the chamber so it could fire only once. The 'attack' was staged so Jason could kill the man in apparent self-defense.",
+    "keyFacts": [
+      "The gunman owed Jason a debt",
+      "His death was arranged so his family could claim insurance",
+      "Jason supplied the gun, loaded with a blank",
+      "The one-shot homemade gun's chamber was sealed, so it could not be reloaded"
+    ],
+    "hints": [
+      "Jason and the gunman knew each other.",
+      "The weapon came from Jason, and it could only ever fire once.",
+      "The shot was a blank, and the man's death was meant to pay off money he owed Jason through insurance."
+    ],
+    "addedAt": "2026-09-12T16:38:29.615Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-the-astronauts-despair",
+    "title": "The Astronaut's Despair",
+    "difficulty": "easy",
+    "situation": "A lone spaceship pilot crash-lands on an unknown, uninhabited planet whose air will keep him alive for only an hour. Nobody knows where he is, and his wrecked ship has no breathable air left. He sets off to explore with no equipment, and thirty minutes later a human voice startles him. How?",
+    "solution": "In his despair, the astronaut cried out in anguish. What he heard was his own echo coming back to him. There was nobody else on the planet.",
+    "keyFacts": [
+      "There is nobody else on the planet",
+      "He cried out in despair",
+      "The voice was his own echo"
+    ],
+    "hints": [
+      "The voice didn't belong to anyone new.",
+      "Think about what he did when he realised how hopeless things were.",
+      "Sound can bounce back off the landscape."
+    ],
+    "addedAt": "2026-09-12T16:38:29.618Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "muxworthy-which-light-switch",
+    "title": "Which Light Switch?",
+    "difficulty": "medium",
+    "situation": "Upstairs there are three switches, and only one of them works the light in a cellar at the bottom of some rickety stairs. The cellar is so hard to reach that you can go down only once, and from upstairs you cannot tell whether the light is on. How can you work out which switch controls the light?",
+    "solution": "Turn the first switch on and leave it for several minutes, then turn it off and turn on the second switch. Go down to the cellar. If the bulb is lit, it is the second switch; if it is off but warm, it is the first; if it is off and cold, it is the third.",
+    "keyFacts": [
+      "Leave one switch on long enough to heat the bulb, then turn it off",
+      "Turn a second switch on before going down",
+      "Lit bulb = second switch, warm bulb = first switch, cold bulb = third switch"
+    ],
+    "hints": [
+      "A light bulb tells you more than whether it is on or off.",
+      "Think about what happens to a bulb that has been on for a while.",
+      "Touch the bulb: heat shows which switch was on earlier."
+    ],
+    "addedAt": "2026-09-12T16:38:29.620Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "til-death-do-us-part",
+    "title": "Til Death Do Us Part",
+    "difficulty": "hard",
+    "situation": "A wife plans to kill her husband in a way that makes a successful prosecution against her unlikely. She breaks something in their home so that she has a reason to send her husband somewhere. The husband has no idea what she intends, and he dies. What did she break, and how did it lead to his death?",
+    "solution": "The husband was on life support at home. His wife broke the life-support equipment, which meant he had to be rushed to a hospital. She had him taken to a hospital across the state border, where euthanasia is legal, unlike in their home state. There his life was ended legally, so she was unlikely ever to be convicted.",
+    "keyFacts": [
+      "The husband was on life support at home",
+      "She broke the life-support equipment, so he had to be moved to hospital",
+      "The hospital was across a state border where euthanasia is legal",
+      "His death was legal there, so prosecuting her would be hard"
+    ],
+    "hints": [
+      "The husband could not look after himself and depended on something in the house.",
+      "What she broke was a machine that kept him alive, so he had to be moved at once.",
+      "Where he was taken mattered: across the border, the law on ending a life is different."
+    ],
+    "addedAt": "2026-09-12T16:41:27.556Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "baby-from-twenty-story-window",
+    "title": "Survival",
+    "difficulty": "easy",
+    "situation": "A baby falls out of a window of a 20-story building, yet survives. How?",
+    "solution": "It was a ground-floor window. The building has 20 stories, but the baby fell from a window on the lowest floor, so the drop was tiny. (The page also gives an alternative answer: the baby and its mother, who jumped out after it, were birds.)",
+    "keyFacts": [
+      "The baby fell from a ground-floor window",
+      "The height of the building has nothing to do with the fall"
+    ],
+    "hints": [
+      "Don't assume the height of the building tells you how far the baby fell.",
+      "A 20-story building has windows on every floor, not just the top ones.",
+      "Which floor was the window on?"
+    ],
+    "addedAt": "2026-09-12T16:41:27.562Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "the-deadly-door",
+    "title": "The Deadly Door",
+    "difficulty": "easy",
+    "situation": "A man dies as a result of walking through a door. The door itself doesn't harm him. How did he die?",
+    "solution": "He opened the external door of an aircraft mid-flight and went through it, falling to his death. The page accepts other answers too: he opened the door of a lion's cage, or he opened the jail cell of a homicidal maniac after being told not to. Its clue says he might just be an idiot.",
+    "keyFacts": [
+      "The danger was on the other side of the door, not the door itself",
+      "He opened an aircraft's outer door mid-flight and fell out (or another door onto deadly danger, such as a lion's cage)"
+    ],
+    "hints": [
+      "The door was perfectly ordinary; the danger was on the other side of it.",
+      "He was not on the ground when he opened it.",
+      "He was on an aeroplane in flight, and he opened the outside door."
+    ],
+    "addedAt": "2026-09-12T16:41:27.567Z",
+    "model": "web-search",
+    "sourceUrl": "https://michaelmuxworthy.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "chicago-park-hypothermia",
+    "title": "Frozen in Midsummer",
+    "difficulty": "medium",
+    "situation": "In the middle of summer, a body is found in a park in Chicago. It has a fractured skull and many other broken bones. Yet the cause of death was hypothermia. How can this be?",
+    "solution": "The man was a stowaway who had hidden in the landing gear compartment of an airplane. High up during the flight, he froze to death. When the plane lowered its landing gear to land, his body fell out and landed in the park, which broke his skull and his other bones.",
+    "keyFacts": [
+      "He was a stowaway in an airplane's landing gear compartment",
+      "He froze to death at high altitude during the flight",
+      "His body fell out when the landing gear opened, causing the broken bones"
+    ],
+    "hints": [
+      "The cold that killed him was not in Chicago.",
+      "He was very high up for several hours before he ended up in the park.",
+      "He was hiding somewhere on an airplane that is not heated, and it opens just before landing."
+    ],
+    "addedAt": "2026-09-12T16:47:05.367Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "swiss-train-smoking-car",
+    "title": "The Smoking Car",
+    "difficulty": "hard",
+    "situation": "A man is travelling home from Switzerland by train. If he had been sitting in a non-smoking car, he would have died. Why?",
+    "solution": "The man had been blind and had gone to Switzerland for an operation that gave him back his sight. On the way home the train went into a tunnel and everything went dark. He thought he had gone blind again and was ready to kill himself, until he saw the glowing cigarettes of the other passengers and knew he could still see.",
+    "keyFacts": [
+      "He had just had surgery that restored his sight",
+      "The train went through a dark tunnel and he thought he was blind again",
+      "The glow of the other passengers' cigarettes showed him he could still see, so he didn't kill himself"
+    ],
+    "hints": [
+      "The smoke itself has nothing to do with it. Something about the cigarettes mattered to his eyes.",
+      "Why he went to Switzerland matters: he was there for medical treatment.",
+      "When the train went into a tunnel, only the lit cigarettes told him he wasn't blind again."
+    ],
+    "addedAt": "2026-09-12T16:47:05.373Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "radio-contest-phone-number",
+    "title": "Five Minutes of Radio",
+    "difficulty": "medium",
+    "situation": "A man is driving his car. He turns on the radio and listens for five minutes. Then he turns around, drives home, and shoots his wife. Why?",
+    "solution": "He was listening to a radio contest show that phones a number live on air. The number the show announced and called was the phone in his own bedroom. A man's voice answered, so he knew his wife was with another man, and he went home and shot her.",
+    "keyFacts": [
+      "A radio contest program called a phone number live on air",
+      "It was his own bedroom phone number",
+      "A man answered, revealing his wife was being unfaithful"
+    ],
+    "hints": [
+      "It matters what kind of programme was on the radio.",
+      "He heard something on air that connected directly to his own home.",
+      "The show phoned his bedroom, and the person who answered was not his wife."
+    ],
+    "addedAt": "2026-09-12T16:47:05.377Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "rope-bell-buoy",
+    "title": "The Rope and the Bell",
+    "difficulty": "medium",
+    "situation": "A rope breaks. A bell rings. A man dies. What happened?",
+    "solution": "A blind man used to walk near a cliff, judging how far he was from the edge by the sound of a bell buoy out in the water. The rope anchoring the buoy broke and it drifted further from shore. Going by the sound of the bell, he misjudged the distance and walked over the edge of the cliff.",
+    "keyFacts": [
+      "The man was blind and used the sound of a bell buoy to judge where the cliff edge was",
+      "The buoy's anchor rope broke and it drifted away",
+      "He misjudged the distance and walked off the cliff"
+    ],
+    "hints": [
+      "The bell was not in a church, and it was not meant for him.",
+      "The man couldn't see, so he found his way by sound.",
+      "The bell was on a buoy he used to tell where the cliff edge was. Once its rope broke, the buoy drifted out of place."
+    ],
+    "addedAt": "2026-09-12T16:47:05.379Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "new-shoes-knife-thrower",
+    "title": "The New Shoes",
+    "difficulty": "medium",
+    "situation": "A woman buys a new pair of shoes and goes to work. That day, she dies. How did the shoes kill her?",
+    "solution": "She was a knife-thrower's assistant in a circus. Her new shoes had higher heels than the ones she usually wore, which made her taller. The knife-thrower aimed as he always did, misjudged because of her new height, and a knife struck and killed her.",
+    "keyFacts": [
+      "She was a circus knife-thrower's assistant",
+      "Her new shoes had higher heels, which changed her height",
+      "The thrower's aim was off and a knife hit her"
+    ],
+    "hints": [
+      "Her job put her in danger every day, but it was always carefully measured.",
+      "She stood still at work while someone else aimed at her.",
+      "The heels made her a little taller, and the knives were thrown with a set height in mind."
+    ],
+    "addedAt": "2026-09-12T16:47:05.382Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "spies-date-format",
+    "title": "The Returning Tourists",
+    "difficulty": "medium",
+    "situation": "During World War II, two German spies, Hans and Fritz, try to get into America by posing as American tourists returning home. Fritz gets through. Hans is arrested on the spot. What gave him away?",
+    "solution": "On arrival, both men had to fill in forms that asked for their birthdays. Fritz wrote 7/7/15, which reads the same in any format. Hans wrote 20/6/18 instead of 6/20/18, putting the day before the month the European way, which showed he was not an American.",
+    "keyFacts": [
+      "They had to fill in forms with their dates of birth",
+      "Hans wrote his date in European day/month order",
+      "Americans write month/day, so this showed he wasn't American; Fritz's date (7/7/15) looked the same either way"
+    ],
+    "hints": [
+      "He gave himself away with paperwork, not by anything he said.",
+      "The form asked for a simple personal detail: his date of birth.",
+      "Americans and Europeans write dates in different orders. Fritz's birthday looks the same both ways."
+    ],
+    "addedAt": "2026-09-12T16:47:05.384Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "mirror-lingerie-fire",
+    "title": "The Locked Room Fire",
+    "difficulty": "hard",
+    "situation": "In France in 1959, a woman waits in her room for her husband to come home, with all the doors locked from the inside. When he arrives, the house has burned to the ground and she is dead. How did the fire start?",
+    "solution": "Sunlight bounced off her large mirror and was focused onto her lingerie, heating it until it caught fire. She was so absorbed in reading that she didn't notice the warmth until her clothing was alight. Because the doors were locked from the inside, nobody could get in to reach her.",
+    "keyFacts": [
+      "Sunlight reflected by her mirror was focused onto her clothing",
+      "The heat set her lingerie on fire",
+      "She was absorbed in reading and didn't notice; the locked doors kept rescuers out"
+    ],
+    "hints": [
+      "Nobody else started the fire, and it wasn't an accident with a flame.",
+      "Something ordinary in her room concentrated heat from outside.",
+      "The sun reflected off a mirror onto what she was wearing while she sat reading."
+    ],
+    "addedAt": "2026-09-12T16:47:05.387Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "motorcycle-corner-car-wash",
+    "title": "The Cloudy-Day Corner",
+    "difficulty": "medium",
+    "situation": "On my way to work by motorcycle, there is one corner that I take at a certain speed whether it's rainy or sunny. But if it's cloudy and not raining, I usually go faster. Why?",
+    "solution": "There is a car wash by that corner. On rainy days the road is wet from the rain, and on sunny days it is wet from all the cars being washed, so traction is poor either way. On cloudy days people expect rain and don't bother washing their cars, so the road stays dry and he can take the corner faster.",
+    "keyFacts": [
+      "There is a car wash near the corner",
+      "The road is wet on rainy days from rain and on sunny days from car-wash water",
+      "On cloudy days few people wash their cars, so the road is dry"
+    ],
+    "hints": [
+      "What matters is how slippery the road is.",
+      "On sunny days, water still ends up on that corner from somewhere.",
+      "There's a car wash nearby. Who washes their car when it looks like it's about to rain?"
+    ],
+    "addedAt": "2026-09-12T16:47:05.388Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "thirty-countries-one-day",
+    "title": "Thirty Countries Without a Passport",
+    "difficulty": "easy",
+    "situation": "An ordinary American citizen with no passport visits more than thirty foreign countries in one day. He is welcomed in every one of them and leaves each of his own accord. How?",
+    "solution": "He is a mail courier who delivers packages to foreign embassies in the United States. The grounds of an embassy legally belong to the country it represents, so each delivery counts as a visit to a foreign country.",
+    "keyFacts": [
+      "He delivers mail or packages to foreign embassies",
+      "The embassies are in the United States",
+      "Embassy grounds count as the territory of their country"
+    ],
+    "hints": [
+      "He never leaves his own country.",
+      "His job takes him to many official buildings in one city.",
+      "He delivers to embassies, and each embassy counts as foreign soil."
+    ],
+    "addedAt": "2026-09-12T16:47:05.390Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "beekeeper-new-cologne",
+    "title": "The Birthday Cologne",
+    "difficulty": "medium",
+    "situation": "For his birthday, a man's wife gives him a new cologne, and he tries it on. He then goes out to get some food and is killed. What happened?",
+    "solution": "The man was a beekeeper, and he went out to collect food from his hives. The new cologne changed his smell, so the bees didn't recognise him. They attacked him in huge numbers and killed him. The source notes that this was reportedly based on a real attack.",
+    "keyFacts": [
+      "He was a beekeeper",
+      "The food he went out for came from his hives (honey)",
+      "The cologne changed his smell, so the bees didn't recognise him and attacked"
+    ],
+    "hints": [
+      "He didn't go to a shop or a restaurant to get the food.",
+      "The animals he worked with knew him by his smell.",
+      "He kept bees, and the new scent made them treat him as an intruder."
+    ],
+    "addedAt": "2026-09-12T16:47:05.392Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-unpunishable-sister",
+    "title": "The Unpunishable Sister",
+    "difficulty": "easy",
+    "situation": "In court, a woman has undeniable proof that her sister murdered her husband. The judge says it is the strangest case he has ever seen: the case is cut and dried, yet the guilty woman cannot be punished. Why not?",
+    "solution": "The two sisters are Siamese twins, joined together. Any punishment given to the murderer, such as prison, would also fall on her innocent sister. So even though her guilt is proven, she cannot be punished.",
+    "keyFacts": [
+      "The sisters are Siamese (conjoined) twins",
+      "Punishing the guilty sister would also punish the innocent one"
+    ],
+    "hints": [
+      "The trouble is not with the evidence or the law.",
+      "Think about what would happen to the woman who brought the case if her sister were jailed.",
+      "The two sisters can never be apart."
+    ],
+    "addedAt": "2026-09-12T18:04:16.667Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-sawdust-in-the-corner",
+    "title": "The Sawdust in the Corner",
+    "difficulty": "hard",
+    "situation": "A man lies dead in a room. In one corner is a small pile of pieces of wood and some sawdust. What happened?",
+    "solution": "The dead man was a blind midget who worked in a circus, and he checked his height every day against his walking cane. A jealous fellow midget sawed a little off the cane each night. Measuring against the shrinking cane, the blind man thought he was growing too tall to keep his job as a midget. In despair at losing his livelihood, he killed himself.",
+    "keyFacts": [
+      "The dead man was a blind circus midget",
+      "Someone jealous sawed a bit off his cane every night",
+      "He used the cane to check his height and thought he was growing",
+      "Fearing he would lose his job, he killed himself"
+    ],
+    "hints": [
+      "The wood came from something the man used every day.",
+      "His job depended on staying a certain size, and he could not see.",
+      "Someone was secretly cutting his walking cane shorter, and he measured himself against it."
+    ],
+    "addedAt": "2026-09-12T18:04:16.680Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-fatal-flash",
+    "title": "The Fatal Flash",
+    "difficulty": "easy",
+    "situation": "There is a flash of light, and a man dies. What happened?",
+    "solution": "The man was a lion-tamer posing for photographs with his lions. The flash from the camera startled the lions. They attacked him and mauled him to death.",
+    "keyFacts": [
+      "The man was a lion-tamer",
+      "The flash came from a camera",
+      "The flash frightened the lions, which mauled him"
+    ],
+    "hints": [
+      "The light itself did not hurt him.",
+      "He was posing for a picture at work, and he was not alone.",
+      "The animals he worked with did not like the camera flash."
+    ],
+    "addedAt": "2026-09-12T18:04:16.690Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-silent-phone-call",
+    "title": "The Silent Phone Call",
+    "difficulty": "easy",
+    "situation": "A man is sitting in bed. He makes a phone call, says nothing, and then goes to sleep. Why?",
+    "solution": "The man was staying in a hotel and could not sleep because the guest in the next room was snoring. He phoned that room, and the ringing woke the snorer up. Before his neighbour could fall asleep and start snoring again, the man got to sleep himself.",
+    "keyFacts": [
+      "He was in a hotel and the person next door was snoring",
+      "The call was only meant to wake the snorer",
+      "He fell asleep before the snoring started again"
+    ],
+    "hints": [
+      "He wasn't trying to talk to anyone. The call itself did the job.",
+      "He was not at home, and the walls were thin.",
+      "A noise from the next room was keeping him awake."
+    ],
+    "addedAt": "2026-09-12T18:04:16.694Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-surprise-inside",
+    "title": "The Surprise Inside",
+    "difficulty": "medium",
+    "situation": "A man kills his wife outside their house. He then goes inside the house and kills himself. Why?",
+    "solution": "The man had embezzled money and planned to kill his wife and start a new life with it. He killed her on the front step of their home, then went inside. There, friends who had gathered for a surprise birthday party switched on the lights and shouted 'Surprise!' With so many witnesses to his crime, he took his own life.",
+    "keyFacts": [
+      "He planned to murder his wife and escape with embezzled money",
+      "Friends were hiding inside for a surprise party",
+      "They saw him right after the murder, so he killed himself"
+    ],
+    "hints": [
+      "He had planned the murder and did not plan to kill himself.",
+      "Something unexpected was waiting inside the house.",
+      "It was a special day, and the house was full of people hiding in the dark."
+    ],
+    "addedAt": "2026-09-12T18:04:16.698Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-stopped-elevator",
+    "title": "The Stopped Elevator",
+    "difficulty": "medium",
+    "situation": "A man gets into an elevator. When the elevator stops, he knows his wife is dead. How?",
+    "solution": "The man was leaving a hospital after visiting his wife, who was being kept alive on life-support machines. The elevator stopped because the power had failed. He realised this meant the emergency backup generator had failed too, so her life-support machines had stopped and she could not survive.",
+    "keyFacts": [
+      "His wife was on life support in a hospital",
+      "The elevator stopped because of a power failure",
+      "That meant the backup power had failed and her machines had stopped"
+    ],
+    "hints": [
+      "The elevator didn't stop at a floor. It stopped between floors.",
+      "His wife depended on a machine to stay alive.",
+      "They were in a hospital, and the elevator lost power."
+    ],
+    "addedAt": "2026-09-12T18:04:16.702Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-flickering-lights",
+    "title": "The Flickering Lights",
+    "difficulty": "medium",
+    "situation": "A man runs along a corridor with a piece of paper in his hand. The lights flicker, and the man drops to his knees and cries out, 'Oh no!' What happened?",
+    "solution": "The paper was a pardon for a prisoner who had been condemned to die. The man was rushing to deliver it before the execution. When the lights flickered, he knew the electric chair had just been used and the prisoner was already dead.",
+    "keyFacts": [
+      "The paper was a pardon for a condemned prisoner",
+      "The execution was by electric chair",
+      "The flickering lights showed the execution had just happened, so he was too late"
+    ],
+    "hints": [
+      "The piece of paper could have saved someone's life.",
+      "He is in a prison.",
+      "The lights dimmed because a lot of power was suddenly being used."
+    ],
+    "addedAt": "2026-09-12T18:04:16.705Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "in-the-dark",
+    "title": "In the Dark",
+    "difficulty": "hard",
+    "situation": "If he had turned on the light, he would have lived. What happened?",
+    "solution": "A shopkeeper was shot during a robbery. Bleeding and dazed, he made his way to the telephone in the back room and tried to call for help without turning on the light, dialling by feel. He was used to his cash register keypad, but a telephone's number buttons are arranged the other way up. He reached a stranger who could not find him, so help never came.",
+    "keyFacts": [
+      "He was a shopkeeper shot in a robbery",
+      "He dialled for help in the dark, by feel",
+      "He mixed up the phone keypad with the upside-down cash register keypad",
+      "He reached the wrong person, so help never arrived"
+    ],
+    "hints": [
+      "He was already badly hurt and was trying to get help.",
+      "He could not see the telephone buttons.",
+      "He worked with another keypad every day, and its numbers are laid out differently from a phone's."
+    ],
+    "addedAt": "2026-09-12T18:04:16.708Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-burning-cigarette",
+    "title": "The Burning Cigarette",
+    "difficulty": "medium",
+    "situation": "A man in uniform stands on the beach of a tropical island. He lights a cigarette and starts reading a letter. The cigarette burns down between his fingers, but he doesn't throw it away. He cries. Why?",
+    "solution": "The man was a guard at a leper colony. The letter confirmed that he had caught leprosy. Leprosy destroys the nerves that sense pain but leaves the ability to move, so he could hold the cigarette but could not feel it burning him. That showed him the diagnosis was true.",
+    "keyFacts": [
+      "He was a guard at a leper colony",
+      "The letter said he had leprosy",
+      "Leprosy kills feeling but not movement, so he could not feel the cigarette burning"
+    ],
+    "hints": [
+      "He doesn't throw the cigarette away because he can't feel it.",
+      "His job on the island put him close to sick people.",
+      "The letter gave him a medical diagnosis, and the disease destroys feeling."
+    ],
+    "addedAt": "2026-09-12T18:04:16.710Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "the-motel-horn",
+    "title": "The Motel Horn",
+    "difficulty": "medium",
+    "situation": "A man leaves his motel room, goes out to his car, and honks the horn. Why?",
+    "solution": "It was the middle of the night, and after going to his car the man could not remember which room was his. He honked the horn, and the noise woke the other guests, who switched on their lights. His wife was deaf and did not hear it, so the one room that stayed dark was his.",
+    "keyFacts": [
+      "It was night and he could not find his own room",
+      "His wife was deaf",
+      "The horn woke everyone else, so his was the only room that stayed dark"
+    ],
+    "hints": [
+      "He wasn't trying to call anyone to the car.",
+      "He had forgotten something about where he was staying.",
+      "The person in his room couldn't hear the horn, but the other guests could."
+    ],
+    "addedAt": "2026-09-12T18:04:16.713Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "yacht-and-floating-corpses",
+    "title": "The Yacht and the Corpses",
+    "difficulty": "easy",
+    "situation": "A yacht sits in the middle of the ocean. Several corpses are floating in the water near it. Nobody attacked them and the yacht is undamaged. What happened?",
+    "solution": "The people on the yacht decided to go for a swim one afternoon and dived into the sea. They forgot to put the ladder down first, so once they were in the water they had no way to climb back up the yacht's sides, and they all drowned. In a variant, they did put a ladder down, but it only just reached the water. When they dived in, the lightened boat rose higher and left the ladder out of reach.",
+    "keyFacts": [
+      "The dead people were the yacht's own passengers who went swimming",
+      "They could not climb back aboard because there was no ladder, or it was out of reach",
+      "They drowned beside their own boat"
+    ],
+    "hints": [
+      "Nobody else was involved: the dead were the people from the yacht.",
+      "They went into the water on purpose, for fun.",
+      "Getting into the water was easy. Getting back out onto the boat was the problem."
+    ],
+    "addedAt": "2026-09-12T18:55:43.627Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "abel-from-the-ocean",
+    "title": "The Man from the Sea",
+    "difficulty": "hard",
+    "situation": "Abel walks out of the ocean. Cain asks him who he is, and Abel answers. Cain then kills Abel. Why?",
+    "solution": "Abel was the prince of an island nation. He survived a shipwreck that killed his father, the king, and was stranded on a deserted island, where he built a raft. While he was gone, a regent ruled his homeland and brought it peace and prosperity. When Abel finally came home, a native fisherman named Cain recognized that the prince's return and claim to the throne would threaten that peace, so he killed him with whatever was at hand, such as driftwood.",
+    "keyFacts": [
+      "Abel was a lost prince or heir returning home after a shipwreck",
+      "His homeland had become peaceful and prosperous under someone else while he was gone",
+      "Cain killed him to stop him reclaiming power and to preserve the peace"
+    ],
+    "hints": [
+      "Abel's answer to 'Who are you?' was what sealed his fate.",
+      "Abel had been missing for a long time, and things at home had changed while he was away, for the better.",
+      "Abel was royalty, and his return would have upset a new order that was working well."
+    ],
+    "addedAt": "2026-09-12T18:55:43.638Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "two-cruises-quarter-million",
+    "title": "The Two Cruises",
+    "difficulty": "medium",
+    "situation": "A man takes a two-week cruise from the U.S. to Mexico. Shortly after he returns, he takes a three-day cruise that stops at no other ports. He stays in his cabin both times. He makes $250,000. How?",
+    "solution": "The man is a smuggler. During the first cruise, the contraband is delivered to his cabin and he hides it in the air-conditioning duct, then passes through customs with nothing on him. For the second, three-day cruise he books the same cabin on the same ship and collects the hidden goods. Because that cruise never stops at a foreign port, he walks off without a customs inspection.",
+    "keyFacts": [
+      "He is a smuggler",
+      "He hid the contraband in his cabin (in the air duct) on the first cruise, so customs found nothing",
+      "On the second cruise, with no foreign stops, he took the same cabin and brought the goods off without inspection"
+    ],
+    "hints": [
+      "The money is not legal.",
+      "Where he stays on the ship matters: it is the same place both times.",
+      "The second trip goes nowhere foreign, so nobody checks what he carries off."
+    ],
+    "addedAt": "2026-09-12T18:55:43.643Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "dinner-invitation-jane",
+    "title": "The Dinner Invitation",
+    "difficulty": "medium",
+    "situation": "A woman invited them to dinner, and because of it she lost her job. What happened?",
+    "solution": "Suzy, a buyer for a museum, invited an elderly archaeologist named Harry to a business dinner. Harry often talked about 'Jane', so she assumed Jane was his wife and invited them both. In fact Jane was his famous discovery, an ancient skeleton he had named in the style of 'Lucy'. Harry was offended that she didn't know, complained to her boss, and Suzy was fired.",
+    "keyFacts": [
+      "She invited a man and 'Jane', assuming Jane was his wife",
+      "Jane was actually an ancient skeleton he had discovered and named",
+      "He was offended and her employer fired her for not knowing"
+    ],
+    "hints": [
+      "Her work put her in contact with experts in a scholarly field.",
+      "One of the 'them' she invited was not a living person.",
+      "Think of the famous fossil skeleton named Lucy."
+    ],
+    "addedAt": "2026-09-12T18:55:43.648Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "unpaid-meal-artist",
+    "title": "The Unpaid Meal",
+    "difficulty": "medium",
+    "situation": "A man goes into a restaurant, eats a big meal, and leaves. He never pays for it, yet he did nothing wrong. How?",
+    "solution": "The man was a famous artist, and he paid for his meal by check. An autograph collector saw him eating, then bought the signed check from the restaurant manager. Because the check was kept for the signature and never cashed, the meal was never actually paid for.",
+    "keyFacts": [
+      "He was a famous artist and paid with a signed check",
+      "A collector bought the check from the restaurant for the signature",
+      "The check was never cashed, so no money ever left his account"
+    ],
+    "hints": [
+      "He did try to pay in the usual way.",
+      "The man is famous, and his name is worth something.",
+      "The restaurant sold the piece of paper he signed instead of cashing it."
+    ],
+    "addedAt": "2026-09-12T18:55:43.652Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "fire-and-no-fire",
+    "title": "Into the Fire",
+    "difficulty": "medium",
+    "situation": "One man ran into a fire and lived. Another man stayed where there was no fire and died. How?",
+    "solution": "Both men were working in a room protected by a carbon dioxide fire-extinguishing system. When fire broke out next to the room, one man ran out through the flames and escaped with minor burns. The other stayed in the room, the system flooded it with CO2, and he suffocated. A variant has the same thing happen with a halon system.",
+    "keyFacts": [
+      "They were in a room protected by an automatic CO2 (or halon) fire-suppression system",
+      "The man who ran through the fire escaped with minor burns",
+      "The man who stayed was suffocated by the gas released to put out the fire"
+    ],
+    "hints": [
+      "Fire was not what killed the man who died.",
+      "The room had a special system for fighting fires.",
+      "That system works by removing the oxygen from the room."
+    ],
+    "addedAt": "2026-09-12T18:55:43.655Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "writer-never-writes-again",
+    "title": "The Interrupted Writer",
+    "difficulty": "medium",
+    "situation": "A writer whose work is seen by millions of people insists that he must never be interrupted while he works. One day he is interrupted, and he never writes again. Why?",
+    "solution": "The writer was a skywriter, writing messages in the sky with his plane for crowds below. The 'interruption' was another plane colliding with his in mid-air while he was working, and he was killed in the crash.",
+    "keyFacts": [
+      "He was a skywriter who writes with an airplane",
+      "He was interrupted by a mid-air collision with another plane",
+      "He died, so he never wrote again"
+    ],
+    "hints": [
+      "He does not write with a pen or a keyboard.",
+      "Millions can see his work because it appears somewhere very large and very public.",
+      "He writes in the sky, and the interruption came from another aircraft."
+    ],
+    "addedAt": "2026-09-12T18:55:43.658Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "glad-car-ran-out-of-gas",
+    "title": "The Empty Tank",
+    "difficulty": "medium",
+    "situation": "Mr. Browning is very glad that a car ran out of gas. Why?",
+    "solution": "Soon after their wedding, Mrs. Browning became depressed and the couple had their first fight, and Mr. Browning stormed out. She went into the garage and ran the car, meaning to kill herself with the exhaust fumes. The car soon ran out of gas, so she was still alive when Mr. Browning came back, found her and got help.",
+    "keyFacts": [
+      "His wife tried to kill herself with car exhaust fumes in the garage",
+      "The car ran out of gas before the fumes could kill her",
+      "He came home in time to find her and get help"
+    ],
+    "hints": [
+      "The car was not being driven anywhere.",
+      "Someone he loves was in danger, and the empty tank saved her.",
+      "The car's engine was running inside a closed garage."
+    ],
+    "addedAt": "2026-09-12T18:55:43.660Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "riverboat-capsizes",
+    "title": "The Capsized Riverboat",
+    "difficulty": "easy",
+    "situation": "A riverboat full of passengers suddenly turns over, and most of the people on board drown. There was no storm, no collision and no damage to the hull. What happened?",
+    "solution": "The boat was travelling along a river in India when a large snake dropped onto the deck. The panicked passengers all rushed to the other side of the boat at once, which made it tip over and sink. The source says this is based on a real incident reported in the World Almanac.",
+    "keyFacts": [
+      "A snake fell onto the deck",
+      "The passengers all rushed to one side at the same moment",
+      "The sudden shift of weight capsized the boat"
+    ],
+    "hints": [
+      "The passengers themselves caused the boat to turn over.",
+      "Something frightening suddenly arrived on board.",
+      "A large snake dropped onto the deck and everyone fled to the far side."
+    ],
+    "addedAt": "2026-09-12T18:55:43.663Z",
+    "model": "web-search",
+    "sourceUrl": "https://stason.org/TULARC/self-growth/puzzles/344-logic-situation-puzzles-p.html"
+  },
+  {
+    "id": "man-in-the-mask-home",
+    "title": "The Man in the Mask",
+    "difficulty": "easy",
+    "situation": "A man was afraid to go home. The reason was that the man in the mask was there. Where is he, and why is he afraid?",
+    "solution": "They are playing baseball. The man in the mask is the catcher. The other man is a runner who is afraid to go on to home base because the catcher is waiting there.",
+    "keyFacts": [
+      "It is a baseball game",
+      "The man in the mask is the catcher",
+      "'Home' means home base, not his house"
+    ],
+    "hints": [
+      "'Home' may not mean the place where he lives.",
+      "The man in the mask is not a criminal. He wears the mask for protection.",
+      "Think of a sport where a player in a mask crouches at home plate."
+    ],
+    "addedAt": "2026-09-12T21:01:46.989Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "paper-on-the-cactus",
+    "title": "Piece of Paper on the Cactus",
+    "difficulty": "medium",
+    "situation": "A man walks up to a cactus and looks at a piece of paper pinned to it. Then he kills himself. Why?",
+    "solution": "The man has been wandering lost in the desert and fears he has been walking in circles. To test this, he pinned a blank piece of paper to a cactus and set off walking. When he comes across the same paper again, his fears are confirmed and he knows he will never find his way out.",
+    "keyFacts": [
+      "He is lost in the desert",
+      "He pinned the paper there himself as a marker",
+      "Finding it again proves he has been walking in circles and cannot escape"
+    ],
+    "hints": [
+      "Nothing is written on the paper.",
+      "The man put the paper there himself earlier.",
+      "He is lost in the desert and used the paper to check whether he was going round in circles."
+    ],
+    "addedAt": "2026-09-12T21:01:46.999Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "headlights-off-black-cars",
+    "title": "Headlights Off",
+    "difficulty": "easy",
+    "situation": "Two men drive toward each other with their headlights off. No moon or stars can be seen, there are no electric lights anywhere nearby, and both cars are painted black with no reflective surfaces. Yet both men know exactly when to hit the brakes, and they narrowly avoid hitting each other. How is this possible?",
+    "solution": "It is daytime. It is also a cloudy day, which is why the star we call the sun cannot be seen. The drivers simply see each other in the daylight.",
+    "keyFacts": [
+      "It is daytime",
+      "The sun is hidden by clouds, so no star is visible"
+    ],
+    "hints": [
+      "You may be assuming something about the time.",
+      "The puzzle never says it is night.",
+      "The sun is a star, and clouds are hiding it."
+    ],
+    "addedAt": "2026-09-12T21:01:47.005Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "surgeon-this-man-is-my-son",
+    "title": "This Man Is My Son",
+    "difficulty": "easy",
+    "situation": "A surgeon is called in for an emergency operation. On seeing the patient's face, the surgeon says, 'I cannot operate on this man. This man is my son.' Yet the surgeon is not the patient's father. How is this possible?",
+    "solution": "The surgeon is the patient's mother.",
+    "keyFacts": [
+      "The surgeon is a woman",
+      "The surgeon is the patient's mother"
+    ],
+    "hints": [
+      "Question what you pictured when you read the word 'surgeon'.",
+      "The surgeon really is the patient's parent.",
+      "Every son has two parents."
+    ],
+    "addedAt": "2026-09-12T21:01:47.010Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "the-regretted-kiss",
+    "title": "The Kiss",
+    "difficulty": "easy",
+    "situation": "A man kisses his daughter. Straight away he regrets it. Why?",
+    "solution": "The man is King Midas. Everything he touches turns to gold, so when he kisses his daughter she turns into a golden statue.",
+    "keyFacts": [
+      "The man is King Midas",
+      "His touch turns things to gold, so his daughter turns to gold"
+    ],
+    "hints": [
+      "The man is not a real historical person.",
+      "He is a king from Greek myth who was granted a wish.",
+      "Everything he touches turns into a precious metal."
+    ],
+    "addedAt": "2026-09-12T21:01:47.014Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "little-susie-basement",
+    "title": "Little Susie",
+    "difficulty": "medium",
+    "situation": "Little Susie's parents told her never to open the basement door. Why?",
+    "solution": "Susie lived in the basement, and her parents had never let her out. The rule was not there to keep her from going down into the basement. It was there to stop her from leaving it.",
+    "keyFacts": [
+      "Susie lives in the basement",
+      "Her parents keep her locked in",
+      "The rule stops her getting out, not going in"
+    ],
+    "hints": [
+      "Think about which side of the door Susie is on.",
+      "Nothing dangerous is hidden in the basement.",
+      "Susie has never been allowed to leave the basement."
+    ],
+    "addedAt": "2026-09-12T21:01:47.017Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "friend-on-a-plane-hi-jack",
+    "title": "Friend on a Plane",
+    "difficulty": "easy",
+    "situation": "A man is sitting on an airplane. He sees his friend come on board and greets him. He is arrested at once. Why?",
+    "solution": "His friend's name is Jack, and he greeted him by calling out, 'Hi, Jack!' On a plane, that sounds like 'hijack', so he was arrested.",
+    "keyFacts": [
+      "The friend is called Jack",
+      "The greeting 'Hi, Jack!' sounds like 'hijack'"
+    ],
+    "hints": [
+      "The trouble is in exactly what he said.",
+      "His friend's name matters.",
+      "Say the greeting out loud: a common greeting followed by a short man's name."
+    ],
+    "addedAt": "2026-09-12T21:01:47.021Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "photo-with-grandfather-skeleton",
+    "title": "Photo with Grandfather",
+    "difficulty": "hard",
+    "situation": "A young woman has her photo taken with her grandfather. They have never met before, and neither of them knows they are related. How can this be?",
+    "solution": "The woman is a medical student. She has her photo taken with a human skeleton that is used for teaching in her classroom. She does not know that the skeleton is her grandfather, who donated his body to science.",
+    "keyFacts": [
+      "She is a medical student",
+      "The 'grandfather' is a skeleton used for teaching",
+      "He donated his body to science"
+    ],
+    "hints": [
+      "Her grandfather is not alive.",
+      "The photo is taken in a place where people study the human body.",
+      "He gave his body to science, and it now stands in her classroom."
+    ],
+    "addedAt": "2026-09-12T21:01:47.023Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "drawing-then-suicide-family-tree",
+    "title": "Draws a Picture, Then Suicide",
+    "difficulty": "hard",
+    "situation": "A woman finishes a drawing. Then she kills herself. Why?",
+    "solution": "The woman had long been suspicious about her family history, so she did the research needed to draw her family tree. When she finished it, it confirmed that she was the child of incest. She could not live with that fact.",
+    "keyFacts": [
+      "The drawing is her family tree",
+      "It reveals she is the product of incest",
+      "She had long suspected something about her family history"
+    ],
+    "hints": [
+      "The drawing is not art. It records information.",
+      "Making it took research into her relatives.",
+      "It is a family tree, and it shows her parents were closely related to each other."
+    ],
+    "addedAt": "2026-09-12T21:01:47.026Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "the-stranger-in-the-room",
+    "title": "The Stranger",
+    "difficulty": "medium",
+    "situation": "A man finds his wife dead, and there is a stranger in the room with her. What happened?",
+    "solution": "His wife died in childbirth. The 'stranger' is their newborn baby, whom the man has never seen before.",
+    "keyFacts": [
+      "The wife died giving birth",
+      "The stranger is their newborn baby"
+    ],
+    "hints": [
+      "Nobody committed a crime.",
+      "The stranger is very new to the world.",
+      "The man has just become a father."
+    ],
+    "addedAt": "2026-09-12T21:01:47.030Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzlewocky.com/brain-teasers/situation-puzzles/"
+  },
+  {
+    "id": "poker-game-raid",
+    "title": "The Poker Game Raid",
+    "difficulty": "easy",
+    "situation": "The police burst in on a carpenter, a lorry driver, a mechanic and a fireman who are playing poker together. They have come for a suspect called John. Straight away they know that the fireman is the one they want. How?",
+    "solution": "The fireman is the only man in the room. The other three poker players, the carpenter, the lorry driver and the mechanic, are all women. Since John is a man's name, the police know at once that he must be the fireman.",
+    "keyFacts": [
+      "The fireman is the only man at the table",
+      "The carpenter, lorry driver and mechanic are women"
+    ],
+    "hints": [
+      "Think about what the police know about John besides his name.",
+      "Don't assume anything about the people from their jobs.",
+      "What if three of the players could not possibly be called John?"
+    ],
+    "addedAt": "2026-09-12T21:10:25.523Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "gas-station-out-of-towners",
+    "title": "The Gas Station Owner",
+    "difficulty": "easy",
+    "situation": "A small-town gas station owner says: 'I'd rather fill two cars from out of town than one car from this town.' Filling one car is less work than filling two. Why does he feel this way?",
+    "solution": "The people in his town buy their gasoline on credit, so he has to wait to be paid and may never get the money. Visitors from out of town have to pay cash on the spot. Two out-of-town customers put money in his hand, while a local only adds to his list of debts.",
+    "keyFacts": [
+      "Locals buy their gas on credit",
+      "Out-of-towners pay cash immediately"
+    ],
+    "hints": [
+      "The difference is not in the cars or how much gas they take.",
+      "Think about when and how he gets paid.",
+      "The locals all know him well enough to say 'put it on my tab'."
+    ],
+    "addedAt": "2026-09-12T21:10:25.535Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "born-in-may-married-mother",
+    "title": "Born in May, Married His Mother",
+    "difficulty": "medium",
+    "situation": "A man says: 'I was born in May, yet my birthday is in June.' He adds that he legally married his own mother. He is telling the truth, and nothing illegal or improper happened. How can this be?",
+    "solution": "He was physically born in a village called May, and his birthday falls in June. He later became an ordained minister and conducted his mother's wedding ceremony, so he 'married' her to her husband in the legal sense. Both statements play on double meanings.",
+    "keyFacts": [
+      "May is the name of the village where he was born",
+      "His birthday is in June",
+      "He is a minister who performed his mother's wedding ceremony"
+    ],
+    "hints": [
+      "Both statements rely on a word with two meanings.",
+      "'Born in May' doesn't have to refer to a month.",
+      "Think about who says 'I now pronounce you husband and wife'."
+    ],
+    "addedAt": "2026-09-12T21:10:25.541Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "two-barbers",
+    "title": "The Two Barbers",
+    "difficulty": "easy",
+    "situation": "A town has only two barbers. One has a very clean shop and a neat haircut. The other has a messy shop and a scruffy haircut. Which one should you go to for a good haircut, and why?",
+    "solution": "You should go to the barber with the scruffy haircut. With only two barbers in town, each one must cut the other's hair. The neat barber's good haircut was done by the scruffy barber, so the scruffy one is the better stylist.",
+    "keyFacts": [
+      "Choose the barber with the scruffy haircut",
+      "The two barbers cut each other's hair",
+      "The neat barber's good haircut is the scruffy barber's work"
+    ],
+    "hints": [
+      "A barber can't easily cut his own hair.",
+      "Who gave each barber his haircut?",
+      "There are only two barbers in town, so they must use each other."
+    ],
+    "addedAt": "2026-09-12T21:10:25.546Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "windows-all-face-south",
+    "title": "All Windows Face the Same Way",
+    "difficulty": "easy",
+    "situation": "A man lives in a house where every window in every room, on every side of the house, faces the same direction. It is an ordinary house with windows on all four walls. How is this possible?",
+    "solution": "He lives at the North Pole. From the North Pole, every direction is south, so every window on every side of the house faces south.",
+    "keyFacts": [
+      "The house is at the North Pole",
+      "Every window faces south"
+    ],
+    "hints": [
+      "The house is ordinary. What matters is where it is.",
+      "Think about compass directions at an extreme spot on Earth.",
+      "From one particular point, whichever way you look is the same direction."
+    ],
+    "addedAt": "2026-09-12T21:10:25.551Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "henry-ford-soup-test",
+    "title": "Henry Ford's Soup Test",
+    "difficulty": "medium",
+    "situation": "When Henry Ford was considering someone for a senior position, he often took the candidate out to lunch and ordered soup for them. He watched closely as the soup arrived. What was he looking for?",
+    "solution": "He watched whether the candidate added salt to the soup before tasting it. Salting before tasting meant acting before gathering the facts, which showed a lack of judgment. For Ford, that was a red flag against hiring the person.",
+    "keyFacts": [
+      "He watched whether they salted the soup before tasting it",
+      "Salting before tasting showed poor judgment, acting without the facts"
+    ],
+    "hints": [
+      "It isn't about table manners or how fast they eat.",
+      "Watch what the candidate does before the first spoonful.",
+      "Would you season something you haven't tasted yet?"
+    ],
+    "addedAt": "2026-09-12T21:10:25.557Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "roller-coaster-excuse",
+    "title": "The Roller Coaster Excuse",
+    "difficulty": "easy",
+    "situation": "Two boys come home very late from an amusement park. They tell their father: 'We were on the roller coaster, but as we went down the first hill the engine blew out!' Their father immediately grounds them for lying. How did he know?",
+    "solution": "Once a roller coaster has gone over the first hill, it does not use an engine at all. It runs on gravity for the rest of the ride. An engine could not have blown out as they went down the first hill, so the father knew the story was made up.",
+    "keyFacts": [
+      "Roller coasters don't use an engine after the first hill",
+      "The rest of the ride runs on gravity, so the story is impossible"
+    ],
+    "hints": [
+      "The lie is in the technical detail of their story.",
+      "Think about what makes a roller coaster move once it goes over the top.",
+      "After the first climb, nothing is pushing the cars except one natural force."
+    ],
+    "addedAt": "2026-09-12T21:10:25.560Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "camel-race-inheritance",
+    "title": "The Slowest Camel Wins",
+    "difficulty": "medium",
+    "situation": "A dying father tells his two sons they must race their camels to a distant city, and the one whose camel arrives last will inherit his fortune. For days the brothers wander slowly, each trying to hold back. Finally they ask a wise man for advice, and afterwards they race to the city as fast as they can. What did he tell them?",
+    "solution": "The wise man told the brothers to swap camels. The fortune goes to the owner of the camel that arrives last, so each brother now wants the camel he is riding, which belongs to his brother, to get there first. Both race as fast as they can.",
+    "keyFacts": [
+      "The wise man told them to swap camels",
+      "The prize goes to the owner of the last camel, not its rider",
+      "Each now rides his brother's camel and wants it to arrive first"
+    ],
+    "hints": [
+      "The rule is about whose camel arrives last, not who arrives last.",
+      "Nothing says each brother has to ride his own camel.",
+      "If you were on your brother's camel, how fast would you want it to go?"
+    ],
+    "addedAt": "2026-09-12T21:10:25.563Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "truck-under-overpass",
+    "title": "Half an Inch Too Tall",
+    "difficulty": "easy",
+    "situation": "A truck driver comes to an overpass and finds his truck is too tall to fit under it. He only needs half an inch. Rather than turn back or take the long way round, he gets a bright idea and drives through. What did he do?",
+    "solution": "The driver let the air out of the trailer's air bags, its air suspension. With less air in them, the whole truck sat lower. That gave him the half inch he needed to get under the overpass.",
+    "keyFacts": [
+      "He let air out of the trailer's air bags (suspension)",
+      "This lowered the truck enough to pass under"
+    ],
+    "hints": [
+      "He didn't change the bridge or the load. He changed the truck.",
+      "Part of the truck is held up by something he can let out.",
+      "Think about what would sink a little if you released some air."
+    ],
+    "addedAt": "2026-09-12T21:10:25.566Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "mary-and-maria-bridge",
+    "title": "Mary and Maria at the River",
+    "difficulty": "medium",
+    "situation": "Two sisters, Mary and Maria, had to cross a river. Mary walked across the bridge easily, but Maria jumped into the river and swam across. Afterwards, everyone said Maria was the smarter of the two. Why?",
+    "solution": "The bridge was old and could only take the weight of a child. Mary was light enough to cross safely, but Maria was too heavy, so she wisely swam across instead of risking the bridge collapsing under her.",
+    "keyFacts": [
+      "The bridge was old and could only take a child's weight",
+      "Maria was too heavy for the bridge, so swimming was the safe choice"
+    ],
+    "hints": [
+      "Mary's easy crossing doesn't mean the bridge was safe for everyone.",
+      "Consider the condition of the bridge and how old the sisters are.",
+      "What if one sister was much heavier than the other?"
+    ],
+    "addedAt": "2026-09-12T21:10:25.568Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "robbers-cloakroom-code",
+    "title": "The Silent Signal at the Diner",
+    "difficulty": "medium",
+    "situation": "Two known robbers are followed by two plain-clothes police officers 24 hours a day. Every morning all four go to the same diner for breakfast. The robbers hang their hats and coats on the cloak-room rack, sit at opposite ends of the counter, eat in silence, put their things back on and leave. They never speak, never pass notes and make no obvious gestures, yet they pass detailed information to each other every day without the police noticing. How?",
+    "solution": "The robbers use a code built from the cloak-room rack. The first robber picks particular hooks and hangs his clothes in particular ways. The second robber reads the pattern and replies by hanging his own things on other agreed hooks. The officers only see two men hanging up their coats, so they never notice the exchange.",
+    "keyFacts": [
+      "The message is passed through the cloak-room rack",
+      "Which hooks they use, and how the hats and coats hang, is a pre-agreed code",
+      "The police see only ordinary coat-hanging and miss it"
+    ],
+    "hints": [
+      "The robbers do something every morning that looks completely ordinary.",
+      "Look closely at what happens before they sit down.",
+      "Which hooks they pick, and how they hang their coats and hats, carries the message."
+    ],
+    "addedAt": "2026-09-12T21:19:53.101Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "prices-ending-in-99",
+    "title": "Why $9.99?",
+    "difficulty": "medium",
+    "situation": "Today we are used to prices like $9.99 or $99.95 rather than neat round numbers like $10 or $100. The custom began in the late 19th and early 20th century, and at first it had nothing to do with making things look cheaper. Why were these odd prices first introduced?",
+    "solution": "Odd prices were introduced to make the clerk open the cash register and give change on every sale. With a round price, a dishonest clerk could take a customer's whole-dollar note and pocket it without ringing up the sale. Because change was always needed, the clerk had to use the register, which recorded the sale and made a noise, and this deterred theft. The psychological effect on shoppers came later.",
+    "keyFacts": [
+      "The point was to stop theft by clerks",
+      "An odd price means the customer needs change",
+      "Giving change forces the clerk to open the register, so the sale gets recorded"
+    ],
+    "hints": [
+      "The trick wasn't aimed at the customer at all.",
+      "Think about the person working behind the counter.",
+      "If the price is a round number, the clerk doesn't need to open the till to give change."
+    ],
+    "addedAt": "2026-09-12T21:19:53.111Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "albert-amblefoot-rainstorm",
+    "title": "Not a Single Wet Hair",
+    "difficulty": "easy",
+    "situation": "Albert Amblefoot walked outside in a heavy rainstorm for half an hour. He wore no hat, carried no umbrella and held nothing over his head, and his clothes got soaking wet. Yet not a single hair on his head got wet. How could this happen?",
+    "solution": "Albert is bald. He has no hair on his head, so no hair could get wet.",
+    "keyFacts": [
+      "Albert is bald",
+      "He has no hair on his head to get wet"
+    ],
+    "hints": [
+      "The puzzle never says his head stayed dry.",
+      "Pay attention to exactly what stayed dry.",
+      "Think about how much hair Albert has."
+    ],
+    "addedAt": "2026-09-12T21:19:53.116Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "run-over-by-three-trucks",
+    "title": "Three Trucks Roll Over Him",
+    "difficulty": "easy",
+    "situation": "A man gets run over by three trucks. Most of the tyres on each truck roll right over him, yet they do not kill him. How is this possible?",
+    "solution": "The man is down a manhole, underneath the manhole cover. The trucks' tyres roll over the cover above him, and he isn't hurt.",
+    "keyFacts": [
+      "The man is down a manhole",
+      "The tyres pass over the manhole cover, not over his body"
+    ],
+    "hints": [
+      "The tyres never actually touch him.",
+      "Think about what could be between the man and the road.",
+      "He is below the road surface."
+    ],
+    "addedAt": "2026-09-12T21:19:53.121Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "postman-and-the-dog",
+    "title": "The Postman and the Dog",
+    "difficulty": "easy",
+    "situation": "A postman has to deliver a letter to a house surrounded by a five-foot wall. The only way to reach the house is along the main path, and a ferocious dog is tied by a long lead to a nearby tree, so the whole path is within its reach. If the postman walks up the path, the dog is sure to attack him. How does he outwit the dog and deliver the letter?",
+    "solution": "The postman doesn't use the path at all. He throws the letter over the wall. The dog is tied to the tree and can't reach him there.",
+    "keyFacts": [
+      "The postman avoids the path",
+      "He throws the letter over the wall",
+      "The dog is tied up and can't reach him at the wall"
+    ],
+    "hints": [
+      "Does the postman have to walk up to the front door?",
+      "The wall is only five feet high.",
+      "The letter can reach the house even if the postman doesn't."
+    ],
+    "addedAt": "2026-09-12T21:19:53.126Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "girl-who-killed-two",
+    "title": "Two Deaths and a Trip Home",
+    "difficulty": "easy",
+    "situation": "A girl killed two people. She never faced any consequences. The only thing that happened to her was that she got to go home. What is her name?",
+    "solution": "Her name is Dorothy, from The Wizard of Oz. Her house landed on the Wicked Witch of the East and she melted the Wicked Witch of the West with water, and in the end she got to go home.",
+    "keyFacts": [
+      "The girl is Dorothy",
+      "She is from The Wizard of Oz"
+    ],
+    "hints": [
+      "She isn't a real person.",
+      "It's a famous story in which the heroine just wants to go home.",
+      "Think of witches, ruby slippers and 'There's no place like home.'"
+    ],
+    "addedAt": "2026-09-12T21:19:53.130Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "home-at-eight",
+    "title": "Home by Eight",
+    "difficulty": "easy",
+    "situation": "A man phones his wife from work and tells her he won't be home until eight o'clock. He gets home at two minutes past eight, and his wife is furious with him. Why?",
+    "solution": "He never said whether he meant 8 in the evening or 8 in the morning. He came home at 8:02 the next morning, after being out all night.",
+    "keyFacts": [
+      "He didn't say AM or PM",
+      "He got home at 8 in the morning, not 8 in the evening",
+      "He had been away all night"
+    ],
+    "hints": [
+      "Two minutes late isn't the problem.",
+      "There are two eight o'clocks in every day.",
+      "Which eight o'clock did he actually get home at?"
+    ],
+    "addedAt": "2026-09-12T21:19:53.134Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "logic-loving-cannibals",
+    "title": "The Logic-Loving Cannibals",
+    "difficulty": "medium",
+    "situation": "While hiking in a remote jungle, you are caught by cannibals who love logic. They let you make one statement: if it is true, they will burn you, and if it is false, they will boil you in oil. What can you say to escape?",
+    "solution": "You say: 'You will boil me in oil.' If that is true, they must burn you, which makes it false. If it is false, they must boil you in oil, which makes it true. The cannibals can't carry out either punishment without breaking their own rule, so they have to let you go.",
+    "keyFacts": [
+      "You say 'You will boil me in oil'",
+      "The statement creates a paradox under their rules",
+      "Neither punishment can be carried out, so you go free"
+    ],
+    "hints": [
+      "The cannibals keep their own rules strictly.",
+      "Make a statement about what they will do to you.",
+      "Pick the statement that becomes false if they carry out the punishment it names."
+    ],
+    "addedAt": "2026-09-12T21:19:53.138Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "dog-crosses-the-lake",
+    "title": "The Dog That Stayed Dry",
+    "difficulty": "easy",
+    "situation": "A dog is on one side of a lake and its owner is on the other. The owner calls the dog, and it crosses the lake without getting wet. How?",
+    "solution": "The water was frozen, so the dog simply walked across the ice.",
+    "keyFacts": [
+      "The lake was frozen",
+      "The dog walked across on the ice"
+    ],
+    "hints": [
+      "The dog didn't go around the lake.",
+      "Think about the season.",
+      "Water isn't always liquid."
+    ],
+    "addedAt": "2026-09-12T21:19:53.141Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "rude-writing-on-the-wall",
+    "title": "Who Wrote on the Wall?",
+    "difficulty": "easy",
+    "situation": "A student at school wrote something rude on the wall, and nobody owned up to it. Without a confession or a witness, the teacher still worked out who did it. How?",
+    "solution": "The teacher had every student write a sentence on the board. One student's handwriting matched the writing on the wall, and that showed who had done it.",
+    "keyFacts": [
+      "The teacher had every student write something",
+      "The culprit was found by matching handwriting"
+    ],
+    "hints": [
+      "The culprit gave himself away without meaning to.",
+      "Everyone was asked to do the same simple task.",
+      "Compare how each student writes."
+    ],
+    "addedAt": "2026-09-12T21:19:53.147Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "six-eggs-one-left",
+    "title": "Six Eggs, One Left",
+    "difficulty": "easy",
+    "situation": "There are six eggs in a basket. Six people each take one of the eggs. Yet one egg is still left in the basket. How can that be?",
+    "solution": "The last person took the basket along with the last egg, which was still inside it. Everyone got one egg each, and there is still one egg in the basket.",
+    "keyFacts": [
+      "The last person took the whole basket",
+      "The last egg was still inside the basket when it was taken"
+    ],
+    "hints": [
+      "Think about how each person took their egg.",
+      "Did everyone have to take their egg out of the basket?",
+      "One person took something more than just an egg."
+    ],
+    "addedAt": "2026-09-12T21:34:42.506Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "two-cars-34-minutes-apart",
+    "title": "Same Speed, Different Arrival",
+    "difficulty": "easy",
+    "situation": "Two cars drive from point A to point B. They travel at exactly the same speed along exactly the same route, so the trip takes each of them exactly the same time. Yet one car arrives about 34.73 minutes after the other. How is that possible?",
+    "solution": "One car simply left point A 34.73 minutes earlier than the other. Both trips take the same time, but because they started at different times they also arrive at different times.",
+    "keyFacts": [
+      "The cars did not leave at the same time",
+      "One car left 34.73 minutes earlier"
+    ],
+    "hints": [
+      "Nothing unusual happens on the road.",
+      "The puzzle tells you how long the trip takes, but not when it begins.",
+      "Ask yourself whether they both started at the same moment."
+    ],
+    "addedAt": "2026-09-12T21:34:42.518Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "regret-at-the-23rd-storey",
+    "title": "Regret at the 23rd Storey",
+    "difficulty": "easy",
+    "situation": "A woman jumps off a 33-storey building. As she falls past the 23rd storey, she immediately regrets her decision. What is going on?",
+    "solution": "She is bungee jumping from the 24th storey of the 33-storey building. As she passes the 23rd storey, just after jumping, she gets scared and wishes she hadn't done it, but she is tied to a bungee cord and is safe.",
+    "keyFacts": [
+      "She is bungee jumping",
+      "She jumped from the 24th storey, so she has only just jumped",
+      "She is attached to a cord and is not in danger"
+    ],
+    "hints": [
+      "She is not trying to hurt herself.",
+      "She did not jump from the roof: the 23rd storey comes right after she jumps.",
+      "She is tied to something stretchy."
+    ],
+    "addedAt": "2026-09-12T21:34:42.524Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "younger-after-five-years",
+    "title": "Younger Five Years On",
+    "difficulty": "easy",
+    "situation": "Kiran was 20 years old in the year 1980. In the year 1985, he was only 15 years old. How come?",
+    "solution": "The years are B.C. Kiran was born in 2000 B.C., so in 1980 B.C. he was 20 years old, and in 1985 B.C. he was 15. Before Christ, the year numbers count down as time moves forward, so 1985 B.C. came five years before 1980 B.C.",
+    "keyFacts": [
+      "The years are B.C.",
+      "He was born in 2000 B.C.",
+      "B.C. year numbers get smaller as time passes, so 1985 B.C. came before 1980 B.C."
+    ],
+    "hints": [
+      "Nothing is wrong with Kiran or with his records.",
+      "Kiran lived a very, very long time ago.",
+      "Think about which way the year numbers count before year 1."
+    ],
+    "addedAt": "2026-09-12T21:34:42.530Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "two-fathers-two-sons-two-apples",
+    "title": "Two Fathers, Two Sons, Two Apples",
+    "difficulty": "easy",
+    "situation": "There are two sons and two fathers. The first father gives two apples to his son, and the other father gives two apples to his son. Yet there are only two apples altogether. How can that be?",
+    "solution": "There are only three people: a grandfather, a father and a son. The middle man is both a son (of the grandfather) and a father (of the boy), so two fathers and two sons are only three people. The grandfather gives two apples to his son, who hands the same two apples on to his own son.",
+    "keyFacts": [
+      "There are only three people: grandfather, father and son",
+      "The middle man counts as both a father and a son",
+      "The same two apples are passed down"
+    ],
+    "hints": [
+      "Count the people, not the roles.",
+      "One person could be described in two ways.",
+      "Think of three generations of one family."
+    ],
+    "addedAt": "2026-09-12T21:34:42.535Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "extraordinary-moment-1978",
+    "title": "An Extraordinary Moment in 1978",
+    "difficulty": "easy",
+    "situation": "Something very extraordinary happened on the 6th of May, 1978, at 12:34 a.m. What was it?",
+    "solution": "Nothing happened in the world itself; it was about the numbers. Written as a time and date, the moment was 12:34 on 5/6/78, and the digits run in order: 1, 2, 3, 4, 5, 6, 7, 8.",
+    "keyFacts": [
+      "It is about how the time and date are written",
+      "12:34 5/6/78 gives the digits 1 to 8 in order"
+    ],
+    "hints": [
+      "It isn't a historical event.",
+      "Write the time and the date down next to each other.",
+      "Write the date as month/day/year."
+    ],
+    "addedAt": "2026-09-12T21:34:42.540Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "robbed-owner-arrested",
+    "title": "Robbed, Then Arrested",
+    "difficulty": "easy",
+    "situation": "Three men rob a house and get away with hundreds of thousands of euros. Yet it is the owner of the house who gets arrested. Why?",
+    "solution": "The owner of the house was an accomplice of the robbers. He was in on the robbery, so it was the owner the police arrested.",
+    "keyFacts": [
+      "The owner was an accomplice of the robbers",
+      "The robbery was an inside job"
+    ],
+    "hints": [
+      "The owner is not as innocent as he seems.",
+      "Did the owner know about the robbery beforehand?",
+      "The owner and the three men were working together."
+    ],
+    "addedAt": "2026-09-12T21:34:42.544Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "sleepover-spider",
+    "title": "The Sleepover Spider",
+    "difficulty": "easy",
+    "situation": "Five girls are at a sleepover. One of them yells, 'There's a spider on the wall!' and the others all scream, 'Kill it!' Yet the spider gets away alive. How?",
+    "solution": "They all yelled for somebody to kill it, but nobody actually did. The girls were all too scared of the spider to go near it, so it escaped.",
+    "keyFacts": [
+      "Nobody actually tried to kill the spider",
+      "The girls were too afraid of it"
+    ],
+    "hints": [
+      "Shouting 'kill it' is not the same as doing it.",
+      "Think about how the girls feel about spiders.",
+      "None of them was brave enough to go near it."
+    ],
+    "addedAt": "2026-09-12T21:34:42.547Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "five-litres-in-a-three-litre-pot",
+    "title": "Five Litres in a Three-Litre Pot",
+    "difficulty": "easy",
+    "situation": "In a skills test, a teacher gives a student an open pot that can hold only 3 litres of water. He tells the student to bring 5 litres of water from the market. How can the student bring 5 litres of water in a pot that only holds 3 litres?",
+    "solution": "He makes two trips. First he fills the pot to the brim and brings those 3 litres to the teacher. Then he goes back, fills the pot two-thirds full and brings the other 2 litres, making 5 litres in all.",
+    "keyFacts": [
+      "He makes more than one trip",
+      "3 litres on the first trip and 2 litres on the second"
+    ],
+    "hints": [
+      "Nobody said it all had to come at once.",
+      "The market isn't going anywhere.",
+      "Add 3 and 2."
+    ],
+    "addedAt": "2026-09-12T21:34:42.550Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "boxing-match-no-punches",
+    "title": "No Punch Thrown",
+    "difficulty": "easy",
+    "situation": "Two boxers are in the ring for a fight scheduled for 12 rounds. The fight is stopped in the 6th round, yet not a single punch has been thrown. How can this be?",
+    "solution": "One of the boxers was a boxer dog, not a human fighter. That is why the fight could be stopped in the 6th round without any punches being thrown.",
+    "keyFacts": [
+      "One of the 'boxers' was a boxer dog",
+      "The word 'boxer' is a pun on the dog breed"
+    ],
+    "hints": [
+      "Think about the other meaning of the word 'boxer'.",
+      "Not both fighters were human.",
+      "A boxer is also a breed of animal."
+    ],
+    "addedAt": "2026-09-12T21:34:42.554Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "joshua-three-deadly-doors",
+    "title": "Joshua and the Three Deadly Doors",
+    "difficulty": "easy",
+    "situation": "Joshua is trapped in a room with three doors. The first door leads to acid gas that can melt a human body, the second to a room full of traps and unseen lasers that can cut a body, and the third to five robots programmed to kill humans. Which is the safest room?",
+    "solution": "The safest room is the one Joshua is already in. Every door leads somewhere deadly, but nothing in the room where he is trapped is dangerous, so the best choice is to stay put.",
+    "keyFacts": [
+      "The safest room is the one Joshua is already in",
+      "He doesn't have to go through any of the doors"
+    ],
+    "hints": [
+      "Look closely at what the question asks you to choose between.",
+      "Does Joshua have to open any of the doors?",
+      "One room is described as safe, and he is standing in it."
+    ],
+    "addedAt": "2026-09-13T06:47:07.302Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "trapped-in-the-giant-box",
+    "title": "Four People in a Giant Box",
+    "difficulty": "medium",
+    "situation": "Dave, James, Carla and Anne are trapped in a giant box. It is completely dark inside, and they cannot see out. They shout for help until a man hears them and goes to the police station, telling the police that there are four people inside who cannot escape. The police then say the man who called for help is the one who set the trap. How do they know?",
+    "solution": "The man who went for help was the one who built the giant box to trap Dave, James, Carla and Anne. Nobody could see into the dark, closed box, so the only way he could know exactly four people were inside was that he had put them there. He called the police himself to avoid suspicion, but what he knew gave him away.",
+    "keyFacts": [
+      "Nobody could see inside the box",
+      "The man still knew exactly how many people were inside",
+      "He knew because he had made the trap himself"
+    ],
+    "hints": [
+      "Think about what the man told the police.",
+      "Could anyone outside the box actually see who was in it?",
+      "How would he know the exact number of people inside?"
+    ],
+    "addedAt": "2026-09-13T06:47:07.314Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "rooster-egg-on-the-roof",
+    "title": "The Rooster's Egg",
+    "difficulty": "easy",
+    "situation": "A rooster lays an egg right on the peak of a triangular barn roof. Which way does the egg roll, left or right?",
+    "solution": "It rolls neither way, because roosters do not lay eggs. Only hens lay eggs, so there is no egg to roll.",
+    "keyFacts": [
+      "Roosters don't lay eggs",
+      "So there is no egg to roll"
+    ],
+    "hints": [
+      "Don't worry about the shape of the roof or the wind.",
+      "Think about the animal in the question.",
+      "Which chickens actually lay eggs?"
+    ],
+    "addedAt": "2026-09-13T06:47:07.320Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "falling-without-a-parachute",
+    "title": "Falling Without a Parachute",
+    "difficulty": "easy",
+    "situation": "You are falling through the sky without a parachute. There is nothing to grab and no one to help you. What do you do?",
+    "solution": "You wake up, because you are dreaming. Falling with no parachute and no way out is a familiar nightmare, and it ends when you wake.",
+    "keyFacts": [
+      "You are dreaming",
+      "The answer is to wake up"
+    ],
+    "hints": [
+      "This isn't about any survival trick.",
+      "Where do people most often find themselves falling like this?",
+      "You are probably lying in bed."
+    ],
+    "addedAt": "2026-09-13T06:47:07.324Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "friday-to-friday",
+    "title": "Leaving and Returning on a Friday",
+    "difficulty": "medium",
+    "situation": "A man travels to a city in another country on a Friday. He spends two days there. When he returns from that country, the day is Friday again. How is this possible?",
+    "solution": "The page says his journey crosses the International Date Line. Crossing the line changes the calendar date, so the day he gets back can again be a Friday even though he spent two days away.",
+    "keyFacts": [
+      "The trip crosses the International Date Line",
+      "Crossing the line changes the calendar day"
+    ],
+    "hints": [
+      "Think about where in the world he is travelling.",
+      "Time zones can do strange things to the calendar.",
+      "There is a line on the map where the date itself changes."
+    ],
+    "addedAt": "2026-09-13T06:47:07.328Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "the-kind-beggar",
+    "title": "The Kind Beggar's Money",
+    "difficulty": "easy",
+    "situation": "A very kind beggar has 5 dollars. He finds another 5 dollars, then buys 3 biscuits at 1 dollar each. How much money does he have left?",
+    "solution": "He has 2 dollars left. Because he is very kind, he gives back the 5 dollars he found instead of keeping it. He buys the biscuits with 3 of his own 5 dollars and keeps the other 2.",
+    "keyFacts": [
+      "He returns the 5 dollars he found",
+      "He spends 3 of his own 5 dollars",
+      "He has 2 dollars left"
+    ],
+    "hints": [
+      "The simple sum, 7 dollars, is not the answer.",
+      "One word in the description of the beggar matters.",
+      "What would a very kind person do with money he found?"
+    ],
+    "addedAt": "2026-09-13T06:47:07.332Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "two-women-on-the-balcony",
+    "title": "Two Women on the Balcony",
+    "difficulty": "medium",
+    "situation": "Two women on a balcony see two men walking towards them. One says to the other: 'Here come our fathers, the husbands of our mothers, the fathers of our children, and our own husbands.' How can this be true?",
+    "solution": "The two women are married to the two men, who are also their fathers. Each woman married the other woman's father, so each man is one woman's father and the other woman's husband. Together the two men are the women's fathers, the husbands of their mothers, the fathers of their children and their own husbands.",
+    "keyFacts": [
+      "Each woman is the daughter of one of the men",
+      "Each woman married the other woman's father",
+      "So together the two men fill every role she lists"
+    ],
+    "hints": [
+      "There are only two men, but each one plays more than one role.",
+      "Each man doesn't have to play every role for the same woman.",
+      "Picture two widowers, each marrying the other's daughter."
+    ],
+    "addedAt": "2026-09-13T06:47:07.335Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "seven-oclock-knock",
+    "title": "The Seven O'Clock Knock",
+    "difficulty": "easy",
+    "situation": "It is seven o'clock and you are asleep when there is a sudden knock on the door. Your parents are outside, and they have come for breakfast. What do you open first?",
+    "solution": "You open your eyes first. You are asleep when the knock comes, so before you can open the door, the fridge or any food, you have to wake up and open your eyes.",
+    "keyFacts": [
+      "You are asleep when they knock",
+      "The first thing you open is your eyes"
+    ],
+    "hints": [
+      "Forget about the breakfast food.",
+      "What state are you in when the knock comes?",
+      "Before you can open anything else, you have to wake up."
+    ],
+    "addedAt": "2026-09-13T06:47:07.339Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "eighty-eight-hours-in-a-chair",
+    "title": "Eighty-Eight Hours in a Chair",
+    "difficulty": "easy",
+    "situation": "A man sat perfectly still in a chair for 88 hours. He never got up, never shifted and never moved at all. Why?",
+    "solution": "He was dead. His body stayed in the chair for 88 hours before anyone found it.",
+    "keyFacts": [
+      "The man was dead",
+      "His body stayed in the chair until it was found"
+    ],
+    "hints": [
+      "He wasn't meditating, and it wasn't a contest.",
+      "Nobody could sit that still for that long while alive.",
+      "What state was the man in?"
+    ],
+    "addedAt": "2026-09-13T06:47:07.342Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
   }
 ]
