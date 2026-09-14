@@ -293,7 +293,7 @@ app.get('/api/generate/config', (req, res) => {
 
 app.post('/api/generate', (req, res) => {
   try {
-    const job = startGeneration({ count: req.body?.count, difficulty: String(req.body?.difficulty || 'mixed') });
+    const job = startGeneration({ count: req.body?.count, difficulty: String(req.body?.difficulty || 'mixed'), webSearch: req.body?.webSearch !== false });
     res.status(202).json({ job });
   } catch (e) {
     res.status(e.status || 500).json({ error: e.message });

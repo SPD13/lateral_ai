@@ -268,10 +268,15 @@ puzzles to write (1 to 6, default 3) and a difficulty, or *Mixed* to get a sprea
 
 The puzzle writer is a Claude model, run through the same CLI as the game master. It receives a briefing
 built from `server/templates/generate.md` that contains every puzzle already in the bank and every
-candidate still waiting for review, with their solutions, and tells the model to write new stories in its
-own words and not reuse any of them, even with different names or settings. The writer may use web search
-to find inspiration: classic situation puzzles, folklore, true stories with a surprising explanation.
-Generation takes from half a minute to a few minutes and the page shows the elapsed time.
+candidate still waiting for review, with their solutions, and tells the model to invent original stories:
+not the classics, not anything found online, and not one of the listed puzzles, even with different names
+or settings. The existing puzzles are the seed it works from. **Allow web search** (on by default) lets
+the writer search when the bank is too small to give it a feel for the game, or to check a real-world
+fact a puzzle relies on; the briefing tells it never to search for puzzles to adapt, and that a bank of
+ten or more puzzles (`GENERATOR_SEED_MIN`) is enough to work from without the web. With the box unticked
+the writer has no web tools at all, and if it finds the bank too small to write good original puzzles it
+may reply with an error message instead; the page shows that message. Generation takes from half a minute
+to a few minutes and the page shows the elapsed time.
 
 When the run finishes, the page reports how many puzzles were written and how many tokens it used. Each
 result is checked again by the server before it appears: a puzzle with the same id or title as an
@@ -294,7 +299,8 @@ repeat mechanisms, and every run sends the whole bank to the model, so the promp
 
 The puzzle writer, the web collector and the game master can each use a different model. Pick them in the
 launcher's Setup tab, or set `GENERATOR_MODEL` and `COLLECTOR_MODEL` when starting the server by hand. Each
-card on the Generate page names the model it will use. Set `GENERATOR_TOOLS=""` to disable web search.
+card on the Generate page names the model it will use. Set `GENERATOR_TOOLS=""` to disable web search for
+the whole server; the Generate page then shows the **Allow web search** box unticked and greyed out.
 
 The same writer is available from a terminal without the review step; it appends straight to the bank,
 skipping duplicates:
@@ -302,6 +308,7 @@ skipping duplicates:
 ```bash
 node scripts/generate-puzzles.js --count 3 --difficulty hard --model opus
 node scripts/generate-puzzles.js --count 3 --difficulty mixed --dry-run   # print without saving
+node scripts/generate-puzzles.js --count 3 --no-web                        # no web tools for the writer
 ```
 
 ### Collecting puzzles from the web
@@ -364,6 +371,7 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 | `GENERATOR_MODEL`      | same as `CLAUDE_MODEL` | Puzzle writer model used when generating new questions             |
 | `COLLECTOR_MODEL`      | same as `GENERATOR_MODEL` | Model that searches the web and reads puzzle pages               |
 | `GENERATOR_TOOLS`      | `WebSearch,WebFetch` | CLI tools the puzzle writer may use; `""` disables web search        |
+| `GENERATOR_SEED_MIN`   | `10`                 | Existing puzzles the writer is told are enough to work from without the web |
 | `GENERATOR_TIMEOUT_MS` | `360000`             | Timeout for one generation run (6 minutes)                           |
 | `COLLECT_TIMEOUT_MS`   | `1200000`            | Timeout for one web collection run (20 minutes)                      |
 | `COLLECT_COUNT`        | `10`                 | Default number of puzzles a web collection run takes from a page     |

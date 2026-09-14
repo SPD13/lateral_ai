@@ -24,6 +24,8 @@ export const COLLECT_MAX = Number(process.env.COLLECT_MAX || 20);
 export const WEB_SOURCE_MODEL = 'web-search';
 export const DIFFICULTIES = ['mixed', 'easy', 'medium', 'hard'];
 const MAX_COUNT = 6;
+/** Existing puzzles the writer is told are enough to work from without the web. */
+export const SEED_MIN = Number(process.env.GENERATOR_SEED_MIN || 10);
 
 // ---------------------------------------------------------------------------
 // Candidates: generated puzzles awaiting review, persisted so a reload keeps them
@@ -195,26 +197,41 @@ export function parseCollection(text) {
   return { source: obj.source || {}, puzzles: Array.isArray(obj.puzzles) ? obj.puzzles : [] };
 }
 
-export function buildGeneratePrompt({ count, difficulty }) {
+/**
+ * The writer's briefing. With `webSearch` off the briefing says so and lets the model answer with an
+ * error object instead of puzzles when the bank is too small to seed original work.
+ */
+export function buildGeneratePrompt({ count, difficulty, webSearch = true }) {
   const existing = [...loadPuzzles(), ...loadCandidates()];
+  const vars = { LANGUAGE, COUNT: count, DIFFICULTY: difficulty, SEED_MIN, EXISTING_COUNT: existing.length };
+  const partial = (name) => render(fs.readFileSync(path.join(TEMPLATE_DIR, 'generate-web', name), 'utf8'), vars).trim();
   const system = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'generate-system.md'), 'utf8'), { LANGUAGE }).trim();
   const user = render(fs.readFileSync(path.join(TEMPLATE_DIR, 'generate.md'), 'utf8'), {
-    LANGUAGE,
-    COUNT: count,
-    DIFFICULTY: difficulty,
-    EXISTING_COUNT: existing.length,
+    ...vars,
     EXISTING_PUZZLES: formatExisting(existing),
+    INSPIRATION_INSTRUCTIONS: partial(webSearch ? 'on.md' : 'off.md'),
+    OUTPUT_NOTES: webSearch ? '' : '\n' + partial('off-output.md'),
   });
   return { system, user };
 }
 
-/** Pull the JSON array out of the model reply, tolerating fences and surrounding prose. */
+/**
+ * Pull the JSON array out of the model reply, tolerating fences and surrounding prose.
+ * A reply that is an `{ "error": "..." }` object instead (the writer declining, see the briefing)
+ * throws an error flagged `declined` carrying the model's own message.
+ */
 export function parsePuzzleArray(text) {
   let s = String(text).trim();
   const fence = s.match(/```(?:json)?\s*([\s\S]*?)```/i);
   if (fence) s = fence[1].trim();
   const start = s.indexOf('[');
   const end = s.lastIndexOf(']');
+  const brace = s.indexOf('{');
+  if (brace >= 0 && (start < 0 || brace < start)) {
+    let obj = null;
+    try { obj = JSON.parse(s.slice(brace, s.lastIndexOf('}') + 1)); } catch { /* not an object; fall through to the array checks */ }
+    if (obj && typeof obj.error === 'string' && obj.error.trim()) throw Object.assign(new Error(obj.error.trim()), { declined: true });
+  }
   if (start < 0 || end <= start) throw new Error('no JSON array in the reply');
   const arr = JSON.parse(s.slice(start, end + 1));
   if (!Array.isArray(arr)) throw new Error('reply is not a JSON array');
@@ -293,20 +310,23 @@ export function startCollection({ count = COLLECT_COUNT, model = COLLECTOR_MODEL
   return job;
 }
 
-export function startGeneration({ count, difficulty, model = GENERATOR_MODEL }) {
+/** `webSearch` false runs the writer without its web tools; it is also off when the server has none. */
+export function startGeneration({ count, difficulty, model = GENERATOR_MODEL, webSearch = true }) {
   count = Math.max(1, Math.min(MAX_COUNT, Number(count) || 5));
   if (!DIFFICULTIES.includes(difficulty)) difficulty = 'mixed';
   if (running) throw Object.assign(new Error('A generation is already running'), { status: 409 });
+  webSearch = Boolean(webSearch) && GENERATOR_TOOLS.length > 0;
+  const tools = webSearch ? GENERATOR_TOOLS : [];
   const job = {
-    id: crypto.randomUUID(), kind: 'generate', status: 'running', count, difficulty, model, tools: GENERATOR_TOOLS,
-    startedAt: new Date().toISOString(), finishedAt: null, added: [], dropped: [], error: null, cost: null, tokens: null, webSearches: 0,
+    id: crypto.randomUUID(), kind: 'generate', status: 'running', count, difficulty, model, tools, webSearch,
+    startedAt: new Date().toISOString(), finishedAt: null, added: [], dropped: [], error: null, declined: false, cost: null, tokens: null, webSearches: 0,
   };
   jobs.set(job.id, job);
   running = job;
   (async () => {
     try {
-      const { system, user } = buildGeneratePrompt({ count, difficulty });
-      const raw = await runClaude({ system, user, model, tools: GENERATOR_TOOLS, timeoutMs: GENERATOR_TIMEOUT_MS });
+      const { system, user } = buildGeneratePrompt({ count, difficulty, webSearch });
+      const raw = await runClaude({ system, user, model, tools, timeoutMs: GENERATOR_TIMEOUT_MS });
       job.cost = raw.cost ?? null;
       job.tokens = raw.tokens ?? null;
       job.webSearches = raw.webSearches ?? 0;
@@ -331,10 +351,11 @@ export function startGeneration({ count, difficulty, model = GENERATOR_MODEL }) 
     } catch (e) {
       job.status = 'error';
       job.error = e.message;
+      job.declined = Boolean(e.declined);
     } finally {
       job.finishedAt = new Date().toISOString();
       running = null;
-      console.log(`[generate] ${job.status}: ${job.added.length} added, ${job.dropped.length} dropped, model ${model}${job.tokens ? `, ${job.tokens.total} tokens (${job.tokens.input} in / ${job.tokens.output} out)` : ''}${job.cost != null ? `, $${job.cost.toFixed(4)}` : ''}${job.error ? `, error: ${job.error}` : ''}`);
+      console.log(`[generate] ${job.status}: ${job.added.length} added, ${job.dropped.length} dropped, model ${model}, web search ${webSearch ? 'on' : 'off'}${job.tokens ? `, ${job.tokens.total} tokens (${job.tokens.input} in / ${job.tokens.output} out)` : ''}${job.cost != null ? `, $${job.cost.toFixed(4)}` : ''}${job.error ? `, ${job.declined ? 'declined' : 'error'}: ${job.error}` : ''}`);
     }
   })();
   return job;
