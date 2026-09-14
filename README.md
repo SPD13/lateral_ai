@@ -296,6 +296,10 @@ server does not lose them. One generation runs at a time.
 
 Three to five puzzles per run keeps the results varied and the review manageable. Larger batches tend to
 repeat mechanisms, and every run sends the whole bank to the model, so the prompt grows with the bank.
+Around 1,200 entries (puzzles plus pending candidates) the writer's briefing, which carries every
+situation and solution, nears a 200k-token context window. The Generate page shows a warning banner and
+the server logs one at startup and before each run once the bank passes 90% of that mark; `BANK_WARN_AT`
+moves the threshold, for a model with a larger window or a smaller one.
 
 The puzzle writer, the web collector and the game master can each use a different model. Pick them in the
 launcher's Setup tab, or set `GENERATOR_MODEL` and `COLLECTOR_MODEL` when starting the server by hand. Each
