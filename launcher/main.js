@@ -27,7 +27,7 @@ const LOG_LINES = 400;
 let win = null;
 let child = null;          // our server process, when we started one
 let starting = false;
-let config = { port: DEFAULT_PORT, model: "sonnet", generatorModel: "sonnet", autostart: false };
+let config = { port: DEFAULT_PORT, model: "sonnet", generatorModel: "sonnet", collectorModel: "sonnet", autostart: false };
 let lastError = null;
 let notice = null;         // something worth saying that is not a failure
 let health = null;         // last /api/health reply, or null when nothing answers
@@ -46,6 +46,7 @@ function loadConfig() {
     if (port >= PORT_MIN && port <= PORT_MAX) config.port = port;
     if (MODELS.includes(raw.model)) config.model = raw.model;
     if (MODELS.includes(raw.generatorModel)) config.generatorModel = raw.generatorModel;
+    if (MODELS.includes(raw.collectorModel)) config.collectorModel = raw.collectorModel;
     if (typeof raw.autostart === "boolean") config.autostart = raw.autostart;
   } catch (e) { /* first run: defaults */ }
 }
@@ -136,9 +137,11 @@ function status() {
     port: config.port,
     model: config.model,
     generatorModel: config.generatorModel,
+    collectorModel: config.collectorModel,
     autostart: config.autostart,
     serverModel: health ? health.model : null,
     serverGeneratorModel: health ? health.generatorModel : null,
+    serverCollectorModel: health ? health.collectorModel : null,
     candidates: health ? health.candidates : null,
     puzzles: health ? health.puzzles : null,
     internalUrl: "http://localhost:" + config.port + "/",
@@ -198,11 +201,11 @@ async function startServer() {
     }
 
     const PATH = augmentedPath();
-    const env = { ...process.env, ELECTRON_RUN_AS_NODE: "1", PATH, PORT: String(config.port), CLAUDE_MODEL: config.model, GENERATOR_MODEL: config.generatorModel };
+    const env = { ...process.env, ELECTRON_RUN_AS_NODE: "1", PATH, PORT: String(config.port), CLAUDE_MODEL: config.model, GENERATOR_MODEL: config.generatorModel, COLLECTOR_MODEL: config.collectorModel };
     // never let the server think it runs inside a Claude Code session
     for (const k of Object.keys(env)) if (k === "CLAUDECODE" || k.startsWith("CLAUDE_CODE_")) delete env[k];
 
-    pushLog("[launcher] starting server on port " + config.port + " (game master " + config.model + ", puzzle writer " + config.generatorModel + ")");
+    pushLog("[launcher] starting server on port " + config.port + " (game master " + config.model + ", puzzle writer " + config.generatorModel + ", web collector " + config.collectorModel + ")");
     const proc = spawn(process.execPath, [SERVER_ENTRY], { cwd: PROJECT_ROOT, env, stdio: ["ignore", "pipe", "pipe"] });
     child = proc;
     let stderrTail = "";
@@ -304,8 +307,13 @@ app.whenReady().then(async () => {
       if (!MODELS.includes(patch.generatorModel)) return { ...status(), error: "unknown model " + patch.generatorModel };
       next.generatorModel = patch.generatorModel;
     }
+    if (patch.collectorModel !== undefined) {
+      if (!MODELS.includes(patch.collectorModel)) return { ...status(), error: "unknown model " + patch.collectorModel };
+      next.collectorModel = patch.collectorModel;
+    }
     if (patch.autostart !== undefined) next.autostart = !!patch.autostart;
-    const restart = !!child && (next.port !== config.port || next.model !== config.model || next.generatorModel !== config.generatorModel);
+    const restart = !!child && (next.port !== config.port || next.model !== config.model
+      || next.generatorModel !== config.generatorModel || next.collectorModel !== config.collectorModel);
     if (restart) await stopServer();
     config = next;
     saveConfig();

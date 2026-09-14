@@ -292,8 +292,9 @@ server does not lose them. One generation runs at a time.
 Three to five puzzles per run keeps the results varied and the review manageable. Larger batches tend to
 repeat mechanisms, and every run sends the whole bank to the model, so the prompt grows with the bank.
 
-The puzzle writer model can differ from the game master's. Pick it in the launcher's Setup tab, or set
-`GENERATOR_MODEL` when starting the server by hand. Set `GENERATOR_TOOLS=""` to disable web search.
+The puzzle writer, the web collector and the game master can each use a different model. Pick them in the
+launcher's Setup tab, or set `GENERATOR_MODEL` and `COLLECTOR_MODEL` when starting the server by hand. Each
+card on the Generate page names the model it will use. Set `GENERATOR_TOOLS=""` to disable web search.
 
 The same writer is available from a terminal without the review step; it appends straight to the bank,
 skipping duplicates:
@@ -361,6 +362,7 @@ Environment variables read by the server (all optional). The launcher sets `PORT
 | `GAME_LANGUAGE`        | `English`            | Language the game master and puzzle writer must use, whatever the player types |
 | `GM_HELP_DEFAULT`      | `1`                  | Default of the per-player "Game master help" switch; `0` starts strict          |
 | `GENERATOR_MODEL`      | same as `CLAUDE_MODEL` | Puzzle writer model used when generating new questions             |
+| `COLLECTOR_MODEL`      | same as `GENERATOR_MODEL` | Model that searches the web and reads puzzle pages               |
 | `GENERATOR_TOOLS`      | `WebSearch,WebFetch` | CLI tools the puzzle writer may use; `""` disables web search        |
 | `GENERATOR_TIMEOUT_MS` | `360000`             | Timeout for one generation run (6 minutes)                           |
 | `COLLECT_TIMEOUT_MS`   | `1200000`            | Timeout for one web collection run (20 minutes)                      |

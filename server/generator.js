@@ -11,6 +11,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const CANDIDATES_FILE = process.env.CANDIDATES_FILE || path.join(__dirname, '..', 'data', 'candidates.json');
 /** Model used to write new puzzles; may differ from the game master's. */
 export const GENERATOR_MODEL = process.env.GENERATOR_MODEL || CLAUDE_MODEL;
+/** Model used to search the web and read puzzle pages; falls back to the writer's. */
+export const COLLECTOR_MODEL = process.env.COLLECTOR_MODEL || GENERATOR_MODEL;
 /** Built-in CLI tools the writer may use (web search for inspiration). Set GENERATOR_TOOLS="" to disable. */
 export const GENERATOR_TOOLS = (process.env.GENERATOR_TOOLS ?? 'WebSearch,WebFetch').split(',').map((s) => s.trim()).filter(Boolean);
 export const GENERATOR_TIMEOUT_MS = Number(process.env.GENERATOR_TIMEOUT_MS || 6 * 60_000);
@@ -230,7 +232,7 @@ export function listJobs() { return [...jobs.values()].slice(-10).reverse(); }
 export function runningJob() { return running; }
 
 /** One collection run: search for a page nobody has used yet, read it, and take its puzzles. */
-export function startCollection({ count = COLLECT_COUNT, model = GENERATOR_MODEL, sourceUrl = null } = {}) {
+export function startCollection({ count = COLLECT_COUNT, model = COLLECTOR_MODEL, sourceUrl = null } = {}) {
   count = Math.max(1, Math.min(COLLECT_MAX, Number(count) || COLLECT_COUNT));
   const revisit = httpUrl(sourceUrl);
   if (sourceUrl && !revisit) throw Object.assign(new Error('That is not a usable source URL'), { status: 400 });

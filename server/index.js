@@ -9,7 +9,7 @@ import { STATUS, getProgress, getAllProgress, updateProgress, resetProgress, que
 import { buildPrompt, INTENTS, GM_HELP_DEFAULT } from './prompt.js';
 import { getScoring, saveScoring, DEFAULT_SCORING } from './scoring.js';
 import { runClaude, parseReply, CLAUDE_MODEL } from './claude.js';
-import { GENERATOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, COLLECT_COUNT, COLLECT_MAX, takenFrom, startGeneration, startCollection, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate, approveAllCandidates, rejectAllCandidates } from './generator.js';
+import { GENERATOR_MODEL, COLLECTOR_MODEL, GENERATOR_TOOLS, DIFFICULTIES as GEN_DIFFICULTIES, COLLECT_COUNT, COLLECT_MAX, takenFrom, startGeneration, startCollection, getJob, listJobs, runningJob, listCandidates, approveCandidate, rejectCandidate, approveAllCandidates, rejectAllCandidates } from './generator.js';
 import { listSources } from './sources.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -74,7 +74,7 @@ function withStatus(p, all, ratings = {}) {
 // ---------------------------------------------------------------------------
 /** Liveness check used by the launcher (and anything else) to recognise this server. */
 app.get('/api/health', (req, res) => {
-  res.json({ ok: true, app: 'lateral-game', pid: process.pid, port: PORT, model: CLAUDE_MODEL, generatorModel: GENERATOR_MODEL, puzzles: loadPuzzles().length, candidates: listCandidates().length, uptime: Math.round(process.uptime()) });
+  res.json({ ok: true, app: 'lateral-game', pid: process.pid, port: PORT, model: CLAUDE_MODEL, generatorModel: GENERATOR_MODEL, collectorModel: COLLECTOR_MODEL, puzzles: loadPuzzles().length, candidates: listCandidates().length, uptime: Math.round(process.uptime()) });
 });
 
 // ---------------------------------------------------------------------------
@@ -288,7 +288,7 @@ app.post('/api/puzzles/:id/chat', async (req, res) => {
 // Puzzle generation and review
 // ---------------------------------------------------------------------------
 app.get('/api/generate/config', (req, res) => {
-  res.json({ model: GENERATOR_MODEL, gameMasterModel: CLAUDE_MODEL, tools: GENERATOR_TOOLS, difficulties: GEN_DIFFICULTIES, maxCount: 6, collectCount: COLLECT_COUNT, collectMax: COLLECT_MAX, sources: listSources().length, running: runningJob(), jobs: listJobs() });
+  res.json({ model: GENERATOR_MODEL, collectorModel: COLLECTOR_MODEL, gameMasterModel: CLAUDE_MODEL, tools: GENERATOR_TOOLS, difficulties: GEN_DIFFICULTIES, maxCount: 6, collectCount: COLLECT_COUNT, collectMax: COLLECT_MAX, sources: listSources().length, running: runningJob(), jobs: listJobs() });
 });
 
 app.post('/api/generate', (req, res) => {
@@ -419,5 +419,5 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 
 loadPuzzles(); // fail fast on a broken bank
 app.listen(PORT, () => {
-  console.log(`Lateral game on http://localhost:${PORT}  (game master: ${CLAUDE_MODEL}, puzzle writer: ${GENERATOR_MODEL}, ${loadPuzzles().length} puzzles${DEBUG ? ', debug on' : ''})`);
+  console.log(`Lateral game on http://localhost:${PORT}  (game master: ${CLAUDE_MODEL}, puzzle writer: ${GENERATOR_MODEL}, web collector: ${COLLECTOR_MODEL}, ${loadPuzzles().length} puzzles${DEBUG ? ', debug on' : ''})`);
 });
