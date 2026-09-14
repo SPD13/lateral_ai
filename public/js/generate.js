@@ -4,11 +4,22 @@ const $ = (id) => document.getElementById(id);
 const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), webSearch: $('web-search'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count'),
   collect: $('collect'), collectCount: $('collect-count'), collectStatus: $('collect-status'), collectSources: $('collect-sources'),
   sources: $('sources'), sourceList: $('source-list'), sourcesCount: $('sources-count'),
-  approveAll: $('approve-all'), rejectAll: $('reject-all') };
+  approveAll: $('approve-all'), rejectAll: $('reject-all'), bankWarning: $('bank-warning') };
 
 let config = null;
 let pollTimer = null;
 let ticker = null;
+
+/** The server warns when the bank nears the size where the briefings outgrow the model's context window. */
+function renderBankWarning(warning) {
+  els.bankWarning.hidden = !warning;
+  els.bankWarning.textContent = warning ? `⚠ ${warning}` : '';
+}
+
+/** Re-check the bank size after anything that changes it (approvals, finished runs). */
+async function refreshBankWarning() {
+  try { renderBankWarning((await api('/api/generate/config')).bankWarning); } catch { /* keep the last banner */ }
+}
 
 /** Both cards share this: a running job writes into the card it belongs to. */
 function statusEl(job) { return job?.kind === 'collect' ? els.collectStatus : els.status; }
@@ -101,7 +112,7 @@ async function poll(jobId) {
     try {
       const { job } = await api(`/api/generate/jobs/${jobId}`);
       showJob(job);
-      if (job.status !== 'running') { clearInterval(pollTimer); await loadCandidates(); loadSources(); loadHeaderStats(); }
+      if (job.status !== 'running') { clearInterval(pollTimer); await loadCandidates(); loadSources(); loadHeaderStats(); refreshBankWarning(); }
     } catch (err) { clearInterval(pollTimer); setStatus(escapeHtml(err.message), 'error'); setBusy(false); }
   }, 2000);
 }
@@ -231,6 +242,7 @@ async function init() {
   els.count.max = config.maxCount;
   els.model.innerHTML = `Puzzle writer: <b>claude ${escapeHtml(config.model)}</b>`;
   els.model.title = 'Set in the launcher (Setup tab) or with the GENERATOR_MODEL environment variable';
+  renderBankWarning(config.bankWarning);
   els.collectCount.max = config.collectMax;
   renderCollectorLabel(config.sources);
   els.collectCount.value = config.collectCount;

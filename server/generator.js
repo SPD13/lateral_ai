@@ -26,6 +26,12 @@ export const DIFFICULTIES = ['mixed', 'easy', 'medium', 'hard'];
 const MAX_COUNT = 6;
 /** Existing puzzles the writer is told are enough to work from without the web. */
 export const SEED_MIN = Number(process.env.GENERATOR_SEED_MIN || 10);
+/**
+ * Every run sends the whole bank (plus the pending candidates) to the model, so the briefing grows with
+ * it. Around this many entries the writer's briefing, which carries full situations and solutions, nears
+ * the model's context window; past it runs get slow, expensive and may fail or silently drop puzzles.
+ */
+export const BANK_WARN_AT = Number(process.env.BANK_WARN_AT || 1200);
 
 // ---------------------------------------------------------------------------
 // Candidates: generated puzzles awaiting review, persisted so a reload keeps them
@@ -148,6 +154,20 @@ function formatSources(list) {
 function formatExistingBrief(list) {
   if (!list.length) return '(none yet)';
   return list.map((p) => `- ${p.title}: ${p.situation.replace(/\s+/g, ' ').slice(0, 160)}`).join('\n');
+}
+
+/**
+ * A message when the bank and the pending candidates together approach `BANK_WARN_AT`, or null while
+ * there is room. Shown on the Generate page and logged by the server.
+ */
+export function bankSizeWarning() {
+  const puzzles = loadPuzzles().length;
+  const candidates = loadCandidates().length;
+  const total = puzzles + candidates;
+  if (total < BANK_WARN_AT * 0.9) return null;
+  const size = candidates ? `${puzzles} puzzles and ${candidates} pending candidate${candidates === 1 ? '' : 's'}` : `${puzzles} puzzles`;
+  const where = total >= BANK_WARN_AT ? `has reached ${BANK_WARN_AT} entries (${size})` : `is close to ${BANK_WARN_AT} entries (${size})`;
+  return `The bank ${where}. Every generation and collection run sends the whole bank to the model, and at this size the puzzle writer's briefing nears the model's context window: runs get slow and expensive, and may fail or overlook duplicates. Consider trimming the bank or raising BANK_WARN_AT if the model has a larger window.`;
 }
 
 /** Titles already taken from a page, so a second visit can skip them. */

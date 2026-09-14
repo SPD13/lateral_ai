@@ -226,6 +226,7 @@ select.btn { padding-right: 28px; }
 
 /* Generate page */
 .gen-card { margin: 24px 0 20px; }
+.bank-warning { margin: 24px 0 -8px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--warn); background: var(--warn-soft); color: var(--warn); font-size: 13px; line-height: 1.45; }
 .gen-form { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
 .gen-form label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
 .gen-form input, .gen-form select { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 8px 12px; width: 120px; }
