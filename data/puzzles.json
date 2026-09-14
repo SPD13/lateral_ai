@@ -4398,5 +4398,226 @@
     "addedAt": "2026-09-14T08:04:28.802Z",
     "model": "web-search",
     "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "hanged-man-snowy-field",
+    "title": "The Hanged Man",
+    "difficulty": "easy",
+    "situation": "John was walking across a snow-covered field when he came to a lonely tree with a man's body hanging from it. The man had died of strangulation the night before. Yet there were no tracks anywhere in the snow except John's own. How did the man get there?",
+    "solution": "The hanged man was a skydiver. His parachute got tangled in the branches of the tree and the cords strangled him. He came down from the sky, so he left no tracks in the snow.",
+    "keyFacts": [
+      "The man was a skydiver / parachutist",
+      "His parachute got caught in the tree and strangled him",
+      "He arrived from the air, so he left no tracks"
+    ],
+    "hints": [
+      "Think about ways to reach that tree without walking across the field.",
+      "He didn't come over the ground at all.",
+      "Look up: he came down from the sky, and something he was wearing got caught in the branches."
+    ],
+    "addedAt": "2026-09-14T08:08:30.372Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "sherlock-found-the-killer",
+    "title": "Sherlock Found the Killer",
+    "difficulty": "easy",
+    "situation": "Sherlock Holmes was walking down a corridor when he heard a woman scream, 'Please, John, don't kill me!' A shot rang out, and he burst into the room to find a dead woman and a gun in one corner, and a postman, a lawyer and an accountant standing in another. Holmes went straight to the postman and arrested him, and the postman really was the killer. How did Holmes know?",
+    "solution": "The postman was the only man in the room. The lawyer and the accountant were both women. The victim had begged 'John' not to kill her, so the killer had to be a man, and only the postman fit.",
+    "keyFacts": [
+      "The lawyer and the accountant were women",
+      "The postman was the only man",
+      "The victim called the killer 'John', a man's name"
+    ],
+    "hints": [
+      "Think about what the scream told Holmes about the killer.",
+      "The name 'John' matters. What does it tell you about the killer?",
+      "Don't assume the lawyer and the accountant were men."
+    ],
+    "addedAt": "2026-09-14T08:08:30.378Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "dancing-dead-poisoned-rose",
+    "title": "The Dancing Dead",
+    "difficulty": "medium",
+    "situation": "A couple of dancers die during a dance competition. Nobody attacked them on the dance floor. What happened?",
+    "solution": "It was a tango competition, and during their routine the couple passed a rose back and forth between them. A rival couple who badly wanted to win had poisoned the rose. The poison killed the dancers, and the rivals won the contest.",
+    "keyFacts": [
+      "Their routine involved a rose they passed between them",
+      "A rival couple poisoned the rose",
+      "The rivals did it to win the competition"
+    ],
+    "hints": [
+      "Think about who would gain from their deaths.",
+      "Something they handled as part of their dance was deadly.",
+      "It was a tango, and a rose passed between the partners had been poisoned by rivals."
+    ],
+    "addedAt": "2026-09-14T08:08:30.382Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "the-shooter-film-set",
+    "title": "The Shooter",
+    "difficulty": "medium",
+    "situation": "Bill shot a man, and the man died. Yet Bill was not punished for it. Why not?",
+    "solution": "The man was a film actor, and the script called for Bill to shoot him in a scene. By accident the gun had been loaded with real bullets instead of blanks. The shooting was a genuine accident, not murder, so Bill was not punished.",
+    "keyFacts": [
+      "They were filming a scene where Bill was supposed to shoot the man",
+      "The gun was accidentally loaded with real bullets instead of blanks",
+      "It was an accident, so Bill was not to blame"
+    ],
+    "hints": [
+      "Bill was expected to pull the trigger.",
+      "Both men were working when it happened, and it was supposed to be make-believe.",
+      "It was a film scene, and the gun should have had blanks in it."
+    ],
+    "addedAt": "2026-09-14T08:08:30.386Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "the-last-step-lab-rat",
+    "title": "The Last Step",
+    "difficulty": "easy",
+    "situation": "Everybody knew that if Julia took one more step forward she would die, but nobody warned her. Why didn't anyone tell her?",
+    "solution": "Julia was a rat that scientists were using in an experiment. She was trapped in a maze full of traps and was standing right in front of one. The people watching couldn't warn her, and they wouldn't have anyway, because the experiment was about seeing what she did.",
+    "keyFacts": [
+      "Julia was a lab rat, not a person",
+      "She was in a maze full of traps set up by scientists",
+      "She was standing right in front of a trap"
+    ],
+    "hints": [
+      "Would Julia have understood a warning?",
+      "Julia isn't human.",
+      "She was an animal in a scientists' maze full of traps."
+    ],
+    "addedAt": "2026-09-14T08:08:30.391Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "lady-killed-the-lady-kkk-robe",
+    "title": "The Lady Killed the Lady",
+    "difficulty": "hard",
+    "situation": "Two white women are talking in the home of one of them, who lives alone. The guest goes into the bathroom, comes out five minutes later, and kills her host. Why?",
+    "solution": "A Black friend of the guest had recently been killed, reportedly by the Ku Klux Klan. In the bathroom, the guest found a bloodstained KKK robe in her host's laundry hamper. The host was single, so the robe could only be hers. The guest took a nail file from the medicine cabinet, went out and killed her.",
+    "keyFacts": [
+      "The guest's Black friend had recently been murdered, reportedly by the KKK",
+      "She found a bloodstained KKK robe in the host's laundry hamper",
+      "The host lived alone, so the robe was hers",
+      "She killed her with a nail file from the medicine cabinet"
+    ],
+    "hints": [
+      "The guest found something in the bathroom that changed everything.",
+      "It proved the host was involved in the recent killing of someone the guest loved.",
+      "A bloodstained Ku Klux Klan robe was in the laundry hamper, and her murdered friend was Black."
+    ],
+    "addedAt": "2026-09-14T08:08:30.395Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "the-last-wine-poison-choice",
+    "title": "The Last Wine",
+    "difficulty": "medium",
+    "situation": "Camellia brought Valmont some wine. He looked at his watch, drank, and died. What happened?",
+    "solution": "Camellia had offered Valmont a cruel game. She poisoned one of two glasses of wine, and he had to pick one to drink, and if he survived she would marry him. Valmont let the position of his watch's second hand decide which glass to take. He was unlucky and chose the poisoned one.",
+    "keyFacts": [
+      "Only one of two glasses was poisoned, and he had to choose",
+      "If he survived, Camellia would marry him",
+      "He used his watch's second hand to pick at random, and picked the poisoned glass"
+    ],
+    "hints": [
+      "Valmont knew there was poison, and he drank anyway.",
+      "He had to choose between two glasses, and there was a prize if he chose right.",
+      "He used the second hand on his watch like a coin toss to pick a glass, and it picked the poisoned one."
+    ],
+    "addedAt": "2026-09-14T08:08:30.398Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "lucky-me-raffle",
+    "title": "Lucky Me",
+    "difficulty": "medium",
+    "situation": "Peter wins a raffle. Soon afterwards, he kills himself. Why?",
+    "solution": "Peter was one of a group of people who were snowed in and running out of food. They held a raffle to decide which of them should die so that the others could eat the body and stay alive. Peter's name was drawn, so he had to take his own life.",
+    "keyFacts": [
+      "Peter and others were trapped (snowed in) with no food",
+      "The raffle chose who would die so the others could eat the body",
+      "Being drawn meant Peter had to kill himself"
+    ],
+    "hints": [
+      "Winning this raffle was not good news.",
+      "Peter was stuck with other people somewhere they couldn't leave, and they had nothing left to eat.",
+      "The winner of the draw was going to become food for the rest of the group."
+    ],
+    "addedAt": "2026-09-14T08:11:30.083Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "ship-in-the-ploughed-field",
+    "title": "The Ship in the Ploughed Field",
+    "difficulty": "easy",
+    "situation": "A farmer ploughing his flat, dry field strikes something hard and uncovers the wooden hull of a large sailing ship, complete with cargo, buried in the soil. The field is far from any river and has not flooded in living memory, and nobody ever hauled the ship there. How did it get into his field?",
+    "solution": "The ship sank centuries ago on the bottom of a shallow sea. Long afterwards, that part of the sea was closed off with dykes and pumped dry to make new farmland, so the old seabed, with the wreck still lying in it, became fields. The farmer is ploughing what used to be the sea floor, and the ship never moved at all: the water went away around it.",
+    "keyFacts": [
+      "The ship sank normally, at sea, a long time ago",
+      "The land the field is on was reclaimed from the sea by draining it",
+      "The wreck never moved; the sea was removed from around it"
+    ],
+    "hints": [
+      "The ship reached that spot in the most ordinary way a ship can.",
+      "Ask not how the ship got to the field, but how the field got to the ship.",
+      "Think about countries that build dykes and pump water out to make new farmland."
+    ],
+    "addedAt": "2026-09-14T08:29:09.077Z",
+    "model": "fable",
+    "sourceUrl": null
+  },
+  {
+    "id": "speeding-on-the-empty-road",
+    "title": "Speeding on the Empty Road",
+    "difficulty": "medium",
+    "situation": "On a dead straight, flat and completely empty road in the far north, a lorry driver is pulled over and fined for doing 40 km/h. The officer tells him that at that speed he could have killed himself and the driver of the lorry approaching from the other direction, even though the two vehicles would never have touched each other or anything else. Why?",
+    "solution": "The road is a winter ice road running across a frozen lake. A heavy lorry bends the ice slightly downwards as it goes, which pushes a pressure wave through the water underneath. If the lorry drives faster than that wave, or if its wave meets the wave of an oncoming lorry or bounces back from the shore, the waves pile up and can crack the ice open, so both lorries could have gone through into the freezing water. That is why ice roads have very low speed limits and strict rules about how close vehicles may pass each other.",
+    "keyFacts": [
+      "The road runs over a frozen lake or sea",
+      "A heavy vehicle pushes a wave through the water beneath the ice",
+      "At speed, or when two waves meet, the wave can break the ice and the lorries would sink"
+    ],
+    "hints": [
+      "The danger is not a collision. Think about what is under the road.",
+      "The road only exists for a few months each year.",
+      "A heavy lorry on ice makes something move in the water underneath it, and it moves faster the faster the lorry goes."
+    ],
+    "addedAt": "2026-09-14T08:29:09.091Z",
+    "model": "fable",
+    "sourceUrl": null
+  },
+  {
+    "id": "the-sentence-that-saved-his-neck",
+    "title": "The Sentence That Saved His Neck",
+    "difficulty": "hard",
+    "situation": "In 17th-century London, a thief who cannot read or write is sentenced to hang. The night before his trial ends, his cellmate makes him repeat one short sentence over and over until he knows it by heart. In court the next morning the thief speaks that sentence aloud, and instead of being hanged he is burnt on the thumb with a hot iron and released. What was going on?",
+    "solution": "Under the old English law of 'benefit of clergy', a man who could prove he was a clergyman was handed over to the lenient church courts instead of being hanged, and the test of being a clergyman was simply to read a passage from the Bible. The court always used the same verse, so illiterate prisoners learnt it by heart and recited it while pretending to read, and the judges mostly let it pass. To stop a man claiming the privilege twice, his thumb was branded with a hot iron, so the scar showed any future court that he had already used up his one escape.",
+    "keyFacts": [
+      "A law let anyone who could read (as proof of being a cleric) escape hanging",
+      "The court always used the same Bible verse, so he memorised it and pretended to read it",
+      "The thumb brand marked him so he could never use the privilege again"
+    ],
+    "hints": [
+      "The sentence was not a confession, a plea, or a lie about the crime.",
+      "The court was testing whether he had a certain skill, and he only had to appear to have it.",
+      "Which people in those days were expected to be able to read, and what book would they read from?"
+    ],
+    "addedAt": "2026-09-14T08:29:09.100Z",
+    "model": "fable",
+    "sourceUrl": null
   }
 ]
