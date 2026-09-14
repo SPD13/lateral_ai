@@ -25,13 +25,20 @@ function setBusy(busy) {
   for (const b of els.sourceList.querySelectorAll('button')) b.disabled = busy;
 }
 
+/** The collect card's right-hand label: which model does the searching, and how many pages it has used. */
+function renderCollectorLabel(sourceCount) {
+  const used = sourceCount ? `${sourceCount} source${sourceCount === 1 ? '' : 's'} used so far` : 'no sources used yet';
+  els.collectSources.innerHTML = `Web collector: <b>claude ${escapeHtml(config?.collectorModel || '')}</b> · ${used}`;
+  els.collectSources.title = 'Set in the launcher (Setup tab) or with the COLLECTOR_MODEL environment variable';
+}
+
 /** The pages already used, each with a way to go back for the puzzles it has not given yet. */
 async function loadSources() {
   let sources = [];
   try { sources = await api('/api/sources'); } catch { return; }
   els.sources.hidden = sources.length === 0;
   els.sourcesCount.textContent = sources.length ? `(${sources.length})` : '';
-  els.collectSources.textContent = sources.length ? `${sources.length} source${sources.length === 1 ? '' : 's'} used so far` : 'No sources used yet';
+  renderCollectorLabel(sources.length);
   els.sourceList.innerHTML = sources.map((s) => `
     <li${s.exhausted ? ' class="spent"' : ''}>
       <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title || s.url)}</a>
@@ -220,6 +227,7 @@ async function init() {
   els.model.innerHTML = `Puzzle writer: <b>claude ${escapeHtml(config.model)}</b>${config.tools.length ? ' with web search' : ''}`;
   els.model.title = 'Set in the launcher (Setup tab) or with the GENERATOR_MODEL environment variable';
   els.collectCount.max = config.collectMax;
+  renderCollectorLabel(config.sources);
   els.collectCount.value = config.collectCount;
   await loadSources();
   els.collect.disabled = !config.tools.length;

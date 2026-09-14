@@ -2549,5 +2549,1854 @@
     "addedAt": "2026-09-13T06:47:07.342Z",
     "model": "web-search",
     "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "six-cups-one-move",
+    "title": "Six Cups, One Move",
+    "difficulty": "easy",
+    "situation": "Six cups stand in a row. The first three are full of water and the last three are empty. By moving only one cup, you must make the row go full, empty, full, empty, full, empty. How do you do it?",
+    "solution": "Pick up the second cup, which is full, and pour its water into the fifth cup, which is empty. Then put the now-empty second cup back where it was. Only one cup has moved, and the row now goes full, empty, full, empty, full, empty.",
+    "keyFacts": [
+      "You pick up the second cup",
+      "You pour its water into the fifth cup",
+      "You put the empty cup back in its place, so only one cup was moved"
+    ],
+    "hints": [
+      "Moving a cup doesn't have to mean moving it to a new position.",
+      "What else can you do with a cup of water besides sliding it along?",
+      "Pour one of the full cups into one of the empty ones, then put it back."
+    ],
+    "addedAt": "2026-09-13T08:45:38.942Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "horse-rope-and-hay",
+    "title": "The Horse and the Distant Hay",
+    "difficulty": "easy",
+    "situation": "A horse is tied to a rope 10 metres long. A pile of hay lies 11 metres away. The horse gets to the hay and eats it without breaking or stretching the rope. How?",
+    "solution": "The other end of the rope isn't tied to anything. The horse has a rope around it, but nothing is holding it in place, so it can simply walk over to the hay.",
+    "keyFacts": [
+      "The rope is only tied to the horse",
+      "The other end of the rope isn't fastened to anything",
+      "So the horse can walk freely to the hay"
+    ],
+    "hints": [
+      "Think about both ends of the rope.",
+      "The puzzle tells you what the horse is tied to, but not what the rope is tied to.",
+      "The other end of the rope isn't attached to anything."
+    ],
+    "addedAt": "2026-09-13T08:45:38.954Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "golden-chain-rent",
+    "title": "Paying Rent with a Golden Chain",
+    "difficulty": "medium",
+    "situation": "A student has to pay his rent one day at a time, one gold link per day, for seven days. All he has is a golden chain of seven links, and he may make no more than two cuts in it. The landlord must have exactly as many links as days paid at the end of each day. How does he manage it?",
+    "solution": "He cuts the chain into pieces of 1, 2 and 4 links. Each day he swaps pieces with the landlord so that the landlord always holds the right total. On day one he gives the 1-link piece. On day two he gives the 2-link piece and takes back the single link. On day three he gives the single link again. On day four he hands over the 4-link piece and takes back the others, and he carries on the same way until all seven links have been paid.",
+    "keyFacts": [
+      "The chain is cut into pieces of 1, 2 and 4 links",
+      "The student and landlord swap pieces back and forth",
+      "Those pieces can make every total from 1 to 7"
+    ],
+    "hints": [
+      "The landlord doesn't have to keep every piece he gets.",
+      "You can give a bigger piece and take a smaller one back as change.",
+      "Pieces of 1, 2 and 4 links can add up to any number from 1 to 7."
+    ],
+    "addedAt": "2026-09-13T08:45:38.961Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "six-hens-seven-boxes",
+    "title": "Six Hens, Seven Boxes",
+    "difficulty": "easy",
+    "situation": "You have six hens and seven boxes. Every box must end up with something in it, and no box may be empty. How do you arrange them?",
+    "solution": "Put one hen in each of six boxes. Then put one of those boxes, with its hen inside, into the seventh box. Now no box is empty.",
+    "keyFacts": [
+      "One hen goes in each of six boxes",
+      "One of the boxes with a hen in it goes inside the seventh box"
+    ],
+    "hints": [
+      "Hens aren't the only thing that can go inside a box.",
+      "Could a box hold something other than a hen?",
+      "Put one hen-filled box inside the seventh box."
+    ],
+    "addedAt": "2026-09-13T08:45:38.968Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "greenhouse-bricks",
+    "title": "What Is a Greenhouse Made Of?",
+    "difficulty": "easy",
+    "situation": "A brown house is built from brown bricks. A white house is built from white bricks. What is a greenhouse made of?",
+    "solution": "A greenhouse isn't made of green bricks. It's made of glass or another clear material that lets sunlight in to help the plants grow.",
+    "keyFacts": [
+      "A greenhouse isn't made of green bricks",
+      "It's made of glass or another clear material that lets in sunlight"
+    ],
+    "hints": [
+      "Don't just follow the pattern.",
+      "A greenhouse is a building for growing plants.",
+      "What would let the most sunlight in?"
+    ],
+    "addedAt": "2026-09-13T08:45:38.975Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "pot-under-running-tap",
+    "title": "The Pot That Never Fills",
+    "difficulty": "easy",
+    "situation": "A pot sits under a tap that is running all the time. The water keeps pouring in, yet the pot never fills up. Why?",
+    "solution": "The pot has a hole in the bottom. The water drains out as fast as it comes in, so it never fills.",
+    "keyFacts": [
+      "The pot has a hole in the bottom",
+      "The water leaks out as fast as it runs in"
+    ],
+    "hints": [
+      "The tap is working fine. Look at the pot.",
+      "The water goes into the pot, but it doesn't stay there.",
+      "Check the bottom of the pot."
+    ],
+    "addedAt": "2026-09-13T08:45:38.980Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "truth-and-liar-village-road",
+    "title": "The Road to Village A",
+    "difficulty": "medium",
+    "situation": "You come to a fork in the road. One road leads to Village A. A man is standing there who comes either from a village where everyone always tells the truth or from one where everyone always lies, and you can't tell which. You may ask him just one question. What do you ask to find the road to Village A?",
+    "solution": "You ask: 'If I asked you which road leads to Village A, what would you say?' A truth-teller simply points to the right road. A liar would lie to the direct question, so he has to lie about that lie as well, and the double lie makes him point to the right road too. Whoever he is, you take the road he points to.",
+    "keyFacts": [
+      "You ask him what he would say if you asked which road leads to Village A",
+      "A liar has to lie about his own lie, which cancels it out",
+      "Both kinds of man point to the correct road"
+    ],
+    "hints": [
+      "You don't need to know which village he comes from.",
+      "Find a question that gives the same answer whether he lies or tells the truth.",
+      "Ask him what he would say if you asked him which road goes to Village A."
+    ],
+    "addedAt": "2026-09-13T08:45:38.985Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "poisoned-wine-ten-prisoners",
+    "title": "One Poisoned Bottle in a Thousand",
+    "difficulty": "hard",
+    "situation": "A king has 1,000 bottles of wine, and exactly one of them is poisoned. The poison kills anyone who drinks it within 24 hours. He has ten prisoners to test the wine on and only one day to find the bad bottle. How can he be sure which bottle is poisoned?",
+    "solution": "Number the bottles and write each number in binary. Ten binary digits are enough, because they can count past 1,000. Each prisoner stands for one digit, and he sips from every bottle that has a 1 in his position. After 24 hours, the prisoners who have died show where the 1s are. Read those digits as a binary number and you have the poisoned bottle.",
+    "keyFacts": [
+      "Each bottle gets a number written in binary",
+      "Each prisoner stands for one binary digit and sips every bottle with a 1 in that place",
+      "The pattern of which prisoners die spells the poisoned bottle's number in binary"
+    ],
+    "hints": [
+      "Each prisoner can taste many bottles, not just one.",
+      "The pattern of who dies and who lives can carry information, like ones and zeros.",
+      "Write each bottle number in binary and give each prisoner one digit."
+    ],
+    "addedAt": "2026-09-13T08:45:38.989Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "seconds-in-a-minute",
+    "title": "More Than Sixty Seconds",
+    "difficulty": "easy",
+    "situation": "How many seconds are there in a minute? If you answer 60, you are wrong. What is the answer?",
+    "solution": "Now and then a leap second is added to Coordinated Universal Time (UTC) to keep clocks in step with the Earth's rotation. In the minute when that happens, there are 61 seconds, not 60.",
+    "keyFacts": [
+      "Leap seconds are sometimes added to UTC",
+      "In those minutes there are 61 seconds"
+    ],
+    "hints": [
+      "Think about official timekeeping, not the clock on your wall.",
+      "Now and then, timekeepers change a minute on purpose.",
+      "Look up leap seconds."
+    ],
+    "addedAt": "2026-09-13T08:45:38.992Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "drowned-on-the-mountain",
+    "title": "Drowned on the Mountain",
+    "difficulty": "medium",
+    "situation": "A family of four went on a mountaineering holiday. On the second morning, all four were found dead in their cabin. There was no water damage in the cabin and no lake nearby, yet the coroner said they had all died from drowning. How is this possible?",
+    "solution": "The family had climbed to a cabin high up the mountain, where the air is thin. Overnight they developed high-altitude pulmonary oedema, and their lungs filled with their own body fluid while they slept. They really did 'drown' from the inside, and no outside water was involved.",
+    "keyFacts": [
+      "The cabin was at high altitude, where the air is thin",
+      "They suffered high-altitude pulmonary oedema",
+      "Their lungs filled with their own fluid, so they drowned without any outside water"
+    ],
+    "hints": [
+      "The water that killed them did not come from outside their bodies.",
+      "Think about what very high altitude does to the human body.",
+      "At high altitude, fluid can build up in the lungs while you sleep."
+    ],
+    "addedAt": "2026-09-13T08:54:21.361Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "headline-no-investigation",
+    "title": "Shot Dead, No Investigation",
+    "difficulty": "easy",
+    "situation": "'ONE MAN SHOT DEAD IN TRAGIC ACCIDENT.' This headline, and many like it, appeared in lots of newspapers last year. The death was mourned for a long time, yet there was no police investigation and no arrest. Why?",
+    "solution": "The man was shot dead by accident while he was out hunting. It really was an accident and nobody did anything criminal. So the police had no reason to investigate or arrest anyone.",
+    "keyFacts": [
+      "The shooting was a genuine accident",
+      "It happened during a hunting trip",
+      "There was no foul play, so there was nothing for the police to investigate"
+    ],
+    "hints": [
+      "Take the word 'accident' in the headline at face value.",
+      "Think of an ordinary activity where people carry guns legally.",
+      "He was shot by mistake while out hunting."
+    ],
+    "addedAt": "2026-09-13T08:54:21.373Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "useless-expensive-equipment",
+    "title": "The Useless Expensive Equipment",
+    "difficulty": "easy",
+    "situation": "A man took an expensive piece of equipment with him on a journey. When he reached his destination, the equipment was in perfect working order, but it was of practically no use. Why not?",
+    "solution": "The equipment was a piece of medical equipment. The place he arrived at had no patients and no medical needs. So although it worked perfectly, there was nobody to use it on.",
+    "keyFacts": [
+      "The equipment was medical equipment",
+      "At the destination there were no patients or medical needs, so nobody needed it"
+    ],
+    "hints": [
+      "The equipment is fine. The problem is the place he took it to.",
+      "Think about who the equipment is meant to be used on.",
+      "It was medical equipment, and there was nobody there who needed treatment."
+    ],
+    "addedAt": "2026-09-13T08:54:21.381Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "bomb-that-wont-drop",
+    "title": "The Bomb That Won't Drop",
+    "difficulty": "easy",
+    "situation": "A pilot is flying a plane with a bomb on board. He presses the button and the door opens, but the bomb doesn't fall out. Why?",
+    "solution": "The bomb is attached to the plane, or it is held inside the plane in a way that stops it from falling out. Opening the door does nothing if the bomb is not free to drop.",
+    "keyFacts": [
+      "The bomb is fixed to the plane or held inside it",
+      "Because it is secured, it cannot fall even when the door is open"
+    ],
+    "hints": [
+      "The door opened properly. Nothing is wrong with the button.",
+      "Think about how the bomb is kept on board.",
+      "The bomb is fastened or held in place, so it can't drop through the open door."
+    ],
+    "addedAt": "2026-09-13T08:54:21.386Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "four-who-stayed-at-the-station",
+    "title": "Four Who Stayed at the Station",
+    "difficulty": "easy",
+    "situation": "A hundred people were waiting for a train at a station. When the announcer said the train had been cancelled, everyone left except four people. They had no medical problems, they could move and they had heard the announcement, yet they did not leave. Why?",
+    "solution": "The four people were not waiting for the cancelled train. Either they were waiting for a different train that was still due to arrive, or they were station staff who had to stay at work whatever happened. The cancellation simply didn't affect them.",
+    "keyFacts": [
+      "The cancellation did not affect those four people",
+      "They were waiting for a different train that was still coming, or they were staff who had to stay at the station"
+    ],
+    "hints": [
+      "Ask yourself whether all hundred people were there for the same reason.",
+      "Not everyone in a station is going on the same train, and some people aren't travelling at all.",
+      "They were waiting for another train, or they worked at the station."
+    ],
+    "addedAt": "2026-09-13T08:54:21.391Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "mr-jones-midnight-call",
+    "title": "Mr. Jones's Midnight Call",
+    "difficulty": "easy",
+    "situation": "In the middle of the night, while Mr. Jones was asleep in his hotel room, the telephone beside his bed rang. He woke up, picked up the phone and said 'Hello'. Then he put the phone down and went back to sleep. Who had telephoned him?",
+    "solution": "Nobody had telephoned him. The call was the hotel's automatic wake-up service, which Mr. Jones had booked himself. No person was on the other end of the line.",
+    "keyFacts": [
+      "No person called him",
+      "It was the hotel's automatic wake-up call",
+      "Mr. Jones had booked the wake-up call himself"
+    ],
+    "hints": [
+      "The question asks who called, but the caller may not be a person at all.",
+      "Hotels offer a service that rings your room at a set time.",
+      "It was an automatic wake-up call he had booked himself."
+    ],
+    "addedAt": "2026-09-13T08:54:21.396Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "spider-from-the-tap",
+    "title": "What Came Out of the Tap",
+    "difficulty": "easy",
+    "situation": "One night a woman found a spider in her bath. She screamed and got her son to flush it away. What came out of the tap the next day?",
+    "solution": "A spider came out of the tap. It had been flushed away but survived, and it made its way back through the plumbing.",
+    "keyFacts": [
+      "The spider survived being flushed",
+      "It came back out of the tap through the plumbing"
+    ],
+    "hints": [
+      "Being flushed away doesn't have to be the end of the story.",
+      "All the pipes in a house are connected in some way.",
+      "The spider survived and came back up through the pipes."
+    ],
+    "addedAt": "2026-09-13T08:54:21.401Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "crying-man-at-midnight",
+    "title": "The Crying Man at Midnight",
+    "difficulty": "easy",
+    "situation": "At midnight, a man was walking alone down the middle of the street, crying. Later on he died. Why?",
+    "solution": "While he was walking down the middle of the road at midnight, crying, a vehicle hit him and killed him. He was upset and not paying attention, and he was in the path of traffic.",
+    "keyFacts": [
+      "He was walking in the middle of the road",
+      "A vehicle hit him and killed him"
+    ],
+    "hints": [
+      "Don't look for a hidden reason why he was crying. Look at where he was walking.",
+      "Think about what uses the middle of a street, even at midnight.",
+      "A car hit him."
+    ],
+    "addedAt": "2026-09-13T08:54:21.405Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "the-lady-and-her-dog",
+    "title": "The Lady and Her Dog",
+    "difficulty": "easy",
+    "situation": "A man is driving his car very fast, at about 80 km/h. Suddenly a beautiful lady with her dog crosses the street he is driving along. Does the car hit the lady or the dog?",
+    "solution": "The car hits neither the lady nor the dog. The lady and her dog were never actually in the car's path, so there was nothing for it to hit.",
+    "keyFacts": [
+      "The car hits neither of them",
+      "The lady and the dog were not in the car's path"
+    ],
+    "hints": [
+      "The question gives you two choices. Do you have to pick one?",
+      "Just because they crossed the street doesn't mean they were in front of the car.",
+      "Neither is hit, because they were never in the car's way."
+    ],
+    "addedAt": "2026-09-13T08:54:21.408Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "three-spies-one-mole",
+    "title": "Three Spies Under Questioning",
+    "difficulty": "medium",
+    "situation": "Three spies, Albert, Bertie and Cedric, are suspected of being double agents, and are questioned. Albert says: 'Bertie is a mole.' Bertie says: 'Cedric is a mole.' Cedric says: 'Bertie is lying.' Moles always lie and loyal agents always tell the truth. If there is only one mole, who is it? And if there are two moles, who are they?",
+    "solution": "If there is only one mole, it is Bertie. Albert truthfully names him, Bertie lies about Cedric, and Cedric is right that Bertie is lying. If there are two moles, they are Albert and Cedric. Bertie is then telling the truth about Cedric, so Albert's accusation of Bertie is a lie, and so is Cedric's claim that Bertie is lying.",
+    "keyFacts": [
+      "With one mole, the mole is Bertie",
+      "With two moles, the moles are Albert and Cedric",
+      "Cedric's statement directly contradicts Bertie's, so exactly one of those two is lying"
+    ],
+    "hints": [
+      "Start with the two statements that are about each other.",
+      "Cedric says Bertie is lying, so Bertie and Cedric cannot both be telling the truth, and they cannot both be lying either.",
+      "Test Bertie as a liar, then test Bertie as a truth-teller, and see what each case means for Albert."
+    ],
+    "addedAt": "2026-09-13T08:59:00.702Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "black-hair-red-hair-porch",
+    "title": "The Two Children on the Porch",
+    "difficulty": "easy",
+    "situation": "A boy and a girl are sitting on the porch. 'I'm a boy,' says the child with black hair. 'I'm a girl,' says the child with red hair. At least one of them is lying. Which child is the boy and which is the girl?",
+    "solution": "The child with black hair is the girl and the child with red hair is the boy. If only one of them were lying, both children would turn out to be the same sex, which is impossible because there is one boy and one girl. So both of them must be lying.",
+    "keyFacts": [
+      "The black-haired child is the girl",
+      "The red-haired child is the boy",
+      "Both children are lying, because if only one lied they would both be the same sex"
+    ],
+    "hints": [
+      "What would happen if exactly one of them was lying?",
+      "If the black-haired child is telling the truth and the red-haired child is lying, you get two boys.",
+      "'At least one' turns out to mean both."
+    ],
+    "addedAt": "2026-09-13T08:59:00.711Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "shoes-and-socks-in-the-dark",
+    "title": "Shoes and Socks in the Dark",
+    "difficulty": "easy",
+    "situation": "You are in the dark. On the floor are six shoes in three colours and a heap of twenty-four socks, some black and some brown. How many socks and how many shoes must you carry into the light to be sure you have a matching pair of socks and a matching pair of shoes?",
+    "solution": "You need 3 socks and 4 shoes. The socks come in only two colours, so among any three socks at least two must match. The shoes come in three colours, so three shoes could all be different, but a fourth shoe has to match one of them.",
+    "keyFacts": [
+      "3 socks",
+      "4 shoes",
+      "One more item than the number of colours guarantees a match"
+    ],
+    "hints": [
+      "You don't need to worry about how many socks there are in total.",
+      "Count the colours, not the items.",
+      "With two sock colours and three shoe colours, take one more than the number of colours of each."
+    ],
+    "addedAt": "2026-09-13T08:59:00.718Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "nine-dots-four-lines",
+    "title": "Nine Dots, Four Lines",
+    "difficulty": "medium",
+    "situation": "Nine dots are arranged in a 3×3 grid. You must connect all nine using exactly four straight lines, without lifting your pencil from the paper. Every attempt inside the square seems to need five lines. How do you do it?",
+    "solution": "You have to think outside the box, quite literally. The four lines must run past the edge of the 3×3 grid and turn outside it. Nothing in the rules says the lines have to stay inside the square formed by the dots.",
+    "keyFacts": [
+      "The lines must extend beyond the boundary of the grid",
+      "The turns happen outside the square of dots",
+      "The idea that the lines must stay inside the square is a limit you set yourself"
+    ],
+    "hints": [
+      "Re-read the rules: what do they not say?",
+      "Who said the lines had to stop at the outer dots?",
+      "Let the lines run past the edge of the grid and turn out there."
+    ],
+    "addedAt": "2026-09-13T08:59:00.724Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "if-you-look-you-cant-see-me",
+    "title": "What You Cannot See",
+    "difficulty": "medium",
+    "situation": "'If you look, you can't see me. If you see me, you cannot see anything else. I can make you walk if you can't. Sometimes I speak the truth, and sometimes I lie. If I lie, I am nearer the truth.' What am I?",
+    "solution": "The answer is darkness. When you look for it you see nothing, and when you are in it you can see nothing else.",
+    "keyFacts": [
+      "The answer is darkness",
+      "Being in darkness means seeing nothing else"
+    ],
+    "hints": [
+      "Think about what happens when your eyes are open but see nothing.",
+      "It isn't an object or a person; it's a condition you can be in.",
+      "It arrives when the lights go out."
+    ],
+    "addedAt": "2026-09-13T08:59:00.730Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "counting-closed-loops",
+    "title": "The Mystery Number Code",
+    "difficulty": "medium",
+    "situation": "Each four-digit number on the left turns into a single digit on the right: 9999 = 4, 8888 = 8, 1816 = 3, 1212 = 0. There is no arithmetic behind it. What is 1919?",
+    "solution": "The rule is to count the closed loops in the way the digits are drawn. A 9 has one loop, an 8 has two, a 6 has one, and 1 and 2 have none. In 1919, each 9 gives one loop and the 1s give none, so the answer is 2.",
+    "keyFacts": [
+      "The rule counts closed loops in the shapes of the digits",
+      "8 has two loops; 9 and 6 have one; 1 and 2 have none",
+      "1919 = 2"
+    ],
+    "hints": [
+      "Stop doing sums and look at how the digits are drawn.",
+      "Why would 8888 score twice as much as 9999?",
+      "Count the enclosed holes in each digit."
+    ],
+    "addedAt": "2026-09-13T08:59:00.735Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "three-heads-in-a-row",
+    "title": "Heads, Heads, Heads...",
+    "difficulty": "easy",
+    "situation": "I'm going to flip a coin four times. The first flip comes up heads. So do the second and the third. What are the odds that the fourth flip will come up tails?",
+    "solution": "The odds are still 50%. Each coin flip is independent, so the three heads before it have no effect on the chance of tails on the fourth flip.",
+    "keyFacts": [
+      "The chance is 50%",
+      "Each flip is independent of the previous ones"
+    ],
+    "hints": [
+      "Does the coin remember what it did before?",
+      "A streak feels meaningful, but does it change the coin?",
+      "Every flip starts from scratch."
+    ],
+    "addedAt": "2026-09-13T08:59:00.740Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "forests-but-no-trees",
+    "title": "Forests Without Trees",
+    "difficulty": "easy",
+    "situation": "'I have forests, but no trees. I have lakes, but no water. I have roads, but no cars.' What am I?",
+    "solution": "The answer is a map. A map shows forests, lakes and roads as symbols, but it contains no real trees, water or cars.",
+    "keyFacts": [
+      "The answer is a map",
+      "The features are only pictured or symbolised, not real"
+    ],
+    "hints": [
+      "The forests, lakes and roads are all real features, but they aren't really there.",
+      "It's something you might use to plan a trip.",
+      "You can fold it up and put it in your glovebox."
+    ],
+    "addedAt": "2026-09-13T08:59:00.744Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "seven-eggs-three-sons",
+    "title": "Seven Eggs for Three Sons",
+    "difficulty": "easy",
+    "situation": "A man has three sons but wishes he had a daughter. God agrees to give him one, but only if he can first work out how to split seven eggs equally among his three sons. Seven does not divide by three, and he may not leave any egg out. How does he do it?",
+    "solution": "He breaks every egg into the same container and mixes them until it is all liquid. Then he measures the liquid in millilitres and pours it into three equal parts. He could also scramble all seven eggs together and split the finished omelette into three equal portions by weight.",
+    "keyFacts": [
+      "The eggs are broken and mixed together instead of being kept whole",
+      "The mixture is measured by volume or weight and split into three equal parts"
+    ],
+    "hints": [
+      "Nobody said the sons had to get whole eggs.",
+      "Think about what happens to eggs in a kitchen before they are eaten.",
+      "Crack them all into one bowl and measure what you get."
+    ],
+    "addedAt": "2026-09-13T09:06:27.547Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "ten-horses-nine-stables",
+    "title": "Ten Horses, Nine Stables",
+    "difficulty": "easy",
+    "situation": "A farmer has 10 horses in a field but only 9 stables. He still manages to get every horse into a stable. How?",
+    "solution": "He puts one horse in each of the 9 stables. Then he puts the 10th horse into one of the stables with another horse, so two horses share a stable.",
+    "keyFacts": [
+      "Nine horses go into the nine stables, one each",
+      "The tenth horse shares a stable with another horse"
+    ],
+    "hints": [
+      "Nobody said a stable can only hold one horse.",
+      "Think about sharing.",
+      "One stable ends up with two horses in it."
+    ],
+    "addedAt": "2026-09-13T09:06:27.559Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "teeth-that-dont-bite",
+    "title": "Teeth That Don't Bite",
+    "difficulty": "easy",
+    "situation": "I have teeth, but I don't bite. I am usually made of plastic, and you can carry me in your purse or pocket. You slide me through your hair. What am I?",
+    "solution": "The answer is a comb. Its 'teeth' are the thin prongs that you pull through your hair when grooming it.",
+    "keyFacts": [
+      "The answer is a comb",
+      "The 'teeth' are the prongs of the comb"
+    ],
+    "hints": [
+      "The teeth aren't in a mouth.",
+      "Think of something you use to get ready in the morning.",
+      "You use it to tidy your hair."
+    ],
+    "addedAt": "2026-09-13T09:06:27.566Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "hole-in-the-donut",
+    "title": "The Hole in the Donut",
+    "difficulty": "easy",
+    "situation": "Plenty of donuts are made without a hole, and they taste fine. Yet the traditional donut has a hole right through the middle. Why is it there?",
+    "solution": "The hole lets the donut cook and fry evenly, so the dough is cooked all the way through instead of staying raw in the thick centre. It also makes the donut easier to coat and gives it its familiar look.",
+    "keyFacts": [
+      "The hole makes the dough cook evenly all the way through when fried",
+      "Without it, the thick middle could stay undercooked"
+    ],
+    "hints": [
+      "Think about how donuts are cooked.",
+      "Which part of a thick lump of dough cooks last in hot oil?",
+      "Taking out the middle stops the centre from staying raw."
+    ],
+    "addedAt": "2026-09-13T09:06:27.572Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "doctor-six-patients",
+    "title": "The Doctor's Six Patients",
+    "difficulty": "easy",
+    "situation": "You are a doctor at a top hospital with six gravely ill patients. Five urgently need organ transplants, but no organs are available. The sixth will die without a particular medicine, and if he dies, his organs could save the other five, because he is a registered donor. What do you do?",
+    "solution": "You give Patient 6 the medicine and you do not take anyone's organs. Letting a patient die, or killing him, to use his organs is unethical and illegal, so the other five have to wait untreated until organs become available.",
+    "keyFacts": [
+      "You give the sixth patient his medicine",
+      "You do not let him die or take his organs, because that would be unethical and illegal"
+    ],
+    "hints": [
+      "This isn't really a numbers puzzle.",
+      "Think about what a doctor is allowed to do for the patient in front of them.",
+      "His being a donor doesn't change what you owe him while he's alive."
+    ],
+    "addedAt": "2026-09-13T09:06:27.577Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.folj.com/lateral/"
+  },
+  {
+    "id": "harried-hens-storm",
+    "title": "Harried Hens",
+    "difficulty": "easy",
+    "situation": "A family kept a dozen egg-laying hens in their chicken coop. Late one night, a terrible storm hit the area and killed all but eight of the chickens. How many chickens does the family have now?",
+    "solution": "The family still has twelve chickens. 'All but eight' died means eight survived, so four of the chickens are dead and eight are alive. The dead ones are still chickens.",
+    "keyFacts": [
+      "The answer is still twelve chickens",
+      "Four are dead and eight are alive",
+      "'All but eight' means eight survived"
+    ],
+    "hints": [
+      "Read the wording of the question very carefully.",
+      "Does a chicken stop being a chicken when it dies?",
+      "Eight survived the storm. Count the ones that didn't as well."
+    ],
+    "addedAt": "2026-09-13T09:41:00.412Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "stolen-goods-shopping-cart",
+    "title": "Stolen Goods",
+    "difficulty": "easy",
+    "situation": "A woman in a department store fills her shopping cart to the top. Then she wheels it out of the store without paying. Nobody stops her, and she has done nothing wrong. Why not?",
+    "solution": "The woman works at the department store. The cart is not full of merchandise: she has filled it with trash and is taking it out to the dumpster.",
+    "keyFacts": [
+      "She is an employee of the store",
+      "The cart is full of trash, not goods",
+      "She is taking it out to the dumpster"
+    ],
+    "hints": [
+      "Nothing she takes out of the store is for sale.",
+      "Think about who she is and why she is in the store.",
+      "She works there, and the cart is full of something the store wants to get rid of."
+    ],
+    "addedAt": "2026-09-13T09:41:00.424Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "terrifying-tiger-savannah",
+    "title": "Terrifying Tiger",
+    "difficulty": "easy",
+    "situation": "On a hot Saturday afternoon, a woman is walking slowly through the savannah when she spots a tiger in the distance. She doesn't turn around, hide or look for help. Instead she starts running towards the tiger. Why?",
+    "solution": "The woman is visiting a zoo. The 'savannah' is part of the zoo, and the tiger is an exhibit, so she hurries over to see it and is in no danger.",
+    "keyFacts": [
+      "She is at a zoo",
+      "The tiger is a zoo animal, so she is in no danger"
+    ],
+    "hints": [
+      "She is not afraid of the tiger at all.",
+      "She paid to be where she is on her Saturday afternoon.",
+      "The tiger is behind a fence and people come to look at it."
+    ],
+    "addedAt": "2026-09-13T09:41:00.431Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "tube-torment-flight",
+    "title": "Tube Torment",
+    "difficulty": "medium",
+    "situation": "A woman enters a large metal tube. She is overcome with fear, clearly shaken, and grips her husband's hand tightly. He gently rubs her arms and speaks softly to her, but he is not bothered himself. A few hours later he tells her it is time to go, and her torment ends. What is going on?",
+    "solution": "The metal tube is an airplane, and the woman is terrified of flying. She has to travel to see a dying relative, which makes her even more upset. Her husband comforts her as best he can during the few hours of the flight, and her ordeal ends when they land and get off.",
+    "keyFacts": [
+      "The metal tube is an airplane",
+      "She is afraid of flying",
+      "Her torment ends when the flight lands and they get off"
+    ],
+    "hints": [
+      "The tube moves, and it carries many people.",
+      "Her fear is not about the tube itself but about where it goes, which is up.",
+      "She is on a plane and afraid of flying. The trip is to see a dying relative."
+    ],
+    "addedAt": "2026-09-13T09:41:00.437Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "smart-dad-hammer-shelf",
+    "title": "Smart Dad",
+    "difficulty": "easy",
+    "situation": "Jacob's dad couldn't stop his son playing video games: whenever he wasn't watching, Jacob went straight back to playing. So his dad fixed the problem for good with a hammer. Afterwards Jacob couldn't play any more, but his dad still could. What did he do?",
+    "solution": "Jacob's dad used the hammer to put up a shelf high on the wall. He put the video game console and the controllers on the shelf, out of Jacob's reach. The dad could still reach them himself.",
+    "keyFacts": [
+      "He used the hammer to put up a high shelf, not to smash the console",
+      "The console and controllers went on the shelf out of Jacob's reach",
+      "The dad is tall enough to reach them"
+    ],
+    "hints": [
+      "Nothing was broken.",
+      "The difference between Jacob and his dad is size.",
+      "The hammer was used to build something high up on the wall."
+    ],
+    "addedAt": "2026-09-13T09:41:00.444Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "locked-out-after-party",
+    "title": "Locked Out",
+    "difficulty": "medium",
+    "situation": "After a long night of partying with her friends, a woman gets home and finds she can't get into the house. She is sure she is at the right home, and nothing is wrong with the door. Why can't she get inside?",
+    "solution": "Earlier that night, as she started getting drunk, a concerned friend took her keys away so she wouldn't drive. The woman called and hired a driver to take her home. But she still didn't have her keys, so she couldn't unlock the doors.",
+    "keyFacts": [
+      "She doesn't have her keys",
+      "A concerned friend took the keys because she was getting drunk",
+      "She got home with a hired driver, not by driving herself"
+    ],
+    "hints": [
+      "Something she normally carries is missing.",
+      "Someone took it from her for her own safety.",
+      "A friend confiscated her keys so she wouldn't drive drunk, and her house key was on the same ring."
+    ],
+    "addedAt": "2026-09-13T09:41:00.449Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "pile-up-at-bottom-of-hill",
+    "title": "Pile-up",
+    "difficulty": "easy",
+    "situation": "At the bottom of a large hill, more than 40 cars are involved in an accident. Some have overturned and others are resting on top of other cars. The pile-up is so big that a few military vehicles and a fire truck are also caught up in it. Yet nobody is hurt. How?",
+    "solution": "The cars, trucks and other vehicles are toys. A small child is playing with them and has crashed them all together at the bottom of a hill.",
+    "keyFacts": [
+      "The vehicles are toys",
+      "A small child is playing with them"
+    ],
+    "hints": [
+      "Nobody was in any of the vehicles.",
+      "The 'hill' might not be very big either.",
+      "Think of a child's playroom."
+    ],
+    "addedAt": "2026-09-13T09:41:00.454Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "sunny-day-car-wash",
+    "title": "Sunny Day Weather?",
+    "difficulty": "easy",
+    "situation": "A man is driving on a sunny day. He makes a turn, and suddenly water pelts his car very hard for about five minutes. Then extremely strong blowing buffets the car until it shakes. The blowing stops, he turns back onto the main road and drives home safely. What happened?",
+    "solution": "The man drove into a drive-through car wash. The water jets and then the powerful dryers hit the car. After about ten minutes he left and drove home in his clean car.",
+    "keyFacts": [
+      "He drove into a car wash",
+      "The water and the blowing came from the car wash's jets and dryers"
+    ],
+    "hints": [
+      "The weather had nothing to do with it.",
+      "He chose to turn in there, and probably paid for it.",
+      "His car was a lot cleaner when he came out."
+    ],
+    "addedAt": "2026-09-13T09:41:00.459Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "missing-man-three-enter",
+    "title": "A Missing Man",
+    "difficulty": "easy",
+    "situation": "Three men enter a room, but only two walk out. Afterwards the room is empty. Where is the third man?",
+    "solution": "The third man uses a wheelchair. He left the room with the other two, but he rolled out rather than walked out.",
+    "keyFacts": [
+      "The third man uses a wheelchair",
+      "He left the room too, but didn't walk out"
+    ],
+    "hints": [
+      "All three men left the room.",
+      "Focus on exactly how each man left.",
+      "One of them can't walk."
+    ],
+    "addedAt": "2026-09-13T09:41:00.463Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "bus-driver-eye-colour",
+    "title": "The Bus Driver",
+    "difficulty": "easy",
+    "situation": "You are driving a bus, which is empty when you start your route. At the first stop four people get on. At the second stop eight get on and two get off, and at the third stop three get off and four get on. What colour are the bus driver's eyes?",
+    "solution": "You are the bus driver, because the puzzle begins 'You are driving a bus'. So the bus driver's eyes are the same colour as your own. The passenger numbers are just there to distract you.",
+    "keyFacts": [
+      "You are the bus driver",
+      "The answer is the colour of your own eyes",
+      "The passenger counts are a distraction"
+    ],
+    "hints": [
+      "You don't need any of the numbers.",
+      "Go back to the first sentence of the puzzle.",
+      "Who is driving the bus?"
+    ],
+    "addedAt": "2026-09-13T09:41:00.468Z",
+    "model": "web-search",
+    "sourceUrl": "https://icebreakerideas.com/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "five-men-in-the-rain",
+    "title": "Five Men in the Rain",
+    "difficulty": "medium",
+    "situation": "Five men are travelling along a path, all at exactly the same speed, when it starts to rain. Four of the men walk faster and get drenched. The fifth man does not speed up at all, yet he stays completely dry. How can this be?",
+    "solution": "It is a funeral. The four men who hurry and get soaked are the pallbearers. The fifth man stays dry because he is the dead man inside the coffin they are carrying.",
+    "keyFacts": [
+      "It is a funeral procession",
+      "The four men are pallbearers carrying a coffin",
+      "The fifth man is the dead body inside the coffin"
+    ],
+    "hints": [
+      "The fifth man had no choice about how fast he moved.",
+      "The five men are not all travelling in the same way. Four of them are carrying something.",
+      "Think of a sad occasion where four men carry a heavy box on their shoulders."
+    ],
+    "addedAt": "2026-09-13T16:19:14.820Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzleaday.wordpress.com/category/lateral-thinking/"
+  },
+  {
+    "id": "reginald-smyth-1936-vote",
+    "title": "Reginald Smyth's Vote",
+    "difficulty": "medium",
+    "situation": "Reginald Smyth, a 70-year-old man, was born in a small US town and never left it. One day he finds a note saying 'Meet me in the local cemetery at midnight.' He goes, hears a scream at midnight, and the next morning he is found dead beside a tombstone with his own name on it. An autopsy never finds out how he died. Who did Reginald vote for in the 1936 US presidential election?",
+    "solution": "He voted for nobody. Reginald's small town was in Alaska, and Alaska did not become a state until 1959. As a resident of a territory rather than a state, he could not vote in the 1936 presidential election. The spooky details about the cemetery are there only to distract you.",
+    "keyFacts": [
+      "He did not vote in the 1936 election",
+      "His town was in Alaska",
+      "Alaska only became a state in 1959, so he could not vote for president in 1936"
+    ],
+    "hints": [
+      "The cemetery, the scream and the tombstone have nothing to do with the question.",
+      "Think about where his small town was, and whether its people could vote for president in 1936.",
+      "In 1936 this place was a US territory. It did not become a state until 1959."
+    ],
+    "addedAt": "2026-09-13T16:19:14.837Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzleaday.wordpress.com/category/lateral-thinking/"
+  },
+  {
+    "id": "backwards-light-bulbs",
+    "title": "The Backwards Light Bulbs",
+    "difficulty": "easy",
+    "situation": "Railway trains and the New York City Subway have long used light bulbs that screw in backwards, the opposite way to ordinary bulbs. They give off just as much light as normal bulbs. Why go to the trouble?",
+    "solution": "Bulbs with a reversed thread will not fit an ordinary home light fitting. That makes them useless to anyone who takes them home, so people stop stealing them from trains and subway stations.",
+    "keyFacts": [
+      "People were stealing the bulbs",
+      "Reverse-threaded bulbs do not fit ordinary home fittings",
+      "So nobody has a reason to steal them"
+    ],
+    "hints": [
+      "The reason has to do with the people who use trains and stations, not with the electrics.",
+      "Ask yourself what might happen to ordinary bulbs left in a busy public place.",
+      "A bulb that won't screw into a lamp at home is not worth stealing."
+    ],
+    "addedAt": "2026-09-13T16:19:14.845Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzleaday.wordpress.com/category/lateral-thinking/"
+  },
+  {
+    "id": "singles-hotel-knock",
+    "title": "The Knock at the Hotel Door",
+    "difficulty": "easy",
+    "situation": "A woman books a three-night stay at a singles hotel. On the second day, a man knocks on her door and says, 'Sorry, I thought this was my room.' She calls security at once. Why was she so suspicious?",
+    "solution": "He knocked. If he really thought it was his own room, he would have used his key to get in, not knocked on the door. Knocking showed he knew the room belonged to someone else, so his excuse was a lie.",
+    "keyFacts": [
+      "The man knocked on the door",
+      "Someone going into his own room would use his key rather than knock",
+      "So his excuse was false and he knew someone else was inside"
+    ],
+    "hints": [
+      "Think about what the man did, not what he said.",
+      "How do you normally get into your own hotel room?",
+      "Nobody knocks on the door of a room they think is their own. They use the key."
+    ],
+    "addedAt": "2026-09-13T16:19:14.851Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzleaday.wordpress.com/category/lateral-thinking/"
+  },
+  {
+    "id": "candle-tacks-corkboard",
+    "title": "The Candle and the Tacks",
+    "difficulty": "medium",
+    "situation": "You have a book of matches, a box of tacks and a candle. You must fix the candle to a corkboard on the wall so that when it is lit, no wax drips onto the table below. How do you do it?",
+    "solution": "Empty the box of tacks, then use the tacks to pin the empty box itself to the corkboard. Put the candle inside the box and light it with a match. The box works as a shelf that holds the candle and catches the wax. The page gives this as an example of 'functional fixedness': seeing the box only as a container for the tacks.",
+    "keyFacts": [
+      "Empty the tack box",
+      "Pin the empty box to the corkboard with the tacks",
+      "Put the candle in the box and light it, so the box catches the drips"
+    ],
+    "hints": [
+      "Not everything you were given has to be used the way it normally is.",
+      "The box the tacks came in is more than just packaging.",
+      "Empty the box and fix it to the wall. It can become a little shelf."
+    ],
+    "addedAt": "2026-09-13T16:19:14.857Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzleaday.wordpress.com/category/lateral-thinking/"
+  },
+  {
+    "id": "why-manhole-covers-are-round",
+    "title": "The Round Manhole Covers",
+    "difficulty": "easy",
+    "situation": "Walk down almost any street and the manhole covers you step over are round rather than square, triangular or any other shape. This is not just tradition or looks: there is a practical reason for it. Why are manhole covers round?",
+    "solution": "A round cover cannot fall through its own round opening, however you turn it. Almost any other shape, such as a triangle, square or pentagon, could be turned so that it drops into the hole. The page adds that a Reuleaux triangle, a special kind of rounded 'triangle', would not fall through either, and some covers of that shape do exist. Round covers also have other advantages: they are easy to make, they resist the pressure of the earth around them, they leave the most room for a person to climb in, and they can be rolled along.",
+    "keyFacts": [
+      "A round cover cannot fall through its round opening in any orientation",
+      "Most other shapes, such as squares or triangles, could be turned so they drop into the hole"
+    ],
+    "hints": [
+      "Think about what could go wrong when a worker lifts the cover off and puts it back.",
+      "Imagine turning a square cover on its edge above a square hole.",
+      "A circle is the same width in every direction, so it can never slip down into its own opening."
+    ],
+    "addedAt": "2026-09-13T16:22:28.855Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzleaday.wordpress.com/category/lateral-thinking/"
+  },
+  {
+    "id": "square-from-three-lines",
+    "title": "A Square from Three Lines",
+    "difficulty": "easy",
+    "situation": "You are given three straight lines. Without breaking any of them and without adding any more, you must rearrange them to form a square. How do you do it?",
+    "solution": "You arrange the three lines into the numeral 4. Four is a square, in the sense of a square number (2 × 2). The puzzle never said the square had to be the shape.",
+    "keyFacts": [
+      "The lines are arranged to form the number 4",
+      "4 is a square number, so 'square' does not mean the shape"
+    ],
+    "hints": [
+      "Four sides are not possible with three lines, so think about what else 'square' can mean.",
+      "The answer comes from maths rather than geometry.",
+      "Which number can you write with three straight strokes, and what is it the square of?"
+    ],
+    "addedAt": "2026-09-13T16:22:28.868Z",
+    "model": "web-search",
+    "sourceUrl": "https://puzzleaday.wordpress.com/category/lateral-thinking/"
+  },
+  {
+    "id": "cunning-mother-in-law",
+    "title": "A Cunning Mother-in-Law",
+    "difficulty": "easy",
+    "situation": "A mother-in-law hated her son-in-law so much that she wanted to poison him. But he was careful, and only ever ate what she herself ate. One night at dinner she cut a piece of meat in half, ate one half herself and gave him the other, and he died. How did she do it?",
+    "solution": "She had smeared poison on only one side of the knife blade. When she cut the meat, only one half touched the poisoned side. She ate the clean half and gave him the poisoned one.",
+    "keyFacts": [
+      "The poison was on the knife, not in the meat itself",
+      "Only one side of the blade was poisoned, so only one half of the meat was poisoned"
+    ],
+    "hints": [
+      "The meat was perfectly safe before it was cut.",
+      "Think about what touched the meat as it was divided.",
+      "A blade has two sides, and they don't have to be the same."
+    ],
+    "addedAt": "2026-09-13T17:57:04.135Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "salesman-tries-too-hard",
+    "title": "Trying Too Hard",
+    "difficulty": "medium",
+    "situation": "A salesman tries too hard to close a sale, and because of it he ends up dead. What happened?",
+    "solution": "The salesman sold bulletproof vests. To prove to a customer how good they were, he put one on and insisted that the customer shoot him. The customer agreed but missed the vest and shot the salesman in the head.",
+    "keyFacts": [
+      "He sold bulletproof vests",
+      "He wore one and asked the customer to shoot him as a demonstration",
+      "The customer's shot missed the vest and hit him in the head"
+    ],
+    "hints": [
+      "His demonstration was meant to show his product really worked.",
+      "The product was meant to protect the person wearing it.",
+      "He asked a customer to fire a gun at him, and the customer's aim was poor."
+    ],
+    "addedAt": "2026-09-13T17:57:04.149Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "hunters-fatal-shot",
+    "title": "The Hunter's Fatal Shot",
+    "difficulty": "medium",
+    "situation": "A hunter aimed his gun carefully and fired. Seconds later he realized his mistake, and minutes later he was dead. Nobody shot back at him. What happened?",
+    "solution": "He was hunting in snow-capped mountains. The noise of his shot set off an avalanche, which buried him. He suffocated under the snow.",
+    "keyFacts": [
+      "He was hunting in snowy mountains",
+      "The gunshot set off an avalanche",
+      "He was buried by the snow and suffocated"
+    ],
+    "hints": [
+      "Where he was hunting matters a great deal.",
+      "The bullet didn't kill him, but the sound of the shot did.",
+      "Loud noises can be dangerous on snowy slopes."
+    ],
+    "addedAt": "2026-09-13T17:57:04.158Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "fratricide-in-public",
+    "title": "A Fratricide",
+    "difficulty": "easy",
+    "situation": "A man kills his own brother in front of a crowd of people. Yet nobody reports him to the police. Why not?",
+    "solution": "The man worked as an executioner, and his brother had been sentenced to death. Carrying out the execution in front of onlookers was his lawful job, so there was nothing to report.",
+    "keyFacts": [
+      "The man was an executioner",
+      "His brother had been sentenced to death, so the killing was legal"
+    ],
+    "hints": [
+      "The killing was entirely legal.",
+      "The man was doing his job.",
+      "His brother had been condemned by a court."
+    ],
+    "addedAt": "2026-09-13T17:57:04.165Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "three-dead-men-cards",
+    "title": "Three Dead Men at a Card Table",
+    "difficulty": "hard",
+    "situation": "Three dead men are sitting at a table in a room. On the table are playing cards and a gun. What happened?",
+    "solution": "The room was inside a submarine lying motionless on the sea floor, and the air was running out. The men had a gun with only two bullets, so they played cards for them. The two winners earned the right to shoot themselves, and the loser had to die slowly of suffocation beside the two corpses.",
+    "keyFacts": [
+      "They were trapped in a submarine stuck on the sea bed and running out of air",
+      "The gun had only two bullets for three men",
+      "They played cards to decide who got a quick death; two shot themselves and the loser suffocated"
+    ],
+    "hints": [
+      "The men were trapped and knew they were going to die anyway.",
+      "Not all three died the same way, and the gun didn't hold enough for everyone.",
+      "They were in a submarine that couldn't surface, and they played for the bullets."
+    ],
+    "addedAt": "2026-09-13T17:57:04.171Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "colorblind-snakebite",
+    "title": "Colorblind",
+    "difficulty": "hard",
+    "situation": "A man died because he mixed up colours. How?",
+    "solution": "In Thailand, when someone is bitten by a snake, the doctor has to identify the species to choose the right antidote. Tourists usually can't name the snake, so the doctor asks what colour it was and works out the species from that. The man was colourblind, gave the wrong colour, and received the wrong antidote.",
+    "keyFacts": [
+      "He was bitten by a snake",
+      "The doctor chose the antidote based on the snake's colour as he described it",
+      "He was colourblind, so he described the wrong colour and got the wrong antidote"
+    ],
+    "hints": [
+      "He was a tourist abroad, in Thailand, and needed medical treatment urgently.",
+      "A doctor had to rely on his description of an animal.",
+      "He was bitten by a snake, and the antidote depends on the species."
+    ],
+    "addedAt": "2026-09-13T17:57:04.176Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "gone-with-the-wind-kite",
+    "title": "Gone with the Wind",
+    "difficulty": "medium",
+    "situation": "If the wind hadn't blown so strongly that night, Angela would still be alive. What happened?",
+    "solution": "Because it was windy, Angela went to a field to fly her kite. In the twilight she couldn't see the transmission tower nearby. Her kite got tangled in the power cables, and when she tried to free it she was electrocuted.",
+    "keyFacts": [
+      "She went out to fly a kite because it was windy",
+      "The kite got tangled in power lines she couldn't see in the dusk",
+      "She was electrocuted trying to free it"
+    ],
+    "hints": [
+      "The wind didn't hurt her directly; it gave her a reason to go outside.",
+      "She was enjoying a hobby that needs wind.",
+      "Her kite got caught on something carrying electricity."
+    ],
+    "addedAt": "2026-09-13T17:57:04.181Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "deadly-scissors-hospital",
+    "title": "Deadly Scissors",
+    "difficulty": "medium",
+    "situation": "A woman is found dead in a hospital. The murder weapon was a pair of scissors. Yet her body has no cuts or wounds of any kind. How was she killed?",
+    "solution": "The woman was in a critical condition, and the doctors had connected her to a machine that kept her alive. The murderer simply used the scissors to cut the machine's wires, and she died.",
+    "keyFacts": [
+      "She was being kept alive by a life-support machine",
+      "The killer cut the machine's wires with the scissors"
+    ],
+    "hints": [
+      "The scissors never touched her.",
+      "Think about why she was in hospital and what was keeping her alive.",
+      "Something she was plugged into was cut."
+    ],
+    "addedAt": "2026-09-13T17:57:04.186Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "diver-burnt-to-crisp",
+    "title": "Fire!",
+    "difficulty": "hard",
+    "situation": "Paul went scuba diving. He was later found burnt to a crisp. How could that happen?",
+    "solution": "While Paul was scuba diving, a firefighting plane landed nearby to fill its tanks with water and sucked him in. He ran out of air while the plane was flying. The plane then dumped the water, with Paul in it, onto a burning forest.",
+    "keyFacts": [
+      "A firefighting plane scooped up water where he was diving and sucked him in",
+      "He ran out of air while trapped in the plane's tank",
+      "He was dropped with the water onto a forest fire"
+    ],
+    "hints": [
+      "He was found far from where he went diving.",
+      "Something came down to the water and then flew away.",
+      "Firefighting aircraft refill their tanks from lakes and the sea."
+    ],
+    "addedAt": "2026-09-13T17:57:04.190Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "birdwatcher-unexpected-bird",
+    "title": "The Birdwatcher",
+    "difficulty": "medium",
+    "situation": "An avid birdwatcher sees an unexpected bird. Soon afterwards he is dead. How come?",
+    "solution": "He was a passenger on an aeroplane and saw a bird get sucked into one of the engines at 20,000 feet. The bird strike brought the plane down, killing him.",
+    "keyFacts": [
+      "He was a passenger on a plane in flight",
+      "He saw a bird get sucked into the engine, which caused the plane to crash"
+    ],
+    "hints": [
+      "The bird was unexpected because of where he was when he saw it.",
+      "He was very high up at the time.",
+      "He was looking out of a plane window, near the engine."
+    ],
+    "addedAt": "2026-09-13T17:57:04.194Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "a-premature-death",
+    "title": "A Premature Death",
+    "difficulty": "hard",
+    "situation": "A man knows he is going to die in a few days. But he dies even sooner than he expected. What happened?",
+    "solution": "The man was seriously ill and had decided to donate his organs to a rich man. The rich man's son wanted to inherit his father's fortune. So he poisoned the donor, which meant the organs could no longer work in his father's body and the transplant could not save him.",
+    "keyFacts": [
+      "The dying man was going to donate his organs to a rich man",
+      "The rich man's son poisoned the donor",
+      "The son did it to ruin the organs so his father would die and he would inherit"
+    ],
+    "hints": [
+      "The man's death was going to help someone else live.",
+      "Someone wanted that other person to die, not the man himself.",
+      "The man was an organ donor, and poison would make his organs useless to the rich man waiting for them."
+    ],
+    "addedAt": "2026-09-13T18:42:36.428Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "unsolved-crime-on-the-beach",
+    "title": "Unsolved Crime",
+    "difficulty": "easy",
+    "situation": "Liz was just about to find out who killed Mario when she fell asleep. When she woke up, she realized she would never be able to find out. Why not?",
+    "solution": "Liz was reading a novel on the beach, and Mario was the main character who had been killed. She fell asleep just before the murderer was revealed, with the book lying in the sand. When she woke up, the tide had come in and washed the book away.",
+    "keyFacts": [
+      "Mario was a character in a novel Liz was reading",
+      "She fell asleep on the beach with the book in the sand",
+      "The tide came in and washed the book away"
+    ],
+    "hints": [
+      "Nobody in real life was killed.",
+      "Liz was somewhere relaxing, reading.",
+      "She was on a beach, and the sea took something from her while she slept."
+    ],
+    "addedAt": "2026-09-13T18:42:36.439Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "what-an-incredible-sight",
+    "title": "What an Incredible Sight!",
+    "difficulty": "easy",
+    "situation": "A woman looks through a window and sees a man holding a knife. Yet she doesn't have enough time to call the police before she is murdered. Why not?",
+    "solution": "The man wasn't outside at all. What she saw in the window was the reflection of the murderer, who was already inside her house, standing right behind her.",
+    "keyFacts": [
+      "She saw a reflection in the window glass",
+      "The murderer was already inside the house, behind her"
+    ],
+    "hints": [
+      "The man was much closer than she thought.",
+      "Think about what a window shows you at night when the room is lit.",
+      "It was a reflection: he was standing right behind her."
+    ],
+    "addedAt": "2026-09-13T18:42:36.443Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "hang-up",
+    "title": "Hang Up!",
+    "difficulty": "medium",
+    "situation": "A woman has just picked up her car from the mechanic. She dies because of a long telephone conversation. How?",
+    "solution": "The mechanic had failed to fit the brakes on her car, and he tried to phone her to warn her. She was on another long call, so he couldn't get through. She never learned about the problem, and she died in a crash.",
+    "keyFacts": [
+      "The mechanic hadn't fitted her brakes properly",
+      "He tried to call and warn her",
+      "Her line was busy because she was on another long call, so she crashed"
+    ],
+    "hints": [
+      "The phone call itself didn't hurt her. What mattered was the call she missed.",
+      "Someone badly needed to reach her.",
+      "The mechanic knew her brakes weren't working, but her line was busy."
+    ],
+    "addedAt": "2026-09-13T18:42:36.447Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "theres-light",
+    "title": "There's Light",
+    "difficulty": "easy",
+    "situation": "Roger sees the light and freezes on the spot. Soon afterwards, he dies. What happened?",
+    "solution": "Roger was a rabbit who had escaped from his home. While he was crossing a road at night, a car's headlights blinded him and he froze. The driver didn't see him and ran him over.",
+    "keyFacts": [
+      "Roger was a rabbit",
+      "He froze in a car's headlights while crossing a road at night",
+      "The car hit and killed him"
+    ],
+    "hints": [
+      "Roger is not a human.",
+      "It happened on a road at night.",
+      "He was an animal caught in the headlights."
+    ],
+    "addedAt": "2026-09-13T18:42:36.454Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "a-murderer-applause",
+    "title": "A Murderer",
+    "difficulty": "easy",
+    "situation": "Michael clapped his hands, and everyone in the room except him died. What happened?",
+    "solution": "Michael was killing mosquitoes. The only other living things in the room were the mosquitoes, and he crushed them by clapping his hands together.",
+    "keyFacts": [
+      "The ones who died were mosquitoes",
+      "He killed them by clapping them between his hands"
+    ],
+    "hints": [
+      "Nobody human died.",
+      "The victims were very small.",
+      "He was swatting insects between his hands."
+    ],
+    "addedAt": "2026-09-13T18:42:36.460Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "died-of-fright-coffin",
+    "title": "Died of Fright",
+    "difficulty": "hard",
+    "situation": "A man woke up, lit a match, and saw something that frightened him to death. What did he see?",
+    "solution": "The man was a prisoner who had planned an escape with the prison mortician. When the next inmate died, he would hide in that coffin, be buried outside the prison, and then be dug up by the mortician. He hid in a coffin and fell asleep, but the person who had died was the mortician himself. When he lit a match underground, he saw the mortician's body next to him and knew that nobody was coming to dig him out.",
+    "keyFacts": [
+      "The man was a prisoner escaping by hiding in a coffin",
+      "The mortician was supposed to dig him up after the burial",
+      "The body in the coffin was the mortician, so no one would rescue him"
+    ],
+    "hints": [
+      "He woke up somewhere very dark and cramped.",
+      "He was trying to escape from somewhere, and he needed a partner outside.",
+      "He was buried in a coffin, and the corpse beside him was the man who was supposed to dig him up."
+    ],
+    "addedAt": "2026-09-13T18:42:36.465Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "a-thief-wallet",
+    "title": "A Thief",
+    "difficulty": "medium",
+    "situation": "A man stole a wallet, and because of this he died. What happened?",
+    "solution": "Inside the wallet was a card stating that its owner refused blood transfusions and organ transplants for religious reasons. The thief was later in an accident, and a blood transfusion would have saved his life. Because the doctors found the card and thought he was the wallet's owner, they didn't give him one.",
+    "keyFacts": [
+      "The wallet held a card refusing blood transfusions for religious reasons",
+      "The thief was later badly hurt in an accident",
+      "Doctors took him for the owner and didn't give him the transfusion that would have saved him"
+    ],
+    "hints": [
+      "The owner of the wallet never hurt him.",
+      "Something written inside the wallet mattered after he was hurt.",
+      "Doctors thought he was the owner, who had refused blood transfusions."
+    ],
+    "addedAt": "2026-09-13T18:42:36.469Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "restless-sleep-ticking",
+    "title": "Restless Sleep",
+    "difficulty": "medium",
+    "situation": "Paul comes home tired, goes to his room and turns off the light. Feeling uneasy, he keeps turning the light back on, looking around and turning it off again. After doing this several times, he looks under his bed and finds a dead body. What happened?",
+    "solution": "A thief had been robbing Paul's home, and when Paul came back he hid under the bed. The strain was too much, and the thief had a sudden heart attack and died. Paul couldn't sleep because he kept hearing the ticking of the dead thief's wristwatch.",
+    "keyFacts": [
+      "A thief hid under the bed when Paul came home",
+      "The thief died of a heart attack from the stress",
+      "The ticking of the thief's wristwatch kept Paul awake"
+    ],
+    "hints": [
+      "Paul didn't see anything when he turned the light on. Something else was bothering him.",
+      "The dead man was an intruder, and Paul didn't kill him.",
+      "Paul could hear a watch ticking under the bed."
+    ],
+    "addedAt": "2026-09-13T18:42:36.472Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "an-open-door",
+    "title": "An Open Door",
+    "difficulty": "easy",
+    "situation": "When Martin woke up that morning, he was surprised to see the door open. As soon as he stepped over the threshold, his head was bitten off. What happened?",
+    "solution": "Martin was a canary who had lived in a cage for four months. His owner accidentally left the cage door open, and Martin flew out. Sylvester the cat had been waiting for exactly that chance, and caught and killed him.",
+    "keyFacts": [
+      "Martin was a canary (a pet bird), not a person",
+      "The door was the door of his cage, left open by accident",
+      "A cat that had been waiting caught and killed him"
+    ],
+    "hints": [
+      "Martin is not human.",
+      "The door wasn't a door to a room or a house, and Martin had been kept behind it for months.",
+      "Martin was a small pet bird, and somebody else in the house had been watching his cage for a long time."
+    ],
+    "addedAt": "2026-09-13T21:24:39.030Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "death-at-the-wheel",
+    "title": "Death at the Wheel",
+    "difficulty": "easy",
+    "situation": "A woman is found dead in the front of a car. There is a gun on the back seat, out of her reach. The windows are closed and all the doors are locked. How did she die?",
+    "solution": "The car was a convertible, and its top was down. The murderer shot her from outside and threw the gun onto the back seat. Nobody needed an open window or door to get at her.",
+    "keyFacts": [
+      "The car was a convertible with the top down",
+      "The killer shot her from outside the car",
+      "The killer then threw the gun onto the back seat"
+    ],
+    "hints": [
+      "She did not shoot herself.",
+      "The killer never opened a door or a window.",
+      "Think about what kind of car doesn't need an open door or window for someone outside to reach in."
+    ],
+    "addedAt": "2026-09-13T21:24:39.045Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "the-dying-mans-gift",
+    "title": "The Gift",
+    "difficulty": "medium",
+    "situation": "A dying man gives another man a gift, and then he dies. Shortly afterwards, the second man dies too. How come?",
+    "solution": "The second man had shot the first man. Before he died, the first man handed him a grenade pin, which he had just pulled out of a grenade. The first man died, and then the grenade exploded and killed the second man.",
+    "keyFacts": [
+      "The second man had shot the first man",
+      "The 'gift' was the pin from a grenade",
+      "The dying man had just pulled the pin, so the grenade then exploded and killed the second man"
+    ],
+    "hints": [
+      "The two men were not friends. The second man was the reason the first one was dying.",
+      "The gift was tiny and useless on its own. What matters is what it came from.",
+      "It's a small metal ring that the dying man had just pulled out of something explosive."
+    ],
+    "addedAt": "2026-09-13T21:24:39.052Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "death-under-an-umbrella",
+    "title": "Death Under an Umbrella",
+    "difficulty": "easy",
+    "situation": "A couple find a man's body on the beach, lying under an umbrella with a knife on his back. There are no signs of violence and no blood anywhere. The autopsy shows that he died of natural causes. How can that be?",
+    "solution": "The knife on his back was a tattoo. The man had simply died of a heart attack under his beach umbrella.",
+    "keyFacts": [
+      "The knife was a tattoo on his back, not a real knife",
+      "He died of a heart attack (natural causes)"
+    ],
+    "hints": [
+      "The knife never hurt him.",
+      "The knife is 'on' his back, not 'in' it.",
+      "Beachgoers often show off body art. This knife was drawn into his skin."
+    ],
+    "addedAt": "2026-09-13T21:24:39.058Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "a-lethal-dinner",
+    "title": "A Lethal Dinner",
+    "difficulty": "medium",
+    "situation": "A woman is planning to kill her husband at dinner. But while she is making the meal, she kills herself instead. Why?",
+    "solution": "She planned to poison her husband's food with pills she kept in her bag. When she reached for them, they were gone: her son had found them and eaten them, thinking they were sweets. She couldn't live with this tragedy and took her own life.",
+    "keyFacts": [
+      "She planned to poison her husband with pills from her bag",
+      "The pills were missing because her son had eaten them, thinking they were sweets",
+      "Devastated by what had happened to her child, she killed herself"
+    ],
+    "hints": [
+      "Her plan was to poison him, and the poison was ready before she started cooking.",
+      "When she went to get the poison, it wasn't where she had left it.",
+      "Someone small in the house had found the pills and mistaken them for something tasty."
+    ],
+    "addedAt": "2026-09-13T21:24:39.063Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "a-death-in-a-museum",
+    "title": "A Death in a Museum",
+    "difficulty": "hard",
+    "situation": "A man in a balaclava runs out of a museum with a painting under his arm. A police officer sees him and shoots him dead, then kills himself soon afterwards. A few days later, the man with the painting is buried and honoured as a beloved son of the city. What happened?",
+    "solution": "There was a fire at the museum, and the museum's director went in to save the most valuable painting in the collection. The officer took him for a thief and ordered him to stop, but the director was deaf, didn't hear the warning and kept running, so the officer shot him. When the officer realised his terrible mistake, he took his own life. The director was honoured as a beloved member of the community at his funeral.",
+    "keyFacts": [
+      "The museum was on fire and the man was the director, rescuing its most valuable painting",
+      "The officer mistook him for a thief and shouted at him to stop",
+      "The director was deaf, didn't hear the warning and kept running, so he was shot",
+      "The officer killed himself when he realised his mistake"
+    ],
+    "hints": [
+      "The man with the painting was not stealing anything.",
+      "Something dangerous was happening inside the museum, and he was saving the painting from it.",
+      "The officer did warn him before shooting, but the man couldn't hear the warning."
+    ],
+    "addedAt": "2026-09-13T21:24:39.069Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "the-drinking-party",
+    "title": "The Drinking Party",
+    "difficulty": "medium",
+    "situation": "Three drunk men and a dead body are found in a room. The men refuse to say anything to the police, yet the police quickly work out which of them is the killer. How?",
+    "solution": "On the table was a bottle with a bloody mark from the dead man's head, so it was obviously the murder weapon. All four men's fingerprints were on it, because they had all been drinking from it. But only one man's fingerprints were upside down, which meant he had held the bottle by the neck like a club and struck the blow.",
+    "keyFacts": [
+      "The murder weapon was a bottle they had all drunk from, with blood from the victim's head on it",
+      "Every man's fingerprints were on the bottle",
+      "Only one man's prints were upside down, showing he had held it like a club to strike"
+    ],
+    "hints": [
+      "The murder weapon was something everyone at the party had handled.",
+      "Everyone's fingerprints were on it, so the police looked at how the prints were placed rather than whose they were.",
+      "You hold a bottle one way to pour a drink and the opposite way to hit someone with it."
+    ],
+    "addedAt": "2026-09-13T21:24:39.074Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "not-guilty-hitman",
+    "title": "Not Guilty?",
+    "difficulty": "medium",
+    "situation": "Igor breaks into Thomas's home to kill him, but he doesn't do it. Even so, he is arrested on the spot and convicted of the crime. Why?",
+    "solution": "Igor was a hitman hired to kill Thomas. The person who hired him had also arranged for a second assassin to kill Thomas first, so that Igor would take the blame. When Igor arrived, Thomas was already dead and the police were there, so Igor was arrested and convicted of the murder.",
+    "keyFacts": [
+      "Igor was a hired hitman",
+      "His employer had a second killer murder Thomas before Igor got there",
+      "Igor was caught at the scene with Thomas already dead and was convicted of a murder he didn't commit"
+    ],
+    "hints": [
+      "Thomas really was murdered, just not by Igor.",
+      "Igor wasn't acting for himself, and the person who hired him had another plan.",
+      "Someone else got there first, and the police were waiting when Igor arrived."
+    ],
+    "addedAt": "2026-09-13T21:24:39.078Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "the-last-taxi",
+    "title": "The Last Taxi",
+    "difficulty": "medium",
+    "situation": "Oscar was sitting reading his newspaper when he heard a noise. When he realised what had happened, he bitterly regretted not having caught the taxi in time. Shortly afterwards, he killed himself. Why?",
+    "solution": "Oscar was a collector of model cars, and he was broke. He planned to sell his most valuable model, a taxi, to solve his money problems. After cleaning it, he didn't put it down securely on the table, and while he was reading it fell and smashed on the floor before he could catch it. With his last hope of money gone, he killed himself in despair.",
+    "keyFacts": [
+      "The taxi was a valuable miniature model car, not a real taxi",
+      "Oscar was broke and was counting on selling it",
+      "It fell off the table and smashed before he could catch it, and he killed himself in despair"
+    ],
+    "hints": [
+      "'Catching' the taxi doesn't mean getting a ride in it.",
+      "The taxi was very small and very valuable, and Oscar badly needed the money it would bring.",
+      "The noise was the sound of something falling off a table and breaking."
+    ],
+    "addedAt": "2026-09-13T21:24:39.084Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "a-murder-outdoors",
+    "title": "A Murder Outdoors",
+    "difficulty": "hard",
+    "situation": "A man walking down the street suddenly starts choking a woman who is walking past him. He is taken to the police station, but he is soon released. Why?",
+    "solution": "The woman was his wife. Years earlier she had faked her own death, and he had been convicted of murdering her. According to the puzzle, because of double jeopardy he could not be prosecuted again for the same crime, so he was released.",
+    "keyFacts": [
+      "The woman was his wife, who had faked her own death years before",
+      "He had already been convicted of her 'murder'",
+      "Double jeopardy meant he couldn't be tried again for the same crime, so he was released"
+    ],
+    "hints": [
+      "The man and the woman knew each other very well.",
+      "Everyone believed she had died years ago, and the man had already paid for it.",
+      "There is a legal rule that you cannot be tried twice for the same crime."
+    ],
+    "addedAt": "2026-09-13T21:24:39.089Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "best-day-of-her-life",
+    "title": "The Best Day of Her Life",
+    "difficulty": "medium",
+    "situation": "She thought it was the best day of her life, just moments before she died. What happened?",
+    "solution": "At the end of a play, the lead actress came on stage and the audience began to applaud. At that moment the scenery failed and started to collapse onto the stage. The audience jumped up from their seats, screaming to warn her, but she thought it was a standing ovation. She stayed where she was and was crushed.",
+    "keyFacts": [
+      "She was an actress on stage at the end of a play",
+      "The scenery began to collapse on her",
+      "She mistook the audience standing and screaming a warning for a standing ovation"
+    ],
+    "hints": [
+      "She was surrounded by a large crowd when it happened.",
+      "The crowd was on its feet and making a lot of noise, and she misread why.",
+      "She was an actress, and what she took for a standing ovation was a warning about the collapsing set."
+    ],
+    "addedAt": "2026-09-14T07:58:08.404Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "blessing-in-disguise-funeral",
+    "title": "A Blessing in Disguise",
+    "difficulty": "medium",
+    "situation": "A girl's mother died. At the funeral, the girl saw the man of her dreams and fell in love with him. Fourteen days later, she killed her sister. Why did she do it?",
+    "solution": "She wanted to see the man again. She had only ever seen him at a funeral, so she reasoned that he might come to another family funeral. Killing her sister gave her one.",
+    "keyFacts": [
+      "She wanted to see the man from the funeral again",
+      "She hoped he would come to another family funeral",
+      "Her sister's death would bring about that funeral"
+    ],
+    "hints": [
+      "The killing had nothing to do with anything her sister had done.",
+      "Think about the only place she had ever seen the man.",
+      "She needed another family funeral so that he might turn up again."
+    ],
+    "addedAt": "2026-09-14T07:58:08.411Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "shot-at-the-king",
+    "title": "Shooting the King",
+    "difficulty": "easy",
+    "situation": "Alexander shot at the king, yet nobody condemned him for it. Why not?",
+    "solution": "Alexander was playing poker and lost. In anger, he shot at the playing card showing the king.",
+    "keyFacts": [
+      "The king was a playing card",
+      "He shot the card in anger after losing at poker"
+    ],
+    "hints": [
+      "No monarch was in any danger.",
+      "Alexander had just lost a game.",
+      "The king was printed on a playing card."
+    ],
+    "addedAt": "2026-09-14T07:58:08.414Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "start-the-party-lottery",
+    "title": "Start the Party!",
+    "difficulty": "hard",
+    "situation": "A man quits his job and celebrates by throwing a party that lasts all night. The next day he gets dressed up and jumps from the balcony of his house. Why?",
+    "solution": "The man had won the lottery, so he resigned and celebrated with his friends. Days earlier he had accidentally destroyed the winning ticket by sending his suit, with the ticket in it, to the dry cleaner. He only found this out when he was getting ready to go and claim his prize, and he jumped from his balcony.",
+    "keyFacts": [
+      "He had won the lottery and quit his job because of it",
+      "The winning ticket was destroyed when his suit was dry-cleaned",
+      "He found out while dressing to go and claim the prize"
+    ],
+    "hints": [
+      "He quit because he thought he no longer needed to work.",
+      "Getting dressed up the next day was part of an important errand, and something about his clothes mattered.",
+      "His winning lottery ticket had gone through the dry cleaning in his suit pocket."
+    ],
+    "addedAt": "2026-09-14T07:58:08.417Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "terminal-taxi-spider",
+    "title": "The Terminal Taxi",
+    "difficulty": "medium",
+    "situation": "A taxi stops, the driver opens the door, and a dead man falls out onto the road. What happened?",
+    "solution": "The previous passenger was a spider lover and had left a box with his spider in the taxi. When the dead man saw the spider he panicked, and the poisonous spider bit him.",
+    "keyFacts": [
+      "An earlier passenger had left a spider in the taxi",
+      "The spider was poisonous",
+      "It bit the passenger when he panicked"
+    ],
+    "hints": [
+      "The driver had nothing to do with the death.",
+      "Someone who had ridden in the taxi earlier left something behind.",
+      "It was a box holding a poisonous spider."
+    ],
+    "addedAt": "2026-09-14T07:58:08.420Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "creepy-game-dog-dynamite",
+    "title": "The Creepy Game",
+    "difficulty": "hard",
+    "situation": "Jasmine was playing her usual favourite game when people suddenly started shooting at her. What happened?",
+    "solution": "A hunting party on a frozen lake was using dynamite to blast an air hole in the ice. Jasmine, a dog, thought the dynamite was a stick and fetched it. The frightened men shot at her to make her drop it, but she hid under a jeep instead, and the dynamite exploded there.",
+    "keyFacts": [
+      "Jasmine was a dog",
+      "Her game was fetching sticks, and she fetched a lit stick of dynamite",
+      "The men shot at her to make her drop it, but she hid under a jeep where it exploded"
+    ],
+    "hints": [
+      "Jasmine is not a person.",
+      "Her favourite game involves chasing and bringing back things that are thrown.",
+      "Hunters on a frozen lake threw dynamite to make a hole, and she brought it back to them."
+    ],
+    "addedAt": "2026-09-14T07:58:08.423Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "quick-witted-woman-police",
+    "title": "The Quick-Witted Woman",
+    "difficulty": "easy",
+    "situation": "Thieves broke into a woman's house. She locked herself in her room and called the police, who told her no patrol cars were available and she would have to wait. Five minutes later, three patrol cars and an ambulance arrived at her house. What did she do?",
+    "solution": "Two minutes after her first call, she rang the police again and said she had shot all the thieves. The police came straight away and caught the robbers. That is how she found out there were patrol cars available after all.",
+    "keyFacts": [
+      "She called the police a second time",
+      "She falsely claimed she had shot the thieves",
+      "That made it an emergency needing an immediate response, including an ambulance"
+    ],
+    "hints": [
+      "She didn't deal with the thieves herself.",
+      "She made another phone call.",
+      "She told the police she had shot the burglars, which is why an ambulance came too."
+    ],
+    "addedAt": "2026-09-14T07:58:08.426Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "well-for-corpses",
+    "title": "A Well for Corpses",
+    "difficulty": "medium",
+    "situation": "Over many years, a man kills his sister, a friend, a girl he got pregnant and his boss, and throws each body into the same well. Every time, the body has vanished by the next day. Then he kills his mother and throws her in, and the next day her body is still there. Why?",
+    "solution": "It was his mother who had been dragging the bodies out of the well all along. Once she was dead, there was nobody left to take her own body away.",
+    "keyFacts": [
+      "His mother had been secretly removing the bodies from the well",
+      "She could not remove her own body"
+    ],
+    "hints": [
+      "The well itself is perfectly ordinary.",
+      "Someone had been cleaning up after him without telling him.",
+      "The person who took the bodies away was his last victim."
+    ],
+    "addedAt": "2026-09-14T07:58:08.428Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "the-cave-falling-tree",
+    "title": "The Cave",
+    "difficulty": "medium",
+    "situation": "Lou is in a cave when he hears a strange sound outside. He goes out to see what it was and dies the moment he leaves the cave. What happened?",
+    "solution": "The sound Lou heard was a chainsaw, used by a woodcutter who was felling a tree right in front of the cave. As Lou came out, the tree came down and he could not get out of the way. It fell on him and killed him.",
+    "keyFacts": [
+      "The sound was a chainsaw",
+      "A woodcutter was felling a tree right outside the cave",
+      "The tree fell on Lou as he came out"
+    ],
+    "hints": [
+      "Nobody meant to hurt Lou.",
+      "The noise came from someone working just outside.",
+      "It was a chainsaw, and something big was about to come down."
+    ],
+    "addedAt": "2026-09-14T07:58:08.431Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "feather-sword-swallower",
+    "title": "Feather",
+    "difficulty": "medium",
+    "situation": "A man lies dead next to a feather. There is nothing else unusual about the scene. How did he die?",
+    "solution": "The man was a sword swallower in a carnival side-show. While he was practising, with a sword down his throat, someone tickled his throat with the feather. He gagged, and the sword killed him.",
+    "keyFacts": [
+      "He was a sword swallower",
+      "Someone tickled his throat with the feather while he was practising",
+      "He gagged with the sword in his throat and died"
+    ],
+    "hints": [
+      "The feather wasn't used to choke him or to poison him.",
+      "Think about what his job was. It was an unusual one, found at carnivals and side-shows.",
+      "He had a blade down his throat when someone tickled him with the feather."
+    ],
+    "addedAt": "2026-09-14T08:04:28.754Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "dry-thirst-at-home",
+    "title": "Dry",
+    "difficulty": "easy",
+    "situation": "A man dies of thirst in his own home. He wasn't ill, and nobody locked him in. How could this happen?",
+    "solution": "The man's home was a yacht, and he was sailing it around the world. Out on the ocean, he ran out of fresh water much faster than he expected, and he died of thirst on board.",
+    "keyFacts": [
+      "His home was a yacht",
+      "He was out at sea, sailing around the world",
+      "His fresh water ran out sooner than he expected"
+    ],
+    "hints": [
+      "There was plenty of water all around him.",
+      "His home was not a house or a flat.",
+      "His home floated, and he was far out at sea when his drinking water ran out."
+    ],
+    "addedAt": "2026-09-14T08:04:28.767Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "sacred-death-hamster",
+    "title": "Sacred Death",
+    "difficulty": "medium",
+    "situation": "When the priest stopped talking, Bobby died. What happened?",
+    "solution": "Bobby was a small hamster that his 9-year-old owner, Tom, had brought to church. During the sermon, the hamster escaped from the boy's lap and made its way to the altar area. When the priest finished speaking and walked back to his chair, he didn't see Bobby and crushed him with his foot.",
+    "keyFacts": [
+      "Bobby was a hamster (a small pet)",
+      "He had escaped in church and ended up near the altar",
+      "The priest stepped on him by accident when he finished speaking and walked away"
+    ],
+    "hints": [
+      "Bobby is not a person.",
+      "Bobby was brought to church by a young boy and got loose during the sermon.",
+      "Once the sermon was over, the priest moved, and he didn't look where he was putting his feet."
+    ],
+    "addedAt": "2026-09-14T08:04:28.775Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "daughter-disappeared-medium",
+    "title": "The Daughter Disappeared",
+    "difficulty": "hard",
+    "situation": "Parents lose their young daughter at a playground, and eventually the police close the investigation. The parents take a medium to the park, who goes into a trance and tells them the girl is alive: her heart is beating, her lungs are breathing, she sees a luxurious house with expensive furniture, and there is only delicious food in her stomach. When they ask where their daughter is, the medium declares, 'She's all over the world!', and the parents collapse in tears. What did they understand?",
+    "solution": "The girl had been kidnapped and sold for her organs. The medium's vision was of her organs, still working inside different people: a heart beating and lungs breathing in rich recipients' bodies in luxurious homes. Because the organs had gone to different people, she really was 'all over the world'.",
+    "keyFacts": [
+      "The girl was kidnapped",
+      "She was sold for her organs",
+      "Her organs now live on in different recipients around the world"
+    ],
+    "hints": [
+      "The medium was describing parts of the girl, not the girl herself.",
+      "Why would a heart and lungs be in a luxurious house with rich owners?",
+      "She was abducted for a black-market trade in body parts."
+    ],
+    "addedAt": "2026-09-14T08:04:28.781Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "car-without-a-driver-ice",
+    "title": "A Car Without a Driver",
+    "difficulty": "hard",
+    "situation": "A car with nobody in it starts to move, and a man dies. No one was near the car at the time. How come?",
+    "solution": "The murderer parked the car on a slope above the hot dog stand where the victim worked. He wedged a block of ice in the car to hold the brake pedal down, put the car in neutral, and then flew to another city so he wouldn't be suspected. It was a warm day, and when the ice melted the car rolled down the hill and hit the hot dog seller at his roadside stand, killing him.",
+    "keyFacts": [
+      "It was a planned murder",
+      "A block of ice held the brake pedal down, with the car in neutral on a slope",
+      "The ice melted on a warm day and the car rolled down onto the victim's roadside stand",
+      "The killer had left for another city, giving himself an alibi"
+    ],
+    "hints": [
+      "It wasn't an accident, and the killer was nowhere near when it happened.",
+      "Something kept the brake pressed down for a while, then stopped doing so without anyone touching it.",
+      "Think of a timer made of something that melts on a warm day."
+    ],
+    "addedAt": "2026-09-14T08:04:28.787Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "shouldnt-have-looked-out-of-the-window",
+    "title": "Shouldn't Have Looked Out of the Window",
+    "difficulty": "easy",
+    "situation": "A man looked out of a window and soon afterwards he died. What happened?",
+    "solution": "The window he looked through was the window of his car, and he was driving. He saw a pretty woman, got distracted, and had a fatal accident.",
+    "keyFacts": [
+      "It was a car window and he was driving",
+      "He was distracted by a pretty woman",
+      "He crashed and died"
+    ],
+    "hints": [
+      "He wasn't at home or in a building.",
+      "He was moving when he looked out.",
+      "He took his eyes off the road to look at someone attractive."
+    ],
+    "addedAt": "2026-09-14T08:04:28.792Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "punishment-snowman-pole",
+    "title": "Punishment",
+    "difficulty": "medium",
+    "situation": "The killer was severely punished by his victim, and instantly. How?",
+    "solution": "The 'victim' was a snowman. A man wanted to knock it down with his car and built up quite a lot of speed, but there was an iron pole sticking out of the ground in the middle of the snowman. He crashed into the pole.",
+    "keyFacts": [
+      "The 'victim' was a snowman",
+      "The man tried to knock it down with his car at speed",
+      "There was an iron pole hidden inside the snowman, and he crashed into it"
+    ],
+    "hints": [
+      "The victim was never alive.",
+      "It was winter, and the 'killer' was behind the wheel.",
+      "Something solid was hidden inside what he was trying to smash."
+    ],
+    "addedAt": "2026-09-14T08:04:28.797Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
+  },
+  {
+    "id": "cry-baby-cry-horror-film",
+    "title": "Cry, Baby, Cry",
+    "difficulty": "easy",
+    "situation": "Cindy is in the middle of a crowd of people when she is murdered. Yet nobody notices her cries. How can that be?",
+    "solution": "Cindy was watching a horror film in a cinema. During an intense, scary scene, while the whole audience was screaming, the murderer sitting behind her killed her. Her cries blended in with everyone else's screams.",
+    "keyFacts": [
+      "She was in a cinema watching a horror film",
+      "Everyone was screaming at a scary scene",
+      "The killer sat behind her, and her cries blended in with the crowd's screams"
+    ],
+    "hints": [
+      "The people around her were making plenty of noise themselves.",
+      "The crowd was sitting in the dark, facing the same way.",
+      "They were all screaming, but at what was on the screen."
+    ],
+    "addedAt": "2026-09-14T08:04:28.802Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/murder"
   }
 ]

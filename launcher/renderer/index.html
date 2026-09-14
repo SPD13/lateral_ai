@@ -96,6 +96,7 @@
     <div><span class="url-label">Process</span> <b id="d-process">—</b></div>
     <div><span class="url-label">Game master</span> <b id="d-model">—</b></div>
     <div><span class="url-label">Puzzle writer</span> <b id="d-generator">—</b></div>
+    <div><span class="url-label">Web collector</span> <b id="d-collector">—</b></div>
     <div><span class="url-label">Puzzles</span> <b id="d-puzzles">—</b></div>
     <div><span class="url-label">Claude CLI</span> <b id="d-claude">—</b></div>
   </div>
@@ -126,12 +127,22 @@
       <option value="fable">fable</option>
     </select>
   </div>
+  <div class="field">
+    <label for="collector-model">Web collector model (searches the web for puzzles)</label>
+    <select id="collector-model">
+      <option value="sonnet">sonnet</option>
+      <option value="opus">opus</option>
+      <option value="haiku">haiku</option>
+      <option value="fable">fable</option>
+    </select>
+  </div>
   <label class="check"><input type="checkbox" id="autostart"> Start the server when the launcher opens</label>
   <div id="setup-msg"></div>
   <div class="hint">
     Ports 1024–65535, default 3000. Changes apply immediately — a running server restarts.
-    Both models are passed to the <code>claude</code> CLI: the game master for every chat reply,
-    the puzzle writer when generating new questions from the question bank.
+    All three models are passed to the <code>claude</code> CLI: the game master answers every chat reply,
+    the puzzle writer invents new questions, and the web collector searches the web and reads the pages it
+    finds. They can differ, and each change restarts a running server.
   </div>
 </section>
 
