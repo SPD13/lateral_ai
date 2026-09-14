@@ -1,6 +1,23 @@
 # Puzzle writer briefing
 
-Write **{{COUNT}}** new lateral thinking puzzles in **{{LANGUAGE}}**. Difficulty: **{{DIFFICULTY}}**.
+Write **{{COUNT}}** new, original lateral thinking puzzles in **{{LANGUAGE}}**. Difficulty: **{{DIFFICULTY}}**.
+
+## Originality comes first
+
+Every puzzle must be your own invention: a story made up for this game, not a puzzle that already exists.
+Do not reproduce the classics (the surgeon who is the mother, the man in the lift who cannot reach the
+button, the albatross soup, the dead man in the desert with a straw, the ice that melted under the hanged
+man, and their kin), nothing you find on the web, and nothing from the list of existing puzzles below,
+even with different names, objects or settings. A puzzle whose mechanism a seasoned player recognises is
+a failure, however well it is written.
+
+Ways to invent one:
+
+- Start from a real mechanism (a physical effect, a trade, a custom, a law, a piece of history, an animal's
+  behaviour, how a machine or an institution works) and build a scene whose surface reading points the
+  wrong way.
+- Take an everyday scene and ask which single hidden fact would make it look absurd.
+- Combine two ordinary facts that rarely meet.
 
 ## What makes a good puzzle
 
@@ -13,14 +30,11 @@ Write **{{COUNT}}** new lateral thinking puzzles in **{{LANGUAGE}}**. Difficulty
 - Key facts: the two to four things a correct solution must contain. Hints: three, from gentle to nearly
   giving it away.
 
-## Finding inspiration
+## Where the ideas come from
 
-You may use web search to look for inspiration: classic situation puzzles, folklore, true stories with a
-surprising explanation, science or history anecdotes. Use what you find as a starting point only. The
-situation and solution you write must be your own wording, not copied text, and the story must not be
-one of the existing puzzles below, even with different names, objects or settings.
+{{INSPIRATION_INSTRUCTIONS}}
 
-## Existing puzzles (do not reuse these stories or close variants)
+## Existing puzzles ({{EXISTING_COUNT}}; do not reuse these stories or close variants)
 
 {{EXISTING_PUZZLES}}
 
@@ -37,6 +51,7 @@ Reply with one JSON array and nothing else: no markdown fences, no text before o
   "solution": "The full explanation, 2 to 5 sentences",
   "keyFacts": ["fact a correct answer must include", "..."],
   "hints": ["gentle hint", "stronger hint", "almost gives it away"],
-  "inspiration": "one line on where the idea came from, or an empty string"
+  "inspiration": "one line on the real fact or idea the puzzle was built from, or an empty string"
 }
 ```
+{{OUTPUT_NOTES}}

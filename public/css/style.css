@@ -229,6 +229,9 @@ select.btn { padding-right: 28px; }
 .gen-form { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
 .gen-form label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
 .gen-form input, .gen-form select { font: inherit; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 8px 12px; width: 120px; }
+.gen-form label.switch { flex-direction: row; align-items: center; padding-bottom: 10px; }
+.gen-form .switch input { width: auto; padding: 0; }
+.gen-form .switch input:disabled + * , .gen-form .switch:has(input:disabled) { cursor: default; opacity: 0.6; }
 .gen-form .gen-model { color: var(--muted); font-size: 13px; margin-left: auto; }
 .gen-note { color: var(--muted); font-size: 13px; margin: 14px 0 0; }
 .gen-status { margin-top: 14px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); }

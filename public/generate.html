@@ -32,10 +32,11 @@
             <option value="hard">Hard</option>
           </select>
         </label>
+        <label class="switch" title="Let the writer search the web when the bank is too small to seed original puzzles, or to check a fact"><input type="checkbox" id="web-search" checked> Allow web search</label>
         <button class="btn primary" id="generate" type="submit">Generate</button>
         <span class="gen-model" id="gen-model"></span>
       </form>
-      <p class="gen-note">The puzzle writer is told about every existing puzzle and pending candidate so it writes new stories, and it may search the web for inspiration. Generated puzzles are checked against the bank again before they appear below. Nothing enters the bank until you approve it.</p>
+      <p class="gen-note">The puzzle writer is asked to invent original stories, seeded by every existing puzzle and pending candidate so it does not repeat them. Web search, when allowed, is a fallback for a small bank or to check a fact, never a place to take puzzles from. Without it, a writer that finds the bank too small to work from says so instead of writing. Generated puzzles are checked against the bank again before they appear below. Nothing enters the bank until you approve it.</p>
       <div class="gen-status" id="gen-status" hidden></div>
     </section>
 

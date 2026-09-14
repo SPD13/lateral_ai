@@ -1,7 +1,7 @@
 import { api, escapeHtml, badge, confirmModal, loadHeaderStats, renderProfileBar, renderNavIcons } from './common.js';
 
 const $ = (id) => document.getElementById(id);
-const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count'),
+const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), webSearch: $('web-search'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count'),
   collect: $('collect'), collectCount: $('collect-count'), collectStatus: $('collect-status'), collectSources: $('collect-sources'),
   sources: $('sources'), sourceList: $('source-list'), sourcesCount: $('sources-count'),
   approveAll: $('approve-all'), rejectAll: $('reject-all') };
@@ -74,14 +74,19 @@ function showJob(job) {
       ? (job.mode === 'more'
         ? `<span class="spinner"></span> Going back to ${escapeHtml(job.source?.url || 'the page')} for puzzles it has not given yet… ${elapsed(job.startedAt)}.`
         : `<span class="spinner"></span> Searching the web for a new source, reading it and formatting what it holds… ${elapsed(job.startedAt)}. This can take several minutes.`)
-      : `<span class="spinner"></span> Writing ${job.count} ${job.difficulty === 'mixed' ? '' : job.difficulty + ' '}puzzle${job.count === 1 ? '' : 's'} with claude ${escapeHtml(job.model)}… ${elapsed(job.startedAt)}. This can take a few minutes.`, 'running', el);
+      : `<span class="spinner"></span> Writing ${job.count} ${job.difficulty === 'mixed' ? '' : job.difficulty + ' '}puzzle${job.count === 1 ? '' : 's'} with claude ${escapeHtml(job.model)}${job.webSearch ? '' : ', web search off'}… ${elapsed(job.startedAt)}. This can take a few minutes.`, 'running', el);
     line();
     clearInterval(ticker); ticker = setInterval(line, 1000);
     return;
   }
   clearInterval(ticker);
   setBusy(false);
-  if (job.status === 'error') { setStatus(`${collecting ? 'Search' : 'Generation'} failed: ${escapeHtml(job.error)}`, 'error', el); return; }
+  if (job.status === 'error') {
+    setStatus(job.declined
+      ? `The puzzle writer did not write anything${job.webSearch ? '' : ' (web search was off)'}: ${escapeHtml(job.error)}`
+      : `${collecting ? 'Search' : 'Generation'} failed: ${escapeHtml(job.error)}`, 'error', el);
+    return;
+  }
   const dropped = job.dropped.length ? `<ul class="dropped">${job.dropped.map((d) => `<li><b>${escapeHtml(d.title)}</b>: ${escapeHtml(d.reason)}</li>`).join('')}</ul>` : '';
   const tokens = job.tokens ? ` · ${job.tokens.total.toLocaleString()} tokens <span class="excerpt">(${job.tokens.input.toLocaleString()} in, ${job.tokens.output.toLocaleString()} out)</span>` : '';
   const source = collecting && job.source
@@ -215,7 +220,7 @@ els.form.addEventListener('submit', async (e) => {
   e.preventDefault();
   setBusy(true);
   try {
-    const { job } = await api('/api/generate', { method: 'POST', body: { count: Number(els.count.value), difficulty: els.difficulty.value } });
+    const { job } = await api('/api/generate', { method: 'POST', body: { count: Number(els.count.value), difficulty: els.difficulty.value, webSearch: els.webSearch.checked } });
     showJob(job);
     poll(job.id);
   } catch (err) { setStatus(escapeHtml(err.message), 'error'); setBusy(false); }
@@ -224,14 +229,19 @@ els.form.addEventListener('submit', async (e) => {
 async function init() {
   config = await api('/api/generate/config');
   els.count.max = config.maxCount;
-  els.model.innerHTML = `Puzzle writer: <b>claude ${escapeHtml(config.model)}</b>${config.tools.length ? ' with web search' : ''}`;
+  els.model.innerHTML = `Puzzle writer: <b>claude ${escapeHtml(config.model)}</b>`;
   els.model.title = 'Set in the launcher (Setup tab) or with the GENERATOR_MODEL environment variable';
   els.collectCount.max = config.collectMax;
   renderCollectorLabel(config.sources);
   els.collectCount.value = config.collectCount;
   await loadSources();
   els.collect.disabled = !config.tools.length;
-  if (!config.tools.length) setStatus('Web search is disabled on this server (GENERATOR_TOOLS is empty).', 'error', els.collectStatus);
+  if (!config.tools.length) {
+    els.webSearch.checked = false;
+    els.webSearch.disabled = true;
+    els.webSearch.parentElement.title = 'Web search is disabled on this server (GENERATOR_TOOLS is empty).';
+    setStatus('Web search is disabled on this server (GENERATOR_TOOLS is empty).', 'error', els.collectStatus);
+  }
   if (config.running) { showJob(config.running); poll(config.running.id); }
   else if (config.jobs[0]) showJob(config.jobs[0]);
   await loadCandidates();
