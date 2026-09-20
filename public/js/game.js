@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, renderProfileBar, icon, renderNavIcons } from './common.js';
+import { api, escapeHtml, badge, difficultyBadge, editDifficulty, confirmModal, STATUS_LABEL, loadHeaderStats, renderProfileBar, icon, renderNavIcons, renderThemeControl } from './common.js';
 
 const $ = (id) => document.getElementById(id);
 const els = {
@@ -355,6 +355,7 @@ els.gmHelp.addEventListener('change', async () => {
 });
 
 renderNavIcons();
+renderThemeControl();
 
 renderProfileBar();
 

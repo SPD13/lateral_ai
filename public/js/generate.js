@@ -1,4 +1,4 @@
-import { api, escapeHtml, badge, confirmModal, loadHeaderStats, renderProfileBar, renderNavIcons } from './common.js';
+import { api, escapeHtml, badge, confirmModal, loadHeaderStats, renderProfileBar, renderNavIcons, renderThemeControl } from './common.js';
 
 const $ = (id) => document.getElementById(id);
 const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), webSearch: $('web-search'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count'),
@@ -233,6 +233,7 @@ els.list.addEventListener('click', async (e) => {
 });
 
 renderNavIcons();
+renderThemeControl();
 
 els.collect.addEventListener('click', async () => {
   setBusy(true);

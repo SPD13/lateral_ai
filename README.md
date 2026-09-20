@@ -19,6 +19,7 @@ shows the address other devices on your network can use.
   - [The Electron launcher](#the-electron-launcher)
 - [How to play](#how-to-play)
 - [Player profiles](#player-profiles)
+- [Light and dark](#light-and-dark)
 - [The question bank](#the-question-bank)
 - [The leaderboard](#the-leaderboard)
 - [Generating new questions](#generating-new-questions)
@@ -156,6 +157,18 @@ The active profile is remembered in this device's local storage, so the same bro
 player. Profiles live on the server, so any device can select any of them, and each keeps its own progress,
 scores, conversations and Game master help setting. Rename a profile by double-clicking its name on the
 leaderboard page.
+
+## Light and dark
+
+Three small buttons at the right of the header choose the colour theme: **follow the system** (the
+default), **light** or **dark**. The choice is kept in this device's local storage and applies to every
+page. Each page sets it on `<html>` in a one-line script in the `<head>`, before the first paint, so
+switching pages never flashes the wrong theme.
+
+The palette is a single set of light/dark pairs in `public/css/style.css`, written with the CSS
+`light-dark()` function; what picks a side is the `color-scheme` property, which the theme buttons pin by
+putting `data-theme="light"` or `"dark"` on `<html>`. Declaring `color-scheme` also means the browser draws
+its own widgets — dropdowns, checkboxes, scrollbars — to match.
 
 ## The question bank
 

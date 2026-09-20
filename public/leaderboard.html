@@ -8,13 +8,14 @@
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="/img/logo-180.png">
   <link rel="stylesheet" href="/css/style.css">
+  <script>try{var t=localStorage.getItem('lg_theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 </head>
 <body>
   <header class="site-header">
     <div class="container">
       <div class="brand"><img class="logo" src="/img/logo-128.png" alt="" width="40" height="40"><h1>LateralAI</h1><span class="tagline">Leaderboard</span></div>
       <nav class="site-nav"><a href="/">Play</a><a href="/bank">Question bank</a><a href="/generate">Generate</a><a href="/leaderboard" class="active">Leaderboard</a></nav>
-      <div class="game-details"><span id="header-stats">Loading…</span><span class="profile-control" id="profile-bar"></span></div>
+      <div class="game-details"><span id="header-stats">Loading…</span><span class="profile-control" id="profile-bar"></span><span class="theme-control" id="theme-bar" role="group" aria-label="Colour theme"></span></div>
     </div>
   </header>
 

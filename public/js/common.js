@@ -10,6 +10,42 @@ export function withProfile(url) {
   return id ? `${url}${url.includes('?') ? '&' : '?'}profile=${encodeURIComponent(id)}` : url;
 }
 
+/**
+ * The colour theme chosen on this device: "system" follows the operating system, "light" and "dark"
+ * pin it. The choice lives on <html> as data-theme, which the stylesheet reads; each page also sets
+ * it from storage in a small inline script, before the first paint, so the theme never flashes.
+ */
+export const THEME_KEY = 'lg_theme';
+export const THEMES = ['system', 'light', 'dark'];
+export function activeTheme() {
+  try { const t = localStorage.getItem(THEME_KEY); return THEMES.includes(t) ? t : 'system'; } catch { return 'system'; }
+}
+export function setTheme(theme) {
+  try { theme === 'system' ? localStorage.removeItem(THEME_KEY) : localStorage.setItem(THEME_KEY, theme); } catch { /* storage unavailable */ }
+  if (theme === 'system') delete document.documentElement.dataset.theme;
+  else document.documentElement.dataset.theme = theme;
+}
+
+const THEME_ICONS = { system: 'display', light: 'sun', dark: 'moon' };
+const THEME_LABELS = { system: 'Follow the system theme', light: 'Light theme', dark: 'Dark theme' };
+
+/** The three-way theme control in the header. */
+export function renderThemeControl() {
+  const el = document.getElementById('theme-bar');
+  if (!el) return;
+  const draw = () => {
+    const current = activeTheme();
+    el.innerHTML = THEMES.map((t) => `<button type="button" class="btn icon-btn small${t === current ? ' active' : ''}" data-set-theme="${t}" title="${escapeHtml(THEME_LABELS[t])}" aria-label="${escapeHtml(THEME_LABELS[t])}" aria-pressed="${t === current}">${icon(THEME_ICONS[t])}</button>`).join('');
+  };
+  draw();
+  el.addEventListener('click', (e) => {
+    const theme = e.target.closest('[data-set-theme]')?.dataset.setTheme;
+    if (!theme) return;
+    setTheme(theme);
+    draw();
+  });
+}
+
 export async function api(path, opts = {}) {
   const profile = activeProfileId();
   const res = await fetch(path, {
@@ -304,6 +340,9 @@ const ICON_PATHS = {
   thumbUp: '<path d="M6 9v7.5H4A1 1 0 0 1 3 15.5V10a1 1 0 0 1 1-1z"/><path d="M6 9l3.4-5.6A1.6 1.6 0 0 1 12 4.7l-.8 3.6h3.9a1.6 1.6 0 0 1 1.6 2l-1.3 5a1.6 1.6 0 0 1-1.6 1.2H6z"/>',
   thumbDown: '<path d="M6 11V3.5H4A1 1 0 0 0 3 4.5V10a1 1 0 0 0 1 1z"/><path d="M6 11l3.4 5.6a1.6 1.6 0 0 0 2.6-1.3l-.8-3.6h3.9a1.6 1.6 0 0 0 1.6-2l-1.3-5A1.6 1.6 0 0 0 13.8 3.5H6z"/>',
   next: '<path d="M4.5 5.5L9 10l-4.5 4.5"/><path d="M10.5 5.5L15 10l-4.5 4.5"/>',
+  display: '<rect x="2.8" y="4" width="14.4" height="9.4" rx="1.4"/><path d="M7.5 16.5h5"/><path d="M10 13.4v3.1"/>',
+  sun: '<circle cx="10" cy="10" r="3.4"/><path d="M10 2.6v1.8M10 15.6v1.8M17.4 10h-1.8M4.4 10H2.6M15.2 4.8l-1.3 1.3M6.1 13.9l-1.3 1.3M15.2 15.2l-1.3-1.3M6.1 6.1L4.8 4.8"/>',
+  moon: '<path d="M16 11.7A6.6 6.6 0 0 1 8.3 4a6.8 6.8 0 1 0 7.7 7.7z"/>',
   trophy: '<path d="M6.5 3.5h7v4.2a3.5 3.5 0 0 1-7 0z"/><path d="M6.5 4.8H4.1a2.2 2.2 0 0 0 2.4 3.1"/><path d="M13.5 4.8h2.4a2.2 2.2 0 0 1-2.4 3.1"/><path d="M10 11.2v2.4"/><path d="M6.8 16.5h6.4"/><path d="M8.2 13.6h3.6v2.9H8.2z"/>',
 };
 
