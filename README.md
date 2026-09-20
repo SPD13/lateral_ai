@@ -467,3 +467,6 @@ increments the hint counter, and an answered question increments the score.
 ## Credits
 
 - Created by [SPD13](https://github.com/SPD13) with the help of Claude Code
+
+The puzzles are collected from public open internet sources and the source is displayed alongside the
+puzzle. Puzzles can be removed upon request.
