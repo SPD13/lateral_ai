@@ -4619,5 +4619,920 @@
     "addedAt": "2026-09-14T08:29:09.100Z",
     "model": "fable",
     "sourceUrl": null
+  },
+  {
+    "id": "bedtime-story-in-the-blackout",
+    "title": "Bedtime Story in the Blackout",
+    "difficulty": "easy",
+    "situation": "Every night Matthew reads a bedtime story to his son. One night the power goes out and the house is plunged into darkness. Yet Matthew keeps reading and finishes the story. How can he read in the dark?",
+    "solution": "Matthew is blind. He always reads bedtime stories to his son from a braille book, feeling the words with his fingers. So the blackout made no difference to him, and he finished the story as usual.",
+    "keyFacts": [
+      "Matthew is blind",
+      "He reads from a braille book by touch, so he doesn't need light"
+    ],
+    "hints": [
+      "Think about how Matthew normally reads, not just on this night.",
+      "Matthew doesn't use his eyes to read at all.",
+      "The book he reads from has raised dots."
+    ],
+    "addedAt": "2026-09-14T13:06:44.799Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-cold-that-killed",
+    "title": "The Cold That Killed",
+    "difficulty": "medium",
+    "situation": "Anthony caught an ordinary cold. He could never have imagined that this cold would be the cause of his death. How did a simple cold kill him?",
+    "solution": "There was a gas leak in Anthony's house, but because he had a cold he could not smell the gas. When he lit a fire to cook his dinner, the gas ignited and he died.",
+    "keyFacts": [
+      "There was a gas leak in his house",
+      "His cold meant he couldn't smell the gas",
+      "He lit a fire to cook, which set off the gas"
+    ],
+    "hints": [
+      "The cold didn't make him seriously ill.",
+      "The cold took away one of his senses.",
+      "He couldn't smell something dangerous in his kitchen before he started cooking."
+    ],
+    "addedAt": "2026-09-14T13:06:44.815Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-wrong-man-arrested",
+    "title": "The Wrong Man Arrested",
+    "difficulty": "easy",
+    "situation": "A car driver makes an unexpected turn at a crossroads and crashes into a bike. When the police arrive, they arrest a different man, and the person who was driving is taken home. Why?",
+    "solution": "The driver was a learner having a driving lesson. The instructor told him to make the wrong turn at the crossroads, which caused the crash. The police held the driving instructor responsible, so they arrested him and took the learner home.",
+    "keyFacts": [
+      "The driver was a learner on a driving lesson",
+      "The instructor told him to make the turn",
+      "The police held the instructor responsible"
+    ],
+    "hints": [
+      "The man who was arrested was in the car.",
+      "The driver was not yet fully qualified to drive.",
+      "The man arrested was the one giving the instructions."
+    ],
+    "addedAt": "2026-09-14T13:06:44.822Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-bandits-bedroom",
+    "title": "The Bandit's Bedroom",
+    "difficulty": "easy",
+    "situation": "Venezuelan police tried several times to arrest a well-known bandit. They knew where he lived, and they came to his house with an arrest warrant. But each time they entered, he locked himself in his bedroom, and the police had no choice but to leave empty-handed. Why couldn't they arrest him?",
+    "solution": "His house sat on the border between Venezuela and Colombia. The front door and half the house were in Venezuela, but the bedroom was in Colombia. Venezuelan police have no jurisdiction in Colombia, so they could not arrest him while he stayed in the bedroom.",
+    "keyFacts": [
+      "The house straddled the Venezuela–Colombia border",
+      "The bedroom was in Colombia",
+      "Venezuelan police had no jurisdiction there"
+    ],
+    "hints": [
+      "The locked door itself wasn't what stopped the police.",
+      "Where exactly is his bedroom, on a map?",
+      "The bedroom is in a different country from the front door."
+    ],
+    "addedAt": "2026-09-14T13:06:44.829Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "ransom-in-the-call-box",
+    "title": "Ransom in the Call-Box",
+    "difficulty": "medium",
+    "situation": "A rich man's son is kidnapped, and the kidnapper demands that the father leave an expensive diamond in a phone box in a city park. The police surround the park to catch the criminal. The father does exactly as he is told, yet the police cannot stop the diamond being taken from the phone box, and they never catch the kidnapper. How did he do it?",
+    "solution": "When the father reached the phone box, he found a carrier pigeon in a cage with a note attached. The note told him to put the diamond in a small pouch on the pigeon's neck and let the bird out of its cage. When he did so, the pigeon flew across the city to its home loft, and the police couldn't follow it.",
+    "keyFacts": [
+      "A carrier pigeon was waiting in the phone box",
+      "The father put the diamond in a pouch on the pigeon and released it",
+      "The pigeon flew home across the city, where the police couldn't follow"
+    ],
+    "hints": [
+      "The kidnapper never came near the phone box.",
+      "Something alive was waiting in the phone box for the father.",
+      "The diamond left the park by air."
+    ],
+    "addedAt": "2026-09-14T13:06:44.837Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-stop-no-bus-uses",
+    "title": "The Stop No Bus Uses",
+    "difficulty": "medium",
+    "situation": "Beside a pleasant road stands a bus stop that is fully kept up, complete with a timetable. Yet no bus or any other public transport ever stops there. Why was it built?",
+    "solution": "The stop is in Germany, next to a nursing home for people with dementia, and a timetable of supposed bus routes hangs on it. Residents who tried to wander off would go to the bus stop, sit down and patiently wait for their bus. When staff noticed that a resident had been missing for a while, they simply went and fetched them from the stop.",
+    "keyFacts": [
+      "It stands next to a nursing home for people with dementia",
+      "Residents who wander off go and wait at the stop",
+      "Staff collect them from there safely"
+    ],
+    "hints": [
+      "The stop is meant to be used by people, just not to catch a bus.",
+      "Think about who lives in the building next to it.",
+      "It's a safe place for confused residents who try to leave."
+    ],
+    "addedAt": "2026-09-14T13:06:44.846Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "beware-of-pickpockets",
+    "title": "Beware of Pickpockets",
+    "difficulty": "medium",
+    "situation": "Signs once appeared on one of the main squares in Prague: 'Attention! Beware of pickpockets!' The local police knew that the square really was full of pickpockets, yet they kept tearing the signs down. Why?",
+    "solution": "The square was always crowded with tourists, and it was the pickpockets themselves who put the signs up. People who read a warning automatically checked that their valuables were still there. The watching thieves then knew exactly where to find their targets, so the police tore the signs down to stop people unknowingly helping to rob themselves.",
+    "keyFacts": [
+      "The pickpockets put the signs up themselves",
+      "Reading the sign made people check their valuables",
+      "This showed the thieves where the valuables were kept"
+    ],
+    "hints": [
+      "The police were not the ones who put the signs up.",
+      "What is the first thing you do after reading such a warning?",
+      "When people pat their pockets to check, they reveal where their wallets are."
+    ],
+    "addedAt": "2026-09-14T13:06:44.852Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "green-lipstick",
+    "title": "Green Lipstick",
+    "difficulty": "medium",
+    "situation": "Every day, a man puts on green lipstick before work. Yet almost nobody ever notices it. Why does he wear it?",
+    "solution": "In the 20th century, television was still black and white, and the cameras had red filters that absorbed red, so red lipstick couldn't be seen on the lips. TV presenters therefore wore green lipstick to make their lips look more expressive on screen.",
+    "keyFacts": [
+      "He works on black-and-white television",
+      "The cameras' red filters made red lipstick invisible",
+      "Green lipstick made his lips show up on screen"
+    ],
+    "hints": [
+      "Plenty of people see him every day, just not in person.",
+      "This happened decades ago, before colour pictures were common.",
+      "On black-and-white TV cameras, red lips didn't show up, but green ones did."
+    ],
+    "addedAt": "2026-09-14T13:06:44.858Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-phantom-of-heilbronn",
+    "title": "The Phantom",
+    "difficulty": "medium",
+    "situation": "For 15 years, German police were baffled by one person who seemed to be behind thefts, killings and car crimes across the country. By 2008 they had spent 14,000 working hours and more than 15 million euros hunting this criminal, without success. How is that possible?",
+    "solution": "In 2009 the police finally found the 'criminal': a 71-year-old Polish woman who had worked for many years packing cotton buds at a factory in Bavaria. Those were the cotton buds used to collect DNA samples, so her DNA turned up at every crime scene. The case became known as the Phantom of Heilbronn.",
+    "keyFacts": [
+      "The link between the crimes was DNA evidence",
+      "The cotton buds used for DNA sampling were contaminated",
+      "The DNA belonged to a woman who packed the buds at the factory"
+    ],
+    "hints": [
+      "The police linked all these crimes through forensic evidence.",
+      "The 'criminal' never set foot at any of the crime scenes.",
+      "The DNA came from the equipment used to take the samples."
+    ],
+    "addedAt": "2026-09-14T13:06:44.862Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-vanishing-peelers",
+    "title": "The Vanishing Peelers",
+    "difficulty": "easy",
+    "situation": "A company made knives for peeling potatoes. To boost sales, the makers reasoned that if the knives went missing more often at home, people would have to buy new ones. How did they make their peelers disappear?",
+    "solution": "The company started making its potato peelers in the same colour as potato peel. The knife blended in with the peelings and was often thrown away along with them, so customers had to buy replacements.",
+    "keyFacts": [
+      "The peelers were coloured like potato peel",
+      "They blended in with the peelings and were thrown away with them"
+    ],
+    "hints": [
+      "The company changed how the knife looked, not how it worked.",
+      "Think about what ends up in the bin after peeling potatoes.",
+      "The handle was made the same colour as the peelings."
+    ],
+    "addedAt": "2026-09-14T13:06:44.867Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "hurricanes-beulah-and-craig",
+    "title": "Beulah and Craig",
+    "difficulty": "easy",
+    "situation": "Beulah died in the Appalachians, while Craig died at sea. Everyone was much happier about Craig's death. How come?",
+    "solution": "Beulah and Craig were hurricanes, not people. Beulah blew itself out over land in the Appalachians, where it could do damage to where people live. Craig died out at sea, so everyone was glad it never came ashore.",
+    "keyFacts": [
+      "Beulah and Craig were hurricanes (storms), not people",
+      "A storm that dies at sea never hits land, so people were relieved"
+    ],
+    "hints": [
+      "Beulah and Craig were never alive in the usual sense.",
+      "Weather services give names to some things every year.",
+      "Where would you rather a hurricane ended: over the mountains where people live, or far out at sea?"
+    ],
+    "addedAt": "2026-09-14T14:49:31.520Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "morse-code-exam",
+    "title": "The Silent Exam",
+    "difficulty": "medium",
+    "situation": "Students are taking an exam at a military academy. One of them picks an exam ticket and goes to his seat to prepare. A few minutes later he walks up to the professor, silently hands over his record book and leaves the room, and he gets top marks. Why?",
+    "solution": "It was an exam in Morse code. While the students were preparing, the professor kept tapping out a message in Morse saying that any student who came up to him would get top marks. The only student who understood the tapping walked up, handed over his record book and got top marks.",
+    "keyFacts": [
+      "The exam was a Morse code exam",
+      "The professor was tapping a Morse message offering top marks to anyone who came up",
+      "The student understood the tapping and took up the offer"
+    ],
+    "hints": [
+      "What the student did was an answer to something he noticed in the room.",
+      "The professor wasn't just sitting quietly during the exam; he was making a sound.",
+      "Think about what kind of code a military academy would teach, one you can tap on a desk."
+    ],
+    "addedAt": "2026-09-14T14:49:31.538Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "half-a-goal-brazil",
+    "title": "Half a Goal",
+    "difficulty": "medium",
+    "situation": "In the 1940s, a real football match in Brazil ended with the unusual score of 0.5–0. How could a team score half a goal?",
+    "solution": "With the score at 0–0, a penalty kick was taken and the seam of the ball burst. The inner rubber bladder went into the goal, but the outer leather casing rolled away outside it. The referee ruled that this was half a goal, so the match ended 0.5–0.",
+    "keyFacts": [
+      "The ball burst during a penalty kick",
+      "The inner bladder went into the goal while the leather casing did not",
+      "The referee counted it as half a goal"
+    ],
+    "hints": [
+      "Nobody made a mistake with the scoreboard: the referee really did award half a goal.",
+      "Something happened to the ball itself during a kick.",
+      "Old footballs had a rubber bladder inside a leather casing. What if the two parted ways?"
+    ],
+    "addedAt": "2026-09-14T14:49:31.553Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "dantzig-late-for-class",
+    "title": "Late for Class",
+    "difficulty": "medium",
+    "situation": "George was late for a maths class and misunderstood what the teacher meant. Yet his mistake brought him reward and recognition. What happened?",
+    "solution": "The American mathematician George Dantzig arrived very late for a class and saw some problems written on the blackboard. He thought they were homework, spent several days working on them and eventually found the answers. It turned out they were two famous 'unsolvable' problems that many scientists had been struggling with.",
+    "keyFacts": [
+      "He thought problems on the blackboard were homework",
+      "They were actually famous unsolved problems",
+      "He solved them, not knowing they were thought unsolvable"
+    ],
+    "hints": [
+      "Because he was late, George missed what the teacher said about something written on the board.",
+      "He treated some examples of a thing like an ordinary assignment.",
+      "The problems on the board were meant as examples of problems nobody had solved yet."
+    ],
+    "addedAt": "2026-09-14T14:49:31.562Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "george-iv-left-and-right-boots",
+    "title": "The Royal Trendsetter",
+    "difficulty": "easy",
+    "situation": "King George IV, who ruled England from 1820 to 1830, was not an outstanding ruler, but he is known as a footwear trendsetter. His shoes were fundamentally different from those of his contemporaries, and the innovation caught on so well that today everyone takes it for granted. What was it?",
+    "solution": "George IV was the first to have a separate right boot and left boot. Before that, all shoes and boots were made the same for both feet. The idea caught on and is now standard.",
+    "keyFacts": [
+      "His boots were made differently for the left and right foot",
+      "Before that, shoes were identical for both feet"
+    ],
+    "hints": [
+      "The innovation has nothing to do with colour, material or decoration.",
+      "Think about the shape of a pair of shoes.",
+      "Take your two shoes off and compare them. Would they always have looked like that?"
+    ],
+    "addedAt": "2026-09-14T14:49:31.570Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "dali-autographed-cheque",
+    "title": "On the Back of the Cheque",
+    "difficulty": "medium",
+    "situation": "A man finishes lunch at a restaurant and the waiter brings the bill. He writes a cheque for the full amount, then suddenly turns it over and writes a few words of congratulations to the owner on the back. Why?",
+    "solution": "The man was Salvador Dalí, and this was his trick for not really paying restaurant bills. He signed a cheque for the full amount and wrote warm congratulations to the owner on the back. He counted on the owner seeing a cheque autographed by the famous artist as a collectible worth far more than the meal, so it would be kept or displayed and never cashed.",
+    "keyFacts": [
+      "The diner was the famous artist Salvador Dalí",
+      "His signed and inscribed cheque was worth more as a collectible than the bill",
+      "The owner would keep it and never cash it, so Dalí ate for free"
+    ],
+    "hints": [
+      "The man is very famous.",
+      "The words on the back make the cheque worth more than the money written on the front.",
+      "He was an artist, and his signature was valuable. Would you cash a personal note from Salvador Dalí?"
+    ],
+    "addedAt": "2026-09-14T14:49:31.577Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "seat-belts-more-injuries",
+    "title": "Seat Belts and the Hospital",
+    "difficulty": "medium",
+    "situation": "A city had a very high number of people injured in car accidents, so the authorities made wearing seat belts compulsory, and people obeyed. The number of crashes stayed the same, but the number of injured people turning up at hospital actually rose. Why?",
+    "solution": "The seat belt law worked. Many people who would have died in crashes without a seat belt survived, but they were injured. So instead of being counted as deaths, they went to hospital, and hospital admissions went up.",
+    "keyFacts": [
+      "Seat belts turned many deaths into survivable injuries",
+      "People who would have died now went to hospital injured, raising the count"
+    ],
+    "hints": [
+      "The seat belt law was actually a success.",
+      "Think about what used to happen to the people who were worst hurt in crashes.",
+      "If fewer people die in crashes, where do those survivors end up?"
+    ],
+    "addedAt": "2026-09-14T14:49:31.584Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "builders-rotten-egg",
+    "title": "The Builders' Countermove",
+    "difficulty": "medium",
+    "situation": "Landlords used to delay paying the people who built and repaired their houses, or even threw them out without paying at all. Then the builders came up with an unusual trick that made landlords pay them in full straight away. What did they do?",
+    "solution": "When laying a foundation or doing repairs, the builders hid a raw egg somewhere in the house. Over time it began to rot. If the landlord paid them, they came back and took the egg away. If he threw them out, the egg eventually stank, and it was very hard to find where it had been hidden.",
+    "keyFacts": [
+      "Builders hid a raw egg in the building during the work",
+      "The egg would rot and stink, and only the builders knew where it was",
+      "They removed it only when paid in full"
+    ],
+    "hints": [
+      "The builders left something behind inside the house.",
+      "It was harmless at first, but time would change that.",
+      "Think of something from the kitchen that smells terrible when it goes off."
+    ],
+    "addedAt": "2026-09-14T14:49:31.589Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "repin-expensive-fake",
+    "title": "The Expensive Fake",
+    "difficulty": "medium",
+    "situation": "A woman buys a painting signed 'I. Repin' for ten roubles at an antique stall, and later shows it to the artist Ilya Repin, whom she knows personally. As soon as it is confirmed to be a fake, the painting becomes worth ten times as much. How?",
+    "solution": "When the woman showed Repin the painting at a friend's gathering, he laughed and wrote at the bottom: 'This is not Repin. I. Repin.' The painting went back to the market and sold for one hundred roubles. The fake itself was worthless, but it now carried the famous artist's genuine autograph, and that is what made it valuable.",
+    "keyFacts": [
+      "The famous artist Repin himself confirmed it was a fake",
+      "He wrote on it that it wasn't his work and signed it",
+      "His genuine signature made the fake valuable"
+    ],
+    "hints": [
+      "The person who declared it a fake is important.",
+      "The painting was changed in one small way when it was found to be a fake.",
+      "Now the fake carries something the real artist added himself."
+    ],
+    "addedAt": "2026-09-14T14:49:31.597Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "beating-nick-faldo",
+    "title": "How to Beat Nick Faldo",
+    "difficulty": "medium",
+    "situation": "A man challenged golf champion Nick Faldo to a match on one condition: he would choose the time and the place. Faldo agreed. The challenger won. How?",
+    "solution": "The challenger was blind, and he chose to play the match on a moonless night. He was used to playing golf without seeing, since blind people can play golf with help from sighted people. Faldo was not used to playing in the dark, so he lost.",
+    "keyFacts": [
+      "The challenger was blind",
+      "He chose to play at night in total darkness",
+      "Darkness made no difference to him but put Faldo at a disadvantage"
+    ],
+    "hints": [
+      "The choice of time mattered more than the choice of course.",
+      "Think about conditions that would bother a champion but not his opponent.",
+      "What if the challenger couldn't see anyway?"
+    ],
+    "addedAt": "2026-09-14T14:49:31.602Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-mayors-greeting",
+    "title": "The Mayor's Greeting",
+    "difficulty": "hard",
+    "situation": "A priest who is leaving town gives a farewell speech. The mayor turns up near the end of it to say a few words of greeting, but he is shot dead before he can finish. Why was the mayor killed?",
+    "solution": "In his speech the priest recalled his first day in the town and said that the very first confession he ever heard there was a murderer's. The mayor had missed that part. When he arrived, he proudly said that he had been the priest's first confessor, and so without knowing it he confessed to the murder. The victim's brother was in the crowd and shot him.",
+    "keyFacts": [
+      "The priest said his first confession in the town came from a murderer",
+      "The mayor arrived late and did not hear that part",
+      "The mayor boasted that he was the priest's first confessor, giving himself away",
+      "The murder victim's brother shot him"
+    ],
+    "hints": [
+      "What the priest said before the mayor arrived matters a great deal.",
+      "The priest talked about his first day in the town and the first confession he ever heard there.",
+      "The mayor proudly announced he had been the priest's very first confessor, and someone in the crowd had a personal reason to act on that."
+    ],
+    "addedAt": "2026-09-14T14:49:31.606Z",
+    "model": "web-search",
+    "sourceUrl": "https://pdfcoffee.com/black-stories-and-riddles-for-an-english-class-pdf-free.html"
+  },
+  {
+    "id": "death-in-the-sauna",
+    "title": "Death in the Sauna",
+    "difficulty": "medium",
+    "situation": "A man is found dead on the floor of a sauna. Next to him is a thermos flask. There is no weapon anywhere. How did he die?",
+    "solution": "He was murdered. The killer brought a weapon made of ice, an ice screwdriver, in the thermos flask to keep it frozen, and stabbed him with it. In the heat of the sauna the ice melted, so no weapon was left behind.",
+    "keyFacts": [
+      "He was murdered, stabbed",
+      "The weapon was made of ice",
+      "The thermos kept the ice weapon frozen",
+      "The sauna's heat melted the weapon away"
+    ],
+    "hints": [
+      "Think about why someone would need a thermos in a sauna.",
+      "The weapon is still in the room, just not in its original form.",
+      "The murder weapon was made of ice, and the sauna's heat made it disappear."
+    ],
+    "addedAt": "2026-09-14T14:49:31.610Z",
+    "model": "web-search",
+    "sourceUrl": "https://pdfcoffee.com/black-stories-and-riddles-for-an-english-class-pdf-free.html"
+  },
+  {
+    "id": "one-step-back",
+    "title": "One Step Back",
+    "difficulty": "easy",
+    "situation": "A man takes one step backwards and dies. He was simply doing his job. What happened?",
+    "solution": "He was a window cleaner working high up on a building. When he finished cleaning a window, he stepped back to check that it was completely clean. That step took him over the edge, and he fell to his death.",
+    "keyFacts": [
+      "He was a window cleaner",
+      "He was working high up on a building",
+      "He stepped back to admire his work and fell"
+    ],
+    "hints": [
+      "His job was done high above the ground.",
+      "He wanted to get a better look at the job he had just finished.",
+      "He was a window cleaner who stepped back to check the glass and fell off the building."
+    ],
+    "addedAt": "2026-09-14T14:49:31.615Z",
+    "model": "web-search",
+    "sourceUrl": "https://pdfcoffee.com/black-stories-and-riddles-for-an-english-class-pdf-free.html"
+  },
+  {
+    "id": "the-healed-finger",
+    "title": "The Healed Finger",
+    "difficulty": "easy",
+    "situation": "A man cuts his finger. He puts it in some water, and when he pulls his hand out, the wound has gone. How?",
+    "solution": "The water was a river full of piranhas. The blood attracted them and they ate his finger, so the wound was gone along with it.",
+    "keyFacts": [
+      "The water was a river full of piranhas",
+      "The piranhas ate the injured finger",
+      "The wound disappeared because the finger did"
+    ],
+    "hints": [
+      "The wound did not heal.",
+      "Something living in the water was drawn to the blood.",
+      "The river was full of piranhas, and they ate the whole finger."
+    ],
+    "addedAt": "2026-09-14T14:49:31.619Z",
+    "model": "web-search",
+    "sourceUrl": "https://pdfcoffee.com/black-stories-and-riddles-for-an-english-class-pdf-free.html"
+  },
+  {
+    "id": "the-500-euro-porsche",
+    "title": "The 500-Euro Porsche",
+    "difficulty": "medium",
+    "situation": "A woman sells her husband's Porsche for only 500 euros. There is nothing mechanically wrong with the car. Why is she selling it so cheaply?",
+    "solution": "Her husband killed himself inside the car, and his body was not found for several days. The smell of the body got into the car and never went away. Nobody would pay a normal price for it, so she had to sell it for next to nothing.",
+    "keyFacts": [
+      "The husband died inside the car",
+      "His body was only found days later",
+      "The smell of death stayed in the car, making it nearly worthless"
+    ],
+    "hints": [
+      "The husband is no longer around.",
+      "Something happened inside the car that left a permanent trace.",
+      "He killed himself in the car, and the smell of his body never came out."
+    ],
+    "addedAt": "2026-09-14T14:49:31.623Z",
+    "model": "web-search",
+    "sourceUrl": "https://pdfcoffee.com/black-stories-and-riddles-for-an-english-class-pdf-free.html"
+  },
+  {
+    "id": "the-unbeaten-ford-record",
+    "title": "The Unbeaten Ford Record",
+    "difficulty": "easy",
+    "situation": "In 1930, two men drove a Ford from New York to Los Angeles, about 5,375 km, in 18 days. They used ordinary roads and an ordinary car, yet they set a world record that has never been beaten. How?",
+    "solution": "They drove the whole way in reverse. Crossing the country backwards set a record for reverse driving over that distance, and nobody has ever beaten it.",
+    "keyFacts": [
+      "They drove the entire way in reverse",
+      "The record is for backwards driving, not for speed"
+    ],
+    "hints": [
+      "The record is not about speed.",
+      "It is about how they drove the car, not the car itself.",
+      "They did the whole trip in reverse gear."
+    ],
+    "addedAt": "2026-09-14T14:49:31.628Z",
+    "model": "web-search",
+    "sourceUrl": "https://pdfcoffee.com/black-stories-and-riddles-for-an-english-class-pdf-free.html"
+  },
+  {
+    "id": "the-sunken-car",
+    "title": "The Sunken Car",
+    "difficulty": "easy",
+    "situation": "A man driving fast spins off the road and crashes into a river. His arm is broken, he cannot undo his seatbelt, and the car sinks to the bottom of the river. Two hours later, rescuers find him still alive. How did he survive?",
+    "solution": "The river was shallow. Even with the car sitting on the riverbed, the water only came up to the man's chest, so he could keep breathing until help arrived.",
+    "keyFacts": [
+      "The river was shallow",
+      "The water only reached his chest while he sat in the car",
+      "He could breathe the whole time"
+    ],
+    "hints": [
+      "Do not picture a deep river.",
+      "Think about how high the water rose inside the car.",
+      "The car hit the bottom, but the water only came up to his chest."
+    ],
+    "addedAt": "2026-09-14T14:49:31.631Z",
+    "model": "web-search",
+    "sourceUrl": "https://pdfcoffee.com/black-stories-and-riddles-for-an-english-class-pdf-free.html"
+  },
+  {
+    "id": "wrong-way-truck-driver",
+    "title": "The Wrong-Way Truck Driver",
+    "difficulty": "easy",
+    "situation": "A police officer sees a truck driver clearly going the wrong way down a one-way street. The officer does not try to stop him. Why not?",
+    "solution": "The truck driver was walking, not driving his truck. A person on foot can go either way down a one-way street, so he was breaking no rule.",
+    "keyFacts": [
+      "The truck driver was on foot",
+      "No law was broken"
+    ],
+    "hints": [
+      "Nobody said he was in his truck.",
+      "Being a truck driver is his job, not what he was doing at that moment.",
+      "He was walking down the street."
+    ],
+    "addedAt": "2026-09-14T14:49:31.635Z",
+    "model": "web-search",
+    "sourceUrl": "https://pdfcoffee.com/black-stories-and-riddles-for-an-english-class-pdf-free.html"
+  },
+  {
+    "id": "weight-loss-miracle",
+    "title": "Weight Loss Miracle",
+    "difficulty": "easy",
+    "situation": "A woman walks into a small room and presses a button. Within a few seconds she has lost twenty pounds. She has not exercised, dieted or had surgery. How did she lose the weight so quickly?",
+    "solution": "The room is an elevator. She pressed the button for a lower floor, and as the elevator accelerated downwards her apparent weight dropped. The scale reading, not her body, changed: gravitational acceleration temporarily reduced her measured weight by about twenty pounds.",
+    "keyFacts": [
+      "The room is an elevator",
+      "The elevator is accelerating downwards",
+      "Only her apparent weight on a scale changes, not her actual mass"
+    ],
+    "hints": [
+      "The room she walked into is not a normal room — it moves.",
+      "Think about what a bathroom scale reads while you are going down quickly.",
+      "She is in a descending elevator; downward acceleration makes her weigh less for a moment."
+    ],
+    "addedAt": "2026-09-19T08:49:54.950Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.arkadium.com/blog/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "writing-habits",
+    "title": "Two Words, Sixty Sheets",
+    "difficulty": "easy",
+    "situation": "Every two weeks, a woman writes the same two words on sixty separate sheets of paper. She is not practising her handwriting and she is not copying anything out. Why does she do it?",
+    "solution": "The woman owns a business with sixty employees. The two words are her first and last name, and she is signing the paychecks. Payroll runs every two weeks, so the same ritual repeats each pay period.",
+    "keyFacts": [
+      "The two words are her own name — a signature",
+      "She is signing paychecks",
+      "She owns a business with sixty employees, paid biweekly"
+    ],
+    "hints": [
+      "The two words are always exactly the same, and they are hers.",
+      "The sheets of paper are worth money to the people who receive them.",
+      "She is the boss signing sixty paychecks on payday."
+    ],
+    "addedAt": "2026-09-19T08:49:54.980Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.arkadium.com/blog/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "boat-ladder-tide",
+    "title": "The Boat Ladder",
+    "difficulty": "easy",
+    "situation": "A ten-foot ladder hangs over the side of a boat, and three feet of it are under the water. The tide then rises by five feet. How much of the ladder is underwater now?",
+    "solution": "Still three feet. The boat floats, so it rises with the tide and the ladder rises with the boat. The amount of ladder below the waterline does not change no matter how high the tide comes.",
+    "keyFacts": [
+      "Still three feet of ladder underwater",
+      "The boat floats and rises with the tide",
+      "The ladder rises along with the boat"
+    ],
+    "hints": [
+      "The ladder is attached to something that is not fixed to the seabed.",
+      "Ask yourself what the boat does as the water level goes up.",
+      "The boat floats up with the tide, so nothing changes: three feet."
+    ],
+    "addedAt": "2026-09-19T08:49:54.998Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.arkadium.com/blog/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "birthday-cake-three-cuts",
+    "title": "Eight Slices, Three Cuts",
+    "difficulty": "medium",
+    "situation": "It is your birthday and you have invited eight friends. You must divide your birthday cake into eight equal-sized pieces, but you are allowed only three cuts of the knife. How do you do it?",
+    "solution": "Make two vertical cuts across the top of the cake, crossing at the centre, to produce four equal pieces. Then make the third cut horizontally, straight through the middle of the cake's height, slicing every piece into a top half and a bottom half. That gives eight equal pieces from three cuts.",
+    "keyFacts": [
+      "Two vertical cuts crossing at the centre give four pieces",
+      "The third cut is horizontal, through the cake's height",
+      "Each of the four pieces is halved into a top and a bottom, making eight"
+    ],
+    "hints": [
+      "Two cuts from above already give you four pieces — you only have one cut left.",
+      "The cake is a three-dimensional object, not a flat circle.",
+      "Cut it sideways through the middle so every piece becomes a top and a bottom."
+    ],
+    "addedAt": "2026-09-19T08:49:55.013Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.arkadium.com/blog/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "the-commotion",
+    "title": "The Commotion",
+    "difficulty": "easy",
+    "situation": "Several voices can be heard coming from a room, and there is the sound of a commotion going on. When someone opens the door to see what is happening, there is only one person there, sitting quietly. That person is perfectly sane. Where did the voices come from?",
+    "solution": "The voices came from a television set that the person was watching. The commotion was part of the programme, not something happening in the room. The single quiet occupant was simply the viewer.",
+    "keyFacts": [
+      "The voices came from a television",
+      "The person in the room was watching it",
+      "No one else was ever in the room"
+    ],
+    "hints": [
+      "The person in the room is not talking to themselves.",
+      "The other voices belong to people who were never in the house.",
+      "A television was playing."
+    ],
+    "addedAt": "2026-09-19T08:49:55.029Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.arkadium.com/blog/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "a-quick-choke",
+    "title": "A Quick Choke",
+    "difficulty": "medium",
+    "situation": "A man is sitting alone in a dark room when he suddenly stops breathing and cannot speak or call out. A few seconds later he is breathing normally again, and there is no sign of what blocked his airway. What happened?",
+    "solution": "He was watching a film in the dark and choked on an ice cube from his drink. The ice lodged in his throat and stopped him breathing, but it melted within seconds and the airway cleared. That is why nothing was left behind to show what had choked him.",
+    "keyFacts": [
+      "He choked on an ice cube from his drink",
+      "The ice melted in his throat within seconds",
+      "The room was dark because he was watching a movie"
+    ],
+    "hints": [
+      "Something was blocking his throat, but it did not stay there.",
+      "Whatever it was disappeared on its own, which is why there is no evidence.",
+      "It was an ice cube, and it melted."
+    ],
+    "addedAt": "2026-09-19T08:49:55.034Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.arkadium.com/blog/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "born-1957-died-1956",
+    "title": "Born in 1957, Died in 1956",
+    "difficulty": "medium",
+    "situation": "John was born in 1957 and died in 1956, and he was 82 years old when he died. None of this is a mistake and no time travel is involved. How is it possible?",
+    "solution": "1957 and 1956 are not years but room numbers in a hospital. John was born in room 1957 and, 82 years later, died in room 1956 of the same hospital. The numbers only look like dates.",
+    "keyFacts": [
+      "1957 and 1956 are room numbers, not years",
+      "He was born in room 1957 and died in room 1956",
+      "He was 82 when he died, so the numbers cannot be dates"
+    ],
+    "hints": [
+      "The numbers are not dates at all.",
+      "Both numbers refer to the same kind of place — and he was in that place at both ends of his life.",
+      "They are hospital room numbers."
+    ],
+    "addedAt": "2026-09-19T08:49:55.047Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.arkadium.com/blog/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "one-match-dark-room",
+    "title": "One Match in a Dark Room",
+    "difficulty": "easy",
+    "situation": "A man is stuck in a dark room. He has exactly one match, and in the room there is a fireplace, a candle and an oil lamp. What should he light first?",
+    "solution": "He should light the match first. It is impossible to light the oil lamp, the fireplace or the candle without first striking and lighting the match itself. The trick is that the question assumes the answer must be one of the three objects in the room.",
+    "keyFacts": [
+      "He lights the match itself first",
+      "Nothing else in the room can be lit until the match is burning",
+      "The listed objects (fireplace, candle, oil lamp) are a distraction"
+    ],
+    "hints": [
+      "Don't worry about which object burns longest or is most useful — think about the order of events.",
+      "Before anything in the room can catch fire, something else has to be burning already.",
+      "The answer is the thing in his hand, not the things around him."
+    ],
+    "addedAt": "2026-09-20T14:10:05.192Z",
+    "model": "web-search",
+    "sourceUrl": "https://www.arkadium.com/blog/lateral-thinking-puzzles/"
+  },
+  {
+    "id": "the-chicken-gun",
+    "title": "The Chicken Gun",
+    "difficulty": "easy",
+    "situation": "In the 1950s, American engineers invented a device they called a chicken gun: a large-diameter cannon powered by compressed air, loaded with dead chickens. It was built entirely seriously, and it is still used today. What was it for?",
+    "solution": "The chicken gun is a compressed-air cannon used to fire dead chickens at aircraft components. It simulates high-speed bird strikes of the kind a plane suffers in flight. Engineers use it to test how much damage jet engines, windshields and other parts take in a collision with a bird.",
+    "keyFacts": [
+      "It fires the birds at aircraft parts",
+      "It simulates a bird strike at flight speed",
+      "It is a safety/durability test for engines and windshields"
+    ],
+    "hints": [
+      "Nobody eats these chickens — they are ammunition, not food.",
+      "The target is a machine, and the point is to see how badly it breaks.",
+      "Think about what birds do to a plane taking off at high speed."
+    ],
+    "addedAt": "2026-09-20T14:39:44.006Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "pear-inside-a-bottle",
+    "title": "The Pear in the Bottle",
+    "difficulty": "easy",
+    "situation": "In a shop you find a bottle of brandy with a full-grown pear floating inside it. The pear is far too big to pass through the neck, the bottle has not been cut or repaired, and the glass is in one piece. How did the pear get in there?",
+    "solution": "The pear is never put into the bottle at all — it grows inside it. While the fruit is still tiny, the bottle is tied over it on the tree branch, and the pear then grows to full size within the glass. Afterwards the bottle is taken off the tree and filled with brandy.",
+    "keyFacts": [
+      "The pear was never pushed through the neck",
+      "The bottle was attached to the branch while the fruit was still small",
+      "The pear grew to full size inside the bottle"
+    ],
+    "hints": [
+      "The bottle did not come to the pear — it went to the pear.",
+      "Think about when the pear was small enough to fit through the neck.",
+      "The bottle spent part of the summer hanging on a tree."
+    ],
+    "addedAt": "2026-09-20T14:39:44.025Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "splish-splash-lost-watch",
+    "title": "Splish, Splash!",
+    "difficulty": "easy",
+    "situation": "Tim is out sailing his boat when his watch slips off his wrist and falls overboard. He is an excellent diver and the water is clear and calm, yet he cannot get the watch back. Why not?",
+    "solution": "Tim was sailing on the Dead Sea. The water there is so dense with salt that a swimmer is pushed back to the surface. However hard he tried, he could not dive deep enough to reach the watch.",
+    "keyFacts": [
+      "He was on the Dead Sea",
+      "The very high salt concentration makes the water extremely buoyant",
+      "He physically could not dive down deep enough"
+    ],
+    "hints": [
+      "It has nothing to do with his diving skill or the depth of the water.",
+      "The problem is the water itself, not the watch.",
+      "In this particular sea, people famously float without trying."
+    ],
+    "addedAt": "2026-09-20T14:39:44.040Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "octopus-treasure-divers",
+    "title": "Savages Can Be Clever Too",
+    "difficulty": "hard",
+    "situation": "Aborigines lived on an island in the middle of the ocean. On the sea bed near them lay porcelain vases from a shipwreck, and for a hundred years even the most experienced divers had failed to bring them up. Yet the islanders found a way to recover the porcelain and grow rich. How did they do it?",
+    "solution": "They used octopuses. They caught octopuses, tied them to ropes and lowered them into the water, then waited until the animals found hiding places inside the porcelain bowls and vessels among the wreckage. Octopuses are stubborn creatures and refused to let go of their new home even when hauled up by the rope, so the porcelain came up with them. Sometimes an octopus brought up a stone instead, but the method worked well enough.",
+    "keyFacts": [
+      "They did not dive for the porcelain themselves",
+      "They used tethered octopuses lowered on ropes",
+      "Octopuses hid inside the vases and would not let go when pulled up"
+    ],
+    "hints": [
+      "They let something else do the diving for them.",
+      "The helper was a sea animal that likes to squeeze into hollow spaces.",
+      "When you pull it up by the rope, it clings to its new shelter — and the shelter is a vase."
+    ],
+    "addedAt": "2026-09-20T14:39:44.050Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-narrow-street-tavern",
+    "title": "John's Favourite Place",
+    "difficulty": "medium",
+    "situation": "In 18th-century Stockholm, John loved going to a certain place and had many reasons for doing so. His wife Mary hated it, and so did the other women of the city — not only because of what went on there, but because they simply could not get to it. Why?",
+    "solution": "The place was a drinking house reached by a street no more than a metre wide. Drunkards loved it because they could hold on to the walls on both sides as they staggered along. Their wives, however, could not follow them down it: the hooped dresses of the period got stuck between the walls.",
+    "keyFacts": [
+      "It was a tavern at the end of an extremely narrow street",
+      "Drunk men could steady themselves on both walls",
+      "Women's wide hooped dresses would not fit through"
+    ],
+    "hints": [
+      "The obstacle is the street, not the door.",
+      "The street is barely a metre wide — an advantage for a drunk man.",
+      "Think about what women wore in the 18th century and how wide it was."
+    ],
+    "addedAt": "2026-09-20T14:39:44.058Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "running-towards-the-train",
+    "title": "Running to Meet the Train",
+    "difficulty": "medium",
+    "situation": "A man was walking along a railway line when he saw a train coming straight towards him. Instead of turning and running away, he ran as fast as he could towards the oncoming train. He survived. Why did he run at it?",
+    "solution": "The man was inside a tunnel. He was nearer to the end the train was coming from than to the far end, so running towards the train was the only way to get out of the tunnel before it reached him. As soon as he was clear of the tunnel mouth he jumped off the track to safety.",
+    "keyFacts": [
+      "He was inside a railway tunnel with no room to stand aside",
+      "The near exit was the one the train was approaching from",
+      "He got out of the tunnel mouth and jumped clear of the track"
+    ],
+    "hints": [
+      "There was nowhere to step aside where he was standing.",
+      "He was not trying to reach the train — he was trying to reach something behind it.",
+      "Picture a tunnel: which end was closer to him?"
+    ],
+    "addedAt": "2026-09-20T14:39:44.065Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-silk-scarf-pilot",
+    "title": "The Silk Scarf",
+    "difficulty": "medium",
+    "situation": "Bill always wore a silk scarf to work, in every kind of weather. It was not for warmth and it was not for fashion — without it he could not have done his job properly. What was his job, and why did he need the scarf?",
+    "solution": "Bill was a First World War pilot. Early military aircraft had open cockpits and flew at up to 150 km/h, so pilots wore thick leather clothing against the wind. With no long-range detection systems, a pilot had to keep turning his head to scan for enemy planes — at least every twenty seconds — and some rubbed their necks raw, even bloody, against the stiff collar. A white silk scarf, being smooth yet dense, protected against the headwind and acted as a smooth layer between skin and collar.",
+    "keyFacts": [
+      "He was a WWI pilot in an open cockpit",
+      "He had to keep turning his head constantly to spot enemy aircraft",
+      "The stiff leather collar chafed his neck, and smooth silk prevented it"
+    ],
+    "hints": [
+      "The scarf protects a part of his body that moves a great deal at work.",
+      "His job involves constantly looking around in a strong wind.",
+      "Open cockpit, heavy leather collar, and a neck that has to swivel every twenty seconds."
+    ],
+    "addedAt": "2026-09-20T14:39:44.072Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "the-cunning-artist-portrait",
+    "title": "The Cunning Artist",
+    "difficulty": "medium",
+    "situation": "An artist accepted a commission to paint a very ugly and arrogant woman. Everybody warned him she would never pay a penny for the finished portrait, and indeed she refused it. Two days later she came back and begged him to sell it to her. Why?",
+    "solution": "The artist had sent the portrait to an exhibition under the title 'The Penny Pincher'. The picture set the whole town gossiping about her, and to get it taken down she had to come back to the artist and buy it.",
+    "keyFacts": [
+      "He put the portrait on public display in an exhibition",
+      "He gave it a title mocking her refusal to pay",
+      "The gossip forced her to buy it to have it removed"
+    ],
+    "hints": [
+      "The artist did not destroy the painting — he found it an audience.",
+      "What he added to the picture was not paint but words.",
+      "The title told everyone exactly why she had not paid."
+    ],
+    "addedAt": "2026-09-20T14:39:44.082Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "marmalade-attendance",
+    "title": "Marmalade at School",
+    "difficulty": "medium",
+    "situation": "Bill managed to skip school again and again without ever being marked absent, and marmalade was what made it possible. He was not bribing anyone with sweets. How did marmalade help him?",
+    "solution": "From 2010, Australian schools used fingerprint scanners to check attendance. Bill discovered that the gelatin in marmalade bears could fool the scanner: he pressed his finger into a gummy bear to take an impression of his fingerprint, then had a classmate hold the sweet against the scanner for him. The system recognised the fingerprint and recorded Bill as present in class.",
+    "keyFacts": [
+      "The school checked attendance with fingerprint scanners",
+      "Gelatin from a marmalade bear took an impression of his fingerprint",
+      "A classmate presented the sweet to the scanner so Bill was marked present"
+    ],
+    "hints": [
+      "The marmalade was not eaten — it was used as a tool.",
+      "The school registered attendance with a machine, not a teacher's roll call.",
+      "Gelatin holds the shape of whatever you press into it, including a fingertip."
+    ],
+    "addedAt": "2026-09-20T14:39:44.087Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
+  },
+  {
+    "id": "beer-from-the-tap",
+    "title": "(Un)luck",
+    "difficulty": "medium",
+    "situation": "Because of a mistake Nils made at work, his upstairs neighbour Martha was unable to wash her dishes. Martha's husband, however, was delighted — and Nils was fired. What happened?",
+    "solution": "Nils was a bartender in the café on the ground floor and mixed up the pipes when connecting the taps. When Martha turned on her water tap upstairs, beer came out of it, so she could not wash up — while down in the bar, water splashed out of the beer tap. Martha's husband was very pleased with the arrangement, but the bartender lost his job.",
+    "keyFacts": [
+      "Nils was a bartender downstairs and connected the taps the wrong way round",
+      "Beer came out of Martha's water tap",
+      "Water came out of the bar's beer tap, and Nils was fired for it"
+    ],
+    "hints": [
+      "Something did come out of Martha's tap — just not water.",
+      "Her husband's delight is the clue to what it was.",
+      "Think about what business is on the ground floor and what pipes run through the building."
+    ],
+    "addedAt": "2026-09-20T14:39:44.092Z",
+    "model": "web-search",
+    "sourceUrl": "https://yesnogame.net/en/real"
   }
 ]
