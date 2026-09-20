@@ -4,9 +4,11 @@ const $ = (id) => document.getElementById(id);
 const els = { form: $('gen-form'), count: $('count'), difficulty: $('difficulty'), webSearch: $('web-search'), generate: $('generate'), model: $('gen-model'), status: $('gen-status'), list: $('candidates'), pending: $('pending-count'),
   collect: $('collect'), collectCount: $('collect-count'), collectStatus: $('collect-status'), collectSources: $('collect-sources'),
   sources: $('sources'), sourceList: $('source-list'), sourcesCount: $('sources-count'),
+  hideExhausted: $('hide-exhausted'), exhaustedCount: $('exhausted-count'),
   approveAll: $('approve-all'), rejectAll: $('reject-all'), bankWarning: $('bank-warning') };
 
 let config = null;
+let sources = [];
 let pollTimer = null;
 let ticker = null;
 
@@ -45,12 +47,22 @@ function renderCollectorLabel(sourceCount) {
 
 /** The pages already used, each with a way to go back for the puzzles it has not given yet. */
 async function loadSources() {
-  let sources = [];
   try { sources = await api('/api/sources'); } catch { return; }
   els.sources.hidden = sources.length === 0;
   els.sourcesCount.textContent = sources.length ? `(${sources.length})` : '';
   renderCollectorLabel(sources.length);
-  els.sourceList.innerHTML = sources.map((s) => `
+  renderSources();
+}
+
+/** The list itself, filtered by the "Hide exhausted" switch, which keeps the spent pages out of the way. */
+function renderSources() {
+  const spent = sources.filter((s) => s.exhausted).length;
+  els.exhaustedCount.textContent = spent ? `(${spent})` : '';
+  els.hideExhausted.disabled = spent === 0;
+  const shown = els.hideExhausted.checked ? sources.filter((s) => !s.exhausted) : sources;
+  els.sourceList.innerHTML = shown.length === 0
+    ? `<li class="empty-sources">Every page used so far is exhausted.</li>`
+    : shown.map((s) => `
     <li${s.exhausted ? ' class="spent"' : ''}>
       <a href="${escapeHtml(s.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title || s.url)}</a>
       <span class="excerpt">${s.taken} puzzle${s.taken === 1 ? '' : 's'} taken · ${s.visits} visit${s.visits === 1 ? '' : 's'}</span>
@@ -58,7 +70,11 @@ async function loadSources() {
         ? `<span class="spent-label" title="The last visit brought back nothing new${s.exhaustedAt ? `, on ${escapeHtml(new Date(s.exhaustedAt).toLocaleString())}` : ''}">exhausted</span>`
         : `<button type="button" class="btn small" data-more="${escapeHtml(s.url)}">Take more</button>`}
     </li>`).join('');
+  // A run started before this render still owns the buttons.
+  if (els.generate.disabled) for (const b of els.sourceList.querySelectorAll('button')) b.disabled = true;
 }
+
+els.hideExhausted.addEventListener('change', renderSources);
 
 els.sourceList.addEventListener('click', async (e) => {
   const url = e.target.closest('[data-more]')?.dataset.more;

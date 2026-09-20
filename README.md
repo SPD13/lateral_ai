@@ -333,7 +333,9 @@ later search is told about them so it looks somewhere new. **Pages already used*
 with how many of their puzzles are in the game and a **Take more** button: that goes back to the page for the
 puzzles it has not given yet, listing the titles already taken so it skips them and never searches for
 another page. A visit that brings back nothing new marks the page **exhausted**: its button is replaced by a
-label saying so, and the mark is cleared if a later visit does find something, in case the page has grown. Revisiting is much cheaper than a first visit, since there is no search and the page is the
+label saying so, and the mark is cleared if a later visit does find something, in case the page has grown. A
+**Hide exhausted** switch, on by default, keeps those spent pages out of the list, so what is left is what
+can still be taken from. Revisiting is much cheaper than a first visit, since there is no search and the page is the
 only thing to read. The briefings live in `server/templates/collect.md` and `collect-more.md`.
 
 ### Tuning the prompts
