@@ -1,19 +1,26 @@
+/*
+ * Every colour is a light/dark pair, and `color-scheme` decides which half is used: "light dark"
+ * follows the operating system, and the theme control in the header pins it by putting
+ * data-theme="light" or "dark" on <html>. Declaring color-scheme also makes the browser draw its
+ * own widgets — selects, checkboxes, scrollbars — in the matching shade.
+ */
 :root {
-  --bg: #f6f4ee; --panel: #ffffff; --ink: #1f2328; --muted: #656d76; --line: #d9d5cb;
-  --accent: #7c3aed; --accent-ink: #ffffff; --accent-soft: #ede9fe;
-  --ok: #1a7f37; --ok-soft: #dafbe1; --warn: #9a6700; --warn-soft: #fff8c5; --bad: #cf222e; --bad-soft: #ffebe9;
-  --info: #0969da; --info-soft: #ddf4ff; --user-bubble: #e8e4f8; --agent-bubble: #f1efe8;
-  --radius: 12px; --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+  color-scheme: light dark;
+  --bg: light-dark(#f6f4ee, #15171b); --panel: light-dark(#ffffff, #1f2329); --ink: light-dark(#1f2328, #e6e8eb);
+  --muted: light-dark(#656d76, #9aa3ad); --line: light-dark(#d9d5cb, #343a42);
+  --accent: light-dark(#7c3aed, #a78bfa); --accent-ink: light-dark(#ffffff, #15171b); --accent-soft: light-dark(#ede9fe, #2e2547);
+  --ok: light-dark(#1a7f37, #3fb950); --ok-soft: light-dark(#dafbe1, #12351b);
+  --warn: light-dark(#9a6700, #d29922); --warn-soft: light-dark(#fff8c5, #3a2e0c);
+  --bad: light-dark(#cf222e, #f85149); --bad-soft: light-dark(#ffebe9, #4a1b1b);
+  --info: light-dark(#0969da, #58a6ff); --info-soft: light-dark(#ddf4ff, #14283f);
+  --user-bubble: light-dark(#e8e4f8, #2e2a45); --agent-bubble: light-dark(#f1efe8, #282d34);
+  --radius: 12px;
+  /* light-dark() takes two arguments, so the shadow is built from pieces rather than written whole */
+  --shadow-near: light-dark(rgba(0,0,0,.06), rgba(0,0,0,.4)); --shadow-far: light-dark(rgba(0,0,0,.05), rgba(0,0,0,.3));
+  --shadow: 0 1px 2px var(--shadow-near), 0 4px 16px var(--shadow-far);
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #15171b; --panel: #1f2329; --ink: #e6e8eb; --muted: #9aa3ad; --line: #343a42;
-    --accent: #a78bfa; --accent-ink: #15171b; --accent-soft: #2e2547;
-    --ok: #3fb950; --ok-soft: #12351b; --warn: #d29922; --warn-soft: #3a2e0c; --bad: #f85149; --bad-soft: #4a1b1b;
-    --info: #58a6ff; --info-soft: #14283f; --user-bubble: #2e2a45; --agent-bubble: #282d34;
-    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.3);
-  }
-}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
@@ -41,6 +48,10 @@ button { font: inherit; cursor: pointer; }
 .profile-control select { padding: 3px 8px; font-size: 13px; }
 .profile-control .icon-btn { width: 26px; height: 26px; }
 .profile-control .icon-btn .icon { width: 15px; height: 15px; }
+.theme-control { display: inline-flex; gap: 3px; margin-left: 12px; }
+.theme-control .icon-btn { width: 26px; height: 26px; }
+.theme-control .icon-btn .icon { width: 15px; height: 15px; }
+.theme-control .icon-btn.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 
 /* Cards */
 .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
