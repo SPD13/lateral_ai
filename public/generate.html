@@ -56,6 +56,7 @@
       <div class="gen-status" id="collect-status" hidden></div>
       <details class="sources" id="sources" hidden>
         <summary>Pages already used <span class="count" id="sources-count"></span></summary>
+        <label class="switch sources-filter" title="Hide the pages whose last visit brought back nothing new"><input type="checkbox" id="hide-exhausted" checked> Hide exhausted <span class="count" id="exhausted-count"></span></label>
         <ul class="source-list" id="source-list"></ul>
         <p class="hint">Taking more from a page skips the puzzles it already gave, so it only brings back new ones. A page whose last visit found nothing new is marked exhausted; it is offered again if it ever yields something later.</p>
       </details>
